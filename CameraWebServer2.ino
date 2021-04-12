@@ -24,20 +24,39 @@
 //#include "bmm8563.h"
 #include "constants.h"
 
-
+bool startedCameraServer = false;
 void startCameraServer();
 
-void startCameraServerWithWifi() {
-  WiFi.begin(SSID, PASSWORD);
+char* var_ssid = "";
+char* var_ps = "";
+
+
+void startCameraServerWithWifi(char* ssid, char* ps) {
+  if(ssid == NULL){
+    var_ssid = (char*)SSID;
+  }else{
+    var_ssid = ssid;
+  }
+
+  if(ps == NULL){
+    var_ps = (char*)PASSWORD;
+  }else{
+    var_ps = ps;
+  }
+  WiFi.begin(var_ssid, var_ps);
 
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
-    Serial.println(".dame");
+    Serial.println("Waiting for Wi-Fi connection...");
   }
   Serial.println("");
-  Serial.println("WiFi connected");
+  Serial.print("WiFi connected : ");
+  Serial.println(var_ssid);
 
-  startCameraServer();
+  if(!startedCameraServer){
+    startCameraServer();
+    startedCameraServer = true;
+  }
 
   Serial.print("Camera Ready! Use 'http://");
   Serial.print(WiFi.localIP());
@@ -111,7 +130,8 @@ void setup() {
   s->set_hmirror(s, 1);
 #endif
 
-  startCameraServerWithWifi();
+
+  startCameraServerWithWifi(NULL, NULL);
   pinMode(LED_BUILTIN, OUTPUT);
 
 }
