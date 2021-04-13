@@ -24,6 +24,32 @@
 //#include "bmm8563.h"
 #include "constants.h"
 
+
+#include <BLEDevice.h>
+#include <BLEServer.h>
+#include <BLEUtils.h>
+#include <BLE2902.h>
+
+// #include <WiFiMulti.h>
+
+#define SERVICE_UUID           "00001141-0000-1000-8000-00805f9b34fb" // UART service UUID
+#define CHARACTERISTIC_UUID_RX "00001142-0000-1000-8000-00805f9b34fb"
+#define CHARACTERISTIC_UUID_TX "00001143-0000-1000-8000-00805f9b34fb"
+
+// const char* uuidOfService = "00001101-0000-1000-8000-00805f9b34fb";
+// const char* uuidOfRxChar = "00001142-0000-1000-8000-00805f9b34fb";
+// const char* uuidOfTxChar = "00001143-0000-1000-8000-00805f9b34fb";
+
+
+// #define SERVICE_UUID           "6E400001-B5A3-F393-E0A9-E50E24DCCA9E" // UART service UUID
+// #define CHARACTERISTIC_UUID_RX "6E400002-B5A3-F393-E0A9-E50E24DCCA9E"
+// #define CHARACTERISTIC_UUID_TX "6E400003-B5A3-F393-E0A9-E50E24DCCA9E"
+
+
+#include <Arduino_JSON.h>
+
+JSONVar obj1;
+
 bool startedCameraServer = false;
 void startCameraServer();
 
@@ -64,10 +90,79 @@ void startCameraServerWithWifi(char* ssid, char* ps) {
 
 };
 
+
+// BLE
+BLEServer *pServer = NULL;
+BLECharacteristic * pTxCharacteristic;
+bool deviceConnected = false;
+bool oldDeviceConnected = false;
+boolean bleDataIsReceived;
+std::string storedValue;
+portMUX_TYPE storeDataMux = portMUX_INITIALIZER_UNLOCKED;
+class MyServerCallbacks: public BLEServerCallbacks {
+    void onConnect(BLEServer* pServer) {
+      deviceConnected = true;
+    };
+
+    void onDisconnect(BLEServer* pServer) {
+      deviceConnected = false;
+    }
+};
+class MyCallbacks: public BLECharacteristicCallbacks {
+    void onWrite(BLECharacteristic *pCharacteristic) {
+      std::string rxValue = pCharacteristic->getValue();
+      Serial.println("write in esp32");
+
+      if (rxValue.length() > 0) {
+        portENTER_CRITICAL_ISR(&storeDataMux);
+        storedValue = rxValue;
+        obj1 = JSON.parse(storedValue.c_str());
+        bleDataIsReceived = true;
+        portEXIT_CRITICAL_ISR(&storeDataMux);
+      }
+    }
+
+    void onRead(BLECharacteristic *pCharacteristic) {
+      Serial.println("read in esp32");
+      pCharacteristic->setValue("Hello from esp32! onRead");
+    }
+};
+
+
 void setup() {
   Serial.begin(115200);
   Serial.setDebugOutput(true);
   Serial.println();
+
+
+  // BLE
+  bleDataIsReceived = false;
+  // Create the BLE Device
+  BLEDevice::init("timerx");
+  // Create the BLE Server
+  pServer = BLEDevice::createServer();
+  pServer->setCallbacks(new MyServerCallbacks());
+  // Create the BLE Service
+  BLEService *pService = pServer->createService(SERVICE_UUID);
+  // Create a BLE Characteristic
+  pTxCharacteristic = pService->createCharacteristic(
+                    CHARACTERISTIC_UUID_TX,
+                    BLECharacteristic::PROPERTY_NOTIFY
+                  );
+  pTxCharacteristic->addDescriptor(new BLE2902());
+  BLECharacteristic * pRxCharacteristic = pService->createCharacteristic(
+                       CHARACTERISTIC_UUID_RX,
+                      BLECharacteristic::PROPERTY_WRITE
+                    );
+  pRxCharacteristic->setCallbacks(new MyCallbacks());
+  // Start the service
+  pService->start();
+  // Start advertising
+  pServer->getAdvertising()->start();
+  Serial.println("Waiting a client connection to notify...");
+
+
+
 
   camera_config_t config;
   config.ledc_channel = LEDC_CHANNEL_0;
@@ -138,6 +233,31 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+
+  if(deviceConnected){
+    portENTER_CRITICAL_ISR(&storeDataMux);
+    if (bleDataIsReceived) {
+      bleDataIsReceived = false;
+      Serial.print("data from py: ");
+      
+      Serial.println(storedValue.c_str());
+
+      JSONVar keys = obj1.keys();
+      for(uint8_t i = 0; i < keys.length(); i++){
+        JSONVar val = obj1[keys[i]];
+        String k = JSON.stringify(keys[i]);
+        String v = JSON.stringify(val);
+        Serial.print(k.c_str());
+        Serial.print(" : ");
+        Serial.println(v.c_str());
+
+      }
+
+      pTxCharacteristic->setValue(storedValue);
+      pTxCharacteristic->notify();
+    }
+    portEXIT_CRITICAL_ISR(&storeDataMux);
+  }
 
   digitalWrite(LED_BUILTIN, LOW);
   delay(10000);
