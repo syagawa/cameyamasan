@@ -48,7 +48,7 @@
 
 #include <Arduino_JSON.h>
 
-JSONVar obj1;
+JSONVar receivedObj;
 
 bool startedCameraServer = false;
 void startCameraServer();
@@ -116,7 +116,7 @@ class MyCallbacks: public BLECharacteristicCallbacks {
       if (rxValue.length() > 0) {
         portENTER_CRITICAL_ISR(&storeDataMux);
         storedValue = rxValue;
-        obj1 = JSON.parse(storedValue.c_str());
+        receivedObj = JSON.parse(storedValue.c_str());
         bleDataIsReceived = true;
         portEXIT_CRITICAL_ISR(&storeDataMux);
       }
@@ -128,6 +128,17 @@ class MyCallbacks: public BLECharacteristicCallbacks {
     }
 };
 
+void parseJsonString(JSONVar obj){
+  JSONVar keys = obj.keys();
+  for(uint8_t i = 0; i < keys.length(); i++){
+    JSONVar val = obj[keys[i]];
+    String k = JSON.stringify(keys[i]);
+    String v = JSON.stringify(val);
+    Serial.print(k.c_str());
+    Serial.print(" : ");
+    Serial.println(v.c_str());
+  }
+}
 
 void setup() {
   Serial.begin(115200);
@@ -242,16 +253,7 @@ void loop() {
       
       Serial.println(storedValue.c_str());
 
-      JSONVar keys = obj1.keys();
-      for(uint8_t i = 0; i < keys.length(); i++){
-        JSONVar val = obj1[keys[i]];
-        String k = JSON.stringify(keys[i]);
-        String v = JSON.stringify(val);
-        Serial.print(k.c_str());
-        Serial.print(" : ");
-        Serial.println(v.c_str());
-
-      }
+      parseJsonString(receivedObj);
 
       pTxCharacteristic->setValue(storedValue);
       pTxCharacteristic->notify();
