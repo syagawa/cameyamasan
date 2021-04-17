@@ -130,14 +130,61 @@ class MyCallbacks: public BLECharacteristicCallbacks {
 
 void parseJsonString(JSONVar obj){
   JSONVar keys = obj.keys();
+  // String action = String("\"action\"");
+  // String start_server = String("\"start_server\"");
+  // String ssid_key = "\"ssid\"";
+  // String ps_key = "\"pswd\"";
+
+  String action = String("action");
+  String start_server = String("start_server");
+  String ssid_key = "ssid";
+  String ps_key = "pswd";
+
+
+  bool start = false;
+  String ssid_ = "";
+  String ps_ = "";
   for(uint8_t i = 0; i < keys.length(); i++){
     JSONVar val = obj[keys[i]];
-    String k = JSON.stringify(keys[i]);
-    String v = JSON.stringify(val);
-    Serial.print(k.c_str());
+    String k = String(JSON.stringify(keys[i]));
+    String v = String(JSON.stringify(val));
+    k.replace("\"", "");
+    v.replace("\"", "");
+    // {"action":"server"}
+    // String k_s = k.c_str();
+    // String v_s = v.c_str();
+    // Serial.print(k.c_str());
+    Serial.print(k);
     Serial.print(" : ");
-    Serial.println(v.c_str());
+    Serial.println(v);
+
+    Serial.println(k.length());
+    Serial.println(v.length());
+    Serial.println(action.length());
+    Serial.println(start_server.length());
+
+    Serial.println(k);
+    Serial.println(v);
+    Serial.println(action);
+    Serial.println(start_server);
+
+
+
+    if(k.equals(action) && v.equals(start_server)){
+      Serial.println("start server!0");
+      start = true;
+    }
+    if(k.equals(ssid_key)){
+      Serial.println("ssid");
+      ssid_ = v;
+    }
+    if(k.equals(ps_key)){
+      ps_ = v;
+    }
+
+
   }
+      // startCameraServerWithWifi(NULL, NULL);
 }
 
 void setup() {
