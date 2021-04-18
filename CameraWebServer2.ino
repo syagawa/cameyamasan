@@ -58,18 +58,28 @@ char* var_ps = "";
 
 
 void startCameraServerWithWifi(char* ssid, char* ps) {
+  Serial.println("in startCameraSeverWithWifi0");
   if(ssid == NULL){
     var_ssid = (char*)SSID;
   }else{
     var_ssid = ssid;
   }
+  Serial.println("in startCameraSeverWithWifi1");
 
   if(ps == NULL){
     var_ps = (char*)PASSWORD;
   }else{
     var_ps = ps;
   }
+  Serial.println("in startCameraSeverWithWifi2");
+  Serial.println(var_ssid);
+  Serial.println(var_ps);
+
+  if(ssid != NULL){
+    WiFi.disconnect();
+  }
   WiFi.begin(var_ssid, var_ps);
+  Serial.println("in startCameraSeverWithWifi3");
 
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
@@ -142,6 +152,8 @@ void parseJsonString(JSONVar obj){
 
 
   bool start = false;
+  bool exists_ssid = false;
+  bool exists_pwd = false;
   String ssid_ = "";
   String ps_ = "";
   for(uint8_t i = 0; i < keys.length(); i++){
@@ -150,7 +162,9 @@ void parseJsonString(JSONVar obj){
     String v = String(JSON.stringify(val));
     k.replace("\"", "");
     v.replace("\"", "");
-    // {"action":"server"}
+    // {"action":"server", "ssid": "aiueo", "pswd":"secred"}
+    
+
     // String k_s = k.c_str();
     // String v_s = v.c_str();
     // Serial.print(k.c_str());
@@ -177,9 +191,31 @@ void parseJsonString(JSONVar obj){
     if(k.equals(ssid_key)){
       Serial.println("ssid");
       ssid_ = v;
+      exists_ssid = true;
     }
     if(k.equals(ps_key)){
       ps_ = v;
+      exists_pwd = true;
+    }
+
+    
+
+    if(start && exists_ssid && exists_pwd){
+      Serial.print("aru");
+      // const char* s = ssid_.c_str();
+      // const char* p = ps_.c_str();
+
+      int len_s = ssid_.length() + 1; 
+      char char_array_s[len_s];
+      ssid_.toCharArray(char_array_s, len_s);
+
+      int len_p = ps_.length() + 1; 
+      char char_array_p[len_p];
+      ps_.toCharArray(char_array_p, len_p);
+
+
+      startCameraServerWithWifi(char_array_s, char_array_p);
+
     }
 
 
@@ -285,6 +321,8 @@ void setup() {
 
 
   startCameraServerWithWifi(NULL, NULL);
+
+
   pinMode(LED_BUILTIN, OUTPUT);
 
 }
