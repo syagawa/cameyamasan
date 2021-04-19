@@ -47,6 +47,7 @@
 
 
 #include <Arduino_JSON.h>
+#include <EEPROM.h>
 
 JSONVar receivedObj;
 
@@ -56,6 +57,44 @@ void startCameraServer();
 char* var_ssid = "";
 char* var_ps = "";
 
+typedef struct _WIFISTRUCT {
+  String ssid;
+  String ps;
+} WIFISTRUCT, *PWIFISTRUCT;
+
+void writeStruct(String ssid, String ps){
+
+  WIFISTRUCT s;
+  s.ssid = ssid;
+  s.ps = ps;
+  byte* p = (byte*) &s;
+
+  for(int j = 0; j < sizeof(WIFISTRUCT); j++){
+    EEPROM.write(j, *p);
+    EEPROM.commit();
+    p++;
+  }
+  Serial.println("writed!?");
+};
+
+
+void readStruct(){
+
+  WIFISTRUCT s;
+  byte* p = (byte*) &s;
+
+  for(int j = 0; j < sizeof(WIFISTRUCT); j++){
+    byte b = EEPROM.read(j);
+    EEPROM.write(j, *p);
+    *p = b;
+    p++;
+  }
+
+  Serial.println(s.ssid);
+  Serial.println(s.ps);
+  Serial.println("readed?");
+
+};
 
 void startCameraServerWithWifi(char* ssid, char* ps) {
   Serial.println("in startCameraSeverWithWifi0");
@@ -197,27 +236,25 @@ void parseJsonString(JSONVar obj){
       ps_ = v;
       exists_pwd = true;
     }
+  }
 
-    
+  if(start && exists_ssid && exists_pwd){
+    Serial.println("aru");
+    // const char* s = ssid_.c_str();
+    // const char* p = ps_.c_str();
 
-    if(start && exists_ssid && exists_pwd){
-      Serial.print("aru");
-      // const char* s = ssid_.c_str();
-      // const char* p = ps_.c_str();
+    int len_s = ssid_.length() + 1; 
+    char char_array_s[len_s];
+    ssid_.toCharArray(char_array_s, len_s);
 
-      int len_s = ssid_.length() + 1; 
-      char char_array_s[len_s];
-      ssid_.toCharArray(char_array_s, len_s);
+    int len_p = ps_.length() + 1; 
+    char char_array_p[len_p];
+    ps_.toCharArray(char_array_p, len_p);
 
-      int len_p = ps_.length() + 1; 
-      char char_array_p[len_p];
-      ps_.toCharArray(char_array_p, len_p);
+    EEPROM.begin(1000);
 
-
-      startCameraServerWithWifi(char_array_s, char_array_p);
-
-    }
-
+    writeStruct(ssid_, ps_);
+    // startCameraServerWithWifi(char_array_s, char_array_p);
 
   }
       // startCameraServerWithWifi(NULL, NULL);
@@ -320,8 +357,9 @@ void setup() {
 #endif
 
 
-  startCameraServerWithWifi(NULL, NULL);
+  // startCameraServerWithWifi(NULL, NULL);
 
+  readStruct();
 
   pinMode(LED_BUILTIN, OUTPUT);
 
