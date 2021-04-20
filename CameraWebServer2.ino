@@ -47,7 +47,7 @@
 
 
 #include <Arduino_JSON.h>
-#include <EEPROM.h>
+#include "EEPROM.h"
 
 JSONVar receivedObj;
 
@@ -57,43 +57,49 @@ void startCameraServer();
 char* var_ssid = "";
 char* var_ps = "";
 
-typedef struct _WIFISTRUCT {
-  String ssid;
-  String ps;
-} WIFISTRUCT, *PWIFISTRUCT;
-
-void writeStruct(String ssid, String ps){
-
-  WIFISTRUCT s;
-  s.ssid = ssid;
-  s.ps = ps;
-  byte* p = (byte*) &s;
-
-  for(int j = 0; j < sizeof(WIFISTRUCT); j++){
-    EEPROM.write(j, *p);
-    EEPROM.commit();
-    p++;
-  }
-  Serial.println("writed!?");
+int address_ssid = 0;
+int address_ps = 128;
+int length_for_rom = 100;
+int rom_size = 500;
+void writeWifiData(String ssid, String ps){
+  EEPROM.writeString(address_ssid, ssid);
+  EEPROM.writeString(address_ps, ps);
 };
 
-
-void readStruct(){
-
-  WIFISTRUCT s;
-  byte* p = (byte*) &s;
-
-  for(int j = 0; j < sizeof(WIFISTRUCT); j++){
-    byte b = EEPROM.read(j);
-    *p = b;
-    p++;
-  }
-
-  Serial.println(s.ssid);
-  Serial.println(s.ps);
+void readWifiData(){
+  String ssid = EEPROM.readString(address_ssid);
+  String ps = EEPROM.readString(address_ps);
+  Serial.println(ssid);
+  Serial.println(ps);
   Serial.println("readed?");
-
 };
+
+void writeDataToRom(String String_data, int start, int len) {
+  byte Byte_data[len];
+  String_data.getBytes(Byte_data, len);
+  int k;
+  for (k = start; k < len && Byte_data[k] != '\0'; k++) {
+    EEPROM.write(k, Byte_data[k]);
+  }
+  EEPROM.write(k, '\0');
+}
+
+String readDataFromRom(int start, int len) {
+  String data_from_rom;
+  for (int i = start; i < len && EEPROM.read(i) != '\0' ; i++) {
+    char c = EEPROM.read(i);
+    data_from_rom = data_from_rom + String(c);
+  }
+  return data_from_rom;
+}
+void clearRom() {
+  for(int i = 0; i < rom_size; i++){
+    EEPROM.write(i, 0);
+  }
+  EEPROM.end();
+}
+
+
 
 void startCameraServerWithWifi(char* ssid, char* ps) {
   Serial.println("in startCameraSeverWithWifi0");
@@ -138,6 +144,39 @@ void startCameraServerWithWifi(char* ssid, char* ps) {
 
 };
 
+void startServerIfExistsData(){
+
+
+ // readWifiData()
+  // String ssid = EEPROM.readString(address_ssid);
+  // String ps = EEPROM.readString(address_ps);
+  if (!EEPROM.begin(rom_size)){
+    Serial.println("Failed to initialise EEPROM");
+    Serial.println("Restarting...");
+    delay(1000);
+    ESP.restart();
+  }
+
+  String ssid = readDataFromRom(address_ssid, length_for_rom);
+  String ps = readDataFromRom(address_ps, length_for_rom);
+
+  Serial.println(ssid);
+  Serial.println(ps);
+  Serial.println("readed?");
+
+  if(ssid.length() > 0 && ps.length() > 0){
+    int len_s = ssid.length() + 1; 
+    char char_array_s[len_s];
+    ssid.toCharArray(char_array_s, len_s);
+
+    int len_p = ps.length() + 1; 
+    char char_array_p[len_p];
+    ps.toCharArray(char_array_p, len_p);
+
+    startCameraServerWithWifi(char_array_s, char_array_p);
+  }
+
+};
 
 // BLE
 BLEServer *pServer = NULL;
@@ -227,35 +266,72 @@ void parseJsonString(JSONVar obj){
       start = true;
     }
     if(k.equals(ssid_key)){
-      // Serial.println("ssid");
+      Serial.print("ssid is ");
       ssid_ = v;
       exists_ssid = true;
+      Serial.println(ssid_);
     }
     if(k.equals(ps_key)){
+      Serial.print("ps is ");
       ps_ = v;
       exists_pwd = true;
+      Serial.println(ps_);
     }
   }
 
   if(start && exists_ssid && exists_pwd){
-    Serial.println("aru");
+    Serial.println("before write and restart0");
+    // writeWifiData(ssid_, ps_);
+    // if (!EEPROM.begin(rom_size)){
+    //   Serial.println("Failed to initialise EEPROM");
+    //   Serial.println("Restarting...");
+    //   delay(1000);
+    //   ESP.restart();
+    // }
+    Serial.println("before write and restart1");
+
+    // EEPROM.writeString(address_ssid, ssid_);
+    // EEPROM.writeString(address_ps, ps_);
+
+    clearRom();
+    Serial.println("before write and restart2");
+
+    if (!EEPROM.begin(rom_size)) {
+      Serial.println("Failed to initialise EEPROM");
+      Serial.println("Restarting...");
+      delay(1000);
+      ESP.restart();
+    }
+
+    Serial.println("before write and restart3");
+
+    writeDataToRom(ssid_, address_ssid, length_for_rom);
+    Serial.println("before write and restart4");
+    writeDataToRom(ps_, address_ps, length_for_rom);
+    Serial.println("before write and restart5");
+    EEPROM.end();
+    Serial.println("before write and restart6");
+
+    delay(1000);
+    Serial.println("before write and restart7");
+    ESP.restart();
+    Serial.println("before write and restart8");
     // const char* s = ssid_.c_str();
     // const char* p = ps_.c_str();
 
-    int len_s = ssid_.length() + 1; 
-    char char_array_s[len_s];
-    ssid_.toCharArray(char_array_s, len_s);
+    // int len_s = ssid_.length() + 1; 
+    // char char_array_s[len_s];
+    // ssid_.toCharArray(char_array_s, len_s);
 
-    int len_p = ps_.length() + 1; 
-    char char_array_p[len_p];
-    ps_.toCharArray(char_array_p, len_p);
+    // int len_p = ps_.length() + 1; 
+    // char char_array_p[len_p];
+    // ps_.toCharArray(char_array_p, len_p);
 
-    if (!EEPROM.begin(1000)){
-      Serial.println("failed to initialise EEPROM in parseJsonString");
-    }
+    // if (!EEPROM.begin(1000)){
+    //   Serial.println("failed to initialise EEPROM in parseJsonString");
+    // }
 
 
-    writeStruct(ssid_, ps_);
     // startCameraServerWithWifi(char_array_s, char_array_p);
 
   }
@@ -361,10 +437,9 @@ void setup() {
 
   // startCameraServerWithWifi(NULL, NULL);
 
-  if (!EEPROM.begin(1000)){
-    Serial.println("failed to initialise EEPROM in setup");
-  }
-  readStruct();
+
+  
+  startServerIfExistsData();
 
   pinMode(LED_BUILTIN, OUTPUT);
 
