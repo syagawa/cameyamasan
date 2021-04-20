@@ -85,7 +85,6 @@ void readStruct(){
 
   for(int j = 0; j < sizeof(WIFISTRUCT); j++){
     byte b = EEPROM.read(j);
-    EEPROM.write(j, *p);
     *p = b;
     p++;
   }
@@ -216,8 +215,8 @@ void parseJsonString(JSONVar obj){
     Serial.println(action.length());
     Serial.println(start_server.length());
 
-    Serial.println(k);
-    Serial.println(v);
+    // Serial.println(k);
+    // Serial.println(v);
     Serial.println(action);
     Serial.println(start_server);
 
@@ -228,7 +227,7 @@ void parseJsonString(JSONVar obj){
       start = true;
     }
     if(k.equals(ssid_key)){
-      Serial.println("ssid");
+      // Serial.println("ssid");
       ssid_ = v;
       exists_ssid = true;
     }
@@ -251,7 +250,10 @@ void parseJsonString(JSONVar obj){
     char char_array_p[len_p];
     ps_.toCharArray(char_array_p, len_p);
 
-    EEPROM.begin(1000);
+    if (!EEPROM.begin(1000)){
+      Serial.println("failed to initialise EEPROM in parseJsonString");
+    }
+
 
     writeStruct(ssid_, ps_);
     // startCameraServerWithWifi(char_array_s, char_array_p);
@@ -359,6 +361,9 @@ void setup() {
 
   // startCameraServerWithWifi(NULL, NULL);
 
+  if (!EEPROM.begin(1000)){
+    Serial.println("failed to initialise EEPROM in setup");
+  }
   readStruct();
 
   pinMode(LED_BUILTIN, OUTPUT);
