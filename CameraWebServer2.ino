@@ -64,7 +64,7 @@ int rom_size = 500;
 void writeWifiData(String ssid, String ps){
   EEPROM.writeString(address_ssid, ssid);
   EEPROM.writeString(address_ps, ps);
-};
+}
 
 void readWifiData(){
   String ssid = EEPROM.readString(address_ssid);
@@ -72,7 +72,7 @@ void readWifiData(){
   Serial.println(ssid);
   Serial.println(ps);
   Serial.println("readed?");
-};
+}
 
 void writeDataToRom(String String_data, int start, int len) {
   byte Byte_data[len];
@@ -93,10 +93,15 @@ String readDataFromRom(int start, int len) {
   return data_from_rom;
 }
 void clearRom() {
+  Serial.println("in clearRom0");
   for(int i = 0; i < rom_size; i++){
     EEPROM.write(i, 0);
   }
+  Serial.println("in clearRom1");
   EEPROM.end();
+  // EEPROM.commit();
+  Serial.println("in clearRom2");
+
 }
 
 
@@ -142,7 +147,7 @@ void startCameraServerWithWifi(char* ssid, char* ps) {
   Serial.print(WiFi.localIP());
   Serial.println("' to connect");
 
-};
+}
 
 void startServerIfExistsData(){
 
@@ -174,15 +179,21 @@ void startServerIfExistsData(){
     ps.toCharArray(char_array_p, len_p);
 
     startCameraServerWithWifi(char_array_s, char_array_p);
+  }else{
+    clearRom();
   }
 
-};
+}
 
 // BLE
 BLEServer *pServer = NULL;
+BLEService *pService = NULL;
+BLEAdvertising *pAdvertising = NULL;
+
 BLECharacteristic * pTxCharacteristic;
 bool deviceConnected = false;
 bool oldDeviceConnected = false;
+bool deviceConnectedOneLoopBefore = false;
 boolean bleDataIsReceived;
 std::string storedValue;
 portMUX_TYPE storeDataMux = portMUX_INITIALIZER_UNLOCKED;
@@ -293,7 +304,11 @@ void parseJsonString(JSONVar obj){
     // EEPROM.writeString(address_ssid, ssid_);
     // EEPROM.writeString(address_ps, ps_);
 
-    clearRom();
+    // pAdvertising->stop();
+    // pServer->getAdvertising()->stop();
+    // pService->stop();
+
+    // clearRom();
     Serial.println("before write and restart2");
 
     if (!EEPROM.begin(rom_size)) {
@@ -338,12 +353,7 @@ void parseJsonString(JSONVar obj){
       // startCameraServerWithWifi(NULL, NULL);
 }
 
-void setup() {
-  Serial.begin(115200);
-  Serial.setDebugOutput(true);
-  Serial.println();
-
-
+void setupBLE() {
   // BLE
   bleDataIsReceived = false;
   // Create the BLE Device
@@ -352,7 +362,8 @@ void setup() {
   pServer = BLEDevice::createServer();
   pServer->setCallbacks(new MyServerCallbacks());
   // Create the BLE Service
-  BLEService *pService = pServer->createService(SERVICE_UUID);
+  pService = pServer->createService(SERVICE_UUID);
+  // BLEService *pService = pServer->createService(SERVICE_UUID);
   // Create a BLE Characteristic
   pTxCharacteristic = pService->createCharacteristic(
                     CHARACTERISTIC_UUID_TX,
@@ -367,10 +378,22 @@ void setup() {
   // Start the service
   pService->start();
   // Start advertising
-  pServer->getAdvertising()->start();
+  pAdvertising = pServer->getAdvertising();
+
+  pAdvertising->start();
+  // pServer->getAdvertising()->start();
   Serial.println("Waiting a client connection to notify...");
 
+}
 
+void setup() {
+  Serial.begin(115200);
+  Serial.setDebugOutput(true);
+  Serial.println();
+
+
+  // BLE
+  setupBLE();
 
 
   camera_config_t config;
@@ -412,6 +435,7 @@ void setup() {
   pinMode(14, INPUT_PULLUP);
 #endif
 
+    
   // camera init
   esp_err_t err = esp_camera_init(&config);
   if (err != ESP_OK) {
@@ -441,13 +465,14 @@ void setup() {
   
   startServerIfExistsData();
 
-  pinMode(LED_BUILTIN, OUTPUT);
+  // pinMode(LED_BUILTIN, OUTPUT);
 
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
 
+  noInterrupts();
   if(deviceConnected){
     portENTER_CRITICAL_ISR(&storeDataMux);
     if (bleDataIsReceived) {
@@ -456,16 +481,21 @@ void loop() {
       
       Serial.println(storedValue.c_str());
 
-      parseJsonString(receivedObj);
-
       pTxCharacteristic->setValue(storedValue);
       pTxCharacteristic->notify();
+      deviceConnectedOneLoopBefore = true;
+      // parseJsonString(receivedObj);
     }
     portEXIT_CRITICAL_ISR(&storeDataMux);
   }
-
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(10000);
-  digitalWrite(LED_BUILTIN, HIGH);
-  delay(10000);
+  if(deviceConnectedOneLoopBefore){
+    deviceConnectedOneLoopBefore = false;
+    parseJsonString(receivedObj);
+    delay(10000);
+  }
+  interrupts();
+  // digitalWrite(LED_BUILTIN, LOW);
+  // delay(10000);
+  // digitalWrite(LED_BUILTIN, HIGH);
+  // delay(10000);
 }
