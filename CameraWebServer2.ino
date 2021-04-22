@@ -287,16 +287,16 @@ void setWiFiAndServer(JSONVar obj){
 
     Serial.println("before write and restart1");
 
-    writeDataToRom(ssid_, address_ssid, length_for_rom);
+    writeDataToRom(ssid_val, address_ssid, length_for_rom);
     Serial.println("before write and restart2");
-    writeDataToRom(ps_, address_ps, length_for_rom);
+    writeDataToRom(ps_val, address_ps, length_for_rom);
     Serial.println("before write and restart3");
     EEPROM.end();
     Serial.println("before write and restart4");
 
     delay(1000);
     Serial.println("before write and restart5");
-    ESP.restart();
+    // ESP.restart();
     Serial.println("before write and restart6");
     // const char* s = ssid_.c_str();
     // const char* p = ps_.c_str();
@@ -306,13 +306,13 @@ void setWiFiAndServer(JSONVar obj){
     //   Serial.println("failed to initialise EEPROM in setWiFiAndServer");
     // }
 
-    int len_s = ssid_.length() + 1; 
+    int len_s = ssid_val.length() + 1; 
     char char_array_s[len_s];
-    ssid_.toCharArray(char_array_s, len_s);
+    ssid_val.toCharArray(char_array_s, len_s);
 
-    int len_p = ps_.length() + 1; 
+    int len_p = ps_val.length() + 1; 
     char char_array_p[len_p];
-    ps_.toCharArray(char_array_p, len_p);
+    ps_val.toCharArray(char_array_p, len_p);
 
     startCameraServerWithWifi(char_array_s, char_array_p);
 
