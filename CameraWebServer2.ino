@@ -226,7 +226,7 @@ class MyCallbacks: public BLECharacteristicCallbacks {
     }
 };
 
-void setWiFiAndServer(JSONVar obj){
+void parseMessageFromBle(JSONVar obj){
   String action_key = String("action");
   String start_server_val = String("start_server");
   String ssid_key = "ssid";
@@ -278,35 +278,7 @@ void setWiFiAndServer(JSONVar obj){
   if(start && exists_ssid && exists_pwd){
     Serial.println("before write and restart0");
 
-    if (!EEPROM.begin(rom_size)) {
-      Serial.println("Failed to initialise EEPROM");
-      Serial.println("Restarting...");
-      delay(1000);
-      ESP.restart();
-    }
-
-    Serial.println("before write and restart1");
-
-    writeDataToRom(ssid_val, address_ssid, length_for_rom);
-    Serial.println("before write and restart2");
-    writeDataToRom(ps_val, address_ps, length_for_rom);
-    Serial.println("before write and restart3");
-    EEPROM.end();
-    Serial.println("before write and restart4");
-
-    delay(1000);
-    Serial.println("before write and restart5");
-    // ESP.restart();
-    Serial.println("before write and restart6");
-    // const char* s = ssid_.c_str();
-    // const char* p = ps_.c_str();
-
-
-    // if (!EEPROM.begin(1000)){
-    //   Serial.println("failed to initialise EEPROM in setWiFiAndServer");
-    // }
-
-    int len_s = ssid_val.length() + 1; 
+    int len_s = ssid_val.length() + 1;
     char char_array_s[len_s];
     ssid_val.toCharArray(char_array_s, len_s);
 
@@ -315,9 +287,7 @@ void setWiFiAndServer(JSONVar obj){
     ps_val.toCharArray(char_array_p, len_p);
 
     startCameraServerWithWifi(char_array_s, char_array_p);
-
   }
-      // startCameraServerWithWifi(NULL, NULL);
 }
 
 void setupBLE() {
@@ -451,15 +421,16 @@ void loop() {
       pTxCharacteristic->setValue(storedValue);
       pTxCharacteristic->notify();
       deviceConnectedOneLoopBefore = true;
-      // setWiFiAndServer(receivedObj);
+      // parseMessageFromBle(receivedObj);
     }
     portEXIT_CRITICAL_ISR(&storeDataMux);
   }
   if(deviceConnectedOneLoopBefore){
     deviceConnectedOneLoopBefore = false;
-    setWiFiAndServer(receivedObj);
+    parseMessageFromBle(receivedObj);
     delay(10000);
   }
+
   interrupts();
   // digitalWrite(LED_BUILTIN, LOW);
   // delay(10000);
