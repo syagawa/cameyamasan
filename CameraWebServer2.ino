@@ -226,90 +226,57 @@ class MyCallbacks: public BLECharacteristicCallbacks {
     }
 };
 
-void parseJsonString(JSONVar obj){
-  JSONVar keys = obj.keys();
-  // String action = String("\"action\"");
-  // String start_server = String("\"start_server\"");
-  // String ssid_key = "\"ssid\"";
-  // String ps_key = "\"pswd\"";
-
-  String action = String("action");
-  String start_server = String("start_server");
+void setWiFiAndServer(JSONVar obj){
+  String action_key = String("action");
+  String start_server_val = String("start_server");
   String ssid_key = "ssid";
   String ps_key = "pswd";
 
+  JSONVar keys = obj.keys();
 
   bool start = false;
   bool exists_ssid = false;
   bool exists_pwd = false;
-  String ssid_ = "";
-  String ps_ = "";
+  String ssid_val = "";
+  String ps_val = "";
+
   for(uint8_t i = 0; i < keys.length(); i++){
     JSONVar val = obj[keys[i]];
     String k = String(JSON.stringify(keys[i]));
     String v = String(JSON.stringify(val));
     k.replace("\"", "");
     v.replace("\"", "");
-    // {"action":"server", "ssid": "aiueo", "pswd":"secred"}
-    
-
-    // String k_s = k.c_str();
-    // String v_s = v.c_str();
-    // Serial.print(k.c_str());
     Serial.print(k);
     Serial.print(" : ");
     Serial.println(v);
 
     Serial.println(k.length());
     Serial.println(v.length());
-    Serial.println(action.length());
-    Serial.println(start_server.length());
 
-    // Serial.println(k);
-    // Serial.println(v);
-    Serial.println(action);
-    Serial.println(start_server);
+    Serial.println(action_key.length());
+    Serial.println(start_server_val.length());
 
 
-
-    if(k.equals(action) && v.equals(start_server)){
+    if(k.equals(action_key) && v.equals(start_server_val)){
       Serial.println("start server!0");
       start = true;
     }
     if(k.equals(ssid_key)){
       Serial.print("ssid is ");
-      ssid_ = v;
+      ssid_val = v;
       exists_ssid = true;
-      Serial.println(ssid_);
+      Serial.println(ssid_val);
     }
     if(k.equals(ps_key)){
       Serial.print("ps is ");
-      ps_ = v;
+      ps_val = v;
       exists_pwd = true;
-      Serial.println(ps_);
+      Serial.println(ps_val);
     }
   }
 
   if(start && exists_ssid && exists_pwd){
     Serial.println("before write and restart0");
-    // writeWifiData(ssid_, ps_);
-    // if (!EEPROM.begin(rom_size)){
-    //   Serial.println("Failed to initialise EEPROM");
-    //   Serial.println("Restarting...");
-    //   delay(1000);
-    //   ESP.restart();
-    // }
-    Serial.println("before write and restart1");
-
-    // EEPROM.writeString(address_ssid, ssid_);
-    // EEPROM.writeString(address_ps, ps_);
-
-    // pAdvertising->stop();
-    // pServer->getAdvertising()->stop();
-    // pService->stop();
-
-    // clearRom();
-    Serial.println("before write and restart2");
 
     if (!EEPROM.begin(rom_size)) {
       Serial.println("Failed to initialise EEPROM");
@@ -318,36 +285,36 @@ void parseJsonString(JSONVar obj){
       ESP.restart();
     }
 
-    Serial.println("before write and restart3");
+    Serial.println("before write and restart1");
 
     writeDataToRom(ssid_, address_ssid, length_for_rom);
-    Serial.println("before write and restart4");
+    Serial.println("before write and restart2");
     writeDataToRom(ps_, address_ps, length_for_rom);
-    Serial.println("before write and restart5");
+    Serial.println("before write and restart3");
     EEPROM.end();
-    Serial.println("before write and restart6");
+    Serial.println("before write and restart4");
 
     delay(1000);
-    Serial.println("before write and restart7");
+    Serial.println("before write and restart5");
     ESP.restart();
-    Serial.println("before write and restart8");
+    Serial.println("before write and restart6");
     // const char* s = ssid_.c_str();
     // const char* p = ps_.c_str();
 
-    // int len_s = ssid_.length() + 1; 
-    // char char_array_s[len_s];
-    // ssid_.toCharArray(char_array_s, len_s);
-
-    // int len_p = ps_.length() + 1; 
-    // char char_array_p[len_p];
-    // ps_.toCharArray(char_array_p, len_p);
 
     // if (!EEPROM.begin(1000)){
-    //   Serial.println("failed to initialise EEPROM in parseJsonString");
+    //   Serial.println("failed to initialise EEPROM in setWiFiAndServer");
     // }
 
+    int len_s = ssid_.length() + 1; 
+    char char_array_s[len_s];
+    ssid_.toCharArray(char_array_s, len_s);
 
-    // startCameraServerWithWifi(char_array_s, char_array_p);
+    int len_p = ps_.length() + 1; 
+    char char_array_p[len_p];
+    ps_.toCharArray(char_array_p, len_p);
+
+    startCameraServerWithWifi(char_array_s, char_array_p);
 
   }
       // startCameraServerWithWifi(NULL, NULL);
@@ -463,7 +430,7 @@ void setup() {
 
 
   
-  startServerIfExistsData();
+  // startServerIfExistsData();
 
   // pinMode(LED_BUILTIN, OUTPUT);
 
@@ -484,13 +451,13 @@ void loop() {
       pTxCharacteristic->setValue(storedValue);
       pTxCharacteristic->notify();
       deviceConnectedOneLoopBefore = true;
-      // parseJsonString(receivedObj);
+      // setWiFiAndServer(receivedObj);
     }
     portEXIT_CRITICAL_ISR(&storeDataMux);
   }
   if(deviceConnectedOneLoopBefore){
     deviceConnectedOneLoopBefore = false;
-    parseJsonString(receivedObj);
+    setWiFiAndServer(receivedObj);
     delay(10000);
   }
   interrupts();
