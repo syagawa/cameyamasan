@@ -57,6 +57,56 @@ void startCameraServer();
 char* var_ssid = "";
 char* var_ps = "";
 
+// BLE
+BLEServer *pServer = NULL;
+BLEService *pService = NULL;
+BLEAdvertising *pAdvertising = NULL;
+
+BLECharacteristic * pTxCharacteristic;
+bool deviceConnected = false;
+bool oldDeviceConnected = false;
+bool deviceConnectedOneLoopBefore = false;
+boolean bleDataIsReceived;
+std::string storedValue;
+portMUX_TYPE storeDataMux = portMUX_INITIALIZER_UNLOCKED;
+class MyServerCallbacks: public BLEServerCallbacks {
+    void onConnect(BLEServer* pServer) {
+      deviceConnected = true;
+    };
+
+    void onDisconnect(BLEServer* pServer) {
+      deviceConnected = false;
+    }
+};
+class MyCallbacks: public BLECharacteristicCallbacks {
+    void onWrite(BLECharacteristic *pCharacteristic) {
+      std::string rxValue = pCharacteristic->getValue();
+      Serial.println("write in esp32");
+
+      if (rxValue.length() > 0) {
+        portENTER_CRITICAL_ISR(&storeDataMux);
+        storedValue = rxValue;
+        receivedObj = JSON.parse(storedValue.c_str());
+        bleDataIsReceived = true;
+        portEXIT_CRITICAL_ISR(&storeDataMux);
+      }
+    }
+
+    void onRead(BLECharacteristic *pCharacteristic) {
+      Serial.println("read in esp32");
+      pCharacteristic->setValue("Hello from esp32! onRead");
+    }
+};
+
+
+
+
+
+
+
+
+
+
 int address_ssid = 0;
 int address_ps = 128;
 int length_for_rom = 100;
@@ -93,6 +143,13 @@ String readDataFromRom(int start, int len) {
   return data_from_rom;
 }
 void clearRom() {
+  if (!EEPROM.begin(rom_size)){
+    Serial.println("Failed to initialise EEPROM");
+    Serial.println("Restarting...");
+    delay(1000);
+    ESP.restart();
+  }
+
   Serial.println("in clearRom0");
   for(int i = 0; i < rom_size; i++){
     EEPROM.write(i, 0);
@@ -147,6 +204,15 @@ void startCameraServerWithWifi(char* ssid, char* ps) {
   Serial.print(WiFi.localIP());
   Serial.println("' to connect");
 
+  // std::string str1 = WiFi.localIP();
+  // std::string str2 = "Camera Ready! Use 'http://";
+  // str2.concat(str1);
+  // String s = String(WiFi.localIP());
+  String s = String(WiFi.localIP());
+  std::string s2 = std::string(s.c_str());
+  pTxCharacteristic->setValue(s2);
+  pTxCharacteristic->notify();
+
 }
 
 void startServerIfExistsData(){
@@ -185,56 +251,31 @@ void startServerIfExistsData(){
 
 }
 
-// BLE
-BLEServer *pServer = NULL;
-BLEService *pService = NULL;
-BLEAdvertising *pAdvertising = NULL;
 
-BLECharacteristic * pTxCharacteristic;
-bool deviceConnected = false;
-bool oldDeviceConnected = false;
-bool deviceConnectedOneLoopBefore = false;
-boolean bleDataIsReceived;
-std::string storedValue;
-portMUX_TYPE storeDataMux = portMUX_INITIALIZER_UNLOCKED;
-class MyServerCallbacks: public BLEServerCallbacks {
-    void onConnect(BLEServer* pServer) {
-      deviceConnected = true;
-    };
 
-    void onDisconnect(BLEServer* pServer) {
-      deviceConnected = false;
-    }
-};
-class MyCallbacks: public BLECharacteristicCallbacks {
-    void onWrite(BLECharacteristic *pCharacteristic) {
-      std::string rxValue = pCharacteristic->getValue();
-      Serial.println("write in esp32");
+void sendStatusToBle(){
+  std::string s_value;
 
-      if (rxValue.length() > 0) {
-        portENTER_CRITICAL_ISR(&storeDataMux);
-        storedValue = rxValue;
-        receivedObj = JSON.parse(storedValue.c_str());
-        bleDataIsReceived = true;
-        portEXIT_CRITICAL_ISR(&storeDataMux);
-      }
-    }
-
-    void onRead(BLECharacteristic *pCharacteristic) {
-      Serial.println("read in esp32");
-      pCharacteristic->setValue("Hello from esp32! onRead");
-    }
-};
+  if(startedCameraServer){
+    s_value = "server started!";
+  }else{
+    s_value = "server not started...";
+  }
+  pTxCharacteristic->setValue(s_value);
+  pTxCharacteristic->notify();
+}
 
 void parseMessageFromBle(JSONVar obj){
   String action_key = String("action");
   String start_server_val = String("start_server");
   String ssid_key = "ssid";
   String ps_key = "pswd";
+  String server_status_val = "server_status";
 
   JSONVar keys = obj.keys();
 
   bool start = false;
+  bool status = false;
   bool exists_ssid = false;
   bool exists_pwd = false;
   String ssid_val = "";
@@ -257,10 +298,17 @@ void parseMessageFromBle(JSONVar obj){
     Serial.println(start_server_val.length());
 
 
-    if(k.equals(action_key) && v.equals(start_server_val)){
-      Serial.println("start server!0");
-      start = true;
+    if(k.equals(action_key)){
+      if(v.equals(start_server_val)){
+        Serial.println("start server!0");
+        start = true;
+      }else if(v.equals(server_status_val)){
+        Serial.println("server status");
+        status = true;
+      }
     }
+
+
     if(k.equals(ssid_key)){
       Serial.print("ssid is ");
       ssid_val = v;
@@ -276,7 +324,6 @@ void parseMessageFromBle(JSONVar obj){
   }
 
   if(start && exists_ssid && exists_pwd){
-    Serial.println("before write and restart0");
 
     int len_s = ssid_val.length() + 1;
     char char_array_s[len_s];
@@ -287,6 +334,8 @@ void parseMessageFromBle(JSONVar obj){
     ps_val.toCharArray(char_array_p, len_p);
 
     startCameraServerWithWifi(char_array_s, char_array_p);
+  }else if(status){
+    sendStatusToBle();
   }
 }
 
@@ -396,12 +445,6 @@ void setup() {
 #endif
 
 
-  // startCameraServerWithWifi(NULL, NULL);
-
-
-  
-  // startServerIfExistsData();
-
   // pinMode(LED_BUILTIN, OUTPUT);
 
 }
@@ -428,7 +471,7 @@ void loop() {
   if(deviceConnectedOneLoopBefore){
     deviceConnectedOneLoopBefore = false;
     parseMessageFromBle(receivedObj);
-    delay(10000);
+    delay(1000);
   }
 
   interrupts();
