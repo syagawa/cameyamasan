@@ -204,13 +204,9 @@ void startCameraServerWithWifi(char* ssid, char* ps) {
   Serial.print(WiFi.localIP());
   Serial.println("' to connect");
 
-  // std::string str1 = WiFi.localIP();
-  // std::string str2 = "Camera Ready! Use 'http://";
-  // str2.concat(str1);
-  // String s = String(WiFi.localIP());
-  String s = String(WiFi.localIP());
-  std::string s2 = std::string(s.c_str());
-  pTxCharacteristic->setValue(s2);
+
+  std::string ip_s = WiFi.localIP().toString().c_str();
+  pTxCharacteristic->setValue(ip_s);
   pTxCharacteristic->notify();
 
 }
