@@ -12,6 +12,12 @@ import base64
 from aioconsole import ainput
 from bleak import BleakClient, discover
 
+from variables import ssid, ps
+
+com_start_server = '{"action":"start_server", "ssid": "%s", "pswd":"%s"}' % (ssid, ps)
+com_status = '{"action":"server_?status"}'
+
+
 
 output_file = "./dump.csv"
 
@@ -164,7 +170,13 @@ async def user_console_manager(connection: Connection):
     while True:
         if connection.client and connection.connected:
             input_str = await ainput("Enter string: ")
-            bytes_to_send = bytearray(map(ord, input_str))
+            
+            byte_to_send = ""
+            if input_str == "go":
+                bytes_to_send = bytearray(map(ord, com_start_server))
+            else:
+                bytes_to_send = bytearray(map(ord, input_str))
+
             await connection.client.write_gatt_char(write_characteristic, bytes_to_send)
             print(f"Sent: {input_str}")
         else:
