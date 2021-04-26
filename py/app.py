@@ -6,7 +6,7 @@ import asyncio
 import platform
 from datetime import datetime
 from typing import Callable, Any
-
+import time
 import base64
 
 from aioconsole import ainput
@@ -14,10 +14,11 @@ from bleak import BleakClient, discover
 
 from variables import ssid, ps
 
+
 com_start_server = '{"action":"start_server", "ssid": "%s", "pswd":"%s"}' % (ssid, ps)
 com_status = '{"action":"server_?status"}'
 
-
+device_name = "timerx"
 
 output_file = "./dump.csv"
 
@@ -116,21 +117,28 @@ class Connection:
         devices = await discover()
 
         print("Please select device: ")
+        target_index = -1
         for i, device in enumerate(devices):
             print(f"{i}: {device.name}")
+            if device.name == device_name:
+                target_index = i
 
         response = -1
-        while True:
-            response = await ainput("Select device: ")
-            try:
-                response = int(response.strip())
-            except:
-                print("Please make valid selection.")
-            
-            if response > -1 and response < len(devices):
-                break
-            else:
-                print("Please make valid selection.")
+
+        if target_index == -1:
+            while True:
+                response = await ainput("Select device: ")
+                try:
+                    response = int(response.strip())
+                except:
+                    print("Please make valid selection.")
+                
+                if response > -1 and response < len(devices):
+                    break
+                else:
+                    print("Please make valid selection.")
+        else:
+            response = target_index
 
         print(f"Connecting to {devices[response].name}")
         self.connected_device = devices[response]
