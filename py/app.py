@@ -190,6 +190,16 @@ async def user_console_manager(connection: Connection):
         else:
             await asyncio.sleep(2.0, loop=loop)
 
+async def send_wifi_info(connection: Connection):
+    loopable = True
+    while loopable:
+        if connection.client and connection.connected:
+            bytes_to_send = bytearray(map(ord, com_start_server))
+            await connection.client.write_gatt_char(write_characteristic, bytes_to_send)
+            print(f"Sent: Wi-Fi info")
+            loopable = False
+        else:
+            await asyncio.sleep(2.0, loop=loop)
 
 async def main():
     while True:
@@ -219,7 +229,8 @@ if __name__ == "__main__":
     )
     try:
         asyncio.ensure_future(connection.manager())
-        asyncio.ensure_future(user_console_manager(connection))
+        # asyncio.ensure_future(user_console_manager(connection))
+        asyncio.ensure_future(send_wifi_info(connection))
         asyncio.ensure_future(main())
         loop.run_forever()
     except KeyboardInterrupt:
