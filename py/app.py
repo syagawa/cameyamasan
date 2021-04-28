@@ -13,6 +13,7 @@ from aioconsole import ainput
 from bleak import BleakClient, discover
 
 from variables import ssid, ps
+import re
 
 
 com_start_server = '{"action":"start_server", "ssid": "%s", "pswd":"%s"}' % (ssid, ps)
@@ -23,6 +24,7 @@ device_name = "timerx"
 output_file = "./dump.csv"
 
 selected_device = []
+received_data = ""
 
 class DataToFile:
 
@@ -159,13 +161,14 @@ class Connection:
         self.rx_data.append(int.from_bytes(data, byteorder="big"))
         self.record_time_info()
 
-        path_w = './a.jpg'
+        # path_w = './a.jpg'
         # imgdata = base64.b64decode(data)
-        with open(path_w, mode='wb') as f:
-            f.write(data)
+        # with open(path_w, mode='wb') as f:
+        #     f.write(data)
             # f.write(imgdata)
 
         print(f"Received From ESP 32 : {data}")
+        received_data = data
         if len(self.rx_data) >= self.dump_size:
             self.data_dump_handler(self.rx_data, self.rx_timestamps, self.rx_delays)
             self.clear_lists()
@@ -201,6 +204,17 @@ async def send_wifi_info(connection: Connection):
         else:
             await asyncio.sleep(2.0, loop=loop)
 
+async def receive_server_info():
+    loopable = True
+    while loopable:
+        pattern = '^[0-9].*\.[0-9].*\.[0-9].*\.[0-9]'
+        is_ip = re.match(pattern, received_data)
+        if is_ip:
+            print(f"IP: {received_data}")
+            loopable = False
+        else:
+            await asyncio.sleep(2.0, loop=loop)
+
 async def main():
     while True:
         # YOUR APP CODE WOULD GO HERE.
@@ -231,6 +245,7 @@ if __name__ == "__main__":
         asyncio.ensure_future(connection.manager())
         # asyncio.ensure_future(user_console_manager(connection))
         asyncio.ensure_future(send_wifi_info(connection))
+        asyncio.ensure_future(receive_server_info())
         asyncio.ensure_future(main())
         loop.run_forever()
     except KeyboardInterrupt:
