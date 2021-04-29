@@ -205,14 +205,18 @@ async def send_wifi_info(connection: Connection):
             await asyncio.sleep(2.0, loop=loop)
 
 async def receive_server_info():
+    prtint(1)
     loopable = True
     while loopable:
+        print(2)
         pattern = '^[0-9].*\.[0-9].*\.[0-9].*\.[0-9]'
-        is_ip = re.match(pattern, received_data)
+        str = received_data.decode()
+        is_ip = str.match(pattern, received_data)
         if is_ip:
             print(f"IP: {received_data}")
             loopable = False
         else:
+            print(3)
             await asyncio.sleep(2.0, loop=loop)
 
 async def main():
