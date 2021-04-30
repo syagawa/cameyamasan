@@ -195,23 +195,33 @@ async def user_console_manager(connection: Connection):
 
 async def send_wifi_info(connection: Connection):
     loopable = True
+    print("00")
     while loopable:
+        print("01")
         if connection.client and connection.connected:
+            print("02")
             bytes_to_send = bytearray(map(ord, com_start_server))
             await connection.client.write_gatt_char(write_characteristic, bytes_to_send)
             print(f"Sent: Wi-Fi info")
             loopable = False
         else:
+            print("03")
             await asyncio.sleep(2.0, loop=loop)
 
 async def receive_server_info():
-    prtint(1)
+    print(1)
     loopable = True
     while loopable:
         print(2)
         pattern = '^[0-9].*\.[0-9].*\.[0-9].*\.[0-9]'
-        str = received_data.decode()
-        is_ip = str.match(pattern, received_data)
+        str = ""
+        is_ip = False
+        print("received_data")
+        print(received_data)
+        if hasattr(received_data, "decode"):
+            str = received_data.decode()
+            if hasattr(str, "match"):
+               is_ip = str.match(pattern, received_data)
         if is_ip:
             print(f"IP: {received_data}")
             loopable = False
@@ -222,6 +232,7 @@ async def receive_server_info():
 async def main():
     while True:
         # YOUR APP CODE WOULD GO HERE.
+        print("mainmain")
         await asyncio.sleep(5)
 
 
