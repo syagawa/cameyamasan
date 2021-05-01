@@ -169,6 +169,17 @@ class Connection:
 
         print(f"Received From ESP 32 : {data}")
         received_data = data
+        print(f"received_data : {received_data}")
+        is_ip = False
+        if hasattr(received_data, "decode"):
+            print(111)
+            str = received_data.decode()
+            if hasattr(str, "match"):
+                print(222)
+                is_ip = str.match(pattern, received_data)
+        if is_ip:
+            print(f"IP: {received_data}")
+
         if len(self.rx_data) >= self.dump_size:
             self.data_dump_handler(self.rx_data, self.rx_timestamps, self.rx_delays)
             self.clear_lists()
@@ -260,7 +271,7 @@ if __name__ == "__main__":
         asyncio.ensure_future(connection.manager())
         # asyncio.ensure_future(user_console_manager(connection))
         asyncio.ensure_future(send_wifi_info(connection))
-        asyncio.ensure_future(receive_server_info())
+        # asyncio.ensure_future(receive_server_info())
         asyncio.ensure_future(main())
         loop.run_forever()
     except KeyboardInterrupt:
