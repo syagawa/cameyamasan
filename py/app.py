@@ -174,9 +174,13 @@ class Connection:
         if hasattr(received_data, "decode"):
             print(111)
             str = received_data.decode()
-            if hasattr(str, "match"):
-                print(222)
-                is_ip = str.match(pattern, received_data)
+            print(f"str {str}")
+            pattern = '^[0-9].*\.[0-9].*\.[0-9].*\.[0-9]'
+            if re.match(pattern, received_data):
+                is_ip = True
+            # if hasattr(str, "match"):
+            #     print(222)
+            #     is_ip = str.match(pattern, received_data)
         if is_ip:
             print(f"IP: {received_data}")
 
