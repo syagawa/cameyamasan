@@ -13,7 +13,7 @@ from aioconsole import ainput
 from bleak import BleakClient, discover
 
 from variables import ssid, ps
-import re
+import json
 
 
 com_start_server = '{"action":"start_server", "ssid": "%s", "pswd":"%s"}' % (ssid, ps)
@@ -175,15 +175,10 @@ class Connection:
             print(111)
             str = received_data.decode()
             print(f"str {str}")
-            pattern = '^[0-9].*\.[0-9].*\.[0-9].*\.[0-9]'
-            if re.match(pattern, received_data):
-                is_ip = True
-            # if hasattr(str, "match"):
-            #     print(222)
-            #     is_ip = str.match(pattern, received_data)
-        if is_ip:
-            print(f"IP: {received_data}")
-
+            j = json.loads(received_data)
+            if("ip" in j):
+                print("exitsts!")
+                print(j["ip"])
         if len(self.rx_data) >= self.dump_size:
             self.data_dump_handler(self.rx_data, self.rx_timestamps, self.rx_delays)
             self.clear_lists()
