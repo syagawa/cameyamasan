@@ -25,6 +25,8 @@ output_file = "./dump.csv"
 
 selected_device = []
 received_data = ""
+server_is_started = False
+server_ip = ""
 
 class DataToFile:
 
@@ -169,16 +171,15 @@ class Connection:
 
         print(f"Received From ESP 32 : {data}")
         received_data = data
-        print(f"received_data : {received_data}")
-        is_ip = False
         if hasattr(received_data, "decode"):
             print(111)
             str = received_data.decode()
             print(f"str {str}")
             j = json.loads(received_data)
             if("ip" in j):
-                print("exitsts!")
-                print(j["ip"])
+                print(f"exitsts! IP: {j['ip']}")
+                server_is_started = True
+                server_ip = j["ip"]
         if len(self.rx_data) >= self.dump_size:
             self.data_dump_handler(self.rx_data, self.rx_timestamps, self.rx_delays)
             self.clear_lists()
