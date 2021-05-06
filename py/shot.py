@@ -1,0 +1,3 @@
+
+def shot():
+  print("shot")
