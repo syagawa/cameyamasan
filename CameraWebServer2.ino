@@ -444,7 +444,7 @@ void setup() {
 #endif
 
 
-  // pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
 
 }
 
@@ -474,8 +474,10 @@ void loop() {
   }
 
   interrupts();
-  // digitalWrite(LED_BUILTIN, LOW);
-  // delay(10000);
-  // digitalWrite(LED_BUILTIN, HIGH);
-  // delay(10000);
+  if(startedCameraServer){
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(1000);
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(1000);
+  }
 }
