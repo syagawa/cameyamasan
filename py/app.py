@@ -239,7 +239,6 @@ async def receive_server_info():
 async def main():
     while True:
         # YOUR APP CODE WOULD GO HERE.
-        print("mainmain")
         if server_is_started:
             print(f"server is started ! ip: {server_ip}")
 

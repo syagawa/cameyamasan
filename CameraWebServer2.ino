@@ -100,13 +100,6 @@ class MyCallbacks: public BLECharacteristicCallbacks {
 
 
 
-
-
-
-
-
-
-
 int address_ssid = 0;
 int address_ps = 128;
 int length_for_rom = 100;
