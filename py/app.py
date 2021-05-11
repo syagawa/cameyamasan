@@ -14,6 +14,7 @@ from bleak import BleakClient, discover
 
 from variables import ssid, ps
 import json
+import shot
 
 
 com_start_server = '{"action":"start_server", "ssid": "%s", "pswd":"%s"}' % (ssid, ps)
@@ -241,6 +242,7 @@ async def main():
         # YOUR APP CODE WOULD GO HERE.
         if server_is_started:
             print(f"server is started ! ip: {server_ip}")
+            shot.shot()
 
         await asyncio.sleep(5)
 
