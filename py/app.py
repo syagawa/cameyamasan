@@ -163,6 +163,8 @@ class Connection:
     def notification_handler(self, sender: str, data: Any):
         self.rx_data.append(int.from_bytes(data, byteorder="big"))
         self.record_time_info()
+        global server_is_started
+        global server_ip
 
         # path_w = './a.jpg'
         # imgdata = base64.b64decode(data)
@@ -179,6 +181,7 @@ class Connection:
             j = json.loads(received_data)
             if("ip" in j):
                 print(f"exitsts! IP: {j['ip']}")
+
                 server_is_started = True
                 server_ip = j["ip"]
         if len(self.rx_data) >= self.dump_size:
@@ -242,7 +245,8 @@ async def main():
         # YOUR APP CODE WOULD GO HERE.
         if server_is_started:
             print(f"server is started ! ip: {server_ip}")
-            shot.shot()
+            url = f"http://{server_ip}/" 
+            shot.shot(url)
 
         await asyncio.sleep(5)
 
