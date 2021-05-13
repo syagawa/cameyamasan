@@ -2,16 +2,43 @@ from time import sleep
 import urllib.request
 
 
-def shot(url):
+def shot(ip):
   print("shot")
-  params = {
-    "aaa": "bbb"
+  # 1920 x 1080
+  # framesize_params = {
+  #   "var": "framesize",
+  #   "val": "14"
+  # }
+  # quality_params = {
+  #   "var": "quality",
+  #   "val": "30"
+  # }
+
+  # 1280 x 720
+  framesize_params = {
+    "var": "framesize",
+    "val": "11"
   }
-  req = urllib.request.Request('{}?{}'.format(url, urllib.parse.urlencode(params)))
-  with urllib.request.urlopen(req) as res:
+  quality_params = {
+    "var": "quality",
+    "val": "4"
+  }
+
+
+  set_url = f"http://{ip}/control"
+  capture_url = f"http://{ip}/capture"
+
+  req1 = urllib.request.Request('{}?{}'.format(set_url, urllib.parse.urlencode(framesize_params)))
+  req2 = urllib.request.Request('{}?{}'.format(set_url, urllib.parse.urlencode(quality_params)))
+  req3 = urllib.request.Request(capture_url)
+
+  urllib.request.urlopen(req1)
+  urllib.request.urlopen(req2)
+
+
+  with urllib.request.urlopen(req3) as res:
     body = res.read()
-    print(body)
-    with open("./aaa", mode='wb') as f:
+    with open("./aaa,jpg", mode='wb') as f:
       f.write(body)
  
 

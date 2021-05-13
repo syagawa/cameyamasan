@@ -245,8 +245,7 @@ async def main():
         # YOUR APP CODE WOULD GO HERE.
         if server_is_started:
             print(f"server is started ! ip: {server_ip}")
-            url = f"http://{server_ip}/" 
-            shot.shot(url)
+            shot.shot(server_ip)
 
         await asyncio.sleep(5)
 
