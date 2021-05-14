@@ -29,8 +29,11 @@ def shot(ip):
   capture_url = f"http://{ip}/capture"
 
   req1 = urllib.request.Request('{}?{}'.format(set_url, urllib.parse.urlencode(framesize_params)))
+  print(req1.full_url)
   req2 = urllib.request.Request('{}?{}'.format(set_url, urllib.parse.urlencode(quality_params)))
+  print(req2.full_url)
   req3 = urllib.request.Request(capture_url)
+  print(req3.full_url)
 
   urllib.request.urlopen(req1)
   urllib.request.urlopen(req2)
