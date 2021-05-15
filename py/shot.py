@@ -24,6 +24,16 @@ def shot(ip):
     "val": "4"
   }
 
+  # 1600 x 1200
+  # framesize_params = {
+  #   "var": "framesize",
+  #   "val": "10"
+  # }
+  # quality_params = {
+  #   "var": "quality",
+  #   "val": "4"
+  # }
+
 
   set_url = f"http://{ip}/control"
   capture_url = f"http://{ip}/capture"
