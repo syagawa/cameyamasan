@@ -15,24 +15,24 @@ def shot(ip):
   # }
 
   # 1280 x 720
-  framesize_params = {
-    "var": "framesize",
-    "val": "11"
-  }
-  quality_params = {
-    "var": "quality",
-    "val": "4"
-  }
-
-  # 1600 x 1200
   # framesize_params = {
   #   "var": "framesize",
-  #   "val": "10"
+  #   "val": "11"
   # }
   # quality_params = {
   #   "var": "quality",
   #   "val": "4"
   # }
+
+  # 1600 x 1200
+  framesize_params = {
+    "var": "framesize",
+    "val": "10"
+  }
+  quality_params = {
+    "var": "quality",
+    "val": "4"
+  }
 
 
   set_url = f"http://{ip}/control"
@@ -45,15 +45,16 @@ def shot(ip):
   req3 = urllib.request.Request(capture_url)
   print(req3.full_url)
 
-  urllib.request.urlopen(req1)
-  urllib.request.urlopen(req2)
+  with urllib.request.urlopen(req1) as res1:
+    print(res1)
+  with urllib.request.urlopen(req2) as res2:
+    print(res2)
 
-
-  with urllib.request.urlopen(req3) as res:
-    body = res.read()
+  with urllib.request.urlopen(req3) as res3:
+    body = res3.read()
     with open("./aaa,jpg", mode='wb') as f:
       f.write(body)
- 
+
 
 def shots(count, interval):
     for i in range(count):
