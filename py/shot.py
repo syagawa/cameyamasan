@@ -47,8 +47,13 @@ def shot(ip):
 
   with urllib.request.urlopen(req1) as res1:
     print(res1)
+  
+  sleep(1)
+
   with urllib.request.urlopen(req2) as res2:
     print(res2)
+
+  sleep(1)
 
   with urllib.request.urlopen(req3) as res3:
     body = res3.read()
