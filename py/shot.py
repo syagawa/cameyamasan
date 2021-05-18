@@ -37,13 +37,18 @@ def shot(ip):
 
   set_url = f"http://{ip}/control"
   capture_url = f"http://{ip}/capture"
+  status_url = f"http://{ip}/status"
 
   req1 = urllib.request.Request('{}?{}'.format(set_url, urllib.parse.urlencode(framesize_params)))
   print(req1.full_url)
   req2 = urllib.request.Request('{}?{}'.format(set_url, urllib.parse.urlencode(quality_params)))
   print(req2.full_url)
-  req3 = urllib.request.Request(capture_url)
-  print(req3.full_url)
+
+  req3 = urllib.request.Request(status_url)
+  print(req3.full_url())
+
+  req4 = urllib.request.Request(capture_url)
+  print(req4.full_url)
 
   with urllib.request.urlopen(req1) as res1:
     print(res1)
@@ -56,7 +61,14 @@ def shot(ip):
   sleep(1)
 
   with urllib.request.urlopen(req3) as res3:
-    body = res3.read()
+    print(res3)
+
+  sleep(1)
+
+
+
+  with urllib.request.urlopen(req4) as res4:
+    body = res4.read()
     with open("./aaa,jpg", mode='wb') as f:
       f.write(body)
 
