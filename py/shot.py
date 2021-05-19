@@ -45,7 +45,7 @@ def shot(ip):
   print(req2.full_url)
 
   req3 = urllib.request.Request(status_url)
-  print(req3.full_url())
+  print(req3.full_url)
 
   req4 = urllib.request.Request(capture_url)
   print(req4.full_url)
@@ -61,7 +61,8 @@ def shot(ip):
   sleep(1)
 
   with urllib.request.urlopen(req3) as res3:
-    print(res3)
+    status = res3.read()
+    print(status)
 
   sleep(1)
 
