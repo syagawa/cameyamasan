@@ -1,5 +1,6 @@
 from time import sleep
 import urllib.request
+from datetime import datetime
 
 
 def shot(ip):
@@ -70,7 +71,10 @@ def shot(ip):
 
   with urllib.request.urlopen(req4) as res4:
     body = res4.read()
-    with open("./aaa,jpg", mode='wb') as f:
+    t = datetime.now().isoformat()
+    filename = "./images/%s.jpg" % t
+
+    with open(filename, mode='wb') as f:
       f.write(body)
 
 
