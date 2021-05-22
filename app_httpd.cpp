@@ -215,6 +215,15 @@ static esp_err_t capture_handler(httpd_req_t *req){
 }
 
 static esp_err_t capture_with_params_handler(httpd_req_t *req){
+    char*  buf;
+    size_t buf_len;
+    char variable[32] = {0,};
+    char value[32] = {0,};
+
+    buf_len = httpd_req_get_url_query_len(req) + 1;
+
+
+
     camera_fb_t * fb = NULL;
     esp_err_t res = ESP_OK;
     int64_t fr_start = esp_timer_get_time();
