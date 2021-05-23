@@ -222,92 +222,87 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
 
     buf_len = httpd_req_get_url_query_len(req) + 1;
 
-
-
-    camera_fb_t * fb = NULL;
-    esp_err_t res = ESP_OK;
-    int64_t fr_start = esp_timer_get_time();
-
-    fb = esp_camera_fb_get();
-    if (!fb) {
-        Serial.println("Camera capture failed");
-        httpd_resp_send_500(req);
-        return ESP_FAIL;
-    }
-
-    httpd_resp_set_type(req, "image/jpeg");
-    httpd_resp_set_hdr(req, "Content-Disposition", "inline; filename=capture.jpg");
-    httpd_resp_set_hdr(req, "Access-Control-Allow-Origin", "*");
-
-    size_t out_len, out_width, out_height;
-    uint8_t * out_buf;
-    bool s;
-    bool detected = false;
-    int face_id = 0;
-    if(!detection_enabled || fb->width > 400){
-        size_t fb_len = 0;
-        if(fb->format == PIXFORMAT_JPEG){
-            fb_len = fb->len;
-            res = httpd_resp_send(req, (const char *)fb->buf, fb->len);
+    if (buf_len > 1) {
+        buf = (char*)malloc(buf_len);
+        if(!buf){
+            httpd_resp_send_500(req);
+            return ESP_FAIL;
+        }
+        if (httpd_req_get_url_query_str(req, buf, buf_len) == ESP_OK) {
+            if (httpd_query_key_value(buf, "var", variable, sizeof(variable)) == ESP_OK &&
+                httpd_query_key_value(buf, "val", value, sizeof(value)) == ESP_OK) {
+            } else {
+                free(buf);
+                httpd_resp_send_404(req);
+                return ESP_FAIL;
+            }
         } else {
-            jpg_chunking_t jchunk = {req, 0};
-            res = frame2jpg_cb(fb, 80, jpg_encode_stream, &jchunk)?ESP_OK:ESP_FAIL;
-            httpd_resp_send_chunk(req, NULL, 0);
-            fb_len = jchunk.len;
+            free(buf);
+            httpd_resp_send_404(req);
+            return ESP_FAIL;
         }
-        esp_camera_fb_return(fb);
-        int64_t fr_end = esp_timer_get_time();
-        Serial.printf("JPG: %uB %ums\n", (uint32_t)(fb_len), (uint32_t)((fr_end - fr_start)/1000));
-        return res;
-    }
-
-    dl_matrix3du_t *image_matrix = dl_matrix3du_alloc(1, fb->width, fb->height, 3);
-    if (!image_matrix) {
-        esp_camera_fb_return(fb);
-        Serial.println("dl_matrix3du_alloc failed");
-        httpd_resp_send_500(req);
+        free(buf);
+    } else {
+        httpd_resp_send_404(req);
         return ESP_FAIL;
     }
 
-    out_buf = image_matrix->item;
-    out_len = fb->width * fb->height * 3;
-    out_width = fb->width;
-    out_height = fb->height;
-
-    s = fmt2rgb888(fb->buf, fb->len, fb->format, out_buf);
-    esp_camera_fb_return(fb);
-    if(!s){
-        dl_matrix3du_free(image_matrix);
-        Serial.println("to rgb888 failed");
-        httpd_resp_send_500(req);
-        return ESP_FAIL;
+    Serial.print(variable);
+    Serial.print(value);
+    int val = atoi(value);
+    sensor_t * s = esp_camera_sensor_get();
+    int res = 0;
+    
+    if(!strcmp(variable, "framesize")) {
+        if(s->pixformat == PIXFORMAT_JPEG) res = s->set_framesize(s, (framesize_t)val);
     }
-
-    box_array_t *net_boxes = face_detect(image_matrix, &mtmn_config);
-
-    if (net_boxes){
-        detected = true;
+    else if(!strcmp(variable, "quality")) res = s->set_quality(s, val);
+    else if(!strcmp(variable, "contrast")) res = s->set_contrast(s, val);
+    else if(!strcmp(variable, "brightness")) res = s->set_brightness(s, val);
+    else if(!strcmp(variable, "saturation")) res = s->set_saturation(s, val);
+    else if(!strcmp(variable, "gainceiling")) res = s->set_gainceiling(s, (gainceiling_t)val);
+    else if(!strcmp(variable, "colorbar")) res = s->set_colorbar(s, val);
+    else if(!strcmp(variable, "awb")) res = s->set_whitebal(s, val);
+    else if(!strcmp(variable, "agc")) res = s->set_gain_ctrl(s, val);
+    else if(!strcmp(variable, "aec")) res = s->set_exposure_ctrl(s, val);
+    else if(!strcmp(variable, "hmirror")) res = s->set_hmirror(s, val);
+    else if(!strcmp(variable, "vflip")) res = s->set_vflip(s, val);
+    else if(!strcmp(variable, "awb_gain")) res = s->set_awb_gain(s, val);
+    else if(!strcmp(variable, "agc_gain")) res = s->set_agc_gain(s, val);
+    else if(!strcmp(variable, "aec_value")) res = s->set_aec_value(s, val);
+    else if(!strcmp(variable, "aec2")) res = s->set_aec2(s, val);
+    else if(!strcmp(variable, "dcw")) res = s->set_dcw(s, val);
+    else if(!strcmp(variable, "bpc")) res = s->set_bpc(s, val);
+    else if(!strcmp(variable, "wpc")) res = s->set_wpc(s, val);
+    else if(!strcmp(variable, "raw_gma")) res = s->set_raw_gma(s, val);
+    else if(!strcmp(variable, "lenc")) res = s->set_lenc(s, val);
+    else if(!strcmp(variable, "special_effect")) res = s->set_special_effect(s, val);
+    else if(!strcmp(variable, "wb_mode")) res = s->set_wb_mode(s, val);
+    else if(!strcmp(variable, "ae_level")) res = s->set_ae_level(s, val);
+    else if(!strcmp(variable, "face_detect")) {
+        detection_enabled = val;
+        if(!detection_enabled) {
+            recognition_enabled = 0;
+        }
+    }
+    else if(!strcmp(variable, "face_enroll")) is_enrolling = val;
+    else if(!strcmp(variable, "face_recognize")) {
+        recognition_enabled = val;
         if(recognition_enabled){
-            // face_id = run_face_recognition(image_matrix, net_boxes);
+            detection_enabled = val;
         }
-        // draw_face_boxes(image_matrix, net_boxes, face_id);
-        free(net_boxes->score);
-        free(net_boxes->box);
-        free(net_boxes->landmark);
-        free(net_boxes);
+    }
+    else {
+        res = -1;
     }
 
-    jpg_chunking_t jchunk = {req, 0};
-    s = fmt2jpg_cb(out_buf, out_len, out_width, out_height, PIXFORMAT_RGB888, 90, jpg_encode_stream, &jchunk);
-    dl_matrix3du_free(image_matrix);
-    if(!s){
-        Serial.println("JPEG compression failed");
-        return ESP_FAIL;
+    if(res){
+        return httpd_resp_send_500(req);
     }
 
-    int64_t fr_end = esp_timer_get_time();
-    Serial.printf("FACE: %uB %ums %s%d\n", (uint32_t)(jchunk.len), (uint32_t)((fr_end - fr_start)/1000), detected?"DETECTED ":"", face_id);
-    return res;
+    httpd_resp_set_hdr(req, "Access-Control-Allow-Origin", "*");
+    return httpd_resp_send(req, NULL, 0);
+
 }
 
 
