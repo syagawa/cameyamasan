@@ -229,8 +229,8 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
             return ESP_FAIL;
         }
         if (httpd_req_get_url_query_str(req, buf, buf_len) == ESP_OK) {
-            if (httpd_query_key_value(buf, "var", variable, sizeof(variable)) == ESP_OK &&
-                httpd_query_key_value(buf, "val", value, sizeof(value)) == ESP_OK) {
+            if (httpd_query_key_value(buf, "fs", variable, sizeof(variable)) == ESP_OK &&
+                httpd_query_key_value(buf, "qu", value, sizeof(value)) == ESP_OK) {
             } else {
                 free(buf);
                 httpd_resp_send_404(req);
