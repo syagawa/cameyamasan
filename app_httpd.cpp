@@ -220,6 +220,13 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
     char variable[32] = {0,};
     char value[32] = {0,};
 
+    char variable_w[32] = {0,};
+    char value_w[32] = {0,};
+    char variable_h[32] = {0,};
+    char value_h[32] = {0,};
+    char variable_q[32] = {0,};
+    char value_q[32] = {0,};
+
     buf_len = httpd_req_get_url_query_len(req) + 1;
 
     if (buf_len > 1) {
@@ -229,8 +236,11 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
             return ESP_FAIL;
         }
         if (httpd_req_get_url_query_str(req, buf, buf_len) == ESP_OK) {
-            if (httpd_query_key_value(buf, "fs", variable, sizeof(variable)) == ESP_OK &&
-                httpd_query_key_value(buf, "qu", value, sizeof(value)) == ESP_OK) {
+            if (
+                httpd_query_key_value(buf, "w", variable_w, sizeof(value_w)) == ESP_OK &&
+                httpd_query_key_value(buf, "h", variable_h, sizeof(value_h)) == ESP_OK &&
+                httpd_query_key_value(buf, "q", variable_q, sizeof(value_q)) == ESP_OK
+                ) {
             } else {
                 free(buf);
                 httpd_resp_send_404(req);
@@ -247,8 +257,9 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
         return ESP_FAIL;
     }
 
-    Serial.print(variable);
-    Serial.print(value);
+    Serial.print(value_w);
+    Serial.print(value_h);
+    Serial.print(value_q);
     int val = atoi(value);
     sensor_t * s = esp_camera_sensor_get();
     int res = 0;
