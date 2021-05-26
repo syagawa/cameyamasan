@@ -215,6 +215,7 @@ static esp_err_t capture_handler(httpd_req_t *req){
 }
 
 static esp_err_t capture_with_params_handler(httpd_req_t *req){
+    Serial.println("in capture_with_params_handler0");
     char*  buf;
     size_t buf_len;
     char variable[32] = {0,};
@@ -228,20 +229,30 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
     char value_q[32] = {0,};
 
     buf_len = httpd_req_get_url_query_len(req) + 1;
+    Serial.println("in capture_with_params_handler1 buf_len=>");
+    Serial.println(buf_len);
 
-    if (buf_len > 1) {
+    if (buf_len > 0) {
         buf = (char*)malloc(buf_len);
+        Serial.println("in capture_with_params_handler2");
+        Serial.println(buf);
+
         if(!buf){
+            Serial.println("in capture_with_params_handler3");
             httpd_resp_send_500(req);
             return ESP_FAIL;
         }
         if (httpd_req_get_url_query_str(req, buf, buf_len) == ESP_OK) {
+            Serial.println("in capture_with_params_handler4");
             if (
                 httpd_query_key_value(buf, "w", variable_w, sizeof(value_w)) == ESP_OK &&
                 httpd_query_key_value(buf, "h", variable_h, sizeof(value_h)) == ESP_OK &&
                 httpd_query_key_value(buf, "q", variable_q, sizeof(value_q)) == ESP_OK
                 ) {
+                Serial.println("in capture_with_params_handler5");
+
             } else {
+                Serial.println("in capture_with_params_handler6");
                 free(buf);
                 httpd_resp_send_404(req);
                 return ESP_FAIL;
@@ -253,6 +264,7 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
         }
         free(buf);
     } else {
+        Serial.println("in capture_with_params_handler001");
         httpd_resp_send_404(req);
         return ESP_FAIL;
     }
