@@ -234,7 +234,7 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
 
     if (buf_len > 0) {
         buf = (char*)malloc(buf_len);
-        Serial.println("in capture_with_params_handler2");
+        Serial.print("in capture_with_params_handler2 buf: ");
         Serial.println(buf);
 
         if(!buf){
@@ -269,9 +269,12 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
         return ESP_FAIL;
     }
 
-    Serial.print(value_w);
-    Serial.print(value_h);
-    Serial.print(value_q);
+    Serial.print("value_w: ");
+    Serial.println(value_w);
+    Serial.print("value_h: ");
+    Serial.println(value_h);
+    Serial.print("value_q: ");
+    Serial.println(value_q);
     int val = atoi(value);
     sensor_t * s = esp_camera_sensor_get();
     int res = 0;
