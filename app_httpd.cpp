@@ -274,7 +274,7 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
     Serial.println(value_fs);
     Serial.print("value_q: ");
     Serial.println(value_q);
-    // int val = atoi(value);
+    int val = atoi(value);
     int val_q = atoi(value_q);
     
     sensor_t * s = esp_camera_sensor_get();
