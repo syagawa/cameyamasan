@@ -247,8 +247,8 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
         if (httpd_req_get_url_query_str(req, buf, buf_len) == ESP_OK) {
             Serial.println("in capture_with_params_handler4");
             if (
-                httpd_query_key_value(buf, "fs", variable_fs, sizeof(value_fs)) == ESP_OK &&
-                httpd_query_key_value(buf, "q", variable_q, sizeof(value_q)) == ESP_OK
+                httpd_query_key_value(buf, "fs", variable_fs, sizeof(variable_fs)) == ESP_OK &&
+                httpd_query_key_value(buf, "q", variable_q, sizeof(variable_q)) == ESP_OK
                 ) {
                 Serial.println("in capture_with_params_handler5");
 
@@ -272,8 +272,10 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
 
     Serial.print("value_fs: ");
     Serial.println(value_fs);
+    Serial.println(variable_fs);
     Serial.print("value_q: ");
     Serial.println(value_q);
+    Serial.println(variable_q);
     int val = atoi(value);
     int val_q = atoi(value_q);
     
