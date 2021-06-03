@@ -284,8 +284,107 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
     
     if(s->pixformat == PIXFORMAT_JPEG){
         Serial.println("pixformat 0");
-        res = s->set_framesize(s, (framesize_t)val_fs);
+        s->set_framesize(s, (framesize_t)val_fs);
     }
+    if(val_q > -1 && val_q < 64){
+        Serial.println("quality 0");
+        s->set_quality(s, val_q);
+    }
+
+
+    camera_fb_t * fb = NULL;
+    esp_err_t res = ESP_OK;
+    int64_t fr_start = esp_timer_get_time();
+
+    fb = esp_camera_fb_get();
+    if (!fb) {
+        Serial.println("Camera capture failed");
+        httpd_resp_send_500(req);
+        return ESP_FAIL;
+    }
+
+    httpd_resp_set_type(req, "image/jpeg");
+    httpd_resp_set_hdr(req, "Content-Disposition", "inline; filename=capture.jpg");
+    httpd_resp_set_hdr(req, "Access-Control-Allow-Origin", "*");
+
+    size_t out_len, out_width, out_height;
+    uint8_t * out_buf;
+    bool s;
+    bool detected = false;
+    int face_id = 0;
+    if(!detection_enabled || fb->width > 400){
+        size_t fb_len = 0;
+        if(fb->format == PIXFORMAT_JPEG){
+            fb_len = fb->len;
+            res = httpd_resp_send(req, (const char *)fb->buf, fb->len);
+        } else {
+            jpg_chunking_t jchunk = {req, 0};
+            res = frame2jpg_cb(fb, 80, jpg_encode_stream, &jchunk)?ESP_OK:ESP_FAIL;
+            httpd_resp_send_chunk(req, NULL, 0);
+            fb_len = jchunk.len;
+        }
+        esp_camera_fb_return(fb);
+        int64_t fr_end = esp_timer_get_time();
+        Serial.printf("JPG: %uB %ums\n", (uint32_t)(fb_len), (uint32_t)((fr_end - fr_start)/1000));
+        return res;
+    }
+
+    dl_matrix3du_t *image_matrix = dl_matrix3du_alloc(1, fb->width, fb->height, 3);
+    if (!image_matrix) {
+        esp_camera_fb_return(fb);
+        Serial.println("dl_matrix3du_alloc failed");
+        httpd_resp_send_500(req);
+        return ESP_FAIL;
+    }
+
+    out_buf = image_matrix->item;
+    out_len = fb->width * fb->height * 3;
+    out_width = fb->width;
+    out_height = fb->height;
+
+    s = fmt2rgb888(fb->buf, fb->len, fb->format, out_buf);
+    esp_camera_fb_return(fb);
+    if(!s){
+        dl_matrix3du_free(image_matrix);
+        Serial.println("to rgb888 failed");
+        httpd_resp_send_500(req);
+        return ESP_FAIL;
+    }
+
+    box_array_t *net_boxes = face_detect(image_matrix, &mtmn_config);
+
+    if (net_boxes){
+        detected = true;
+        if(recognition_enabled){
+            // face_id = run_face_recognition(image_matrix, net_boxes);
+        }
+        // draw_face_boxes(image_matrix, net_boxes, face_id);
+        free(net_boxes->score);
+        free(net_boxes->box);
+        free(net_boxes->landmark);
+        free(net_boxes);
+    }
+
+    jpg_chunking_t jchunk = {req, 0};
+    s = fmt2jpg_cb(out_buf, out_len, out_width, out_height, PIXFORMAT_RGB888, 90, jpg_encode_stream, &jchunk);
+    dl_matrix3du_free(image_matrix);
+    if(!s){
+        Serial.println("JPEG compression failed");
+        return ESP_FAIL;
+    }
+
+    int64_t fr_end = esp_timer_get_time();
+    Serial.printf("FACE: %uB %ums %s%d\n", (uint32_t)(jchunk.len), (uint32_t)((fr_end - fr_start)/1000), detected?"DETECTED ":"", face_id);
+    return res;
+
+
+
+
+
+
+
+
+
 
 
     // if(!strcmp(value_fs, "framesize")) {
@@ -332,12 +431,13 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
     //     res = -1;
     // }
 
-    if(res){
-        return httpd_resp_send_500(req);
-    }
+    // if(res){
+    //     return httpd_resp_send_500(req);
+    // }
 
-    httpd_resp_set_hdr(req, "Access-Control-Allow-Origin", "*");
-    return httpd_resp_send(req, NULL, 0);
+    // httpd_resp_set_hdr(req, "Access-Control-Allow-Origin", "*");
+    // return httpd_resp_send(req, NULL, 0);
+
 
 }
 
