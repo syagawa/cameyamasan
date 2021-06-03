@@ -274,14 +274,13 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
     int val_q = atoi(value_q);
     
     sensor_t * sensor = esp_camera_sensor_get();
-    int res = 0;
 
     Serial.print("framesize_t");
     Serial.println(FRAMESIZE_96X96);//0
     Serial.println(FRAMESIZE_INVALID);//22
 
     
-    if(s->pixformat == PIXFORMAT_JPEG){
+    if(sensor->pixformat == PIXFORMAT_JPEG){
         Serial.println("pixformat 0");
         sensor->set_framesize(sensor, (framesize_t)val_fs);
     }
