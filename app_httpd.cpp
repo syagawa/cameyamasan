@@ -280,14 +280,24 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
     Serial.println(FRAMESIZE_INVALID);//22
 
     
-    if(sensor->pixformat == PIXFORMAT_JPEG && val_fs > -1 && val_fs < 23){
+    if(sensor->pixformat == PIXFORMAT_JPEG){
         Serial.println("pixformat 0");
-        sensor->set_framesize(sensor, (framesize_t)val_fs);
+        int v_fs = 13;
+        if(val_fs > -1 && val_fs < 23){
+            v_fs = 13;
+        }
+        sensor->set_framesize(sensor, (framesize_t)v_fs);
     }
     if(val_q > -1 && val_q < 64){
         Serial.println("quality 0");
         sensor->set_quality(sensor, val_q);
+    }else{
+        int v_q = 0;
+        sensor->set_quality(sensor, v_q);
+
     }
+
+
     delay(1000);
 
 
