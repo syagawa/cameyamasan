@@ -279,6 +279,8 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
     Serial.println(FRAMESIZE_96X96);//0
     Serial.println(FRAMESIZE_INVALID);//22
     Serial.println(sensor->pixformat);
+    Serial.println(sensor->framesize);
+    Serial.println(sensor->quality);
 
     
     if(sensor->pixformat == PIXFORMAT_JPEG){
