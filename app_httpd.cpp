@@ -278,9 +278,23 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
     Serial.print("framesize_t");
     Serial.println(FRAMESIZE_96X96);//0
     Serial.println(FRAMESIZE_INVALID);//22
+    Serial.print("pixformat ");
     Serial.println(sensor->pixformat);
-    Serial.println(sensor->framesize);
-    Serial.println(sensor->quality);
+    // Serial.println(sensor->framesize);
+    // Serial.println(sensor->quality);
+
+    // quality 4
+    // brightness 0
+    // contrast 0
+    // saturation 0
+    // sharpness 0
+    // ae_level 0
+    // awb 1
+    // dcw 1
+    // aec 1
+    // hmirror 0
+    // vfilp 1
+
 
     
     if(sensor->pixformat == PIXFORMAT_JPEG){
@@ -299,6 +313,35 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
         sensor->set_quality(sensor, v_q);
 
     }
+
+    sensor->set_contrast(sensor, 0);
+    set_brightness(sensor, 0);
+    sensor->set_saturation(sensor, 0);
+    sensor->set_whitebal(sensor,1);//awb
+
+    sensor->set_exposure_ctrl(sensor, 1);//"aec" 
+    sensor->set_hmirror(sensor, 0);//"hmirror" 
+    sensor->set_vflip(sensor, 1);//"vflip" 
+    // sensor->set_gain_ctrl(sensor, val);//"agc" 
+    // sensor->set_awb_gain(sensor, val);//"awb_gain" 
+    // sensor->set_agc_gain(sensor, val);//"agc_gain" 
+    sensor->set_aec_value(sensor, 1);//"aec_value" 
+    // sensor->set_aec2(sensor, val);//"aec2" 
+    sensor->set_dcw(sensor, 1);//"dcw" 
+    // sensor->set_bpc(sensor, val);//"bpc" 
+    // sensor->set_wpc(sensor, val);//"wpc" 
+    // sensor->set_raw_gma(sensor, val);//"raw_gma" 
+    // sensor->set_lenc(sensor, val);//"lenc" 
+    // sensor->set_special_effect(sensor, val);//"special_effect" 
+    // sensor->set_wb_mode(sensor, val);//"wb_mode" 
+    sensor->set_ae_level(sensor, 0);//"ae_level" 
+    //"face_detect" 
+
+
+
+
+
+
 
 
     delay(1000);
