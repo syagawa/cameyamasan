@@ -315,7 +315,7 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
     }
 
     sensor->set_contrast(sensor, 0);
-    set_brightness(sensor, 0);
+    sensor->set_brightness(sensor, 0);
     sensor->set_saturation(sensor, 0);
     sensor->set_whitebal(sensor,1);//awb
 
