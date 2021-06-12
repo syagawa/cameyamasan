@@ -300,8 +300,8 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
     if(sensor->pixformat == PIXFORMAT_JPEG){
         Serial.println("pixformat 0");
         int v_fs = 13;
-        if(val_fs > -1 && val_fs < 23){
-            v_fs = 13;
+        if(val_fs > -1 || val_fs < 23){
+            v_fs = val_fs;
         }
         sensor->set_framesize(sensor, (framesize_t)v_fs);
     }
@@ -343,13 +343,14 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
 
 
 
-
     delay(1000);
+
 
 
     camera_fb_t * fb = NULL;
     esp_err_t res = ESP_OK;
     int64_t fr_start = esp_timer_get_time();
+
 
     fb = esp_camera_fb_get();
     if (!fb) {
@@ -357,6 +358,10 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
         httpd_resp_send_500(req);
         return ESP_FAIL;
     }
+    Serial.print("width: ");
+    Serial.println(fb->width);
+    Serial.print("height: ");
+    Serial.println(fb->height);
 
     httpd_resp_set_type(req, "image/jpeg");
     httpd_resp_set_hdr(req, "Content-Disposition", "inline; filename=capture.jpg");
