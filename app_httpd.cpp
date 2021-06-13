@@ -259,9 +259,9 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
         }
         free(buf);
     } else {
-        Serial.println("in capture_with_params_handler001");
-        httpd_resp_send_404(req);
-        return ESP_FAIL;
+        // Serial.println("in capture_with_params_handler001");
+        // httpd_resp_send_404(req);
+        // return ESP_FAIL;
     }
 
     Serial.print("value_fs: ");
@@ -338,12 +338,7 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
     //"face_detect" 
 
 
-
-
-
-
-
-    delay(1000);
+    delay(500);
 
 
 
