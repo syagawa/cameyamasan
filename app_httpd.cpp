@@ -215,7 +215,6 @@ static esp_err_t capture_handler(httpd_req_t *req){
 }
 
 static esp_err_t capture_with_params_handler(httpd_req_t *req){
-    Serial.println("in capture_with_params_handler0");
     char*  buf;
     size_t buf_len;
     char variable[32] = {0,};
@@ -225,29 +224,22 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
     char value_fs[32] = {0,};
 
     buf_len = httpd_req_get_url_query_len(req) + 1;
-    Serial.println("in capture_with_params_handler1 buf_len=>");
     Serial.println(buf_len);
 
     if (buf_len > 0) {
         buf = (char*)malloc(buf_len);
-        Serial.print("in capture_with_params_handler2 buf: ");
         Serial.println(buf);
 
         if(!buf){
-            Serial.println("in capture_with_params_handler3");
             httpd_resp_send_500(req);
             return ESP_FAIL;
         }
         if (httpd_req_get_url_query_str(req, buf, buf_len) == ESP_OK) {
-            Serial.println("in capture_with_params_handler4");
             if (
                 httpd_query_key_value(buf, "fs", value_fs, sizeof(value_fs)) == ESP_OK &&
                 httpd_query_key_value(buf, "q", value_q, sizeof(value_q)) == ESP_OK
                 ) {
-                Serial.println("in capture_with_params_handler5");
-
             } else {
-                Serial.println("in capture_with_params_handler6");
                 free(buf);
                 httpd_resp_send_404(req);
                 return ESP_FAIL;
@@ -275,14 +267,6 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
     
     sensor_t * sensor = esp_camera_sensor_get();
 
-    Serial.print("framesize_t");
-    Serial.println(FRAMESIZE_96X96);//0
-    Serial.println(FRAMESIZE_INVALID);//22
-    Serial.print("pixformat ");
-    Serial.println(sensor->pixformat);
-    // Serial.println(sensor->framesize);
-    // Serial.println(sensor->quality);
-
     // quality 4
     // brightness 0
     // contrast 0
@@ -298,7 +282,6 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
 
     
     if(sensor->pixformat == PIXFORMAT_JPEG){
-        Serial.println("pixformat 0");
         int v_fs = 13;
         if(val_fs > -1 || val_fs < 23){
             v_fs = val_fs;
@@ -306,7 +289,6 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
         sensor->set_framesize(sensor, (framesize_t)v_fs);
     }
     if(val_q > -1 && val_q < 64){
-        Serial.println("quality 0");
         sensor->set_quality(sensor, val_q);
     }else{
         int v_q = 0;
@@ -339,7 +321,6 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
 
 
     delay(500);
-
 
 
     camera_fb_t * fb = NULL;
