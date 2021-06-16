@@ -267,6 +267,8 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
     
     sensor_t * sensor = esp_camera_sensor_get();
 
+    Serial.print("sensor");
+    Serial.println(sensor.status);
     // quality 4
     // brightness 0
     // contrast 0
