@@ -267,8 +267,6 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
     
     sensor_t * sensor = esp_camera_sensor_get();
 
-    Serial.print("sensor");
-    Serial.println(sensor.status);
     // quality 4
     // brightness 0
     // contrast 0
@@ -302,6 +300,7 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
     sensor->set_brightness(sensor, 0);
     sensor->set_saturation(sensor, 0);
     sensor->set_whitebal(sensor,1);//awb
+    sensor->set_sharpness(sensor,0);//awb
 
     sensor->set_exposure_ctrl(sensor, 1);//"aec" 
     sensor->set_hmirror(sensor, 0);//"hmirror" 
@@ -323,6 +322,13 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
 
 
     delay(500);
+
+    Serial.print("sensor framesize");
+    Serial.println(sensor->status.framesize);
+
+    Serial.print("sensor quality");
+    Serial.println(sensor->status.quality);
+
 
 
     camera_fb_t * fb = NULL;
