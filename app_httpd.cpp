@@ -323,12 +323,11 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
 
     delay(500);
 
-    Serial.print("sensor framesize");
+    Serial.print("sensor framesize: ");
     Serial.println(sensor->status.framesize);
 
-    Serial.print("sensor quality");
+    Serial.print("sensor quality: ");
     Serial.println(sensor->status.quality);
-
 
 
     camera_fb_t * fb = NULL;
@@ -342,10 +341,14 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
         httpd_resp_send_500(req);
         return ESP_FAIL;
     }
+
     Serial.print("width: ");
     Serial.println(fb->width);
     Serial.print("height: ");
     Serial.println(fb->height);
+
+    Serial.print("detection_enabled ");
+    Serial.println(detection_enabled);
 
     httpd_resp_set_type(req, "image/jpeg");
     httpd_resp_set_hdr(req, "Content-Disposition", "inline; filename=capture.jpg");
@@ -357,6 +360,7 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
     bool detected = false;
     int face_id = 0;
     if(!detection_enabled || fb->width > 400){
+        Serial.println("!detection_enabled || fb->width > 400");
         size_t fb_len = 0;
         if(fb->format == PIXFORMAT_JPEG){
             fb_len = fb->len;
