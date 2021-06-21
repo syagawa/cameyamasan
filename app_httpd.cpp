@@ -191,10 +191,6 @@ static esp_err_t capture_handler(httpd_req_t *req){
 
     if (net_boxes){
         detected = true;
-        if(recognition_enabled){
-            // face_id = run_face_recognition(image_matrix, net_boxes);
-        }
-        // draw_face_boxes(image_matrix, net_boxes, face_id);
         free(net_boxes->score);
         free(net_boxes->box);
         free(net_boxes->landmark);
@@ -451,11 +447,7 @@ static esp_err_t stream_handler(httpd_req_t *req){
                         if (net_boxes || fb->format != PIXFORMAT_JPEG){
                             if(net_boxes){
                                 detected = true;
-                                if(recognition_enabled){
-                                    // face_id = run_face_recognition(image_matrix, net_boxes);
-                                }
                                 fr_recognize = esp_timer_get_time();
-                                // draw_face_boxes(image_matrix, net_boxes, face_id);
                                 free(net_boxes->score);
                                 free(net_boxes->box);
                                 free(net_boxes->landmark);
@@ -724,11 +716,8 @@ void startCameraServer(){
     mtmn_config.o_threshold.nms = 0.7;
     mtmn_config.o_threshold.candidate_number = 1;
     
-    // face_id_init(&id_list, FACE_ID_SAVE_NUMBER, ENROLL_CONFIRM_TIMES);
-    
     Serial.printf("Starting web server on port: '%d'\n", config.server_port);
     if (httpd_start(&camera_httpd, &config) == ESP_OK) {
-        // httpd_register_uri_handler(camera_httpd, &index_uri);
         httpd_register_uri_handler(camera_httpd, &cmd_uri);
         httpd_register_uri_handler(camera_httpd, &status_uri);
         httpd_register_uri_handler(camera_httpd, &capture_uri);
@@ -738,7 +727,4 @@ void startCameraServer(){
     config.server_port += 1;
     config.ctrl_port += 1;
     Serial.printf("Starting stream server on port: '%d'\n", config.server_port);
-    // if (httpd_start(&stream_httpd, &config) == ESP_OK) {
-    //     httpd_register_uri_handler(stream_httpd, &stream_uri);
-    // }
 }
