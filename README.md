@@ -2,8 +2,12 @@
 
 ## specs
 
-* ESP32 camera with Wi-Fi and Bluetooth
-* Linux machine with Wi-Fi and Bluetooth
+* Camera
+    * ESP32 camera with Wi-Fi and Bluetooth
+
+* Controller
+    * Linux machine with Wi-Fi and Bluetooth
+    * python3
 
 
 ## usage
