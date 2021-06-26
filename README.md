@@ -3,11 +3,18 @@
 ## specs
 
 * Camera
-    * ESP32 camera with Wi-Fi and Bluetooth
+    * ESP32 PSRAM Timer Camera X (M5Stack)
 
 * Controller
     * Linux machine with Wi-Fi and Bluetooth
     * python3
+
+
+
+## install to camera
+
+1. Open this directory by Arduino IDE
+2. Compile to ESP32
 
 
 ## usage
