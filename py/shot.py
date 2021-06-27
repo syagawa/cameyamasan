@@ -37,7 +37,7 @@ def shot(ip):
 
 
   set_url = f"http://{ip}/control"
-  capture_url = f"http://{ip}/capture"
+  capture_url = f"http://{ip}/cap"
   status_url = f"http://{ip}/status"
 
   req1 = urllib.request.Request('{}?{}'.format(set_url, urllib.parse.urlencode(framesize_params)))
