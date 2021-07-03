@@ -241,11 +241,15 @@ async def receive_server_info():
             await asyncio.sleep(2.0, loop=loop)
 
 async def main():
+    t = datetime.now().isoformat()
+    dir = "./images/{0}".format(t)
+    os.makedirs(dir, exist_ok=True)
+
     while True:
         # YOUR APP CODE WOULD GO HERE.
         if server_is_started:
             print(f"server is started ! ip: {server_ip}")
-            shot.shot(server_ip)
+            shot.shot(server_ip, dir)
 
         await asyncio.sleep(5)
 

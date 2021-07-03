@@ -1,9 +1,9 @@
 from time import sleep
 import urllib.request
 from datetime import datetime
+import os
 
-
-def shot(ip):
+def shot(ip, dir):
   print("shot")
   # 1920 x 1080
   # framesize_params = {
@@ -53,13 +53,15 @@ def shot(ip):
   with urllib.request.urlopen(req) as res:
     body = res.read()
     t = datetime.now().isoformat()
-    filename = "./images/%s.jpg" % t
-
+    filename = "{0}/{1}.jpg".format(dir, t)
     with open(filename, mode='wb') as f:
       f.write(body)
 
 
-def shots(count, interval):
+def shots(count, interval, ip):
+    t = datetime.now().isoformat()
+    dir = "./images/{0}".format(t)
+    os.makedirs(dir, exist_ok=True)
     for i in range(count):
-        shot()
+        shot(ip, dir)
         sleep(interval)
