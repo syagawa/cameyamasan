@@ -189,8 +189,12 @@ class Connection:
             self.clear_lists()
 
 
+shot_started = False
 def startShots(ip):
-    shot.shots(100, 5, server_ip)
+    global shot_started
+    if shot_started == False:
+        shot_started = True
+        shot.shots(100, 5, server_ip)
 
 
 #############
