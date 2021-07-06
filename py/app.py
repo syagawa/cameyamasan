@@ -194,7 +194,7 @@ def startShots(ip):
     global shot_started
     if shot_started == False:
         shot_started = True
-        shot.shots(100, 5, server_ip)
+        shot.shots(100, 5, ip)
 
 
 #############
