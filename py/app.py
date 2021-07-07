@@ -24,7 +24,6 @@ device_name = "timerx"
 
 output_file = "./dump.csv"
 
-selected_device = []
 received_data = ""
 server_is_started = False
 server_ip = ""

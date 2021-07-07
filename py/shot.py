@@ -20,10 +20,6 @@ def shot(ip, dir):
   #   "var": "framesize",
   #   "val": "11"
   # }
-  # quality_params = {
-  #   "var": "quality",
-  #   "val": "4"
-  # }
 
   # 1600 x 1200
   # framesize_params = {
@@ -36,20 +32,20 @@ def shot(ip, dir):
     "q": "4"
   }
 
-
   capture_url = f"http://{ip}/cap"
   status_url = f"http://{ip}/status"
 
   req_status = urllib.request.Request(status_url)
   print(req_status.full_url)
+
+  # check status
   with urllib.request.urlopen(req_status) as res_status:
     status = res_status.read()
     print(status)
 
-
   req = urllib.request.Request('{}?{}'.format(capture_url, urllib.parse.urlencode(params)))
 
-
+  # shot
   with urllib.request.urlopen(req) as res:
     body = res.read()
     t = datetime.now().isoformat()
