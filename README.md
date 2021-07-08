@@ -6,7 +6,7 @@
     * ESP32 PSRAM Timer Camera X (M5Stack)
 
 * Controller
-    * Linux machine with Wi-Fi and Bluetooth
+    * Linux machine with Wi-Fi and Bluetooth(e.g. Raspberry Pi)
     * python3
 
 
@@ -15,6 +15,10 @@
 
 1. Open this directory by Arduino IDE
 2. Compile to ESP32
+
+
+## install to Linux machine
+
 
 
 ## usage
