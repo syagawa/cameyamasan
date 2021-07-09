@@ -19,6 +19,8 @@
 
 ## install to Linux machine
 
+1. Start Linux
+2. Open Wi-Fi settings
 
 
 ## usage
