@@ -1,23 +1,24 @@
-# esp32-camera-with-py
+# ESP32 Camera with Python
 
 ## specs
 
-* Camera
+* Camera Device
     * ESP32 PSRAM Timer Camera X (M5Stack)
 
-* Controller
+* Controller Device
     * Linux machine with Wi-Fi and Bluetooth(e.g. Raspberry Pi)
     * python3
+    * Wi-Fi
+    * BLE
 
 
-
-## install to camera
+## install to Camera Device
 
 1. Open this directory by Arduino IDE
 2. Compile to ESP32
 
 
-## install to Linux machine
+## install to Controller Device
 
 1. Start Linux
 2. Open Wi-Fi settings
