@@ -2,26 +2,37 @@
 
 ## specs
 
-* Camera Device
+* Camera
     * ESP32 PSRAM Timer Camera X (M5Stack)
 
-* Controller Device
+* Controller
     * Linux machine with Wi-Fi and Bluetooth(e.g. Raspberry Pi)
     * python3
     * Wi-Fi
     * BLE
 
 
-## install to Camera Device
+## install to Camera
 
 1. Open this directory by Arduino IDE
 2. Compile to ESP32
 
 
-## install to Controller Device
+## install to Controller
 
 1. Start Linux
-2. Open Wi-Fi settings
+
+2. install
+```bash
+$ sudo apt update
+$ sudo apt upgrade
+$ sudo apt install hostapd
+$ sudo apt install isc-dhcp-server
+```
+
+
+
+
 
 
 ## usage
