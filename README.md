@@ -1,5 +1,7 @@
 # ESP32 Camera with Python
 
+Wi-Fi Camera controlled by python on Linux.
+
 ## specs
 
 * Camera
