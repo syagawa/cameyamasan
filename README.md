@@ -8,7 +8,7 @@ Wi-Fi Camera controlled by python on Linux.
     * ESP32 PSRAM Timer Camera X (M5Stack)
 
 * Controller
-    * Linux machine with Wi-Fi and Bluetooth(e.g. Raspberry Pi)
+    * Linux machine (e.g. Raspberry Pi)
     * python3
     * Wi-Fi
     * BLE
@@ -22,8 +22,9 @@ Wi-Fi Camera controlled by python on Linux.
 
 ## install to Controller
 
-1. Start Linux
+### Using Linux as a Wi-Fi access point
 
+1. Start Linux
 2. install
 ```bash
 $ sudo apt update
@@ -31,7 +32,6 @@ $ sudo apt upgrade
 $ sudo apt install hostapd
 $ sudo apt install isc-dhcp-server
 ```
-
 
 
 
