@@ -58,6 +58,7 @@ def shots(count, interval, ip):
     t = datetime.now().isoformat()
     dir = "./images/{0}".format(t)
     os.makedirs(dir, exist_ok=True)
+    print(f"Image Directory: {dir}")
     for i in range(count):
         shot(ip, dir)
         sleep(interval)
