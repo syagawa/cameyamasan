@@ -92,7 +92,7 @@ class Connection:
                 await self.connect()
             else:
                 await self.select_device()
-                await asyncio.sleep(15.0)       
+                await asyncio.sleep(10.0)
 
     async def connect(self):
         if self.connected:
@@ -109,7 +109,7 @@ class Connection:
                 while True:
                     if not self.connected:
                         break
-                    await asyncio.sleep(3.0)
+                    await asyncio.sleep(1.0)
             else:
                 print(f"Failed to connect to {self.connected_device.name}")
         except Exception as e:
@@ -165,16 +165,9 @@ class Connection:
         global server_is_started
         global server_ip
 
-        # path_w = './a.jpg'
-        # imgdata = base64.b64decode(data)
-        # with open(path_w, mode='wb') as f:
-        #     f.write(data)
-            # f.write(imgdata)
-
         print(f"Received From ESP 32 : {data}")
         received_data = data
         if hasattr(received_data, "decode"):
-            print(111)
             str = received_data.decode()
             print(f"str {str}")
             j = json.loads(received_data)
@@ -224,7 +217,7 @@ async def send_wifi_info(connection: Connection):
             print(f"Sent: Wi-Fi info")
             loopable = False
         else:
-            await asyncio.sleep(2.0)
+            await asyncio.sleep(1.0)
 
 async def receive_server_info():
     print(1)
