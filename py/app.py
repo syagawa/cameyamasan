@@ -3,11 +3,8 @@
 # sudo service bluetooth restart
 import os, sys
 import asyncio
-import platform
 from datetime import datetime
 from typing import Callable, Any
-import time
-import base64
 
 from aioconsole import ainput
 from bleak import BleakClient, discover
@@ -27,26 +24,6 @@ output_file = "./dump.csv"
 received_data = ""
 server_is_started = False
 server_ip = ""
-
-class DataToFile:
-
-    column_names = ["time", "delay", "data_value"]
-
-    def __init__(self, write_path):
-        self.path = write_path
-
-    def write_to_csv(self, times: [int], delays: [datetime], data_values: [Any]):
-
-        if len(set([len(times), len(delays), len(data_values)])) > 1:
-            raise Exception("Not all data lists are the same length.")
-
-        with open(self.path, "a+") as f:
-            if os.stat(self.path).st_size == 0:
-                print("Created file.")
-                f.write(",".join([str(name) for name in self.column_names]) + ",\n")
-            else:
-                for i in range(len(data_values)):
-                    f.write(f"{times[i]},{delays[i]},{data_values[i]},\n")
 
 
 class Connection:
@@ -266,9 +243,8 @@ if __name__ == "__main__":
     # Create the event loop.
     loop = asyncio.get_event_loop()
 
-    data_to_file = DataToFile(output_file)
     connection = Connection(
-        loop, read_characteristic, write_characteristic, data_to_file.write_to_csv
+        loop, read_characteristic, write_characteristic
     )
     try:
         asyncio.ensure_future(connection.manager())
