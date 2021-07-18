@@ -19,8 +19,6 @@ com_status = '{"action":"server_?status"}'
 
 device_name = "timerx"
 
-output_file = "./dump.csv"
-
 received_data = ""
 server_is_started = False
 server_ip = ""
@@ -169,22 +167,6 @@ def startShots(ip):
 #############
 # Loops
 #############
-async def user_console_manager(connection: Connection):
-    while True:
-        if connection.client and connection.connected:
-            input_str = await ainput("Enter string: ")
-            
-            byte_to_send = ""
-            if input_str == "go":
-                bytes_to_send = bytearray(map(ord, com_start_server))
-            else:
-                bytes_to_send = bytearray(map(ord, input_str))
-
-            await connection.client.write_gatt_char(write_characteristic, bytes_to_send)
-            print(f"Sent: {input_str}")
-        else:
-            await asyncio.sleep(2.0, loop=loop)
-
 async def send_wifi_info(connection: Connection):
     loopable = True
     while loopable:
@@ -197,7 +179,6 @@ async def send_wifi_info(connection: Connection):
             await asyncio.sleep(1.0)
 
 async def receive_server_info():
-    print(1)
     loopable = True
     while loopable:
         print(2)
