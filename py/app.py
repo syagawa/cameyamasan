@@ -33,13 +33,11 @@ class Connection:
         loop: asyncio.AbstractEventLoop,
         read_characteristic: str,
         write_characteristic: str,
-        data_dump_handler: Callable[[str, Any], None],
         data_dump_size: int = 256,
     ):
         self.loop = loop
         self.read_characteristic = read_characteristic
         self.write_characteristic = write_characteristic
-        self.data_dump_handler = data_dump_handler
 
         self.last_packet_time = datetime.now()
         self.dump_size = data_dump_size
@@ -152,7 +150,6 @@ class Connection:
                 server_is_started = True
                 server_ip = j["ip"]
         if len(self.rx_data) >= self.dump_size:
-            self.data_dump_handler(self.rx_data, self.rx_timestamps, self.rx_delays)
             self.clear_lists()
 
 
