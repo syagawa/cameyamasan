@@ -22,6 +22,9 @@ device_name = "timerx"
 received_data = ""
 server_is_started = False
 server_ip = ""
+shot_started = False
+shot_times = 100
+shot_interval = 5
 
 
 class Connection:
@@ -153,12 +156,13 @@ class Connection:
             self.clear_lists()
 
 
-shot_started = False
+
+
 def startShots(ip):
     global shot_started
     if shot_started == False:
         shot_started = True
-        shot.shots(100, 5, ip)
+        shot.shots(shot_times, shot_interval, ip)
 
 
 #############
