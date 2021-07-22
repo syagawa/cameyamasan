@@ -11,7 +11,7 @@ from bleak import BleakClient, discover
 
 from variables import ssid, ps
 import json
-import shot
+import camera
 
 
 com_start_server = '{"action":"start_server", "ssid": "%s", "pswd":"%s"}' % (ssid, ps)
@@ -156,13 +156,11 @@ class Connection:
             self.clear_lists()
 
 
-
-
 def startShots(ip):
     global shot_started
     if shot_started == False:
         shot_started = True
-        shot.shots(shot_times, shot_interval, ip)
+        camera.shots(shot_times, shot_interval, ip)
 
 
 #############
