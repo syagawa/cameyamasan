@@ -160,7 +160,9 @@ def startShots(ip):
     global shot_started
     if shot_started == False:
         shot_started = True
-        camera.shots(shot_times, shot_interval, ip)
+        res = camera.shots(shot_times, shot_interval, ip)
+        if res == True:
+            connection.cleanup()
 
 
 #############

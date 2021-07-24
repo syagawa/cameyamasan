@@ -62,3 +62,4 @@ def shots(times, interval, ip):
     for i in range(times):
         shot(ip, dir)
         sleep(interval)
+    return True
