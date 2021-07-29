@@ -15,7 +15,6 @@ import camera
 
 
 com_start_server = '{"action":"start_server", "ssid": "%s", "pswd":"%s"}' % (ssid, ps)
-com_status = '{"action":"server_?status"}'
 
 device_name = "timerx"
 
@@ -215,10 +214,6 @@ async def main():
 #############
 read_characteristic = "00001143-0000-1000-8000-00805f9b34fb"
 write_characteristic = "00001142-0000-1000-8000-00805f9b34fb"
-
-# read_characteristic = "00001143-0000-1000-8000-00805f9b34fb"
-# write_characteristic = "00001142-0000-1000-8000-00805f9b34fb"
-
 
 if __name__ == "__main__":
 
