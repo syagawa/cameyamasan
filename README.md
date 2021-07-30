@@ -9,9 +9,9 @@ Wi-Fi Camera controlled by python on Linux.
 
 * Controller
     * Linux machine (e.g. Raspberry Pi)
-    * python3
-    * Wi-Fi
-    * BLE
+        * python3
+        * Wi-Fi
+        * BLE
 
 
 ## install to Camera
@@ -21,6 +21,9 @@ Wi-Fi Camera controlled by python on Linux.
 
 
 ## install to Controller
+
+1. git clone this repository to Linux machine.
+
 
 ### Using Linux as a Wi-Fi access point
 
