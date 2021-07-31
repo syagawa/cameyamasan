@@ -140,7 +140,7 @@ class Connection:
         global server_is_started
         global server_ip
 
-        print(f"Received From ESP 32 : {data}")
+        print(f"Received From ESP 32 Camera: {data}")
         received_data = data
         if hasattr(received_data, "decode"):
             str = received_data.decode()
@@ -177,26 +177,6 @@ async def send_wifi_info(connection: Connection):
             loopable = False
         else:
             await asyncio.sleep(1.0)
-
-async def receive_server_info():
-    loopable = True
-    while loopable:
-        print(2)
-        pattern = '^[0-9].*\.[0-9].*\.[0-9].*\.[0-9]'
-        str = ""
-        is_ip = False
-        print("received_data")
-        print(received_data)
-        if hasattr(received_data, "decode"):
-            str = received_data.decode()
-            if hasattr(str, "match"):
-               is_ip = str.match(pattern, received_data)
-        if is_ip:
-            print(f"IP: {received_data}")
-            loopable = False
-        else:
-            print(3)
-            await asyncio.sleep(2.0, loop=loop)
 
 async def main():
     while True:
