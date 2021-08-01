@@ -23,6 +23,8 @@ Wi-Fi Camera controlled by python on Linux.
 ## install to Controller
 
 1. git clone this repository to Linux machine.
+2. $ cp py/variables_sample.py py/variables.py
+3. write wi-fi info to py/variables.py
 
 
 ### Using Linux as a Wi-Fi access point
