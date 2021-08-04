@@ -1,7 +1,7 @@
 # https://tutorialedge.net/python/concurrency/asyncio-event-loops-tutorial/
 # sudo apt install bridge-utils bluez python-dbus python-gobject
 # sudo service bluetooth restart
-import os, sys
+import os, sys, signal
 import asyncio
 from datetime import datetime
 from typing import Callable, Any
@@ -12,6 +12,8 @@ from bleak import BleakClient, discover
 from variables import ssid, ps
 import json
 import camera
+
+
 
 
 com_start_server = '{"action":"start_server", "ssid": "%s", "pswd":"%s"}' % (ssid, ps)
@@ -164,6 +166,10 @@ def startShots(ip):
             connection.cleanup()
 
 
+def sig_handler(signum, frame) -> None:
+    print("in sig_handler")
+    sys.exit(1)
+
 #############
 # Loops
 #############
@@ -204,6 +210,7 @@ if __name__ == "__main__":
         loop, read_characteristic, write_characteristic
     )
     try:
+        signal.signal(signal.SIGTERM, sig_handler)
         asyncio.ensure_future(connection.manager())
         asyncio.ensure_future(send_wifi_info(connection))
         asyncio.ensure_future(main())
@@ -214,3 +221,9 @@ if __name__ == "__main__":
     finally:
         print("Disconnecting...")
         loop.run_until_complete(connection.cleanup())
+
+        signal.signal(signal.SIGTERM, signal.SIG_IGN)
+        signal.signal(signal.SIGINT, signal.SIG_IGN)
+        #cleanup()
+        signal.signal(signal.SIGTERM, signal.SIG_DFL)
+        signal.signal(signal.SIGINT, signal.SIG_DFL)

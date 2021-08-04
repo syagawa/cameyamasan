@@ -38,8 +38,6 @@ $ sudo apt install hostapd
 $ sudo apt install isc-dhcp-server
 ```
 
-
-
 ## usage
 
 1. Start esp32 by connect power.
