@@ -53,11 +53,13 @@ class Connection:
         self.rx_delays = []
 
     def on_disconnect(self, client: BleakClient, future: asyncio.Future):
+        print("in on_disconnect")
         self.connected = False
         # Put code here to handle what happens on disconnet.
         print(f"Disconnected from {self.connected_device.name}!")
 
     async def cleanup(self):
+        print("in cleanup")
         if self.client:
             await self.client.stop_notify(read_characteristic)
             await self.client.disconnect()
