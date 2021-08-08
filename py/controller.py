@@ -220,9 +220,9 @@ if __name__ == "__main__":
         loop.run_forever()
     except KeyboardInterrupt:
         print()
-        print("User stopped program.")
+        print("in except KeyboardInterrupt: User stopped program.")
     finally:
-        print("Disconnecting...")
+        print("in finally Disconnecting...")
         loop.run_until_complete(connection.cleanup())
 
         signal.signal(signal.SIGTERM, signal.SIG_IGN)
