@@ -52,7 +52,7 @@ class Connection:
         self.rx_timestamps = []
         self.rx_delays = []
 
-    def on_disconnect(self, client: BleakClient, future: asyncio.Future):
+    def on_disconnect(self, client: BleakClient):
         print("in on_disconnect")
         self.connected = False
         # Put code here to handle what happens on disconnet.
