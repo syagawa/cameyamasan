@@ -9,16 +9,14 @@ from typing import Callable, Any
 from aioconsole import ainput
 from bleak import BleakClient, discover
 
-from variables import ssid, ps
+from variables import ssid, ps, camera_device_name
 import json
 import camera
 
 
 
-
 com_start_server = '{"action":"start_server", "ssid": "%s", "pswd":"%s"}' % (ssid, ps)
-
-device_name = "timerx"
+device_name = camera_device_name
 
 received_data = ""
 server_is_started = False
