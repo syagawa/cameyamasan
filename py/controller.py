@@ -189,7 +189,12 @@ async def main():
         # YOUR APP CODE WOULD GO HERE.
         if server_is_started:
             print(f"server is started ! ip: {server_ip}")
-            startShots(server_ip)
+            try:
+                startShots(server_ip)
+            except KeyboardInterrupt:
+                print("in k2")
+            finally:
+                print("in f2")
 
         await asyncio.sleep(5)
 
