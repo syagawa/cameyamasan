@@ -195,6 +195,7 @@ async def main():
                 print("in k2")
             finally:
                 print("in f2")
+                sys.exit(1)
 
         await asyncio.sleep(5)
 
