@@ -9,7 +9,7 @@ from typing import Callable, Any
 from aioconsole import ainput
 from bleak import BleakClient, discover
 
-from variables import ssid, ps, camera_device_name
+from variables import ssid, ps, camera_device_name, camera_shot_times, camera_shot_interval
 import json
 import camera
 
@@ -22,8 +22,8 @@ received_data = ""
 server_is_started = False
 server_ip = ""
 shot_started = False
-shot_times = 100
-shot_interval = 5
+shot_times = camera_shot_times
+shot_interval = camera_shot_interval
 
 
 class Connection:
