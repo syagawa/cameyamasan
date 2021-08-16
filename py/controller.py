@@ -170,6 +170,11 @@ def sig_handler(signum, frame) -> None:
     print("in sig_handler")
     sys.exit(1)
 
+def end_process():
+    loop.run_until_complete(connection.cleanup())
+    sys.exit(1)
+
+
 #############
 # Loops
 #############
@@ -195,8 +200,7 @@ async def main():
                 print("in k2")
             finally:
                 print("in f2")
-                loop.run_until_complete(connection.cleanup())
-                sys.exit(1)
+                end_process()
 
         await asyncio.sleep(5)
 
