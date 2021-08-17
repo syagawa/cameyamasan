@@ -165,14 +165,15 @@ def startShots(ip):
         if res == True:
             connection.cleanup()
 
+def finally_process():
+    print("in finally_process")
+    loop.run_until_complete(connection.cleanup())
+    sys.exit(1)
 
 def sig_handler(signum, frame) -> None:
     print("in sig_handler")
-    sys.exit(1)
+    finally_process()
 
-def end_process():
-    loop.run_until_complete(connection.cleanup())
-    sys.exit(1)
 
 
 #############
@@ -200,7 +201,7 @@ async def main():
                 print("in k2")
             finally:
                 print("in f2")
-                end_process()
+                finally_process()
 
         await asyncio.sleep(5)
 
