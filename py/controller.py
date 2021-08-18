@@ -168,6 +168,12 @@ def startShots(ip):
 def finally_process():
     print("in finally_process")
     loop.run_until_complete(connection.cleanup())
+    signal.signal(signal.SIGTERM, signal.SIG_IGN)
+    signal.signal(signal.SIGINT, signal.SIG_IGN)
+    #cleanup()
+    signal.signal(signal.SIGTERM, signal.SIG_DFL)
+    signal.signal(signal.SIGINT, signal.SIG_DFL)
+
     sys.exit(1)
 
 def sig_handler(signum, frame) -> None:
@@ -233,10 +239,4 @@ if __name__ == "__main__":
         print("in except KeyboardInterrupt: User stopped program.")
     finally:
         print("in finally Disconnecting...")
-        loop.run_until_complete(connection.cleanup())
-
-        signal.signal(signal.SIGTERM, signal.SIG_IGN)
-        signal.signal(signal.SIGINT, signal.SIG_IGN)
-        #cleanup()
-        signal.signal(signal.SIGTERM, signal.SIG_DFL)
-        signal.signal(signal.SIGINT, signal.SIG_DFL)
+        finally_process()
