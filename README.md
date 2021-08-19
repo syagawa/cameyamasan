@@ -1,6 +1,6 @@
 # ESP32 Camera with Python
 
-Wi-Fi Camera controlled by python on Linux.
+Wi-Fi ESP32 Camera controlled by python on Linux.
 
 ## specs
 
@@ -14,6 +14,10 @@ Wi-Fi Camera controlled by python on Linux.
         * BLE
 
 
+## install
+
+git clone this repository to Linux machine.
+
 ## install to Camera
 
 1. Open this directory by Arduino IDE
@@ -22,7 +26,7 @@ Wi-Fi Camera controlled by python on Linux.
 
 ## install to Controller
 
-1. git clone this repository to Linux machine.
+1. Open this directory
 2. $ cp py/variables_sample.py py/variables.py
 3. Write ssid and ps to py/variables.py
 
