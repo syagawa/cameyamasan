@@ -207,7 +207,8 @@ async def main():
                 print("in k2")
             finally:
                 print("in f2")
-                finally_process()
+                # finally_process()
+                raise Exception("message ...")
 
         await asyncio.sleep(5)
 
