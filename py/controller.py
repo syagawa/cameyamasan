@@ -204,11 +204,10 @@ async def main():
             try:
                 startShots(server_ip)
             except KeyboardInterrupt:
-                print("in k2")
+                print("except KeyboardInterrupt in main()")
             finally:
-                print("in f2")
-                # finally_process()
-                raise Exception("message ...")
+                print("finally in main()")
+                raise Exception("exception in main()")
 
         await asyncio.sleep(5)
 
