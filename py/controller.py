@@ -227,7 +227,7 @@ if __name__ == "__main__":
     connection = Connection(
         loop, read_characteristic, write_characteristic
     )
-    print("Start App!!!")
+    print("Start Controller!!!")
     try:
         signal.signal(signal.SIGTERM, sig_handler)
         asyncio.ensure_future(connection.manager())

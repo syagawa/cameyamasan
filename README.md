@@ -18,13 +18,14 @@ Wi-Fi ESP32 Camera controlled by python on Linux.
 
 git clone this repository to Linux machine.
 
-## install to Camera
+## settings
+
+### Camera
 
 1. Open this directory by Arduino IDE
 2. Compile to ESP32
 
-
-## install to Controller
+### Controller
 
 1. Open this directory
 2. $ cp py/variables_sample.py py/variables.py
