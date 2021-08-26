@@ -199,7 +199,8 @@ async def send_wifi_info(connection: Connection):
             await asyncio.sleep(1.0)
 
 async def main():
-    while True:
+    flg = True
+    while flg:
         # YOUR APP CODE WOULD GO HERE.
         if server_is_started:
             print(f"server is started ! ip: {server_ip}")
@@ -209,7 +210,9 @@ async def main():
                 print("except KeyboardInterrupt in main()")
             finally:
                 print("finally in main()")
-                raise Exception("exception in main()")
+                # raise Exception("exception in main()")
+                # sys.exit(1)
+                flg = False
 
         await asyncio.sleep(5)
 
