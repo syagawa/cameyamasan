@@ -20,7 +20,7 @@
 //#define CAMERA_MODEL_TTGO_T_JOURNAL // No PSRAM
 
 #include "camera_pins.h"
-//#include "led.h"
+// #include "led.h"
 //#include "bmm8563.h"
 #include "constants.h"
 
@@ -52,6 +52,7 @@
 JSONVar receivedObj;
 
 bool startedCameraServer = false;
+bool lighted = false;
 void startCameraServer();
 
 char* var_ssid = "";
@@ -364,11 +365,24 @@ void setupBLE() {
 
 }
 
+// void led_breathe() {
+//   for (int16_t i = 0; i < 1024; i++) {
+//     led_brightness(i);
+//     vTaskDelay(pdMS_TO_TICKS(1));
+//   }
+
+//   for (int16_t i = 1023; i >= 0; i--) {
+//     led_brightness(i);
+//     vTaskDelay(pdMS_TO_TICKS(1));
+//   }
+// }
+
 void setup() {
   Serial.begin(115200);
   Serial.setDebugOutput(true);
   Serial.println();
 
+  // led_init(CAMERA_LED_GPIO);
 
   // BLE
   setupBLE();
@@ -451,6 +465,8 @@ void loop() {
       bleDataIsReceived = false;
       Serial.print("data from py: ");
       
+      // led_breathe();
+
       Serial.println(storedValue.c_str());
 
       pTxCharacteristic->setValue(storedValue);
@@ -467,10 +483,12 @@ void loop() {
   }
 
   interrupts();
-  // if(startedCameraServer){
-  //   digitalWrite(LED_BUILTIN, LOW);
-  //   delay(1000);
-  //   digitalWrite(LED_BUILTIN, HIGH);
-  //   delay(1000);
-  // }
+  if(startedCameraServer && !lighted){
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(500);
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(500);
+    digitalWrite(LED_BUILTIN, LOW);
+    lighted = true;
+  }
 }
