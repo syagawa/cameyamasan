@@ -365,17 +365,13 @@ void setupBLE() {
 
 }
 
-// void led_breathe() {
-//   for (int16_t i = 0; i < 1024; i++) {
-//     led_brightness(i);
-//     vTaskDelay(pdMS_TO_TICKS(1));
-//   }
-
-//   for (int16_t i = 1023; i >= 0; i--) {
-//     led_brightness(i);
-//     vTaskDelay(pdMS_TO_TICKS(1));
-//   }
-// }
+void flick_led() {
+  digitalWrite(LED_BUILTIN, LOW);
+  delay(500);
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(500);
+  digitalWrite(LED_BUILTIN, LOW);
+}
 
 void setup() {
   Serial.begin(115200);
@@ -484,11 +480,12 @@ void loop() {
 
   interrupts();
   if(startedCameraServer && !lighted){
-    digitalWrite(LED_BUILTIN, LOW);
-    delay(500);
-    digitalWrite(LED_BUILTIN, HIGH);
-    delay(500);
-    digitalWrite(LED_BUILTIN, LOW);
+    // digitalWrite(LED_BUILTIN, LOW);
+    // delay(500);
+    // digitalWrite(LED_BUILTIN, HIGH);
+    // delay(500);
+    // digitalWrite(LED_BUILTIN, LOW);
+    flick_led();
     lighted = true;
   }
 }
