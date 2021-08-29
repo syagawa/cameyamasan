@@ -36,15 +36,6 @@
 #define CHARACTERISTIC_UUID_RX "00001142-0000-1000-8000-00805f9b34fb"
 #define CHARACTERISTIC_UUID_TX "00001143-0000-1000-8000-00805f9b34fb"
 
-// const char* uuidOfService = "00001101-0000-1000-8000-00805f9b34fb";
-// const char* uuidOfRxChar = "00001142-0000-1000-8000-00805f9b34fb";
-// const char* uuidOfTxChar = "00001143-0000-1000-8000-00805f9b34fb";
-
-
-// #define SERVICE_UUID           "6E400001-B5A3-F393-E0A9-E50E24DCCA9E" // UART service UUID
-// #define CHARACTERISTIC_UUID_RX "6E400002-B5A3-F393-E0A9-E50E24DCCA9E"
-// #define CHARACTERISTIC_UUID_TX "6E400003-B5A3-F393-E0A9-E50E24DCCA9E"
-
 
 #include <Arduino_JSON.h>
 #include "EEPROM.h"
@@ -198,8 +189,6 @@ void startCameraServerWithWifi(char* ssid, char* ps) {
   Serial.print(WiFi.localIP());
   Serial.println("' to connect");
 
-  // std::string ip_s = WiFi.localIP().toString().c_str();
-  // pTxCharacteristic->setValue(ip_s);
   String ip_ss = WiFi.localIP().toString();
   String j = "{\"ip\":\"" + ip_ss + "\"}";
   std::string j_str = j.c_str();
@@ -211,9 +200,6 @@ void startCameraServerWithWifi(char* ssid, char* ps) {
 void startServerIfExistsData(){
 
 
- // readWifiData()
-  // String ssid = EEPROM.readString(address_ssid);
-  // String ps = EEPROM.readString(address_ps);
   if (!EEPROM.begin(rom_size)){
     Serial.println("Failed to initialise EEPROM");
     Serial.println("Restarting...");
@@ -378,8 +364,6 @@ void setup() {
   Serial.setDebugOutput(true);
   Serial.println();
 
-  // led_init(CAMERA_LED_GPIO);
-
   // BLE
   setupBLE();
 
@@ -438,7 +422,6 @@ void setup() {
     s->set_brightness(s, 1); // up the brightness just a bit
     s->set_saturation(s, -2); // lower the saturation
   }
-  // drop down frame size for higher initial frame rate
   s->set_framesize(s, FRAMESIZE_QVGA);
 
 #if defined(CAMERA_MODEL_M5STACK_WIDE) || defined(CAMERA_MODEL_M5STACK_ESP32CAM)
@@ -452,7 +435,6 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
 
   noInterrupts();
   if(deviceConnected){
@@ -461,14 +443,11 @@ void loop() {
       bleDataIsReceived = false;
       Serial.print("data from py: ");
       
-      // led_breathe();
-
       Serial.println(storedValue.c_str());
 
       pTxCharacteristic->setValue(storedValue);
       pTxCharacteristic->notify();
       deviceConnectedOneLoopBefore = true;
-      // parseMessageFromBle(receivedObj);
     }
     portEXIT_CRITICAL_ISR(&storeDataMux);
   }
@@ -480,11 +459,6 @@ void loop() {
 
   interrupts();
   if(startedCameraServer && !lighted){
-    // digitalWrite(LED_BUILTIN, LOW);
-    // delay(500);
-    // digitalWrite(LED_BUILTIN, HIGH);
-    // delay(500);
-    // digitalWrite(LED_BUILTIN, LOW);
     flick_led();
     lighted = true;
   }
