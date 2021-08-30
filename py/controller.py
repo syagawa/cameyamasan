@@ -61,6 +61,7 @@ class Connection:
         if self.client:
             await self.client.stop_notify(read_characteristic)
             await self.client.disconnect()
+            print("disconnected")
 
     async def manager(self):
         print("Starting connection manager.")
@@ -210,9 +211,9 @@ async def main():
                 print("except KeyboardInterrupt in main()")
             finally:
                 print("finally in main()")
-                # raise Exception("exception in main()")
                 # sys.exit(1)
                 flg = False
+                raise Exception("End process")
 
         await asyncio.sleep(5)
 
