@@ -3,7 +3,7 @@ import urllib.request
 from datetime import datetime
 import os
 
-def shot(ip, dir):
+def shot(ip, dir, fs):
   print("shot")
   # 1920 x 1080
   # framesize_params = {
@@ -26,14 +26,23 @@ def shot(ip, dir):
   #   "var": "framesize",
   #   "val": "13"
   # }
-  fs_640_480 = "8"
+  
+  fs_640_480 = "8" #low
   fs_800_600 = "9"
-  fs_1280_720 = "10"
+  fs_1280_720 = "10" #middle
   fs_1600_1200 = "13"
-  fs_1920_1080 = "14"
+  fs_1920_1080 = "14" #high
+
+  defualt_fs = fs_1920_1080
+  if fs == "low":
+    defualt_fs = fs_640_480
+  elif fs == "middle":
+    defualt_fs = fs_1280_720
+  elif fs == "high":
+    defualt_fs = fs_1920_1080
 
   params = {
-    "fs": fs_1920_1080,
+    "fs": defualt_fs,
     "q": "4"
   }
 
@@ -65,6 +74,6 @@ def shots(times, interval, ip):
     os.makedirs(dir, exist_ok=True)
     print(f"Image Directory: {dir}")
     for i in range(times):
-        shot(ip, dir)
+        shot(ip, dir, "high")
         sleep(interval)
     return True
