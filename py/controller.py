@@ -163,7 +163,7 @@ def startShots(ip):
     if shot_started == False:
         shot_started = True
         print("shot started!")
-        res = camera.shots(shot_times, shot_interval, ip)
+        res = camera.shots(shot_times, shot_interval, ip, "middle")
         print("shot ended!")
         if res == True:
             connection.cleanup()

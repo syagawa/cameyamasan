@@ -68,12 +68,12 @@ def shot(ip, dir, fs):
       f.write(body)
 
 
-def shots(times, interval, ip):
+def shots(times, interval, ip, fs):
     t = datetime.now().isoformat()
     dir = "./images/{0}".format(t)
     os.makedirs(dir, exist_ok=True)
     print(f"Image Directory: {dir}")
     for i in range(times):
-        shot(ip, dir, "high")
+        shot(ip, dir, fs)
         sleep(interval)
     return True
