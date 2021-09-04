@@ -126,6 +126,39 @@ class Connection:
         self.connected_device = devices[response]
         self.client = BleakClient(devices[response].address, loop=self.loop)
 
+    async def start_shot(self):
+        # print("Bluetooh LE hardware warming up...")
+        # await asyncio.sleep(2.0) # Wait for BLE to initialize.
+        # devices = await discover()
+
+        # print("Please select device: ")
+        # target_index = -1
+        # for i, device in enumerate(devices):
+        #     print(f"{i}: {device.name}")
+        #     if device.name == device_name:
+        #         target_index = i
+
+        # response = -1
+
+        # if target_index == -1:
+        #     while True:
+        #         response = await ainput("Select device: ")
+        #         try:
+        #             response = int(response.strip())
+        #         except:
+        #             print("Please make valid selection.")
+                
+        #         if response > -1 and response < len(devices):
+        #             break
+        #         else:
+        #             print("Please make valid selection.")
+        # else:
+        #     response = target_index
+
+        # print(f"Connecting to {devices[response].name}")
+        # self.connected_device = devices[response]
+        # self.client = BleakClient(devices[response].address, loop=self.loop)
+
     def record_time_info(self):
         present_time = datetime.now()
         self.rx_timestamps.append(present_time)
@@ -163,7 +196,7 @@ def startShots(ip):
     if shot_started == False:
         shot_started = True
         print("shot started!")
-        res = camera.shots(shot_times, shot_interval, ip, "middle")
+        res = camera.shots(shot_times, shot_interval, ip, "high")
         print("shot ended!")
         if res == True:
             connection.cleanup()
