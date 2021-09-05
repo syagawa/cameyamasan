@@ -126,9 +126,9 @@ class Connection:
         self.connected_device = devices[response]
         self.client = BleakClient(devices[response].address, loop=self.loop)
 
-    async def start_shot(self):
-        # print("Bluetooh LE hardware warming up...")
-        # await asyncio.sleep(2.0) # Wait for BLE to initialize.
+    async def select_shot(self):
+        print("select_shot warming up...")
+        await asyncio.sleep(2.0) # Wait for BLE to initialize.
         # devices = await discover()
 
         # print("Please select device: ")
