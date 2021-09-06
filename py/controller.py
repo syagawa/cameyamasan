@@ -128,8 +128,13 @@ class Connection:
 
     async def select_shot(self):
         print("select_shot warming up...")
-        await asyncio.sleep(2.0) # Wait for BLE to initialize.
-        # devices = await discover()
+        go = True
+        while go:
+            if server_is_started:
+                go = False
+                
+            else:
+                await asyncio.sleep(5.0)
 
         # print("Please select device: ")
         # target_index = -1
