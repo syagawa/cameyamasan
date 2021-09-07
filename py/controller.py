@@ -127,12 +127,17 @@ class Connection:
         self.client = BleakClient(devices[response].address, loop=self.loop)
 
     async def select_shot(self):
-        print("select_shot warming up...")
         go = True
         while go:
             if server_is_started:
                 go = False
-                
+                print("Please select framesize: ")
+                target_index = -1
+                frame_sizes = ["0", "1", "2"]
+                for i, fs in enumerate(frame_sizes):
+                    print(f"{i}: fs}")
+
+                # startShots(server_ip)
             else:
                 await asyncio.sleep(5.0)
 
