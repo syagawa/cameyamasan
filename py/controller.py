@@ -132,7 +132,6 @@ class Connection:
             if server_is_started:
                 go = False
                 print("Please select framesize: ")
-                target_index = -1
                 frame_sizes = ["0", "1", "2"]
                 for i, fs in enumerate(frame_sizes):
                     print(f"{i}: fs}")
@@ -140,6 +139,18 @@ class Connection:
                 # startShots(server_ip)
             else:
                 await asyncio.sleep(5.0)
+
+        while True:
+            response = await ainput("Select Frame Size: ")
+            try:
+                response = int(response.strip())
+            except:
+                print("Please make valid selection.")
+            
+            if response > -1 and response < len(devices):
+                break
+            else:
+                print("Please make valid selection.")
 
         # print("Please select device: ")
         # target_index = -1
