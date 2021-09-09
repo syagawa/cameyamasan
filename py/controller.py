@@ -134,7 +134,7 @@ class Connection:
                 print("Please select framesize: ")
                 frame_sizes = ["0", "1", "2"]
                 for i, fs in enumerate(frame_sizes):
-                    print(f"{i}: fs}")
+                    print(f"{i}: {fs}")
 
                 # startShots(server_ip)
             else:
