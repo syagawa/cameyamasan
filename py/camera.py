@@ -3,78 +3,36 @@ import urllib.request
 from datetime import datetime
 import os
 
+
+framesizes = {
+  "fs_96_96": "0",
+  "fs_160_120": "1",
+  "fs_176_144": "2",
+  "fs_240_176": "3",
+  "fs_240_240": "4",
+  "fs_320_240": "5",
+  "fs_400_296": "6",
+  "fs_480_320": "7",
+  "fs_640_480": "8",
+  "fs_800_600": "9",
+  "fs_1024_768": "10",
+  "fs_1280_720": "11",
+  "fs_1280_1024": "12",
+  "fs_1600_1200": "13",
+  "fs_1920_1080": "14",
+}
+
 def shot(ip, dir, fs):
   print("shot")
-  # 1920 x 1080
-  # framesize_params = {
-  #   "var": "framesize",
-  #   "val": "14"
-  # }
-  # quality_params = {
-  #   "var": "quality",
-  #   "val": "30"
-  # }
 
-  # 1280 x 720
-  # framesize_params = {
-  #   "var": "framesize",
-  #   "val": "11"
-  # }
-
-  # 1600 x 1200
-  # framesize_params = {
-  #   "var": "framesize",
-  #   "val": "13"
-  # }
-  
-  fs_96_96 = "0"
-  fs_160_120 = "1"
-  fs_176_144 = "2"
-  fs_240_176 = "3"
-  fs_240_240 = "4"
-  fs_320_240 = "5"
-  fs_400_296 = "6"
-  fs_480_320 = "7"
-  fs_640_480 = "8"
-  fs_800_600 = "9"
-  fs_1024_768 = "10"
-  fs_1280_720 = "11"
-  fs_1280_1024 = "12"
-  fs_1600_1200 = "13"
-
-  fs_1920_1080 = "14"
-
-  o = {
-    "fs_96_96": "0",
-    "fs_160_120": "1",
-    "fs_176_144": "2",
-    "fs_240_176": "3",
-    "fs_240_240": "4",
-    "fs_320_240": "5",
-    "fs_400_296": "6",
-    "fs_480_320": "7",
-    "fs_640_480": "8",
-    "fs_800_600": "9",
-    "fs_1024_768": "10",
-    "fs_1280_720": "11",
-    "fs_1280_1024": "12",
-    "fs_1600_1200": "13",
-    "fs_1920_1080": "14",
-  }
-
-
-  defualt_fs = fs_1920_1080
-  if fs == "low":
-    defualt_fs = fs_320_240
-  elif fs == "middle":
-    defualt_fs = fs_1280_720
-  elif fs == "high":
-    defualt_fs = fs_1600_1200
-  elif fs == "fhd":
-    defualt_fs = fs_1920_1080
+  framesize = None
+  if fs in framesizes:
+    framesize = framesizes[fs]
+  else:
+    framesize = framesizes["fs_1280_1024"]
 
   params = {
-    "fs": defualt_fs,
+    "fs": framesize,
     "q": "4"
   }
 
