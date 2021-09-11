@@ -132,9 +132,9 @@ class Connection:
             if server_is_started:
                 go = False
                 print("Please select framesize: ")
-                frame_sizes = ["0", "1", "2"]
-                for i, fs in enumerate(frame_sizes):
-                    print(f"{i}: {fs}")
+                frame_sizes = camera.framesizes
+                for key in frame_sizes:
+                    print(f"{frame_sizes[key]}: {key}")
 
                 # startShots(server_ip)
             else:
