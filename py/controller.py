@@ -128,11 +128,11 @@ class Connection:
 
     async def select_shot(self):
         go = True
+        frame_sizes = camera.framesizes
         while go:
             if server_is_started:
                 go = False
                 print("Please select framesize: ")
-                frame_sizes = camera.framesizes
                 for key in frame_sizes:
                     print(f"{frame_sizes[key]}: {key}")
 
@@ -147,34 +147,12 @@ class Connection:
             except:
                 print("Please make valid selection.")
             
-            if response > -1 and response < len(devices):
+            if response in frame_sizes.values:
                 break
             else:
                 print("Please make valid selection.")
 
-        # print("Please select device: ")
-        # target_index = -1
-        # for i, device in enumerate(devices):
-        #     print(f"{i}: {device.name}")
-        #     if device.name == device_name:
-        #         target_index = i
 
-        # response = -1
-
-        # if target_index == -1:
-        #     while True:
-        #         response = await ainput("Select device: ")
-        #         try:
-        #             response = int(response.strip())
-        #         except:
-        #             print("Please make valid selection.")
-                
-        #         if response > -1 and response < len(devices):
-        #             break
-        #         else:
-        #             print("Please make valid selection.")
-        # else:
-        #     response = target_index
 
         # print(f"Connecting to {devices[response].name}")
         # self.connected_device = devices[response]
