@@ -127,15 +127,14 @@ class Connection:
         self.client = BleakClient(devices[response].address, loop=self.loop)
 
     async def select_shot(self):
-        go = True
         frame_sizes = camera.framesizes
-        while go:
+        while True:
             if server_is_started:
-                go = False
                 print("Please select framesize: ")
                 for key in frame_sizes:
-                    print(f"{frame_sizes[key]}: {key}")
-
+                    val = frame_sizes[key]
+                    print(f"{val}: {key}")
+                break
                 # startShots(server_ip)
             else:
                 await asyncio.sleep(5.0)
