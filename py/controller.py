@@ -143,7 +143,7 @@ class Connection:
         while True:
             response = await ainput("Select Frame Size Number: ")
             try:
-                response = response.strip()
+                response = int(response.strip())
             except:
                 print("Please make valid selection.")
             
