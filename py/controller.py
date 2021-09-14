@@ -139,19 +139,21 @@ class Connection:
             else:
                 await asyncio.sleep(5.0)
 
+        fs = None
         while True:
-            response = await ainput("Select Frame Size: ")
+            response = await ainput("Select Frame Size Number: ")
             try:
-                response = int(response.strip())
+                response = response.strip()
             except:
                 print("Please make valid selection.")
             
             if response in frame_sizes.values:
+                fs = frame_sizes
                 break
             else:
                 print("Please make valid selection.")
 
-
+        startShots(server_ip, fs)
 
         # print(f"Connecting to {devices[response].name}")
         # self.connected_device = devices[response]
@@ -189,12 +191,12 @@ class Connection:
             self.clear_lists()
 
 
-def startShots(ip):
+def startShots(ip, fs):
     global shot_started
     if shot_started == False:
         shot_started = True
         print("shot started!")
-        res = camera.shots(shot_times, shot_interval, ip, "high")
+        res = camera.shots(shot_times, shot_interval, ip, fs)
         print("shot ended!")
         if res == True:
             connection.cleanup()
