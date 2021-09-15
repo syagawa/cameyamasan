@@ -22,6 +22,24 @@ framesizes = {
   "fs_1920_1080": "14",
 }
 
+framesizes_arr = [
+  { "key": "fs_96_96", "value": "0", "default": False},
+  { "key": "fs_160_120", "value": "1", "default": False},
+  { "key": "fs_176_144", "value": "2", "default": False},
+  { "key": "fs_240_176", "value": "3", "default": False},
+  { "key": "fs_240_240", "value": "4", "default": False},
+  { "key": "fs_320_240", "value": "5", "default": False},
+  { "key": "fs_400_296", "value": "6", "default": False},
+  { "key": "fs_480_320", "value": "7", "default": False},
+  { "key": "fs_640_480", "value": "8", "default": False},
+  { "key": "fs_800_600", "value": "9", "default": False},
+  { "key": "fs_1024_768", "value": "10", "default": False},
+  { "key": "fs_1280_720", "value": "11", "default": True},
+  { "key": "fs_1280_1024", "value": "12", "default": False},
+  { "key": "fs_1600_1200", "value": "13", "default": False},
+  { "key": "fs_1920_1080", "value": "14", "default": False}
+]
+
 def shot(ip, dir, fs):
   print("shot")
 
