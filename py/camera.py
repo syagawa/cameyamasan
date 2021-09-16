@@ -44,10 +44,17 @@ def shot(ip, dir, fs):
   print("shot")
 
   framesize = None
-  if fs in framesizes:
-    framesize = framesizes[fs]
-  else:
-    framesize = framesizes["fs_1280_1024"]
+  framesize_default = None
+  for elm in framesizes_arr:
+    val = elm["value"]
+    if val == fs:
+      framesize = fs
+    if elm["default"]:
+      framesize_default = val
+
+  if framesize == None:
+    framesize = framesize_default
+
 
   params = {
     "fs": framesize,
