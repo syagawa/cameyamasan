@@ -49,6 +49,8 @@ def shot(ip, dir, fs):
     val = elm["value"]
     if val == fs:
       framesize = fs
+      break
+
     if elm["default"]:
       framesize_default = val
 
