@@ -127,14 +127,14 @@ class Connection:
         self.client = BleakClient(devices[response].address, loop=self.loop)
 
     async def select_shot(self):
-        frame_sizes = camera.framesizes_arr
+        framesizes = camera.framesizes
         while True:
             if server_is_started:
-                print("Please select framesize: ")
-                for elm in frame_sizes:
-                    val = elm["value"]
+                print("Please select framesize by Number: ")
+                for i, elm in enumrate(framesizes):
+                    elm = framesizes[i]
                     key = elm["key"]
-                    print(f"{val}: {key}")
+                    print(f"{i}: {key}")
                 break
                 # startShots(server_ip)
             else:
@@ -148,8 +148,8 @@ class Connection:
             except:
                 print("Please make valid selection.")
             
-            if response in frame_sizes.values:
-                fs = frame_sizes
+            if framesizes[response]:
+                fs = frame_sizes[response]["value"]
                 break
             else:
                 print("Please make valid selection.")

@@ -4,25 +4,7 @@ from datetime import datetime
 import os
 
 
-framesizes = {
-  "fs_96_96": "0",
-  "fs_160_120": "1",
-  "fs_176_144": "2",
-  "fs_240_176": "3",
-  "fs_240_240": "4",
-  "fs_320_240": "5",
-  "fs_400_296": "6",
-  "fs_480_320": "7",
-  "fs_640_480": "8",
-  "fs_800_600": "9",
-  "fs_1024_768": "10",
-  "fs_1280_720": "11",
-  "fs_1280_1024": "12",
-  "fs_1600_1200": "13",
-  "fs_1920_1080": "14",
-}
-
-framesizes_arr = [
+framesizes = [
   { "key": "fs_96_96", "value": "0", "default": False},
   { "key": "fs_160_120", "value": "1", "default": False},
   { "key": "fs_176_144", "value": "2", "default": False},
@@ -45,7 +27,7 @@ def shot(ip, dir, fs):
 
   framesize = None
   framesize_default = None
-  for elm in framesizes_arr:
+  for elm in framesizes:
     val = elm["value"]
     if val == fs:
       framesize = fs
