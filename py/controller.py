@@ -142,17 +142,19 @@ class Connection:
 
         fs = None
         while True:
-            response = await ainput("Select Frame Size Number: ")
+            response = await ainput("Select framesize number: ")
+            val = None
             try:
                 response = int(response.strip())
+                val = framesizes[response]["value"]
             except:
-                print("Please make valid selection.")
+                print("Unknown Number. Selected default value")
             
-            if framesizes[response]:
-                fs = frame_sizes[response]["value"]
-                break
-            else:
-                print("Please make valid selection.")
+            if val:
+                fs = val
+            
+            break
+
 
         startShots(server_ip, fs)
 
