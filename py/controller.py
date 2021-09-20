@@ -148,7 +148,7 @@ class Connection:
                 response = int(response.strip())
                 val = framesizes[response]["value"]
             except:
-                print("Unknown Number. Selected default value")
+                print("Unknown Number. The default value will be selected.")
             
             if val:
                 fs = val
