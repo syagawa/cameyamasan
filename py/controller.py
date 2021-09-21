@@ -130,13 +130,12 @@ class Connection:
         framesizes = camera.framesizes
         while True:
             if server_is_started:
-                print("Please select framesize by Number: ")
+                print("Please select framesize by number: ")
                 for i, elm in enumrate(framesizes):
                     elm = framesizes[i]
                     key = elm["key"]
                     print(f"{i}: {key}")
                 break
-                # startShots(server_ip)
             else:
                 await asyncio.sleep(5.0)
 
@@ -155,12 +154,7 @@ class Connection:
             
             break
 
-
         startShots(server_ip, fs)
-
-        # print(f"Connecting to {devices[response].name}")
-        # self.connected_device = devices[response]
-        # self.client = BleakClient(devices[response].address, loop=self.loop)
 
     def record_time_info(self):
         present_time = datetime.now()

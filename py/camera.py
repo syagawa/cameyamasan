@@ -22,6 +22,8 @@ framesizes = [
   { "key": "fs_1920_1080", "value": "14", "default": False}
 ]
 
+quality = "4"
+
 def shot(ip, dir, fs):
   print("shot")
 
@@ -37,12 +39,12 @@ def shot(ip, dir, fs):
       framesize_default = val
 
   if framesize == None:
-    framesize = framesize_default
+      framesize = framesize_default
 
 
   params = {
     "fs": framesize,
-    "q": "4"
+    "q": quality
   }
 
   capture_url = f"http://{ip}/cap"
