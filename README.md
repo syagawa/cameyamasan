@@ -23,7 +23,9 @@ git clone this repository to Linux machine.
 ### Camera
 
 1. Open this directory by Arduino IDE
-2. Compile to ESP32
+2. Connect ESP32 Camera to PC.
+3. Compile to ESP32
+
 
 ### Controller
 
