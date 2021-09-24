@@ -70,6 +70,7 @@ class Connection:
                 await self.connect()
             else:
                 await self.select_device()
+                await self.set_shot_settings()
                 await asyncio.sleep(10.0)
 
     async def connect(self):
@@ -126,7 +127,7 @@ class Connection:
         self.connected_device = devices[response]
         self.client = BleakClient(devices[response].address, loop=self.loop)
 
-    async def select_shot(self):
+    async def set_shot_settings(self):
         framesizes = camera.framesizes
         while True:
             if server_is_started:
