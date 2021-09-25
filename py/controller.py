@@ -70,7 +70,6 @@ class Connection:
                 await self.connect()
             else:
                 await self.select_device()
-                await self.set_shot_settings()
                 await asyncio.sleep(10.0)
 
     async def connect(self):
@@ -126,19 +125,6 @@ class Connection:
         print(f"Connecting to {devices[response].name}")
         self.connected_device = devices[response]
         self.client = BleakClient(devices[response].address, loop=self.loop)
-
-    async def set_shot_settings(self):
-        framesizes = camera.framesizes
-        while True:
-            if server_is_started:
-                print("Please select framesize by number: ")
-                for i, elm in enumrate(framesizes):
-                    elm = framesizes[i]
-                    key = elm["key"]
-                    print(f"{i}: {key}")
-                break
-            else:
-                await asyncio.sleep(5.0)
 
         fs = None
         while True:
@@ -230,7 +216,32 @@ async def send_wifi_info(connection: Connection):
         else:
             await asyncio.sleep(1.0)
 
+async def set_shot_settings(self):
+    framesizes = camera.framesizes
+    while True:
+        if server_is_started:
+            print("Please select framesize by number: ")
+            for i, elm in enumrate(framesizes):
+                elm = framesizes[i]
+                key = elm["key"]
+                print(f"{i}: {key}")
+            break
+        else:
+            await asyncio.sleep(5.0)
+
 async def main():
+    framesizes = camera.framesizes
+    while True:
+        if server_is_started:
+            print("Please select framesize by number: ")
+            for i, elm in enumrate(framesizes):
+                elm = framesizes[i]
+                key = elm["key"]
+                print(f"{i}: {key}")
+            break
+        else:
+            await asyncio.sleep(5.0)
+
     flg = True
     while flg:
         # YOUR APP CODE WOULD GO HERE.
