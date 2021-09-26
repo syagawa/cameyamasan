@@ -230,17 +230,7 @@ async def set_shot_settings(self):
             await asyncio.sleep(5.0)
 
 async def main():
-    framesizes = camera.framesizes
-    while True:
-        if server_is_started:
-            print("Please select framesize by number: ")
-            for i, elm in enumrate(framesizes):
-                elm = framesizes[i]
-                key = elm["key"]
-                print(f"{i}: {key}")
-            break
-        else:
-            await asyncio.sleep(5.0)
+    await set_shot_settings()
 
     flg = True
     while flg:
