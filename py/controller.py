@@ -216,7 +216,7 @@ async def send_wifi_info(connection: Connection):
         else:
             await asyncio.sleep(1.0)
 
-async def set_shot_settings(self):
+async def set_shot_settings():
     framesizes = camera.framesizes
     while True:
         if server_is_started:
@@ -229,9 +229,7 @@ async def set_shot_settings(self):
         else:
             await asyncio.sleep(5.0)
 
-async def main():
-    await set_shot_settings()
-
+async def shot_start():
     flg = True
     while flg:
         # YOUR APP CODE WOULD GO HERE.
@@ -246,8 +244,13 @@ async def main():
                 # sys.exit(1)
                 flg = False
                 raise Exception("End process")
-
         await asyncio.sleep(5)
+
+
+async def main():
+    await set_shot_settings()
+    await shot_start()
+
 
 
 
