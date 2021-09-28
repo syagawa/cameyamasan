@@ -141,7 +141,7 @@ class Connection:
             
             break
 
-        startShots(server_ip, fs)
+        cameraShots(server_ip, fs)
 
     def record_time_info(self):
         present_time = datetime.now()
@@ -175,7 +175,7 @@ class Connection:
             self.clear_lists()
 
 
-def startShots(ip, fs):
+def cameraShots(ip, fs):
     global shot_started
     if shot_started == False:
         shot_started = True
@@ -236,7 +236,7 @@ async def shot_start():
         if server_is_started:
             print(f"server is started ! ip: {server_ip}")
             try:
-                startShots(server_ip)
+                cameraShots(server_ip)
             except KeyboardInterrupt:
                 print("except KeyboardInterrupt in main()")
             finally:
