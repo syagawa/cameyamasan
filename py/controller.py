@@ -236,7 +236,17 @@ async def shot_start():
         if server_is_started:
             print(f"server is started ! ip: {server_ip}")
             try:
-                cameraShots(server_ip)
+                # cameraShots(server_ip)
+                global shot_started
+                if shot_started == False:
+                    shot_started = True
+                    print("shot started!")
+                    res = camera.shots(shot_times, shot_interval, ip, fs)
+                    print("shot ended!")
+                    if res == True:
+                        connection.cleanup()
+
+
             except KeyboardInterrupt:
                 print("except KeyboardInterrupt in main()")
             finally:
