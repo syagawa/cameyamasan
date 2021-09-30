@@ -175,16 +175,6 @@ class Connection:
             self.clear_lists()
 
 
-def cameraShots(ip, fs):
-    global shot_started
-    if shot_started == False:
-        shot_started = True
-        print("shot started!")
-        res = camera.shots(shot_times, shot_interval, ip, fs)
-        print("shot ended!")
-        if res == True:
-            connection.cleanup()
-
 def finally_process():
     print("in finally_process")
     loop.run_until_complete(connection.cleanup())
@@ -229,14 +219,13 @@ async def set_shot_settings():
         else:
             await asyncio.sleep(5.0)
 
-async def shot_start():
+async def start_shots():
     flg = True
     while flg:
         # YOUR APP CODE WOULD GO HERE.
         if server_is_started:
             print(f"server is started ! ip: {server_ip}")
             try:
-                # cameraShots(server_ip)
                 global shot_started
                 if shot_started == False:
                     shot_started = True
@@ -259,7 +248,7 @@ async def shot_start():
 
 async def main():
     await set_shot_settings()
-    await shot_start()
+    await start_shots()
 
 
 
