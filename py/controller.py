@@ -206,7 +206,7 @@ async def send_wifi_info(connection: Connection):
         else:
             await asyncio.sleep(1.0)
 
-async def set_shot_settings():
+async def set_camera_shot_settings():
     framesizes = camera.framesizes
     while True:
         if server_is_started:
@@ -247,7 +247,7 @@ async def start_shots():
 
 
 async def main():
-    await set_shot_settings()
+    await set_camera_shot_settings()
     await start_shots()
 
 
