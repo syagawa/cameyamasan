@@ -211,7 +211,7 @@ async def set_camera_shot_settings():
     while True:
         if server_is_started:
             print("Please select framesize by number: ")
-            for i, elm in enumrate(framesizes):
+            for i, elm in enumerate(framesizes):
                 elm = framesizes[i]
                 key = elm["key"]
                 print(f"{i}: {key}")
