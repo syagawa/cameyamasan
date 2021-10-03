@@ -126,23 +126,6 @@ class Connection:
         self.connected_device = devices[response]
         self.client = BleakClient(devices[response].address, loop=self.loop)
 
-        fs = None
-        while True:
-            response = await ainput("Select framesize number: ")
-            val = None
-            try:
-                response = int(response.strip())
-                val = framesizes[response]["value"]
-            except:
-                print("Unknown Number. The default value will be selected.")
-            
-            if val:
-                fs = val
-            
-            break
-
-        cameraShots(server_ip, fs)
-
     def record_time_info(self):
         present_time = datetime.now()
         self.rx_timestamps.append(present_time)
@@ -219,6 +202,23 @@ async def set_camera_shot_settings():
         else:
             await asyncio.sleep(5.0)
 
+    fs = None
+    while True:
+        response = await ainput("Select framesize number: ")
+        val = None
+        try:
+            response = int(response.strip())
+            val = framesizes[response]["value"]
+        except:
+            print("Unknown Number. The default value will be selected.")
+        
+        if val:
+            fs = val
+        
+        break
+
+
+
 async def start_shots():
     flg = True
     while flg:
@@ -230,7 +230,7 @@ async def start_shots():
                 if shot_started == False:
                     shot_started = True
                     print("shot started!")
-                    res = camera.shots(shot_times, shot_interval, ip, fs)
+                    res = camera.shots(shot_times, shot_interval, server_ip, fs)
                     print("shot ended!")
                     if res == True:
                         connection.cleanup()
