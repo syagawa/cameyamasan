@@ -24,6 +24,7 @@ server_ip = ""
 shot_started = False
 shot_times = camera_shot_times
 shot_interval = camera_shot_interval
+framesize_value = None
 
 
 class Connection:
@@ -202,18 +203,15 @@ async def set_camera_shot_settings():
         else:
             await asyncio.sleep(5.0)
 
-    fs = None
+    global framesize_value
     while True:
         response = await ainput("Select framesize number: ")
-        val = None
         try:
             response = int(response.strip())
-            val = framesizes[response]["value"]
+            tgt = framesizes[i]
+            framesize_value = tgt["value"]
         except:
             print("Unknown Number. The default value will be selected.")
-        
-        if val:
-            fs = val
         
         break
 
