@@ -228,7 +228,7 @@ async def start_shots():
                 if shot_started == False:
                     shot_started = True
                     print("shot started!")
-                    res = camera.shots(shot_times, shot_interval, server_ip, fs)
+                    res = camera.shots(shot_times, shot_interval, server_ip, framesize_value)
                     print("shot ended!")
                     if res == True:
                         connection.cleanup()
