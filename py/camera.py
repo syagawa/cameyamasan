@@ -25,14 +25,15 @@ framesizes = [
 quality = "4"
 
 def shot(ip, dir, fs):
-  print("shot")
 
   framesize = None
   framesize_default = None
+  key = ""
   for elm in framesizes:
     val = elm["value"]
     if val == fs:
       framesize = fs
+      key = elm["key"]
       break
 
     if elm["default"]:
@@ -41,6 +42,7 @@ def shot(ip, dir, fs):
   if framesize == None:
       framesize = framesize_default
 
+  print(f"shot {framesize}, {quality}, {key}")
 
   params = {
     "fs": framesize,
