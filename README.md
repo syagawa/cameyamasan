@@ -12,7 +12,9 @@ Wi-Fi ESP32 Camera controlled by python on Linux.
         * python3
         * Wi-Fi
         * BLE
-        * Arduino IDE
+
+* PC(Windows or Mac or Linux)
+    * Arduino IDE
 
 
 ## install
