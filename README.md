@@ -13,7 +13,7 @@ Wi-Fi ESP32 Camera controlled by python on Linux.
         * Wi-Fi
         * BLE
 
-* PC(Windows or Mac or Linux)
+* PC(Windows or Mac or Linux) for compiling to camera
     * Arduino IDE
 
 
@@ -25,6 +25,7 @@ git clone this repository to Linux machine.
 
 ### Camera
 
+@PC
 1. Open this directory by Arduino IDE
 2. Connect ESP32 Camera to PC.
 3. Compile to ESP32 Camera
@@ -32,6 +33,7 @@ git clone this repository to Linux machine.
 
 ### Controller
 
+@controller
 1. Open this directory
 2. $ cp py/variables_sample.py py/variables.py
 3. Write ssid and ps to py/variables.py
@@ -39,6 +41,7 @@ git clone this repository to Linux machine.
 
 ## Using Linux as a Wi-Fi access point
 
+@controller
 1. Start Linux
 2. install
 ```bash
