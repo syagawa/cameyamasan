@@ -1,4 +1,4 @@
-# ESP32 Camera with Python
+# ESP32 Camera controlled by Python
 
 Wi-Fi ESP32 Camera controlled by python on Linux.
 
@@ -53,5 +53,5 @@ $ sudo apt install isc-dhcp-server
 
 ## usage
 
-1. Start esp32 by connect power.
+1. Start esp32 camera by connect power.
 2. `$ python3 py/controller.py` @Controller
