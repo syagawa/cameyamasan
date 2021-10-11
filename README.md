@@ -17,31 +17,24 @@ Wi-Fi ESP32 Camera controlled by python on Linux.
     * Arduino IDE
 
 
-## install
+## Compile source to Camera @PC
 
-git clone this repository to Linux machine.
-
-## settings
-
-### Camera
-
-@PC
-1. Open this directory by Arduino IDE
-2. Connect ESP32 Camera to PC.
-3. Compile to ESP32 Camera
+1. git clone this repository to Linux machine.
+2. Open this directory by Arduino IDE
+3. Connect ESP32 Camera to PC.
+4. Compile to ESP32 Camera
 
 
-### Controller
+## Settings @Controller
 
-@controller
-1. Open this directory
-2. $ cp py/variables_sample.py py/variables.py
-3. Write ssid and ps to py/variables.py
+1. git clone this repository to Linux machine.
+2. Open this directory
+3. $ cp py/variables_sample.py py/variables.py
+4. Write ssid and ps to py/variables.py
 
 
-## Using Linux as a Wi-Fi access point
+### Using Linux as a Wi-Fi access point
 
-@controller
 1. Start Linux
 2. install
 ```bash
@@ -51,7 +44,7 @@ $ sudo apt install hostapd
 $ sudo apt install isc-dhcp-server
 ```
 
-## usage
+## Usage
 
 1. Start esp32 camera by connect power.
 2. `$ python3 py/controller.py` @Controller
