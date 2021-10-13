@@ -97,9 +97,16 @@ class Connection:
     async def select_device(self):
         print("Bluetooh LE hardware warming up...0")
         await asyncio.sleep(2.0) # Wait for BLE to initialize.
+    
         print("Bluetooh LE hardware warming up...1")
 
-        devices = await discover()
+        devices = None
+        try:
+            devices = await discover()
+        except Exception as e:
+            print(e)
+
+
         print("Bluetooh LE hardware warming up...2")
 
         print("Please select device: ")
