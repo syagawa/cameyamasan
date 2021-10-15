@@ -23,8 +23,12 @@ framesizes = [
 ]
 
 quality = "4"
+shot_count = 0
 
 def shot(ip, dir, fs):
+
+  global shot_count
+
   print("fs:", fs)
   framesize = None
   framesize_default = None
@@ -62,6 +66,10 @@ def shot(ip, dir, fs):
 
   req = urllib.request.Request('{}?{}'.format(capture_url, urllib.parse.urlencode(params)))
 
+
+  if shot_count == 0:
+    sleep(1)
+
   # shot
   with urllib.request.urlopen(req) as res:
     body = res.read()
@@ -69,6 +77,8 @@ def shot(ip, dir, fs):
     filename = "{0}/{1}.jpg".format(dir, t)
     with open(filename, mode='wb') as f:
       f.write(body)
+  
+  shot_count = shot_count + 1
 
 
 def shots(times, interval, ip, fs):
