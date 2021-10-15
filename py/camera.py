@@ -25,7 +25,7 @@ framesizes = [
 quality = "4"
 
 def shot(ip, dir, fs):
-
+  print("fs:", fs)
   framesize = None
   framesize_default = None
   key = ""

@@ -213,8 +213,9 @@ async def set_camera_shot_settings():
         response = await ainput("Select framesize number: ")
         try:
             response = int(response.strip())
-            tgt = framesizes[i]
+            tgt = framesizes[response]
             framesize_value = tgt["value"]
+            print("framesize_value", framesize_value)
         except:
             print("Unknown Number. The default value will be selected.")
         
