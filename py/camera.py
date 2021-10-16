@@ -67,9 +67,6 @@ def shot(ip, dir, fs):
   req = urllib.request.Request('{}?{}'.format(capture_url, urllib.parse.urlencode(params)))
 
 
-  if shot_count == 0:
-    sleep(1)
-
   # shot
   with urllib.request.urlopen(req) as res:
     body = res.read()
