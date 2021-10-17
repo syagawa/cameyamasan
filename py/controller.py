@@ -78,7 +78,7 @@ class Connection:
             return
         try:
             await self.client.connect()
-            self.connected = await self.client.is_connected()
+            self.connected = self.client.is_connected()
             if self.connected:
                 print(F"Connected to {self.connected_device.name}")
                 self.client.set_disconnected_callback(self.on_disconnect)
