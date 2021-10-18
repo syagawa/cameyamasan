@@ -129,8 +129,12 @@ class Connection:
             response = target_index
 
         print(f"Connecting to {devices[response].name}")
-        self.connected_device = devices[response]
-        self.client = BleakClient(devices[response].address, loop=self.loop)
+        try:
+            self.connected_device = devices[response]
+            self.client = BleakClient(devices[response].address, loop=self.loop)
+        except:
+            print("failed connecting device")
+            
 
     def record_time_info(self):
         present_time = datetime.now()
