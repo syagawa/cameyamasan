@@ -155,8 +155,10 @@ static esp_err_t capture_with_params_handler(httpd_req_t *req){
 
     }
 
+    // b'{"framesize":5,"quality":10,"brightness":1,"contrast":0,"saturation":-2,"sharpness":1,"special_effect":0,"wb_mode":0,"awb":1,"awb_gain":0,"aec":1,"aec2":0,"ae_level":0,"aec_value":784,"agc":1,"agc_gain":9,"gainceiling":248,"bpc":1,"wpc":1,"raw_gma":1,"lenc":1,"vflip":1,"hmirror":0,"dcw":1,"colorbar":0,"face_detect":0,"face_enroll":0,"face_recognize":0}'
+
     sensor->set_contrast(sensor, 0);
-    sensor->set_brightness(sensor, 0);
+    sensor->set_brightness(sensor, 1);
     sensor->set_saturation(sensor, 0);
     sensor->set_whitebal(sensor,1);//awb
     sensor->set_sharpness(sensor,0);//awb
