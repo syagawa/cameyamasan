@@ -10,6 +10,7 @@ Wi-Fi ESP32 Camera controlled by python on Linux.
 * Controller
     * Linux machine (e.g. Raspberry Pi)
         * python3
+            * pillow
         * Wi-Fi
         * BLE
 
