@@ -9,8 +9,9 @@ Wi-Fi ESP32 Camera controlled by python on Linux.
 
 * Controller
     * Linux machine (e.g. Raspberry Pi)
-        * python3
+        * python3 / pip3
             * pillow
+            * bleak
         * Wi-Fi
         * BLE
 
@@ -30,9 +31,9 @@ Wi-Fi ESP32 Camera controlled by python on Linux.
 
 1. git clone this repository to Linux machine.
 2. Open this directory
-3. $ cp py/variables_sample.py py/variables.py
+3. `$ cp py/variables_sample.py py/variables.py`
 4. Write ssid and ps to py/variables.py
-5. pip3 install bleak
+5. `$ pip3 install bleak`
 
 
 ### Using Linux as a Wi-Fi access point
