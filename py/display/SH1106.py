@@ -127,8 +127,6 @@ class SH1106(object):
                     
                     
 
-	
-
     def clear(self):
         """Clear contents of image buffer"""
         _buffer = [0xff]*(self.width * self.height//8)
