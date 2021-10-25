@@ -22,8 +22,11 @@ h = 64
 rows = 8
 columns = 21
 
-white = 255
-black = 0
+# white = 255
+# black = 0
+white = 0
+black = 255
+
 
 pad = -2
 top = pad
@@ -48,7 +51,7 @@ font = ImageFont.load_default()
 
 def drawBlackRect():
   one_line = h / rows
-  draw.rectangle((0, 0, w, h), outline=0, fill=black)
+  draw.rectangle((0, 0, w, h), outline=black, fill=black)
 
 def drawBlackLines(start, lines):
   one_line = h / rows
