@@ -22,8 +22,6 @@ h = 64
 rows = 8
 columns = 21
 
-# white = 255
-# black = 0
 white = 0
 black = 255
 
@@ -41,9 +39,6 @@ d = SH1106.SH1106()
 d.Init()
 d.clear()
 
-# d.fill(0)
-# d.ShowImage(0)
-# d.show()
 image = Image.new("1", (d.width, d.height), "grey")
 draw = ImageDraw.Draw(image)
 font = ImageFont.load_default()
@@ -61,7 +56,7 @@ def drawBlackLines(start, lines):
   draw.rectangle((0, start_y, w, one_line * lines), outline=0, fill=black)
 
 def drawWhiteRect(lines=line_height):
-  draw.rectangle((0, 0, w, h), outline=0, fill=white)
+  draw.rectangle((0, 0, w, h), outline=black, fill=white)
 
 def showMessage(mes, line):
   l = line - 1
