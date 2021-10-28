@@ -115,6 +115,3 @@ def show_info():
     showMessage(arr[i], i + 1)
     time.sleep(0.5)
 
-
-# test()
-show_info()

@@ -60,3 +60,5 @@ def makeScreen(lines=max_rows):
   dic = { "add": add_messsage, "clear": clear_message}
   
   return dic
+
+display.show_info()
