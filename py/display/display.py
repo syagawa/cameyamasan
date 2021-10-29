@@ -15,7 +15,6 @@ from PIL import Image, ImageDraw, ImageFont
 # import adafruit_ssd1306
 import SH1106
 
-import platform
 
 display_reset = digitalio.DigitalInOut(board.D4)
 
@@ -101,17 +100,4 @@ def test():
     print("loop")
 
 
-def show_info():
-  arr = []
-  uname = platform.uname()
-  arr.append("%s: %s" % ("system", uname.system))
-  arr.append("%s: %s" % ("node", uname.node))
-  arr.append("%s: %s" % ("release", uname.release))
-  arr.append("%s: %s" % ("version", uname.version))
-  arr.append("%s: %s" % ("machine", uname.machine))
-  arr.append("%s: %s" % ("processor", uname.processor))
-
-  for i in range(len(arr)):
-    showMessage(arr[i], i + 1)
-    time.sleep(0.5)
 
