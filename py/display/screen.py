@@ -59,7 +59,7 @@ def makeScreen(lines=max_rows):
   def clear_message():
     clear(index)
 
-  dic = { "add": add_messsage, "clear": clear_message}
+  dic = { "add": add_messsage, "clear": clear_message, "showw": show }
   
   return dic
 
@@ -78,4 +78,18 @@ def show_info():
     display.showMessage(arr[i], i + 1)
     time.sleep(0.5)
 
-show_info()
+
+def show_info2():
+
+  uname = platform.uname()
+  add(0, "%s: %s" % ("system", uname.system))
+  add(1, "%s: %s" % ("node", uname.node))
+  add(2, "%s: %s" % ("release", uname.release))
+  add(3, "%s: %s" % ("version", uname.version))
+  add(4, "%s: %s" % ("machine", uname.machine))
+  add(5, "%s: %s" % ("processor", uname.processor))
+  show()
+
+
+
+show_info2()
