@@ -81,6 +81,7 @@ def show_info():
 
 def show_info2():
 
+  s = makeScreen()
   uname = platform.uname()
   add(0, "%s: %s" % ("system", uname.system))
   add(1, "%s: %s" % ("node", uname.node))
@@ -89,7 +90,6 @@ def show_info2():
   add(4, "%s: %s" % ("machine", uname.machine))
   add(5, "%s: %s" % ("processor", uname.processor))
   show()
-
 
 
 show_info2()
