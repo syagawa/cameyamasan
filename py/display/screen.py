@@ -11,6 +11,7 @@ columns = info["columns"]
 max_rows = rows
 use_rows = 0
 screens = []
+screen_index = 0
 
 def getUsableRows():
   n = max_rows - use_rows
@@ -46,18 +47,18 @@ def clear(index):
 def makeScreen(lines=max_rows):
   if lines > getUsableRows():
     return -1
-  global use_rows
+  global use_rows, screen_index
   start = use_rows + 1
   end = start + lines - 1
   use_rows = use_rows + lines
   matrix = []
   o = { "start": start, "end": end, "matrix": matrix, "length": lines }
   screens.append(o)
-  index = len(screens) - 1
+  screen_index = len(screens) - 1
   def add_messsage(mes):
-    add(index, mes)
+    add(screen_index, mes)
   def clear_message():
-    clear(index)
+    clear(screen_index)
 
   dic = { "add": add_messsage, "clear": clear_message, "showw": show }
   
