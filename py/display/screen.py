@@ -56,9 +56,13 @@ def makeScreen(lines=max_rows):
   screens.append(o)
   screen_index = len(screens) - 1
   def add_messsage(mes):
+    global screen_index
     add(screen_index, mes)
+    screen_index = screen_index + 1
   def clear_message():
+    global screen_index
     clear(screen_index)
+    screen_index = screen_index - 1
 
   dic = { "add": add_messsage, "clear": clear_message, "showw": show }
   
@@ -84,12 +88,12 @@ def show_info2():
 
   s = makeScreen()
   uname = platform.uname()
-  add(0, "%s: %s" % ("system", uname.system))
-  add(1, "%s: %s" % ("node", uname.node))
-  add(2, "%s: %s" % ("release", uname.release))
-  add(3, "%s: %s" % ("version", uname.version))
-  add(4, "%s: %s" % ("machine", uname.machine))
-  add(5, "%s: %s" % ("processor", uname.processor))
+  s.add("%s: %s" % ("system", uname.system))
+  s.add("%s: %s" % ("node", uname.node))
+  s.add("%s: %s" % ("release", uname.release))
+  s.add("%s: %s" % ("version", uname.version))
+  s.add("%s: %s" % ("machine", uname.machine))
+  s.add("%s: %s" % ("processor", uname.processor))
   show()
 
 
