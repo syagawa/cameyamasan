@@ -54,9 +54,10 @@ def makeScreen(lines=max_rows):
   matrix = []
   o = { "start": start, "end": end, "matrix": matrix, "length": lines }
   screens.append(o)
-  screen_index = len(screens) - 1
+  screen_index = 0
   def add_messsage(mes):
     global screen_index
+
     add(screen_index, mes)
     screen_index = screen_index + 1
   def clear_message():
