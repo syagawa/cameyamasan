@@ -71,8 +71,8 @@ def showMessages(messages, start):
     l = start + i - 1
     mes = messages[i]
     draw.text( (x, top + (line_height * l) ), mes, font=font, fill=white)
-  d.image(image)
-  d.show()
+  d.ShowImage(d.getbuffer(image))
+  # d.show()
 
 
 

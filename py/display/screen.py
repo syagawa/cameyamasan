@@ -31,6 +31,11 @@ def show():
 def add(index, message):
   if index < 0:
     return
+  print("index: %s" % (index))
+  print("index: %s" % (index))
+  print("len: %s" % (len(screens)))
+  if index > (len(screens) - 1):
+    return
   sc = screens[index]
   sc["matrix"].append(message)
   max = sc["length"]
@@ -65,7 +70,7 @@ def makeScreen(lines=max_rows):
     clear(screen_index)
     screen_index = screen_index - 1
 
-  dic = { "add": add_messsage, "clear": clear_message, "showw": show }
+  dic = { "add": add_messsage, "clear": clear_message, "show": show }
   
   return dic
 
@@ -88,13 +93,14 @@ def show_info():
 def show_info2():
 
   s = makeScreen()
+  print(s)
   uname = platform.uname()
-  s.add("%s: %s" % ("system", uname.system))
-  s.add("%s: %s" % ("node", uname.node))
-  s.add("%s: %s" % ("release", uname.release))
-  s.add("%s: %s" % ("version", uname.version))
-  s.add("%s: %s" % ("machine", uname.machine))
-  s.add("%s: %s" % ("processor", uname.processor))
+  s["add"]("%s: %s" % ("system", uname.system))
+  s["add"]("%s: %s" % ("node", uname.node))
+  s["add"]("%s: %s" % ("release", uname.release))
+  s["add"]("%s: %s" % ("version", uname.version))
+  s["add"]("%s: %s" % ("machine", uname.machine))
+  s["add"]("%s: %s" % ("processor", uname.processor))
   show()
 
 
