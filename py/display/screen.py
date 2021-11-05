@@ -62,11 +62,12 @@ def makeScreen(lines=max_rows):
   screen_index = 0
   def add_messsage(mes):
     global screen_index
-
+    print("screen_index: %s" % screen_index)
     add(screen_index, mes)
     screen_index = screen_index + 1
   def clear_message():
     global screen_index
+    print("screen_index: %s" % screen_index)
     clear(screen_index)
     screen_index = screen_index - 1
 
