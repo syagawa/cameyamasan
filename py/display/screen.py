@@ -34,7 +34,11 @@ def add(index, message):
   print("index: %s" % (index))
   print("index: %s" % (index))
   print("len: %s" % (len(screens)))
-  sc = screens[index]
+  length = len(screens)
+  last_index = length - 1
+  # if last_index  < index:
+  #   return
+  sc = screens[last_index]
   sc["matrix"].append(message)
   max = sc["length"]
   if len(sc["matrix"]) > max:
