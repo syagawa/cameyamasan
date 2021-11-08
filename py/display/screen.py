@@ -34,11 +34,7 @@ def add(index, message):
   print("index: %s" % (index))
   print("index: %s" % (index))
   print("len: %s" % (len(screens)))
-  length = len(screens)
-  last_index = length - 1
-  # if last_index  < index:
-  #   return
-  sc = screens[last_index]
+  sc = screens[index]
   sc["matrix"].append(message)
   max = sc["length"]
   if len(sc["matrix"]) > max:
@@ -61,20 +57,15 @@ def makeScreen(lines=max_rows):
   matrix = []
   o = { "start": start, "end": end, "matrix": matrix, "length": lines }
   screens.append(o)
-  screen_index = 0
   def add_messsage(mes):
-    global screen_index
     print("screen_index: %s" % screen_index)
     add(screen_index, mes)
-    screen_index = screen_index + 1
   def clear_message():
-    global screen_index
     print("screen_index: %s" % screen_index)
     clear(screen_index)
-    screen_index = screen_index - 1
 
   dic = { "add": add_messsage, "clear": clear_message, "show": show }
-  
+  screen_index = screen_index + 1
   return dic
 
 
