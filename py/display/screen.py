@@ -69,7 +69,7 @@ def makeScreen(lines=max_rows):
   return dic
 
 
-def show_info():
+def show_info_():
   arr = []
   uname = platform.uname()
   arr.append("%s: %s" % ("system", uname.system))
@@ -84,18 +84,23 @@ def show_info():
     time.sleep(0.5)
 
 
-def show_info2():
+def show_info():
 
   s = makeScreen()
   print(s)
   uname = platform.uname()
+  s["add"]("1")
+  s["add"]("2")
+  s["add"]("3")
+  s["add"]("4")
+  s["add"]("5")
   s["add"]("%s: %s" % ("system", uname.system))
   s["add"]("%s: %s" % ("node", uname.node))
   s["add"]("%s: %s" % ("release", uname.release))
   s["add"]("%s: %s" % ("version", uname.version))
   s["add"]("%s: %s" % ("machine", uname.machine))
   s["add"]("%s: %s" % ("processor", uname.processor))
-  show()
+  s.show()
 
 
-show_info2()
+show_info()
