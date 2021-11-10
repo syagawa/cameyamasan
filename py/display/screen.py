@@ -11,7 +11,7 @@ columns = info["columns"]
 max_rows = rows
 use_rows = 0
 screens = []
-screen_index = 0
+screen_index = None
 
 def getUsableRows():
   n = max_rows - use_rows
@@ -65,7 +65,10 @@ def makeScreen(lines=max_rows):
     clear(screen_index)
 
   dic = { "add": add_messsage, "clear": clear_message, "show": show }
-  screen_index = screen_index + 1
+  if screen_index == None:
+    screen_index =  0
+  else:
+    screen_index = screen_index + 1
   return dic
 
 
@@ -100,7 +103,7 @@ def show_info():
   s["add"]("%s: %s" % ("version", uname.version))
   s["add"]("%s: %s" % ("machine", uname.machine))
   s["add"]("%s: %s" % ("processor", uname.processor))
-  s.show()
+  s["show"]()
 
 
 show_info()
