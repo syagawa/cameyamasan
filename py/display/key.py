@@ -31,6 +31,12 @@ GPIO.setup(KEY3_PIN,        GPIO.IN, pull_up_down=GPIO.PUD_UP)      # Input with
 state = None
 pressed_pin = None
 
+
+def do_action(pressed_pin, state):
+    if state == "pressed":
+        print("%s %s" % (pressed_pin, state))
+
+
 def callback(pin, st):
     global state, pressed_pin
     old_state = state
@@ -45,7 +51,7 @@ def callback(pin, st):
             return
         else:
             pressed_pin = new_pressed_pin
-            print("%s %s" % (pressed_pin, state))
+            do_action(pressed_pin, state)
 
 
 while True:
