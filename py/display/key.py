@@ -16,6 +16,8 @@ KEY1_PIN       = 21
 KEY2_PIN       = 20
 KEY3_PIN       = 16
 
+key_names = { KEY_UP_PIN: "UP" }
+
 #init GPIO
 GPIO.setmode(GPIO.BCM) 
 GPIO.setup(KEY_UP_PIN,      GPIO.IN, pull_up_down=GPIO.PUD_UP)    # Input with pull-up
