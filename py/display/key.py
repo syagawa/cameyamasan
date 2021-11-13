@@ -16,7 +16,16 @@ KEY1_PIN       = 21
 KEY2_PIN       = 20
 KEY3_PIN       = 16
 
-key_names = { KEY_UP_PIN: "UP" }
+key_names = {
+    KEY_UP_PIN: "UP",
+    KEY_DOWN_PIN: "DOWN",
+    KEY_LEFT_PIN: "LEFT",
+    KEY_RIGHT_PIN: "RIGHT",
+    KEY_PRESS_PIN: "PRESS",
+    KEY1_PIN: "KEY1",
+    KEY2_PIN: "KEY2",
+    KEY3_PIN: "KEY3"
+}
 
 #init GPIO
 GPIO.setmode(GPIO.BCM) 
