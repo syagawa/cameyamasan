@@ -1,5 +1,6 @@
 
 import RPi.GPIO as GPIO
+import time
 
 #GPIO define
 RST_PIN        = 25
@@ -45,7 +46,8 @@ pressed_pin = None
 
 def do_action(pressed_pin, state):
     if state == "pressed":
-        print("%s %s" % (pressed_pin, state))
+        name = key_names[pressed_pin]
+        print("%s %s" % (name, state))
 
 
 def callback(pin, st):
@@ -107,4 +109,6 @@ while True:
         callback(KEY3_PIN, "released")
     else: # button is pressed:
         callback(KEY3_PIN, "pressed")
+    
+    time.sleep(0.01)
 
