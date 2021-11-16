@@ -60,11 +60,10 @@ def callback(pin, st):
         return
     else:
         state = new_state
+        pressed_pin = new_pressed_pin
         if old_pressed_pin == new_pressed_pin:
-            pressed_pin = new_pressed_pin
             return
         else:
-            pressed_pin = new_pressed_pin
             do_action(pressed_pin, state)
 
 
