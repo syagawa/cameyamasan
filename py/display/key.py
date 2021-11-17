@@ -45,70 +45,67 @@ pressed_pin = None
 
 
 def do_action(pressed_pin, state):
-    if state == "pressed":
-        name = key_names[pressed_pin]
-        print("%s %s" % (name, state))
+    name = key_names[pressed_pin]
+    print("%s %s" % (name, "pressed"))
 
 
-def callback(pin, st):
-    global state, pressed_pin
-    old_state = state
-    new_state = st
+def callback(pin):
+    global pressed_pin
     old_pressed_pin = pressed_pin
     new_pressed_pin = pin
-    if old_state == new_state:
+    pressed_pin = new_pressed_pin
+    if old_pressed_pin == new_pressed_pin:
         return
     else:
-        state = new_state
-        pressed_pin = new_pressed_pin
-        if old_pressed_pin == new_pressed_pin:
-            return
-        else:
-            do_action(pressed_pin, state)
+        do_action(pressed_pin, state)
+
+def release(pin):
+    global pressed_pin
+    if pressed_pin == pin:
+        pressed_pin = None
 
 
 while True:
-    # with canvas(device) as draw:
-    if GPIO.input(KEY_UP_PIN): # button is released
-        callback(KEY_UP_PIN, "released")
-    else: # button is pressed:
-        callback(KEY_UP_PIN, "pressed")
+    if GPIO.input(KEY_UP_PIN) == GPIO.LOW:
+        callback(KEY_UP_PIN)
+    elif GPIO.input(KEY_UP_PIN) == GPIO.HIGH:
+        release(KEY_UP_PIN)
 
-    if GPIO.input(KEY_LEFT_PIN): # button is released
-        callback(KEY_LEFT_PIN, "released")
-    else: # button is pressed:
-        callback(KEY_LEFT_PIN, "pressed")
+    if GPIO.input(KEY_LEFT_PIN) == GPIO.LOW:
+        callback(KEY_LEFT_PIN)
+    elif GPIO.input(KEY_LEFT_PIN) == GPIO.HIGH:
+        release(KEY_LEFT_PIN)
 
-    if GPIO.input(KEY_RIGHT_PIN): # button is released
-        callback(KEY_RIGHT_PIN, "released")
-    else: # button is pressed:
-        callback(KEY_RIGHT_PIN, "pressed")
+    if GPIO.input(KEY_RIGHT_PIN) == GPIO.LOW:
+        callback(KEY_RIGHT_PIN)
+    elif GPIO.input(KEY_RIGHT_PIN) == GPIO.HIGH:
+        release(KEY_RIGHT_PIN)
 
-    if GPIO.input(KEY_DOWN_PIN): # button is released
-        callback(KEY_DOWN_PIN, "released")
-    else: # button is pressed:
-        callback(KEY_DOWN_PIN, "pressed")
+    if GPIO.input(KEY_DOWN_PIN) == GPIO.LOW:
+        callback(KEY_DOWN_PIN)
+    elif GPIO.input(KEY_DOWN_PIN) == GPIO.HIGH:
+        release(KEY_DOWN_PIN)
 
-    if GPIO.input(KEY_PRESS_PIN): # button is released
-        callback(KEY_PRESS_PIN, "released")
-    else: # button is pressed:
-        callback(KEY_PRESS_PIN, "pressed")
+    if GPIO.input(KEY_PRESS_PIN) == GPIO.LOW:
+        callback(KEY_PRESS_PIN)
+    elif GPIO.input(KEY_PRESS_PIN) == GPIO.HIGH:
+        release(KEY_PRESS_PIN)
 
-    if GPIO.input(KEY1_PIN): # button is released
-        callback(KEY1_PIN, "released")
-    else: # button is pressed:
-        callback(KEY1_PIN, "pressed")
+    if GPIO.input(KEY1_PIN) == GPIO.LOW:
+        callback(KEY1_PIN)
+    elif GPIO.input(KEY1_PIN) == GPIO.HIGH:
+        release(KEY1_PIN)
 
 
-    if GPIO.input(KEY2_PIN): # button is released
-        callback(KEY2_PIN, "released")
-    else: # button is pressed:
-        callback(KEY2_PIN, "pressed")
+    if GPIO.input(KEY2_PIN) == GPIO.LOW:
+        callback(KEY2_PIN)
+    elif GPIO.input(KEY2_PIN) == GPIO.HIGH:
+        release(KEY2_PIN)
 
-    if GPIO.input(KEY3_PIN): # button is released
-        callback(KEY3_PIN, "released")
-    else: # button is pressed:
-        callback(KEY3_PIN, "pressed")
+    if GPIO.input(KEY3_PIN) == GPIO.LOW:
+        callback(KEY3_PIN)
+    elif GPIO.input(KEY3_PIN) == GPIO.HIGH:
+        release(KEY3_PIN)
     
-    time.sleep(0.01)
+    time.sleep(0.1)
 
