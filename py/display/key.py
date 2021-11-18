@@ -49,7 +49,7 @@ def do_action(pressed_pin, state):
     print("%s %s" % (name, "pressed"))
 
 
-def callback(pin):
+def press(pin):
     global pressed_pin
     old_pressed_pin = pressed_pin
     new_pressed_pin = pin
@@ -67,43 +67,43 @@ def release(pin):
 
 while True:
     if GPIO.input(KEY_UP_PIN) == GPIO.LOW:
-        callback(KEY_UP_PIN)
+        press(KEY_UP_PIN)
     elif GPIO.input(KEY_UP_PIN) == GPIO.HIGH:
         release(KEY_UP_PIN)
 
     if GPIO.input(KEY_LEFT_PIN) == GPIO.LOW:
-        callback(KEY_LEFT_PIN)
+        press(KEY_LEFT_PIN)
     elif GPIO.input(KEY_LEFT_PIN) == GPIO.HIGH:
         release(KEY_LEFT_PIN)
 
     if GPIO.input(KEY_RIGHT_PIN) == GPIO.LOW:
-        callback(KEY_RIGHT_PIN)
+        press(KEY_RIGHT_PIN)
     elif GPIO.input(KEY_RIGHT_PIN) == GPIO.HIGH:
         release(KEY_RIGHT_PIN)
 
     if GPIO.input(KEY_DOWN_PIN) == GPIO.LOW:
-        callback(KEY_DOWN_PIN)
+        press(KEY_DOWN_PIN)
     elif GPIO.input(KEY_DOWN_PIN) == GPIO.HIGH:
         release(KEY_DOWN_PIN)
 
     if GPIO.input(KEY_PRESS_PIN) == GPIO.LOW:
-        callback(KEY_PRESS_PIN)
+        press(KEY_PRESS_PIN)
     elif GPIO.input(KEY_PRESS_PIN) == GPIO.HIGH:
         release(KEY_PRESS_PIN)
 
     if GPIO.input(KEY1_PIN) == GPIO.LOW:
-        callback(KEY1_PIN)
+        press(KEY1_PIN)
     elif GPIO.input(KEY1_PIN) == GPIO.HIGH:
         release(KEY1_PIN)
 
 
     if GPIO.input(KEY2_PIN) == GPIO.LOW:
-        callback(KEY2_PIN)
+        press(KEY2_PIN)
     elif GPIO.input(KEY2_PIN) == GPIO.HIGH:
         release(KEY2_PIN)
 
     if GPIO.input(KEY3_PIN) == GPIO.LOW:
-        callback(KEY3_PIN)
+        press(KEY3_PIN)
     elif GPIO.input(KEY3_PIN) == GPIO.HIGH:
         release(KEY3_PIN)
     
