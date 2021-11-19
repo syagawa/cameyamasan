@@ -42,6 +42,7 @@ GPIO.setup(KEY3_PIN,        GPIO.IN, pull_up_down=GPIO.PUD_UP)      # Input with
 
 state = None
 pressed_pin = None
+sleep_time = 0.1
 
 
 def do_action(pressed_pin, state):
@@ -64,48 +65,49 @@ def release(pin):
     if pressed_pin == pin:
         pressed_pin = None
 
+def main():
+    while True:
+        if GPIO.input(KEY_UP_PIN) == GPIO.LOW:
+            press(KEY_UP_PIN)
+        elif GPIO.input(KEY_UP_PIN) == GPIO.HIGH:
+            release(KEY_UP_PIN)
 
-while True:
-    if GPIO.input(KEY_UP_PIN) == GPIO.LOW:
-        press(KEY_UP_PIN)
-    elif GPIO.input(KEY_UP_PIN) == GPIO.HIGH:
-        release(KEY_UP_PIN)
+        if GPIO.input(KEY_LEFT_PIN) == GPIO.LOW:
+            press(KEY_LEFT_PIN)
+        elif GPIO.input(KEY_LEFT_PIN) == GPIO.HIGH:
+            release(KEY_LEFT_PIN)
 
-    if GPIO.input(KEY_LEFT_PIN) == GPIO.LOW:
-        press(KEY_LEFT_PIN)
-    elif GPIO.input(KEY_LEFT_PIN) == GPIO.HIGH:
-        release(KEY_LEFT_PIN)
+        if GPIO.input(KEY_RIGHT_PIN) == GPIO.LOW:
+            press(KEY_RIGHT_PIN)
+        elif GPIO.input(KEY_RIGHT_PIN) == GPIO.HIGH:
+            release(KEY_RIGHT_PIN)
 
-    if GPIO.input(KEY_RIGHT_PIN) == GPIO.LOW:
-        press(KEY_RIGHT_PIN)
-    elif GPIO.input(KEY_RIGHT_PIN) == GPIO.HIGH:
-        release(KEY_RIGHT_PIN)
+        if GPIO.input(KEY_DOWN_PIN) == GPIO.LOW:
+            press(KEY_DOWN_PIN)
+        elif GPIO.input(KEY_DOWN_PIN) == GPIO.HIGH:
+            release(KEY_DOWN_PIN)
 
-    if GPIO.input(KEY_DOWN_PIN) == GPIO.LOW:
-        press(KEY_DOWN_PIN)
-    elif GPIO.input(KEY_DOWN_PIN) == GPIO.HIGH:
-        release(KEY_DOWN_PIN)
+        if GPIO.input(KEY_PRESS_PIN) == GPIO.LOW:
+            press(KEY_PRESS_PIN)
+        elif GPIO.input(KEY_PRESS_PIN) == GPIO.HIGH:
+            release(KEY_PRESS_PIN)
 
-    if GPIO.input(KEY_PRESS_PIN) == GPIO.LOW:
-        press(KEY_PRESS_PIN)
-    elif GPIO.input(KEY_PRESS_PIN) == GPIO.HIGH:
-        release(KEY_PRESS_PIN)
-
-    if GPIO.input(KEY1_PIN) == GPIO.LOW:
-        press(KEY1_PIN)
-    elif GPIO.input(KEY1_PIN) == GPIO.HIGH:
-        release(KEY1_PIN)
+        if GPIO.input(KEY1_PIN) == GPIO.LOW:
+            press(KEY1_PIN)
+        elif GPIO.input(KEY1_PIN) == GPIO.HIGH:
+            release(KEY1_PIN)
 
 
-    if GPIO.input(KEY2_PIN) == GPIO.LOW:
-        press(KEY2_PIN)
-    elif GPIO.input(KEY2_PIN) == GPIO.HIGH:
-        release(KEY2_PIN)
+        if GPIO.input(KEY2_PIN) == GPIO.LOW:
+            press(KEY2_PIN)
+        elif GPIO.input(KEY2_PIN) == GPIO.HIGH:
+            release(KEY2_PIN)
 
-    if GPIO.input(KEY3_PIN) == GPIO.LOW:
-        press(KEY3_PIN)
-    elif GPIO.input(KEY3_PIN) == GPIO.HIGH:
-        release(KEY3_PIN)
-    
-    time.sleep(0.1)
+        if GPIO.input(KEY3_PIN) == GPIO.LOW:
+            press(KEY3_PIN)
+        elif GPIO.input(KEY3_PIN) == GPIO.HIGH:
+            release(KEY3_PIN)
+        
+        time.sleep(sleep_time)
 
+main()
