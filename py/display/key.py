@@ -65,7 +65,7 @@ def release(pin):
     if pressed_pin == pin:
         pressed_pin = None
 
-def main():
+def main(s_time):
     while True:
         if GPIO.input(KEY_UP_PIN) == GPIO.LOW:
             press(KEY_UP_PIN)
@@ -108,6 +108,6 @@ def main():
         elif GPIO.input(KEY3_PIN) == GPIO.HIGH:
             release(KEY3_PIN)
         
-        time.sleep(sleep_time)
+        time.sleep(s_time)
 
-main()
+main(sleep_time)
