@@ -97,7 +97,6 @@ def main(s_time):
         elif GPIO.input(KEY1_PIN) == GPIO.HIGH:
             release(KEY1_PIN)
 
-
         if GPIO.input(KEY2_PIN) == GPIO.LOW:
             press(KEY2_PIN)
         elif GPIO.input(KEY2_PIN) == GPIO.HIGH:
@@ -109,5 +108,8 @@ def main(s_time):
             release(KEY3_PIN)
         
         time.sleep(s_time)
+
+def start_standby(s_time):
+    return main(s_time)
 
 main(sleep_time)
