@@ -43,11 +43,13 @@ GPIO.setup(KEY3_PIN,        GPIO.IN, pull_up_down=GPIO.PUD_UP)      # Input with
 state = None
 pressed_pin = None
 sleep_time = 0.1
-
+action_callback = None
 
 def do_action(pressed_pin, state):
     name = key_names[pressed_pin]
     print("%s %s" % (name, "pressed"))
+    if action_callback != None:
+        action_callback()
 
 
 def press(pin):
@@ -65,7 +67,9 @@ def release(pin):
     if pressed_pin == pin:
         pressed_pin = None
 
-def main(s_time):
+def main(s_time, action):
+    global action_callback
+    action_callback = action
     while True:
         if GPIO.input(KEY_UP_PIN) == GPIO.LOW:
             press(KEY_UP_PIN)
@@ -109,7 +113,8 @@ def main(s_time):
         
         time.sleep(s_time)
 
-def start_standby(s_time):
-    return main(s_time)
+def start_standby(s_time, action_callback):
+    print("start standby key input")
+    main(s_time, action_callback)
 
 main(sleep_time)
