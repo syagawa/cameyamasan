@@ -67,7 +67,7 @@ def release(pin):
     if pressed_pin == pin:
         pressed_pin = None
 
-def main(s_time, action):
+async def main(s_time, action):
     global action_callback
     action_callback = action
     while True:
@@ -113,8 +113,8 @@ def main(s_time, action):
         
         time.sleep(s_time)
 
-def start_standby(s_time, action_callback):
+async def start_standby(s_time, action_callback):
     print("start standby key input")
-    main(s_time, action_callback)
+    await main(s_time, action_callback)
 
-main(sleep_time)
+# main(sleep_time)
