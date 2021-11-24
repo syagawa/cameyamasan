@@ -14,7 +14,6 @@ import json
 import camera
 
 
-
 com_start_server = '{"action":"start_server", "ssid": "%s", "pswd":"%s"}' % (ssid, ps)
 device_name = camera_device_name
 
