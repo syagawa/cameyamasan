@@ -117,4 +117,6 @@ async def start_standby(s_time, action_callback):
     print("start standby key input")
     await main(s_time, action_callback)
 
-# main(sleep_time)
+
+if __name__ == "__main__":
+    main(sleep_time)
