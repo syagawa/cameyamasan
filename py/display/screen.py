@@ -105,5 +105,5 @@ def show_info():
   s["add"]("%s: %s" % ("processor", uname.processor))
   s["show"]()
 
-
-show_info()
+if __name__ == "__main__":
+  show_info()
