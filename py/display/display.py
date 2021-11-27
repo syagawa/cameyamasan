@@ -83,7 +83,7 @@ def getDisplayInfo():
 drawBlackRect()
 
 
-def test():
+def test_display():
   count = 0
   messages = ["AAA", "BBB", "CCC"]
   m_len = len(messages)
@@ -99,5 +99,5 @@ def test():
     time.sleep(0.5)
     print("loop")
 
-
-
+if __name__ == "__main__":
+  test_display()
