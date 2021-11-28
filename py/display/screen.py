@@ -47,7 +47,7 @@ def clear(index):
   sc["matrix"] = []
 
 
-def makeScreen(lines=max_rows):
+def make_screen(lines=max_rows):
   if lines > getUsableRows():
     return -1
   global use_rows, screen_index
@@ -74,7 +74,7 @@ def makeScreen(lines=max_rows):
 
 def show_info():
 
-  s = makeScreen()
+  s = make_screen()
   print(s)
   uname = platform.uname()
   s["add"]("1")
