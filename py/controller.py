@@ -248,16 +248,16 @@ async def start_shots():
 
 
             except KeyboardInterrupt:
-                print("except KeyboardInterrupt in main()")
+                print("except KeyboardInterrupt in start_camera()")
             finally:
-                print("finally in main()")
+                print("finally in start_camera()")
                 # sys.exit(1)
                 flg = False
                 raise Exception("End process")
         await asyncio.sleep(5)
 
 
-async def main():
+async def start_camera():
     await set_camera_shot_settings()
     await start_shots()
 
@@ -270,8 +270,7 @@ async def main():
 read_characteristic = "00001143-0000-1000-8000-00805f9b34fb"
 write_characteristic = "00001142-0000-1000-8000-00805f9b34fb"
 
-if __name__ == "__main__":
-
+def main():
     # Create the event loop.
     loop = asyncio.get_event_loop()
 
@@ -283,7 +282,7 @@ if __name__ == "__main__":
         signal.signal(signal.SIGTERM, sig_handler)
         asyncio.ensure_future(connection.manager())
         asyncio.ensure_future(send_wifi_info(connection))
-        asyncio.ensure_future(main())
+        asyncio.ensure_future(start_camera())
         loop.run_forever()
     except KeyboardInterrupt:
         print()
@@ -291,3 +290,6 @@ if __name__ == "__main__":
     finally:
         print("in finally Disconnecting...")
         finally_process()
+
+if __name__ == "__main__":
+    main()
