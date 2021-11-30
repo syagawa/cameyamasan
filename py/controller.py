@@ -270,7 +270,7 @@ async def start_camera():
 read_characteristic = "00001143-0000-1000-8000-00805f9b34fb"
 write_characteristic = "00001142-0000-1000-8000-00805f9b34fb"
 
-def main():
+def connect_and_shot():
     # Create the event loop.
     loop = asyncio.get_event_loop()
 
@@ -292,4 +292,4 @@ def main():
         finally_process()
 
 if __name__ == "__main__":
-    main()
+    connect_and_shot()
