@@ -1,6 +1,7 @@
 
 import RPi.GPIO as GPIO
 import time
+import asyncio
 
 #GPIO define
 RST_PIN        = 25
@@ -119,4 +120,5 @@ async def start_standby(s_time, action_callback):
 
 
 if __name__ == "__main__":
-  main(sleep_time)
+  loop = asyncio.get_event_loop()
+  loop.run_until_complete(start_standby(sleep_time, None))
