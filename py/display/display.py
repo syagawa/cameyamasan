@@ -12,27 +12,26 @@ import random
 import board
 import digitalio
 from PIL import Image, ImageDraw, ImageFont
-# import adafruit_ssd1306
 import SH1106
-
 
 display_reset = digitalio.DigitalInOut(board.D4)
 
+# size
 w = 128
 h = 64
 rows = 8
 columns = 21
 
+# colors
 white = 0
 black = 255
 
-
+# padding
 pad = -2
 top = pad
 bottom = h - pad
 line_height = 8
 x = 0
-
 
 I2C = board.I2C()
 
@@ -43,7 +42,6 @@ d.clear()
 image = Image.new("1", (d.width, d.height), "grey")
 draw = ImageDraw.Draw(image)
 font = ImageFont.load_default()
-
 
 def drawBlackRect():
   one_line = h / rows
@@ -85,7 +83,7 @@ drawBlackRect()
 
 def test_display():
   count = 0
-  messages = ["AAA", "BBB", "CCC"]
+  messages = ["AAA", "BBB", "CCC", "DDD", "ABC", "ZZZ"]
   m_len = len(messages)
 
   while True:
