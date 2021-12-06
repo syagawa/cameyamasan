@@ -45,12 +45,16 @@ state = None
 pressed_pin = None
 sleep_time = 0.1
 action_callback = None
+pressed_keys = []
 
 def do_action(pressed_pin, state):
+  global pressed_keys
   name = key_names[pressed_pin]
   print("%s %s" % (name, "pressed"))
+  pressed_keys.append(pressed_pin)
   if action_callback != None:
-    action_callback()
+    action_callback(pressed_pin, state)
+
 
 
 def press(pin):
@@ -116,6 +120,8 @@ async def main(s_time, action):
 
 async def start_standby(s_time, action_callback):
   print("start standby key input")
+  if s_time == None:
+    s_time = sleep_time
   await main(s_time, action_callback)
 
 

@@ -185,6 +185,9 @@ def sig_handler(signum, frame) -> None:
     print("in sig_handler")
     finally_process()
 
+def pressed_action(pressed_pin, state):
+    print(f"pressed!! {pressed_pin}: {state}")
+
 
 
 #############
@@ -286,6 +289,7 @@ def connect_and_shot():
         asyncio.ensure_future(connection.manager())
         asyncio.ensure_future(send_wifi_info(connection))
         asyncio.ensure_future(start_camera())
+        asyncio.ensure_future(start_standby(None, pressed_action))
         loop.run_forever()
     except KeyboardInterrupt:
         print()
