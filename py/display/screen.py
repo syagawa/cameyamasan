@@ -46,6 +46,15 @@ def clear(index):
   sc = screens[index]
   sc["matrix"] = []
 
+class Scereen:
+  def add(mes):
+    print("screen_index: %s" % screen_index)
+    add(screen_index, mes)
+  def clear():
+    print("screen_index: %s" % screen_index)
+    clear(screen_index)
+
+
 
 def make_screen(lines=max_rows):
   if lines > getUsableRows():
