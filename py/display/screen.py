@@ -46,7 +46,7 @@ def clear(index):
   sc = screens[index]
   sc["matrix"] = []
 
-class Scereen:
+class Screen:
   def add(mes):
     print("screen_index: %s" % screen_index)
     add(screen_index, mes)

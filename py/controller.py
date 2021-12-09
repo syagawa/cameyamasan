@@ -28,6 +28,8 @@ shot_times = camera_shot_times
 shot_interval = camera_shot_interval
 framesize_value = None
 
+screen = None
+
 
 class Connection:
     
@@ -275,7 +277,6 @@ async def start_camera():
 read_characteristic = "00001143-0000-1000-8000-00805f9b34fb"
 write_characteristic = "00001142-0000-1000-8000-00805f9b34fb"
 
-screen = None
 
 def init():
     global screen
