@@ -47,13 +47,20 @@ def clear(index):
   sc["matrix"] = []
 
 class Screen:
+  def __init__(self, lines):
+    global use_rows, screen_index
+    start = use_rows + 1
+    end = start + lines - 1
+    use_rows = use_rows + lines
+    matrix = []
+    screens.append({ "start": start, "end": end, "matrix": matrix, "length": lines })
+    show()
   def add(mes):
     print("screen_index: %s" % screen_index)
     add(screen_index, mes)
   def clear():
     print("screen_index: %s" % screen_index)
     clear(screen_index)
-
 
 
 def make_screen(lines=max_rows):
@@ -79,6 +86,16 @@ def make_screen(lines=max_rows):
   else:
     screen_index = screen_index + 1
   return dic
+
+def make_screen2(lines=max_rows):
+  if lines > getUsableRows():
+    return -1
+  screen = new Screen(lines)
+  if screen_index == None:
+    screen_index =  0
+  else:
+    screen_index = screen_index + 1
+  return screen
 
 
 def show_info():
