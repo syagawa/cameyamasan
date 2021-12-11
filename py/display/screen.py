@@ -54,6 +54,10 @@ class Screen:
     use_rows = use_rows + lines
     matrix = []
     screens.append({ "start": start, "end": end, "matrix": matrix, "length": lines })
+    if screen_index == None:
+      screen_index =  0
+    else:
+      screen_index = screen_index + 1
     show()
   def add(mes):
     print("screen_index: %s" % screen_index)
@@ -90,11 +94,8 @@ def make_screen(lines=max_rows):
 def make_screen2(lines=max_rows):
   if lines > getUsableRows():
     return -1
-  screen = new Screen(lines)
-  if screen_index == None:
-    screen_index =  0
-  else:
-    screen_index = screen_index + 1
+  screen = Screen(lines)
+  
   return screen
 
 
