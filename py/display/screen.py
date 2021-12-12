@@ -67,7 +67,7 @@ class Screen:
     clear(screen_index)
 
 
-def make_screen(lines=max_rows):
+def make_screen_(lines=max_rows):
   if lines > getUsableRows():
     return -1
   global use_rows, screen_index
@@ -91,7 +91,7 @@ def make_screen(lines=max_rows):
     screen_index = screen_index + 1
   return dic
 
-def make_screen2(lines=max_rows):
+def make_screen(lines=max_rows):
   if lines > getUsableRows():
     return -1
   screen = Screen(lines)
