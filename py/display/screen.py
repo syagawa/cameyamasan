@@ -65,6 +65,8 @@ class Screen:
   def clear():
     print("screen_index: %s" % screen_index)
     clear(screen_index)
+  def show():
+    show()
 
 
 def make_screen_(lines=max_rows):
@@ -104,18 +106,18 @@ def show_info():
   s = make_screen()
   print(s)
   uname = platform.uname()
-  s["add"]("1")
-  s["add"]("2")
-  s["add"]("3")
-  s["add"]("4")
-  s["add"]("5")
-  s["add"]("%s: %s" % ("system", uname.system))
-  s["add"]("%s: %s" % ("node", uname.node))
-  s["add"]("%s: %s" % ("release", uname.release))
-  s["add"]("%s: %s" % ("version", uname.version))
-  s["add"]("%s: %s" % ("machine", uname.machine))
-  s["add"]("%s: %s" % ("processor", uname.processor))
-  s["show"]()
+  s.show("1")
+  s.show("2")
+  s.show("3")
+  s.show("4")
+  s.show("5")
+  s.show("%s: %s" % ("system", uname.system))
+  s.show("%s: %s" % ("node", uname.node))
+  s.show("%s: %s" % ("release", uname.release))
+  s.show("%s: %s" % ("version", uname.version))
+  s.show("%s: %s" % ("machine", uname.machine))
+  s.show("%s: %s" % ("processor", uname.processor))
+  s.show()
 
 if __name__ == "__main__":
   show_info()
