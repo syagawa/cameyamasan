@@ -1,7 +1,7 @@
 import time
 import subprocess
 
-import display_module
+from . import display_module
 
 import platform
 

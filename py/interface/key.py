@@ -118,7 +118,7 @@ async def main(s_time, action):
 
     time.sleep(s_time)
 
-async def start_standby(s_time, action_callback):
+async def start_standby(s_time=None, action_callback=None):
   print("start standby key input")
   if s_time == None:
     s_time = sleep_time

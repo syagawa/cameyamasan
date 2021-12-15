@@ -12,7 +12,7 @@ import random
 import board
 import digitalio
 from PIL import Image, ImageDraw, ImageFont
-import SH1106
+from . import SH1106
 
 display_reset = digitalio.DigitalInOut(board.D4)
 

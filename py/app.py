@@ -1,12 +1,16 @@
-from display.key import start_standby
+from interface.key import start_standby
 
-import controller
-from display.screen import make_screen
+from interface.screen import make_screen
 
+screen = None
+
+def key_callback(pin, state):
+  screen.add("%s, %s" % (pin, state))
 
 def main():
-  s = make_screen
-  s["add"]("Start!")
+  screen = make_screen()
+  screen.add("start app!")
+  start_standby(None, key_callback)
 
 if __name__ == "__main__":
   main()
