@@ -20,11 +20,8 @@ def getUsableRows():
   else:
     return n
 
-
-
 def show():
   display_module.drawBlackRect()
-
   for sc in screens:
     display_module.showMessages(sc["matrix"], sc["start"])
 
@@ -64,36 +61,13 @@ class Screen:
       return
     print("screen_index: %s" % screen_index)
     add(screen_index, mes)
+    show()
   def clear(self):
     print("screen_index: %s" % screen_index)
     clear(screen_index)
+    show()
   def show(self):
     show()
-
-
-def make_screen_(lines=max_rows):
-  if lines > getUsableRows():
-    return -1
-  global use_rows, screen_index
-  start = use_rows + 1
-  end = start + lines - 1
-  use_rows = use_rows + lines
-  matrix = []
-  o = { "start": start, "end": end, "matrix": matrix, "length": lines }
-  screens.append(o)
-  def add_messsage(mes):
-    print("screen_index: %s" % screen_index)
-    add(screen_index, mes)
-  def clear_message():
-    print("screen_index: %s" % screen_index)
-    clear(screen_index)
-
-  dic = { "add": add_messsage, "clear": clear_message, "show": show }
-  if screen_index == None:
-    screen_index =  0
-  else:
-    screen_index = screen_index + 1
-  return dic
 
 def make_screen(lines=max_rows):
   if lines > getUsableRows():
@@ -101,7 +75,6 @@ def make_screen(lines=max_rows):
   screen = Screen(lines)
   
   return screen
-
 
 def show_info():
   s = make_screen()
