@@ -2,3 +2,4 @@ constants.h
 py/variables.py
 images
 __pycache__
+service/camerawithpy.service

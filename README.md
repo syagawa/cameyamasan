@@ -51,3 +51,23 @@ $ sudo apt install isc-dhcp-server
 
 1. Start esp32 camera by connect power.
 2. `$ python3 py/controller.py` @Controller
+
+
+### start app in boot
+
+```bash
+$ cp ./service/example-camerawithpy.service ./camerawithpy.service
+```
+Edit <this app directory name> in ./camerawithpy.service
+
+```bash
+$ chmod a+x ./py/*
+$ chmod a+x ./py/interface/*
+$ sudo cp ./camerawithpy.service /etc/systemd/system/
+$ systemctl enable camerawithpy.service
+$ sudo reboot
+```
+
+### not start in boot
+`$ systemctl disable camerawithpy.service`
+
