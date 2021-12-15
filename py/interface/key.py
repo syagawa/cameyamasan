@@ -124,6 +124,8 @@ async def start_standby(s_time=None, action_callback=None):
     s_time = sleep_time
   await main(s_time, action_callback)
 
+def get_key_names():
+  return key_names
 
 if __name__ == "__main__":
   loop = asyncio.get_event_loop()

@@ -1,12 +1,13 @@
 import asyncio
-from interface.key import start_standby
+from interface.key import start_standby, key_names
 
 from interface.screen import make_screen
 
 screen = None
 
 def key_callback(pin, state):
-  screen.add("%s, %s" % (pin, state))
+  name = key_names[pin]
+  screen.add("%s, %s, %s" % (name, pin, state))
 
 def main():
   global screen
