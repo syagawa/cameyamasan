@@ -59,13 +59,15 @@ class Screen:
     else:
       screen_index = screen_index + 1
     show()
-  def add(mes):
+  def add(self, mes=None):
+    if mes == None:
+      return
     print("screen_index: %s" % screen_index)
     add(screen_index, mes)
-  def clear():
+  def clear(self):
     print("screen_index: %s" % screen_index)
     clear(screen_index)
-  def show():
+  def show(self):
     show()
 
 
@@ -102,10 +104,12 @@ def make_screen(lines=max_rows):
 
 
 def show_info():
-
   s = make_screen()
   print(s)
   uname = platform.uname()
+  print("aaa")
+  print(s.add)
+  s.add()
   s.add("1")
   s.add("2")
   s.add("3")
