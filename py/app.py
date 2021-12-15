@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import asyncio
 from interface.key import start_standby, key_names
 
