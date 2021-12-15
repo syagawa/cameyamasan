@@ -1,11 +1,11 @@
 import time
 import subprocess
 
-import display
+import display_module
 
 import platform
 
-info = display.getDisplayInfo()
+info = display_module.getDisplayInfo()
 rows = info["rows"]
 columns = info["columns"]
 max_rows = rows
@@ -23,10 +23,10 @@ def getUsableRows():
 
 
 def show():
-  display.drawBlackRect()
+  display_module.drawBlackRect()
 
   for sc in screens:
-    display.showMessages(sc["matrix"], sc["start"])
+    display_module.showMessages(sc["matrix"], sc["start"])
 
 def add(index, message):
   if index < 0:
