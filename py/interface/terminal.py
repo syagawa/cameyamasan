@@ -1,13 +1,17 @@
 state = 0
 
 states = {
-  "initial": 0,
-  "started": 1,
-
+  "in": False,
+  "out": False,
 }
 
-def main():
+def callback(key, screen):
+  print("in terminal callback")
+
+def start():
   print("in terminal.py")
+  return callback
+
 
 if __name__ == "__main__":
-  main()
+  start()
