@@ -8,10 +8,10 @@ states = {
 def callback(key, screen):
   print("in terminal callback")
 
-def start():
+def start_terminal():
   print("in terminal.py")
   return callback
 
 
 if __name__ == "__main__":
-  start()
+  start_terminal()

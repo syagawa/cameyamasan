@@ -2,7 +2,7 @@
 
 import asyncio
 from interface.key import start_standby, key_names
-
+from interface.terminal import start_terminal
 from interface.screen import make_screen
 
 screen = None

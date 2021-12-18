@@ -56,6 +56,7 @@ $ sudo apt install isc-dhcp-server
 ### start app in boot
 
 ```bash
+$ cd <this repository directory>
 $ cp ./service/example-camerawithpy.service ./camerawithpy.service
 ```
 Edit <this app directory name> in ./camerawithpy.service
