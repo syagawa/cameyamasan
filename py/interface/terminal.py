@@ -3,6 +3,7 @@ state = 0
 states = {
   "in": False,
   "out": False,
+  "waiting": False
 }
 
 def callback(key, screen):
