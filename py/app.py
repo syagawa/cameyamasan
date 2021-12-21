@@ -8,6 +8,26 @@ from controller import connect
 
 screen = None
 
+states = {
+  "in": False,
+  "out": False,
+  "waiting": False,
+}
+
+def get_state():
+  key = None
+  for k, v in states:
+    if v == True:
+      key = k
+      break
+  return key
+
+def set_state(key, b):
+  _bool = bool(b)
+  if key in states:
+    states[key] = _bool
+
+
 def key_callback(pin, state):
   name = key_names[pin]
   screen.add("%s, %s, %s" % (name, pin, state))
