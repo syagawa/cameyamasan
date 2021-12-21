@@ -4,6 +4,7 @@ import asyncio
 from interface.key import start_standby, key_names
 from interface.terminal import start_terminal
 from interface.screen import make_screen
+from controller import connect
 
 screen = None
 
@@ -17,6 +18,7 @@ def main():
   screen.add("start app!")
   loop = asyncio.get_event_loop()
   loop.run_until_complete(start_standby(None, key_callback))
+  loop.run_until_complete(connect())
 
 if __name__ == "__main__":
   main()

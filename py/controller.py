@@ -283,6 +283,24 @@ def init():
     screen = make_screen()
     screen["add"]("inited")
 
+def connect():
+    loop = asyncio.get_event_loop()
+    connection = Connection(
+        loop, read_characteristic, write_characteristic
+    )
+    try:
+        signal.signal(signal.SIGTERM, sig_handler)
+        asyncio.ensure_future(connection.manager())
+        asyncio.ensure_future(send_wifi_info(connection))
+        loop.run_forever()
+    except KeyboardInterrupt:
+        print()
+        print("in except KeyboardInterrupt: User stopped program.")
+    finally:
+        print("in finally Disconnecting...")
+        finally_process()
+
+
 def connect_and_shot():
     # Create the event loop.
     loop = asyncio.get_event_loop()
