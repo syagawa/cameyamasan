@@ -13,8 +13,8 @@ from variables import ssid, ps, camera_device_name, camera_shot_times, camera_sh
 import json
 import camera
 
-from display.key import start_standby
-from display.screen import make_screen
+from interface.key import start_standby
+from interface.screen import make_screen
 
 
 com_start_server = '{"action":"start_server", "ssid": "%s", "pswd":"%s"}' % (ssid, ps)
