@@ -99,10 +99,12 @@ class Connection:
             print(e)
 
     async def select_device(self):
-        print("Bluetooh LE hardware warming up")
+        print("Bluetooh LE hardware warming up 0")
         await asyncio.sleep(2.0) # Wait for BLE to initialize.
+        print("Bluetooh LE hardware warming up 1")
         devices = None
         try:
+            print("discovering...")
             devices = await discover()
         except Exception as e:
             print(e)
@@ -310,7 +312,7 @@ def connect_and_shot():
         asyncio.ensure_future(connection.manager())
         asyncio.ensure_future(send_wifi_info(connection))
         asyncio.ensure_future(start_camera())
-        asyncio.ensure_future(start_standby(None, pressed_action))
+        # asyncio.ensure_future(start_standby(None, pressed_action))
         loop.run_forever()
     except KeyboardInterrupt:
         print()
