@@ -78,6 +78,7 @@ class Connection:
                 await asyncio.sleep(10.0)
 
     async def connect(self):
+        print("in connect")
         if self.connected:
             return
         try:
@@ -197,6 +198,7 @@ def pressed_action(pressed_pin, state):
 # Loops
 #############
 async def send_wifi_info(connection: Connection):
+    print("in send_wifi_info")
     loopable = True
     while loopable:
         if connection.client and connection.connected:
