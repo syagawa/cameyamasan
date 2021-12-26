@@ -31,10 +31,13 @@ Wi-Fi ESP32 Camera controlled by python on Linux.
 
 1. git clone this repository to Linux machine.
 2. Open this directory
-3. `$ cp py/variables_sample.py py/variables.py`
+3. $ cp py/variables_sample.py py/variables.py`
 4. Write ssid and ps to py/variables.py
-5. `$ pip3 install bleak`
-6. `$ pip3 install aioconsole`
+5. install library
+```bash
+$ pip3 install bleak
+$ pip3 install aioconsole
+```
 
 
 ### Using Linux as a Wi-Fi access point
@@ -70,6 +73,8 @@ $ systemctl enable camerawithpy.service
 $ sudo reboot
 ```
 
-### not start in boot
-`$ systemctl disable camerawithpy.service`
+#### not start in boot
+```bash
+$ systemctl disable camerawithpy.service
+```
 
