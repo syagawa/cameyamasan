@@ -35,8 +35,8 @@ Wi-Fi ESP32 Camera controlled by python on Linux.
 4. Write ssid and ps to py/variables.py
 5. install library
 ```bash
-$ pip3 install bleak
-$ pip3 install aioconsole
+$ sudo pip3 install bleak
+$ sudo pip3 install aioconsole
 ```
 
 
