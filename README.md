@@ -42,15 +42,18 @@ $ sudo pip3 install aioconsole
 
 ### Using Linux as a Wi-Fi access point
 
-0. Install RTL8188EUS dongle driver 
+0. Start Linux
+1. Install RTL8188EUS dongle driver 
     * http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/
     * example raspberry pi zero w http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
-1. Start Linux
+2. `$ iwconfig` find wlan1
+
 2. install
 ```bash
 $ sudo apt update
 $ sudo apt upgrade
 $ sudo apt install hostapd
+$ sudo apt install dnsmasq
 # $ sudo apt install isc-dhcp-server
 ```
 
