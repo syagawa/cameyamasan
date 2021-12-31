@@ -46,7 +46,7 @@ $ sudo pip3 install aioconsole
 1. Install RTL8188EUS dongle driver 
     * http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/
     * example raspberry pi zero w http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
-2. `$ iwconfig` find wlan1
+2. `$ iwconfig` to see if wlan1 exists
 
 2. install
 ```bash
