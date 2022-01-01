@@ -56,6 +56,15 @@ $ sudo apt install hostapd
 $ sudo apt install dnsmasq
 # $ sudo apt install isc-dhcp-server
 ```
+3. `$ sudo vim /etc/dhcpcd.conf`
+```
+interface wlan1
+ static ip_address=192.168.2.1/24
+ static routers=192.168.2.1
+ static domain_name_servers=192.168.2.1
+ static broadcast 192.168.2.255
+```
+
 
 * reference sites
     * https://ccie-go.com/raspberry-pi-4-chuukeiki/#toc8
