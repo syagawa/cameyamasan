@@ -65,6 +65,29 @@ interface wlan1
  static broadcast 192.168.2.255
 ```
 
+4. `$ sudo vim /etc/hostapd/hostapd.conf`
+
+```
+interface=wlan1
+driver=nl80211
+ssid=MY-LAB
+hw_mode=g
+channel=3
+wmm_enabled=0
+macaddr_acl=0
+auth_algs=1
+wpa=2
+wpa_key_mgmt=WPA-PSK
+rsn_pairwise=CCMP
+wpa_passphrase=Password
+```
+
+5. `$ sudo vim /etc/dnsmasq.conf`
+```
+interface=wlan1
+dhcp-range=192.168.2.2,192.168.2.100,255.255.255.0,24h
+```
+
 
 * reference sites
     * https://ccie-go.com/raspberry-pi-4-chuukeiki/#toc8
