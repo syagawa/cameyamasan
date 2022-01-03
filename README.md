@@ -37,6 +37,7 @@ Wi-Fi ESP32 Camera controlled by python on Linux.
 ```bash
 $ sudo pip3 install bleak
 $ sudo pip3 install aioconsole
+$ sudo pip3 install psutil
 ```
 
 
