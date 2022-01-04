@@ -70,7 +70,7 @@ interface wlan1
 
 ```
 interface=wlan1
-driver=nl80211
+driver=cfg80211
 ssid=MY-LAB
 hw_mode=g
 channel=3
@@ -89,6 +89,20 @@ interface=wlan1
 dhcp-range=192.168.2.2,192.168.2.100,255.255.255.0,24h
 ```
 
+6. `$ sudo vim /etc/sysctl.conf`
+```
+# Uncomment the next line to enable packet forwarding for IPv4
+net.ipv4.ip_forward=1
+```
+`$ sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"`
+`$ sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE`
+
+7. unmask
+```
+$ sudo systemctl unmask hostapd
+$ sudo systemctl enable hostapd
+$ sudo systemctl start hostapd
+```
 
 * reference sites
     * https://ccie-go.com/raspberry-pi-4-chuukeiki/#toc8
