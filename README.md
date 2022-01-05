@@ -100,6 +100,7 @@ net.ipv4.ip_forward=1
 7. unmask
 ```
 $ sudo systemctl unmask hostapd
+($ sudo hostapd /etc/hostapd/hostapd.conf)
 $ sudo systemctl enable hostapd
 $ sudo systemctl start hostapd
 ```
