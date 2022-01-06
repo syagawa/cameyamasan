@@ -69,19 +69,25 @@ interface wlan1
 4. `$ sudo vim /etc/hostapd/hostapd.conf`
 
 ```
-interface=wlan1
-driver=cfg80211
+interface=<wlan1>
+driver=nl80211
 ssid=MY-LAB
 hw_mode=g
-channel=3
-wmm_enabled=0
+#channel=3
+channel=11
+#wmm_enabled=0
+wme_enabled=1
 macaddr_acl=0
+ignore_broadcast_ssid=0
 auth_algs=1
+ieee80211n=1
 wpa=2
 wpa_key_mgmt=WPA-PSK
-rsn_pairwise=CCMP
+#rsn_pairwise=CCMP
+wpa_pairwise=CCMP
 wpa_passphrase=Password
 ```
+
 
 5. `$ sudo vim /etc/dnsmasq.conf`
 ```
@@ -99,15 +105,18 @@ net.ipv4.ip_forward=1
 
 7. unmask
 ```
+$ sudo systemctl stop hostapd
 $ sudo systemctl unmask hostapd
 ($ sudo hostapd /etc/hostapd/hostapd.conf)
 $ sudo systemctl enable hostapd
 $ sudo systemctl start hostapd
+$ sudo systemctl start dnsmasq
 ```
 
 * reference sites
     * https://ccie-go.com/raspberry-pi-4-chuukeiki/#toc8
     * https://passe-de-mode.uedasoft.com/ja/tips/software/device/raspberrypi/2019.11.buster_r8188eu.html#%E8%83%8C%E6%99%AF
+    * https://zenn.dev/yutafujii/books/fcb457e798a3d5/viewer/fe7472
 
 
 
