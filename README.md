@@ -71,7 +71,7 @@ interface wlan1
 ```
 interface=<wlan1>
 driver=nl80211
-ssid=MY-LAB
+ssid=MY-RP-SERVER
 hw_mode=g
 #channel=3
 channel=11
@@ -112,6 +112,14 @@ $ sudo systemctl enable hostapd
 $ sudo systemctl start hostapd
 $ sudo systemctl start dnsmasq
 ```
+
+8. check wi-fi
+```
+$ python -m http.server 3000
+```
+Connect MY-RP=SERVER from pc
+
+Open 192.168.2.1:3000 by Browser
 
 * reference sites
     * https://ccie-go.com/raspberry-pi-4-chuukeiki/#toc8
