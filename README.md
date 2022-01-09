@@ -113,13 +113,14 @@ $ sudo systemctl start hostapd
 $ sudo systemctl start dnsmasq
 ```
 
-8. check wi-fi
+8. check Wi-Fi Access Point
 ```
 $ python -m http.server 3000
 ```
-Connect MY-RP=SERVER from pc
 
-Open 192.168.2.1:3000 by Browser
+Connect MY-RP=SERVER from PC or Smartphone.
+
+Open 192.168.2.1:3000 by Browser in PC or Smartphone.
 
 * reference sites
     * https://ccie-go.com/raspberry-pi-4-chuukeiki/#toc8
