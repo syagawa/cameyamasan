@@ -35,6 +35,13 @@ states = {
   "waiting": False,
 }
 
+selects = {
+  "start": False,
+  "stop": False,
+  "reboot": False,
+  "exit": False,
+}
+
 def get_state():
   key = None
   for k, v in states:
@@ -52,6 +59,13 @@ def set_state(key, b):
 def key_callback(pin, state):
   name = key_names[pin]
   screen.add("%s, %s, %s" % (name, pin, state))
+  show_selects()
+
+def show_selects():
+  counter = 0
+  for key in selects:
+    counter = counter + 1
+    screen.add("%s: %s" % (counter, key))
 
 def main():
   global screen
