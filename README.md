@@ -41,15 +41,16 @@ $ sudo pip3 install psutil
 ```
 
 
-### Using Linux as a Wi-Fi access point
+### How to use Linux as a Wi-Fi access point
 
 0. Start Linux
 1. Install RTL8188EUS dongle driver 
     * http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/
     * example raspberry pi zero w http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
+
 2. `$ iwconfig` to see if wlan1 exists
 
-2. install
+3. install
 ```bash
 $ sudo apt update
 $ sudo apt upgrade
@@ -57,7 +58,7 @@ $ sudo apt install hostapd
 $ sudo apt install dnsmasq
 # $ sudo apt install isc-dhcp-server
 ```
-3. `$ sudo vim /etc/dhcpcd.conf`
+4. `$ sudo vim /etc/dhcpcd.conf`
 ```
 interface wlan1
  static ip_address=192.168.2.1/24
@@ -66,7 +67,7 @@ interface wlan1
  static broadcast 192.168.2.255
 ```
 
-4. `$ sudo vim /etc/hostapd/hostapd.conf`
+5. `$ sudo vim /etc/hostapd/hostapd.conf`
 
 ```
 interface=<wlan1>
@@ -89,13 +90,13 @@ wpa_passphrase=Password
 ```
 
 
-5. `$ sudo vim /etc/dnsmasq.conf`
+6. `$ sudo vim /etc/dnsmasq.conf`
 ```
 interface=wlan1
 dhcp-range=192.168.2.2,192.168.2.100,255.255.255.0,24h
 ```
 
-6. `$ sudo vim /etc/sysctl.conf`
+7. `$ sudo vim /etc/sysctl.conf`
 ```
 # Uncomment the next line to enable packet forwarding for IPv4
 net.ipv4.ip_forward=1
@@ -103,7 +104,7 @@ net.ipv4.ip_forward=1
 `$ sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"`
 `$ sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE`
 
-7. unmask
+8. unmask
 ```
 $ sudo systemctl stop hostapd
 $ sudo systemctl unmask hostapd
@@ -113,14 +114,13 @@ $ sudo systemctl start hostapd
 $ sudo systemctl start dnsmasq
 ```
 
-8. check Wi-Fi Access Point
+9. check Wi-Fi Access Point
 ```
 $ python -m http.server 3000
 ```
-
 Connect MY-RP=SERVER from PC or Smartphone.
-
 Open 192.168.2.1:3000 by Browser in PC or Smartphone.
+
 
 * reference sites
     * https://ccie-go.com/raspberry-pi-4-chuukeiki/#toc8
