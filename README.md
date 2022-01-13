@@ -1,6 +1,6 @@
 # ESP32 Camera controlled by Python
 
-Wi-Fi ESP32 Camera controlled by python on Linux.
+Wi-Fi ESP32 Camera controlled by python on Raspberry Pi.
 
 ## specs
 
@@ -43,7 +43,7 @@ $ sudo pip3 install psutil
 
 ### How to use Linux as a Wi-Fi access point
 
-0. Start Linux
+0. Start Raspberry Pi
 1. Install RTL8188EUS dongle driver 
     * http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/
     * example raspberry pi zero w http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
