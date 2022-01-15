@@ -41,8 +41,7 @@ $ sudo pip3 install psutil
 ```
 
 
-### How to use Linux as a Wi-Fi access point
-(Case of RTL8188EUS USB dongle)
+### How to use Linux as a Wi-Fi access point (Case of RTL8188EUS USB dongle)
 
 0. Start Raspberry Pi
 1. Install RTL8188EUS dongle driver 

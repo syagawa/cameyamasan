@@ -21,9 +21,11 @@ def get_ip_string():
   for elm in iplist:
     if elm[0] == "wlan0":
       arr.append("%s:%s" % (elm[0], elm[1]))
+    if elm[0] == "wlan1":
+      arr.append("%s:%s" % (elm[0], elm[1]))
   str = "".join(arr)
   return str
-  
+
 
 
 
