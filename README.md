@@ -142,10 +142,12 @@ $ cd <this repository directory>
 $ cp ./service/example-camerawithpy.service ./camerawithpy.service
 ```
 Edit <this app directory name> in ./camerawithpy.service
+Edit <this py directory name> in ./start.sh
 
 ```bash
 $ chmod a+x ./py/*
 $ chmod a+x ./py/interface/*
+$ chmod a+x ./start.sh
 $ sudo cp ./camerawithpy.service /etc/systemd/system/
 $ systemctl enable camerawithpy.service
 $ sudo reboot
