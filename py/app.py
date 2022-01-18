@@ -80,7 +80,7 @@ def push_up():
 
   s = get_select(selected)
 
-  key = s.key
+  key = s["key"]
 
   screen.add("%s ?" % (key))
 
