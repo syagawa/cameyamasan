@@ -56,8 +56,8 @@ $ sudo apt update
 $ sudo apt upgrade
 $ sudo apt install hostapd
 $ sudo apt install dnsmasq
-# $ sudo apt install isc-dhcp-server
 ```
+
 4. `$ sudo vim /etc/dhcpcd.conf`
 ```
 interface wlan1
@@ -88,7 +88,6 @@ wpa_key_mgmt=WPA-PSK
 wpa_pairwise=CCMP
 wpa_passphrase=Password
 ```
-
 
 6. `$ sudo vim /etc/dnsmasq.conf`
 ```
@@ -132,7 +131,7 @@ Open 192.168.2.1:3000 by Browser in PC or Smartphone.
 ## Usage
 
 1. Start esp32 camera by connect power.
-2. `$ python3 py/controller.py` @Controller
+2. `$ python3 py/app.py` @Controller
 
 
 ### start app in boot
