@@ -1,14 +1,14 @@
-# ESP32 Camera controlled by Python
+# ESP32 Camera controlled by Raspberry Pi
 
 Wi-Fi ESP32 Camera controlled by python on Raspberry Pi.
 
 ## specs
 
-* Camera
+* Camera Module
     * ESP32 PSRAM Timer Camera X (M5Stack)
 
-* Controller
-    * Linux machine (e.g. Raspberry Pi)
+* Controller Module
+    * Raspberry Pi
         * python3 / pip3
             * pillow
             * bleak
