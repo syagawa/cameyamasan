@@ -67,6 +67,7 @@ def reboot():
   subprocess.run(["sudo", "reboot"])
 
 def push_up():
+  print("in push_up0")
   global selected
   if selected == None:
     selected = 0
@@ -84,6 +85,9 @@ def push_up():
 
   screen.add("%s ?" % (key))
 
+  print("in push_up1")
+
+
 def push_3():
   reboot()
 
@@ -91,6 +95,7 @@ def push_3():
 
 
 def key_callback(pin, state):
+  print("in key_callback")
   name = key_names[pin]
   screen.add("%s, %s, %s" % (name, pin, state))
   # show_selects()
@@ -111,6 +116,7 @@ def main():
   screen.add(get_ip_string("wlan0"))
   screen.add(get_ip_string("wlan1"))
   loop = asyncio.get_event_loop()
+  # loop.run_forever(start_standby(None, key_callback))
   loop.run_until_complete(start_standby(None, key_callback))
   loop.run_until_complete(connect())
 
