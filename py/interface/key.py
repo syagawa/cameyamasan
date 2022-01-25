@@ -78,41 +78,49 @@ async def main(s_time, action):
   while True:
     if GPIO.input(KEY_UP_PIN) == GPIO.LOW:
       press(KEY_UP_PIN)
+      print("after press %s" % KEY_UP_PIN)
     elif GPIO.input(KEY_UP_PIN) == GPIO.HIGH:
       release(KEY_UP_PIN)
 
     if GPIO.input(KEY_LEFT_PIN) == GPIO.LOW:
       press(KEY_LEFT_PIN)
+      print("after press %s" % KEY_LEFT_PIN)
     elif GPIO.input(KEY_LEFT_PIN) == GPIO.HIGH:
       release(KEY_LEFT_PIN)
 
     if GPIO.input(KEY_RIGHT_PIN) == GPIO.LOW:
       press(KEY_RIGHT_PIN)
+      print("after press %s" % KEY_RIGHT_PIN)
     elif GPIO.input(KEY_RIGHT_PIN) == GPIO.HIGH:
       release(KEY_RIGHT_PIN)
 
     if GPIO.input(KEY_DOWN_PIN) == GPIO.LOW:
       press(KEY_DOWN_PIN)
+      print("after press %s" % KEY_DOWN_PIN)
     elif GPIO.input(KEY_DOWN_PIN) == GPIO.HIGH:
       release(KEY_DOWN_PIN)
 
     if GPIO.input(KEY_PRESS_PIN) == GPIO.LOW:
       press(KEY_PRESS_PIN)
+      print("after press %s" % KEY_PRESS_PIN)
     elif GPIO.input(KEY_PRESS_PIN) == GPIO.HIGH:
       release(KEY_PRESS_PIN)
 
     if GPIO.input(KEY1_PIN) == GPIO.LOW:
       press(KEY1_PIN)
+      print("after press %s" % KEY1_PIN)
     elif GPIO.input(KEY1_PIN) == GPIO.HIGH:
       release(KEY1_PIN)
 
     if GPIO.input(KEY2_PIN) == GPIO.LOW:
       press(KEY2_PIN)
+      print("after press %s" % KEY2_PIN)
     elif GPIO.input(KEY2_PIN) == GPIO.HIGH:
       release(KEY2_PIN)
 
     if GPIO.input(KEY3_PIN) == GPIO.LOW:
       press(KEY3_PIN)
+      print("after press %s" % KEY3_PIN)
     elif GPIO.input(KEY3_PIN) == GPIO.HIGH:
       release(KEY3_PIN)
 
