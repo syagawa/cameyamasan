@@ -59,8 +59,11 @@ def set_state(key, b):
     states[key] = _bool
 
 def get_select(index):
+  print("in get_select %s" % index)
   for i, item in enumerate(selects):
+    print("in get_select for")
     if i == index:
+      print("in get_select for if")
       return selects[i]
 
 def reboot():
@@ -72,23 +75,39 @@ def push_up():
   if selected == None:
     selected = 0
 
+  print("in push_up1")
+
   selected = selected - 1
 
   if selected + 1 > len(selects):
     selected = 0
   if selected < -1:
     selected = 0
+  print("in push_up2")
 
   s = get_select(selected)
 
+  if s is None:
+    return
+
+  print("in push_up3")
+
   key = s["key"]
+  print("in push_up4")
+  print(key)
+
+  str = "%s ?" % (key)
+  print("in push_up5")
+  print(str)
+  print("in push_up6")
 
   screen.add("%s ?" % (key))
+  print("in push_up7")
 
-  print("in push_up1")
 
 
 def push_3():
+  screen.add("reboot...")
   reboot()
 
 

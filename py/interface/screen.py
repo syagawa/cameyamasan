@@ -28,9 +28,8 @@ def show():
 def add(index, message):
   if index < 0:
     return
-  print("index: %s" % (index))
-  print("index: %s" % (index))
-  print("len: %s" % (len(screens)))
+  print("add@screen.py index: %s" % (index))
+  print("add@screen.py len: %s" % (len(screens)))
   sc = screens[index]
   sc["matrix"].append(message)
   max = sc["length"]
