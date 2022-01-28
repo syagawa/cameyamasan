@@ -69,13 +69,14 @@ def get_select(index):
 def reboot():
   subprocess.run(["sudo", "reboot"])
 
+def shutdown():
+  subprocess.run(["sudo", "shutdown" "-h", "now"])
+
+
 def push_up():
-  print("in push_up0")
   global selected
   if selected == None:
     selected = 0
-
-  print("in push_up1")
 
   selected = selected - 1
 
@@ -83,34 +84,25 @@ def push_up():
     selected = 0
   if selected < -1:
     selected = 0
-  print("in push_up2")
 
   s = get_select(selected)
 
   if s is None:
     return
 
-  print("in push_up3")
-
   key = s["key"]
-  print("in push_up4")
-  print(key)
-
-  str = "%s ?" % (key)
-  print("in push_up5")
-  print(str)
-  print("in push_up6")
 
   screen.add("%s ?" % (key))
-  print("in push_up7")
 
+
+def push_2():
+  screen.add("shutdown...")
+  shutdown()
 
 
 def push_3():
   screen.add("reboot...")
   reboot()
-
-
 
 
 def key_callback(pin, state):
@@ -120,6 +112,8 @@ def key_callback(pin, state):
   # show_selects()
   if name == "UP":
     push_up()
+  if name == "KEY2":
+    push_2()
   if name == "KEY3":
     push_3()
   
