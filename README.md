@@ -21,10 +21,10 @@ Wi-Fi ESP32 Camera controlled by python on Raspberry Pi.
 
 ## Compile source to Camera @PC
 
-1. git clone this repository to Linux machine.
-2. Open this directory by Arduino IDE
+1. git clone this repository to PC.
+2. Open this directory by Arduino IDE.
 3. Connect ESP32 Camera to PC.
-4. Compile to ESP32 Camera
+4. Compile to ESP32 Camera.
 
 
 ## Settings @Controller
