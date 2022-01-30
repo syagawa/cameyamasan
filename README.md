@@ -6,6 +6,7 @@ Wi-Fi ESP32 Camera controlled by python on Raspberry Pi.
 
 * Camera Module
     * ESP32 PSRAM Timer Camera X (M5Stack)
+        * Arduino
 
 * Controller Module
     * Raspberry Pi
@@ -31,7 +32,7 @@ Wi-Fi ESP32 Camera controlled by python on Raspberry Pi.
 
 1. git clone this repository to Linux machine.
 2. Open this directory
-3. $ cp py/variables_sample.py py/variables.py`
+3. `$ cp py/variables_sample.py py/variables.py`
 4. Write ssid and ps to py/variables.py
 5. install library
 ```bash
