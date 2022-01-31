@@ -82,7 +82,7 @@ def push_up():
 
   if selected + 1 > len(selects):
     selected = 0
-  if selected < -1:
+  if selected < 0:
     selected = 0
 
   s = get_select(selected)
