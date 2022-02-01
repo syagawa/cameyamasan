@@ -42,6 +42,10 @@ def clear(index):
   sc = screens[index]
   sc["matrix"] = []
 
+def update(index, message):
+  clear(index)
+  add(index, message)
+
 class Screen:
   def __init__(self, lines):
     global use_rows, screen_index
@@ -64,6 +68,10 @@ class Screen:
   def clear(self):
     print("screen_index: %s" % screen_index)
     clear(screen_index)
+    show()
+  def update(self, mes=None):
+    print("screen_index: %s" % screen_index)
+    update(screen_index, mes)
     show()
   def show(self):
     show()
