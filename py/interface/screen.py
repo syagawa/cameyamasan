@@ -43,7 +43,9 @@ def clear(index):
   sc["matrix"] = []
 
 def update(index, message):
-  clear(index)
+  sc = screens[index]
+  if len(sc["matrix"]) > 0:
+    sc["matrix"].pop(0)
   add(index, message)
 
 class Screen:
