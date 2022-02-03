@@ -48,6 +48,10 @@ def update(index, message):
     sc["matrix"].pop(0)
   add(index, message)
 
+def get_messages(index):
+  sc = screens[index]
+  return sc["matrix"]
+
 class Screen:
   def __init__(self, lines):
     global use_rows, screen_index
