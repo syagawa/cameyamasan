@@ -1,3 +1,4 @@
+from os import sched_rr_get_interval
 import time
 import subprocess
 
@@ -81,6 +82,8 @@ class Screen:
     show()
   def show(self):
     show()
+  def get_messages(self):
+    get_messages(screen_index)
 
 def make_screen(lines=max_rows):
   if lines > getUsableRows():
