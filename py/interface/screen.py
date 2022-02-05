@@ -49,6 +49,12 @@ def update(index, message):
     sc["matrix"].pop(0)
   add(index, message)
 
+def delete(index):
+  sc = screens[index]
+  if len(sc["matrix"]) > 0:
+    sc["matrix"].pop(0)
+
+
 def get_messages(index):
   sc = screens[index]
   return sc["matrix"]
@@ -84,6 +90,7 @@ class Screen:
     show()
   def get_messages(self):
     get_messages(screen_index)
+  
 
 def make_screen(lines=max_rows):
   if lines > getUsableRows():
