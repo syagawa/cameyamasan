@@ -90,6 +90,9 @@ class Screen:
     show()
   def get_messages(self):
     get_messages(screen_index)
+  def delete(self):
+    delete(screen_index)
+
   
 
 def make_screen(lines=max_rows):
