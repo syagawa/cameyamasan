@@ -71,27 +71,28 @@ class Screen:
       screen_index =  0
     else:
       screen_index = screen_index + 1
+    self.self_index = screen_index
     show()
   def add(self, mes=None):
     if mes == None:
       return
-    print("screen_index: %s" % screen_index)
-    add(screen_index, mes)
+    print("screen_index: %s" % self.self_index)
+    add(self.self_index, mes)
     show()
   def clear(self):
-    print("screen_index: %s" % screen_index)
-    clear(screen_index)
+    print("screen_index: %s" % self.self_index)
+    clear(self.self_index)
     show()
   def update(self, mes=None):
-    print("screen_index: %s" % screen_index)
-    update(screen_index, mes)
+    print("screen_index: %s" % self.self_index)
+    update(self.self_index, mes)
     show()
   def show(self):
     show()
   def get_messages(self):
-    get_messages(screen_index)
+    get_messages(self.self_index)
   def delete(self):
-    delete(screen_index)
+    delete(self.self_index)
 
   
 
