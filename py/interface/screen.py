@@ -67,24 +67,21 @@ class Screen:
     use_rows = use_rows + lines
     matrix = []
     screens.append({ "start": start, "end": end, "matrix": matrix, "length": lines })
-    if screen_index == None:
-      screen_index =  0
-    else:
-      screen_index = screen_index + 1
+    screen_index = len(screens)
     self.self_index = screen_index
     show()
   def add(self, mes=None):
     if mes == None:
       return
-    print("screen_index: %s" % self.self_index)
+    print("self.screen_index: %s" % self.self_index)
     add(self.self_index, mes)
     show()
   def clear(self):
-    print("screen_index: %s" % self.self_index)
+    print("self.screen_index: %s" % self.self_index)
     clear(self.self_index)
     show()
   def update(self, mes=None):
-    print("screen_index: %s" % self.self_index)
+    print("self.screen_index: %s" % self.self_index)
     update(self.self_index, mes)
     show()
   def show(self):
