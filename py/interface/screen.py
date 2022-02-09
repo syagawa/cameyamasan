@@ -23,8 +23,13 @@ def getUsableRows():
 
 def show():
   display_module.drawBlackRect()
-  for sc in screens:
-    display_module.showMessages(sc["matrix"], sc["start"])
+  sc = screens[screen_index]
+  display_module.showMessages(sc["matrix"], sc["start"])
+
+# def show():
+#   display_module.drawBlackRect()
+#   for sc in screens:
+#     display_module.showMessages(sc["matrix"], sc["start"])
 
 def add(index, message):
   if index < 0:
