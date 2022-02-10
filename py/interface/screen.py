@@ -21,9 +21,9 @@ def getUsableRows():
   else:
     return n
 
-def show():
+def show(self_screen_index):
   display_module.drawBlackRect()
-  sc = screens[screen_index]
+  sc = screens[self_screen_index]
   display_module.showMessages(sc["matrix"], sc["start"])
 
 # def show():
@@ -74,23 +74,23 @@ class Screen:
     screens.append({ "start": start, "end": end, "matrix": matrix, "length": lines })
     screen_index = len(screens)
     self.self_index = screen_index
-    show()
+    show(self.self_index)
   def add(self, mes=None):
     if mes == None:
       return
     print("self.screen_index: %s" % self.self_index)
     add(self.self_index, mes)
-    show()
+    show(self.self_index)
   def clear(self):
     print("self.screen_index: %s" % self.self_index)
     clear(self.self_index)
-    show()
+    show(self.self_index)
   def update(self, mes=None):
     print("self.screen_index: %s" % self.self_index)
     update(self.self_index, mes)
-    show()
+    show(self.self_index)
   def show(self):
-    show()
+    show(self.self_index)
   def get_messages(self):
     get_messages(self.self_index)
   def delete(self):
