@@ -12,7 +12,6 @@ columns = info["columns"]
 max_rows = rows
 use_rows = 0
 screens = []
-screen_index = None
 
 def getUsableRows():
   n = max_rows - use_rows
@@ -21,9 +20,9 @@ def getUsableRows():
   else:
     return n
 
-def show(self_screen_index):
+def show(screen_index):
   display_module.drawBlackRect()
-  sc = screens[self_screen_index]
+  sc = screens[screen_index]
   display_module.showMessages(sc["matrix"], sc["start"])
 
 # def show():
@@ -66,13 +65,13 @@ def get_messages(index):
 
 class Screen:
   def __init__(self, lines):
-    global use_rows, screen_index
+    global use_rows
     start = use_rows + 1
     end = start + lines - 1
     use_rows = use_rows + lines
     matrix = []
     screens.append({ "start": start, "end": end, "matrix": matrix, "length": lines })
-    screen_index = len(screens)
+    screen_index = len(screens) - 1
     self.self_index = screen_index
     show(self.self_index)
   def add(self, mes=None):
