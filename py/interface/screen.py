@@ -13,6 +13,9 @@ max_rows = rows
 use_rows = 0
 screens = []
 
+def getScreens():
+  screens
+
 def getUsableRows():
   n = max_rows - use_rows
   if n < 0:
@@ -95,7 +98,6 @@ class Screen:
   def delete(self):
     delete(self.self_index)
 
-  
 
 def make_screen(lines=max_rows):
   if lines > getUsableRows():
