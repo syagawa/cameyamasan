@@ -24,8 +24,8 @@ Wi-Fi ESP32 Camera controlled by python on Raspberry Pi.
 
 1. git clone this repository to PC.
 2. Open this directory by Arduino IDE.
-3. Connect ESP32 Camera to PC.
-4. Compile to ESP32 Camera.
+3. Connect Timer Camera X to PC.
+4. Compile to Timer Camera X.
 
 
 ## Settings @Controller

@@ -14,7 +14,7 @@ use_rows = 0
 screens = []
 
 def getScreens():
-  screens
+  return screens
 
 def getUsableRows():
   n = max_rows - use_rows
