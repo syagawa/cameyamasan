@@ -30,8 +30,8 @@ Wi-Fi ESP32 Camera controlled by python on Raspberry Pi.
 
 ## Settings @Controller
 
-1. git clone this repository to Raspberry Pi.
-2. Open this directory
+1. git clone this repository to Raspberry Pi's `home`.
+2. `cd ~/<this repository root>`
 3. `$ cp py/variables_sample.py py/variables.py`
 4. Write ssid and ps to py/variables.py
 5. install python and libraries
