@@ -1,6 +1,6 @@
 # ESP32 Camera controlled by Raspberry Pi
 
-Wi-Fi ESP32 Camera controlled by python on Raspberry Pi.
+Timer Camera X (M5Stack) controlled by python on Raspberry Pi.
 
 ## specs
 
@@ -43,7 +43,7 @@ $ sudo pip3 install psutil
 ```
 
 
-### How to use Linux as a Wi-Fi access point (Case of RTL8188EUS USB dongle)
+### How to use Raspberry Pi as a Wi-Fi access point (Case of RTL8188EUS USB dongle)
 
 0. Start Raspberry Pi
 1. Install RTL8188EUS dongle driver 
