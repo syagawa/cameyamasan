@@ -9,14 +9,14 @@ Timer Camera X (M5Stack) controlled by python on Raspberry Pi.
         * Arduino
 
 * Controller Module
-    * Raspberry Pi
+    * Raspberry Pi (with Wi-Fi)
         * python3 / pip3
             * pillow
             * bleak
         * Wi-Fi
         * BLE
 
-* PC(Windows or Mac or Linux) for compiling to camera
+* PC(Win or Mac or Linux) for compiling to camera
     * Arduino IDE
 
 
@@ -31,7 +31,7 @@ Timer Camera X (M5Stack) controlled by python on Raspberry Pi.
 ## Settings @Controller
 
 1. git clone this repository to Raspberry Pi's `home`.
-2. `cd ~/<this repository root>`
+2. `cd ~/<this repository name>`
 3. `$ cp py/variables_sample.py py/variables.py`
 4. Write ssid and ps to py/variables.py
 5. install python and libraries
