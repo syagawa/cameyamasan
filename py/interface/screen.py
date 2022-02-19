@@ -13,10 +13,10 @@ max_rows = rows
 use_rows = 0
 screens = []
 
-def getScreens():
+def get_screens():
   return screens
 
-def getUsableRows():
+def get_wsable_rows():
   n = max_rows - use_rows
   if n < 0:
     return 0
@@ -100,7 +100,7 @@ class Screen:
 
 
 def make_screen(lines=max_rows):
-  if lines > getUsableRows():
+  if lines > get_wsable_rows():
     return -1
   screen = Screen(lines)
   
