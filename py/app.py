@@ -128,6 +128,8 @@ def main():
   screen.add("start app!")
   screen.add(get_ip_string("wlan0"))
   screen.add(get_ip_string("wlan1"))
+  screen.add("please input! ^ < > v")
+
   loop = asyncio.get_event_loop()
   # loop.run_forever(start_standby(None, key_callback))
   loop.run_until_complete(start_standby(None, key_callback))
