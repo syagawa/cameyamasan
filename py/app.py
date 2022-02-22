@@ -92,7 +92,7 @@ def push_up():
 
   key = s["key"]
 
-  screen.add("%s ?" % (key))
+  screen.update("%s ?" % (key))
 
 
 def push_2():
@@ -108,7 +108,7 @@ def push_3():
 def key_callback(pin, state):
   print("in key_callback")
   name = key_names[pin]
-  screen.add("%s, %s, %s" % (name, pin, state))
+  screen.update("%s, %s, %s" % (name, pin, state))
   # show_selects()
   if name == "UP":
     push_up()

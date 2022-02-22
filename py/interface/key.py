@@ -50,7 +50,7 @@ pressed_keys = []
 def do_action(pressed_pin, state):
   global pressed_keys
   name = key_names[pressed_pin]
-  print("%s %s" % (name, "pressed"))
+  # print("%s %s" % (name, "pressed"))
   pressed_keys.append(pressed_pin)
   if action_callback != None:
     action_callback(pressed_pin, state)
