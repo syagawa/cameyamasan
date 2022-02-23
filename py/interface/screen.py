@@ -53,7 +53,7 @@ def clear(index):
 def update(index, message):
   sc = screens[index]
   if len(sc["matrix"]) > 0:
-    sc["matrix"].pop(0)
+    sc["matrix"].pop()
   add(index, message)
 
 def delete(index):
