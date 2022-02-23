@@ -70,7 +70,7 @@ def reboot():
   subprocess.run(["sudo", "reboot"])
 
 def shutdown():
-  subprocess.run(["sudo", "shutdown" "-h", "now"])
+  subprocess.run(["sudo", "shutdown", "-h", "now"])
 
 
 def push_up():
