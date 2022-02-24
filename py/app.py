@@ -95,10 +95,13 @@ def push_up():
   screen.update("%s ?" % (key))
 
 
+def push_1():
+  screen.add("execute...")
+
+
 def push_2():
   screen.add("shutdown...")
   shutdown()
-
 
 def push_3():
   screen.add("reboot...")
