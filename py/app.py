@@ -83,7 +83,7 @@ def push_up():
   if selected + 1 > len(selects):
     selected = 0
   if selected < 0:
-    selected = 0
+    selected = len(selects) - 1
 
   s = get_select(selected)
 
@@ -98,7 +98,6 @@ def push_up():
 def push_1():
   screen.add("execute...")
 
-
 def push_2():
   screen.add("shutdown...")
   shutdown()
@@ -112,7 +111,6 @@ def key_callback(pin, state):
   print("in key_callback")
   name = key_names[pin]
   screen.update("%s, %s, %s" % (name, pin, state))
-  # show_selects()
   if name == "UP":
     push_up()
   if name == "KEY2":
@@ -134,7 +132,6 @@ def main():
   screen.add("please input! ^ < > v")
 
   loop = asyncio.get_event_loop()
-  # loop.run_forever(start_standby(None, key_callback))
   loop.run_until_complete(start_standby(None, key_callback))
   loop.run_until_complete(connect())
 
