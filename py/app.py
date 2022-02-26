@@ -80,7 +80,9 @@ def push_up():
 
   selected = selected - 1
 
-  if selected + 1 > len(selects):
+  max = len(selects) - 1
+
+  if selected >= max:
     selected = 0
   if selected < 0:
     selected = len(selects) - 1
@@ -93,6 +95,7 @@ def push_up():
   key = s["key"]
 
   screen.update("%s ?" % (key))
+
 
 
 def push_1():
