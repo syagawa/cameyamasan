@@ -80,12 +80,13 @@ def push_up():
 
   selected = selected - 1
 
+  min = 0
   max = len(selects) - 1
 
   if selected >= max:
-    selected = 0
-  if selected < 0:
-    selected = len(selects) - 1
+    selected = min
+  if selected < min:
+    selected = max
 
   s = get_select(selected)
 
