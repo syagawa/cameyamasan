@@ -73,12 +73,20 @@ def shutdown():
   subprocess.run(["sudo", "shutdown", "-h", "now"])
 
 
-def push_up():
+def push_up_or_down(mode):
+  if mode == None:
+    return
+
   global selected
   if selected == None:
     selected = 0
 
-  selected = selected - 1
+  if mode == "up":
+    selected = selected - 1
+  elif mode == "down":
+    selected = selected + 1
+  else:
+    return
 
   min = 0
   max = len(selects) - 1
@@ -96,6 +104,34 @@ def push_up():
   key = s["key"]
 
   screen.update("%s ?" % (key))
+
+
+def push_up():
+  push_up_or_down("up")
+
+# def push_up():
+#   global selected
+#   if selected == None:
+#     selected = 0
+
+#   selected = selected - 1
+
+#   min = 0
+#   max = len(selects) - 1
+
+#   if selected >= max:
+#     selected = min
+#   if selected < min:
+#     selected = max
+
+#   s = get_select(selected)
+
+#   if s is None:
+#     return
+
+#   key = s["key"]
+
+#   screen.update("%s ?" % (key))
 
 
 
