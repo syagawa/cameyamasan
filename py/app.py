@@ -109,6 +109,9 @@ def push_up_or_down(mode):
 def push_up():
   push_up_or_down("up")
 
+def push_down():
+  push_up_or_down("down")
+
 # def push_up():
 #   global selected
 #   if selected == None:
