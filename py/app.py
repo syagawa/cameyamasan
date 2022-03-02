@@ -42,7 +42,14 @@ selects = [
   { "key": "reboot", "state": False},
   { "key": "exit", "state": False},
 ]
-selected = None
+confirm = None
+
+confirms = [
+  { "key": "ok", "confirm": True},
+  { "key": "ng", "confirm": False},
+]
+
+confirm = None
 
 
 def get_state():
@@ -77,26 +84,26 @@ def push_up_or_down(mode):
   if mode == None:
     return
 
-  global selected
-  if selected == None:
-    selected = 0
+  global confirm
+  if confirm == None:
+    confirm = 0
 
   if mode == "up":
-    selected = selected - 1
+    confirm = confirm - 1
   elif mode == "down":
-    selected = selected + 1
+    confirm = confirm + 1
   else:
     return
 
   min = 0
   max = len(selects) - 1
 
-  if selected >= max:
-    selected = min
-  if selected < min:
-    selected = max
+  if confirm >= max:
+    confirm = min
+  if confirm < min:
+    confirm = max
 
-  s = get_select(selected)
+  s = get_select(confirm)
 
   if s is None:
     return
@@ -136,6 +143,38 @@ def push_down():
 
 #   screen.update("%s ?" % (key))
 
+
+def push_left_or_right(mode):
+  if mode == None:
+    return
+
+  global confirm
+  if confirm == None:
+    confirm = 0
+
+  if mode == "left":
+    confirm = confirm - 1
+  elif mode == "right":
+    confirm = confirm + 1
+  else:
+    return
+
+  min = 0
+  max = len(confirms) - 1
+
+  if confirm >= max:
+    confirm = min
+  if confirm < min:
+    confirm = max
+
+  c = confirms[confirm]
+
+  if c is None:
+    return
+
+  key = c["key"]
+
+  screen.update("%s ?" % (key))
 
 
 def push_1():
