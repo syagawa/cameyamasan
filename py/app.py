@@ -143,6 +143,11 @@ def push_down():
 
 #   screen.update("%s ?" % (key))
 
+def push_left():
+  push_left_or_right("left")
+
+def push_right():
+  push_left_or_right("right")
 
 def push_left_or_right(mode):
   if mode == None:
