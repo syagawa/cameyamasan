@@ -200,6 +200,12 @@ def key_callback(pin, state):
   screen.update("%s, %s, %s" % (name, pin, state))
   if name == "UP":
     push_up()
+  if name == "DOWN":
+    push_down()
+  if name == "LEFT":
+    push_left()
+  if name == "RIGHT":
+    push_right()
   if name == "KEY2":
     push_2()
   if name == "KEY3":
