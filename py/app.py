@@ -166,8 +166,12 @@ def push_1():
   if s is None:
     return
   key = s["key"]
-  screen.add("execute %s ..." % (key))
-
+  if key == "shutdown":
+    shutdown()
+    screen.add("shutdown...")
+  if key == "reboot":
+    reboot()
+    screen.add("reboot...")
 
 
 def push_2():
@@ -191,6 +195,8 @@ def key_callback(pin, state):
     push_left()
   if name == "RIGHT":
     push_right()
+  if name == "KEY1":
+    push_1()
   if name == "KEY2":
     push_2()
   if name == "KEY3":
