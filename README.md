@@ -163,4 +163,5 @@ $ systemctl disable camerawithpy.service
 
 1. If app is starts, "app start!" on the OLED screen.
 2. Select mode push Up or Down.
-3. Execute by pushing key1.
+3. After selecting mode and push key1.
+4. Execute!!!
