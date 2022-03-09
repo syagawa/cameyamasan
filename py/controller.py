@@ -282,8 +282,7 @@ read_characteristic = "00001143-0000-1000-8000-00805f9b34fb"
 write_characteristic = "00001142-0000-1000-8000-00805f9b34fb"
 
 
-
-def connect():
+def connect(action_callback=None):
     loop = asyncio.get_event_loop()
     connection = Connection(
         loop, read_characteristic, write_characteristic

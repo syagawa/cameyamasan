@@ -201,7 +201,11 @@ def key_callback(pin, state):
     push_2()
   if name == "KEY3":
     push_3()
-  
+
+def controller_callback():
+  print("in controller_callback")
+  screen.add("in controller_callback")
+
 
 def show_selects():
   for index, item in enumerate(selects):
@@ -217,7 +221,7 @@ def main():
 
   loop = asyncio.get_event_loop()
   loop.run_until_complete(start_standby(None, key_callback))
-  loop.run_until_complete(connect())
+  loop.run_until_complete(connect(controller_callback))
 
 if __name__ == "__main__":
   main()
