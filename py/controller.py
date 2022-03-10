@@ -283,6 +283,8 @@ write_characteristic = "00001142-0000-1000-8000-00805f9b34fb"
 
 
 def connect(action_callback=None):
+    if action_callback != None:
+        action_callback("connect in controller.py")
     loop = asyncio.get_event_loop()
     connection = Connection(
         loop, read_characteristic, write_characteristic
