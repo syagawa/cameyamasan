@@ -281,6 +281,15 @@ async def start_camera():
 read_characteristic = "00001143-0000-1000-8000-00805f9b34fb"
 write_characteristic = "00001142-0000-1000-8000-00805f9b34fb"
 
+action_callback_global = None
+
+def set_action_callback(action_callback=None):
+  global action_callback_global
+  action_callback_global = action_callback
+
+def do_action_callback(message):
+    if action_callback_global != None:
+        action_callback_global(message)
 
 def connect(action_callback=None):
     if action_callback != None:

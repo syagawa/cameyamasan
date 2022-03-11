@@ -202,9 +202,9 @@ def key_callback(pin, state):
   if name == "KEY3":
     push_3()
 
-def controller_callback():
+def controller_callback(message):
   print("in controller_callback")
-  screen.add("in controller_callback")
+  screen.add("%s in cc" % message)
 
 
 def show_selects():
