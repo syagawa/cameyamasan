@@ -30,6 +30,16 @@ framesize_value = None
 
 screen = None
 
+action_callback_global = None
+
+def set_action_callback(action_callback=None):
+  global action_callback_global
+  action_callback_global = action_callback
+
+def do_action_callback(message):
+    if action_callback_global != None:
+        action_callback_global(message)
+
 
 class Connection:
     
@@ -70,6 +80,8 @@ class Connection:
 
     async def manager(self):
         print("Starting connection manager.")
+        do_action_callback("Starting connection manager.")
+
         while True:
             if self.client:
                 await self.connect()
@@ -281,19 +293,12 @@ async def start_camera():
 read_characteristic = "00001143-0000-1000-8000-00805f9b34fb"
 write_characteristic = "00001142-0000-1000-8000-00805f9b34fb"
 
-action_callback_global = None
-
-def set_action_callback(action_callback=None):
-  global action_callback_global
-  action_callback_global = action_callback
-
-def do_action_callback(message):
-    if action_callback_global != None:
-        action_callback_global(message)
 
 def connect(action_callback=None):
     if action_callback != None:
-        action_callback("connect in controller.py")
+        action_callback("connect in controller.py0")
+        set_action_callback(action_callback)
+        do_action_callback("connect in controller.py1")
     loop = asyncio.get_event_loop()
     connection = Connection(
         loop, read_characteristic, write_characteristic
