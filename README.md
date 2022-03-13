@@ -122,12 +122,26 @@ $ python -m http.server 3000
 Connect MY-RP=SERVER from PC or Smartphone.
 Open 192.168.2.1:3000 by Browser in PC or Smartphone.
 
+10. 
+
+add below to /etc/rc.local at before exit 0
+
+```
+iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
+sh -c "iptables-save > /etc/iptables.ipv4.nat"
+
+service dnsmasq stop
+sleep 8
+service dnsmasq start
+iptables-restore < /etc/iptables.ipv4.nat
+sleep 3
+service hostapd restart
+```
 
 * reference sites
     * https://ccie-go.com/raspberry-pi-4-chuukeiki/#toc8
     * https://passe-de-mode.uedasoft.com/ja/tips/software/device/raspberrypi/2019.11.buster_r8188eu.html#%E8%83%8C%E6%99%AF
     * https://zenn.dev/yutafujii/books/fcb457e798a3d5/viewer/fe7472
-
 
 
 ## Usage
