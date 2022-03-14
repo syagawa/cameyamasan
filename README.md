@@ -102,8 +102,15 @@ dhcp-range=192.168.2.2,192.168.2.100,255.255.255.0,24h
 # Uncomment the next line to enable packet forwarding for IPv4
 net.ipv4.ip_forward=1
 ```
+`$ sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE`
 `$ sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"`
-`$ sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE`
+
+<!-- # select legacy
+$ sudo update-alternatives --config iptables
+
+sudo iptables --table nat --append POSTROUTING --out-interface wlan0 -j MASQUERADE
+sudo iptables --append FORWARD --in-interface wlan1 -j ACCEPT -->
+
 
 8. unmask
 ```
