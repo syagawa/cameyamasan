@@ -76,12 +76,12 @@ interface=<wlan1>
 driver=nl80211
 ssid=MY-RP-SERVER
 hw_mode=g
-#channel=3
-channel=11
-#wmm_enabled=0
-wme_enabled=1
+#channel=11
+channel=3
+#wme_enabled=1
+wmm_enabled=0
 macaddr_acl=0
-ignore_broadcast_ssid=0
+#ignore_broadcast_ssid=0
 auth_algs=1
 ieee80211n=1
 wpa=2
@@ -143,6 +143,16 @@ service dnsmasq start
 iptables-restore < /etc/iptables.ipv4.nat
 sleep 3
 service hostapd restart
+```
+
+11. check
+
+```
+$ ping google.com
+
+# if not work
+$ sudo dhclient wlan0
+
 ```
 
 * reference sites
