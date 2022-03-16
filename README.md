@@ -78,15 +78,12 @@ ssid=MY-RP-SERVER
 hw_mode=g
 #channel=11
 channel=3
-#wme_enabled=1
 wmm_enabled=0
 macaddr_acl=0
-#ignore_broadcast_ssid=0
 auth_algs=1
 ieee80211n=1
 wpa=2
 wpa_key_mgmt=WPA-PSK
-#rsn_pairwise=CCMP
 wpa_pairwise=CCMP
 wpa_passphrase=Password
 ```
