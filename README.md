@@ -23,24 +23,24 @@ Timer Camera X (M5Stack) controlled by python on Raspberry Pi.
 ## Compile source to Camera @PC
 
 1. git clone this repository to PC.
-2. Open this directory by Arduino IDE.
+2. Open this repository's root by Arduino IDE.
 3. Connect Timer Camera X to PC.
 4. Compile to Timer Camera X.
 
 
 ## Settings @Controller
 
-1. git clone this repository to Raspberry Pi's `home`.
+1. git clone this repository in Raspberry Pi's `home`.
 2. `cd ~/<this repository name>`
 3. `$ cp py/variables_sample.py py/variables.py`
-4. Write ssid and ps to py/variables.py
+4. Write ssid and ps in py/variables.py
 5. install python and libraries
-```bash
-$ sudo apt install -y python3 python3-pip
-$ sudo pip3 install bleak
-$ sudo pip3 install aioconsole
-$ sudo pip3 install psutil
-```
+    ```bash
+    $ sudo apt install -y python3 python3-pip
+    $ sudo pip3 install bleak
+    $ sudo pip3 install aioconsole
+    $ sudo pip3 install psutil
+    ```
 
 
 ### How to use Raspberry Pi as a Wi-Fi access point (Case of RTL8188EUS USB dongle)
