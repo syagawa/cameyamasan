@@ -41,6 +41,7 @@ selects = [
   { "key": "stop", "state": False},
   { "key": "reboot", "state": False},
   { "key": "shutdown", "state": False},
+  { "key": "showinfo", "state": False},
   { "key": "exit", "state": False},
 ]
 select = None
@@ -79,6 +80,10 @@ def reboot():
 
 def shutdown():
   subprocess.run(["sudo", "shutdown", "-h", "now"])
+
+def showinfo():
+  screen.add(get_ip_string("wlan0"))
+  screen.add(get_ip_string("wlan1"))
 
 
 def push_up_or_down(mode):
@@ -172,7 +177,8 @@ def push_1():
   if key == "reboot":
     reboot()
     screen.add("reboot...")
-
+  if key == "showinfo":
+    showinfo()
 
 def push_2():
   screen.add("shutdown...")
@@ -215,8 +221,6 @@ def main():
   global screen
   screen = make_screen()
   screen.add("start app!")
-  screen.add(get_ip_string("wlan0"))
-  screen.add(get_ip_string("wlan1"))
   screen.add("please input! ^ < > v")
 
   loop = asyncio.get_event_loop()
