@@ -41,6 +41,7 @@ selects = [
   { "key": "stop", "state": False},
   { "key": "reboot", "state": False},
   { "key": "shutdown", "state": False},
+  { "key": "connectnet", "state": False},
   { "key": "showinfo", "state": False},
   { "key": "exit", "state": False},
 ]
@@ -85,6 +86,9 @@ def showinfo():
   screen.add(get_ip_string("wlan0"))
   screen.add(get_ip_string("wlan1"))
 
+def connectnet():
+  screen.add("connect wlan0 to net")
+  subprocess.run(["sudo", "dhclient", "wlan0"])
 
 def push_up_or_down(mode):
   if mode == None:
@@ -179,6 +183,8 @@ def push_1():
     screen.add("reboot...")
   if key == "showinfo":
     showinfo()
+  if key == "connectnet":
+    connectnet()
 
 def push_2():
   screen.add("shutdown...")
