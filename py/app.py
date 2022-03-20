@@ -37,13 +37,10 @@ states = {
 }
 
 selects = [
-  { "key": "start", "state": False},
-  { "key": "stop", "state": False},
   { "key": "reboot", "state": False},
   { "key": "shutdown", "state": False},
   { "key": "connectnet", "state": False},
   { "key": "showinfo", "state": False},
-  { "key": "exit", "state": False},
 ]
 select = None
 
@@ -108,7 +105,7 @@ def push_up_or_down(mode):
   min = 0
   max = len(selects) - 1
 
-  if select >= max:
+  if select > max:
     select = min
   if select < min:
     select = max
@@ -185,6 +182,8 @@ def push_1():
     showinfo()
   if key == "connectnet":
     connectnet()
+  screen.add("please input! ^ < > v")
+  
 
 def push_2():
   screen.add("shutdown...")
