@@ -91,6 +91,8 @@ class Connection:
 
     async def connect(self):
         print("in connect")
+        do_action_callback("in connect")
+
         if self.connected:
             return
         try:

@@ -41,6 +41,7 @@ selects = [
   { "key": "shutdown", "state": False},
   { "key": "connectnet", "state": False},
   { "key": "showinfo", "state": False},
+  { "key": "restartself", "state": False},
 ]
 select = None
 
@@ -86,6 +87,11 @@ def showinfo():
 def connectnet():
   screen.add("connect wlan0 to net")
   subprocess.run(["sudo", "dhclient", "wlan0"])
+
+def restartself():
+  screen.add("restart app")
+  subprocess.run(["sudo", "systemctl", "restart", "cmarawithpy.service"])
+
 
 def push_up_or_down(mode):
   if mode == None:
@@ -182,6 +188,9 @@ def push_1():
     showinfo()
   if key == "connectnet":
     connectnet()
+  if key == "restartself":
+    restartself()
+
   screen.add("please input! ^ < > v")
   
 
