@@ -90,7 +90,7 @@ def connectnet():
 
 def restartself():
   screen.add("restart app")
-  subprocess.run(["sudo", "systemctl", "restart", "cmarawithpy.service"])
+  subprocess.run(["sudo", "systemctl", "restart", "camerawithpy.service"])
 
 
 def push_up_or_down(mode):
