@@ -234,6 +234,7 @@ def show_selects():
 def main():
   global screen
   screen = make_screen()
+  print("start app!")
   screen.add("start app!")
   screen.add("please input! ^ < > v")
 

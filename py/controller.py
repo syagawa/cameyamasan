@@ -297,6 +297,8 @@ write_characteristic = "00001142-0000-1000-8000-00805f9b34fb"
 
 
 def connect(action_callback=None):
+    print("connect0 in controller")
+
     if action_callback != None:
         action_callback("connect in controller.py0")
         set_action_callback(action_callback)
