@@ -239,8 +239,13 @@ def main():
   screen.add("please input! ^ < > v")
 
   loop = asyncio.get_event_loop()
-  loop.run_until_complete(start_standby(None, key_callback))
-  loop.run_until_complete(connect(controller_callback))
+  # print("before run_until_complete1")
+  # loop.run_until_complete(start_standby(None, key_callback))
+  # print("before run_until_complete2")
+  # loop.run_until_complete(connect(controller_callback))
+  asyncio.ensure_future(start_standby(None, key_callback))
+  asyncio.ensure_future(connect(controller_callback))
+  loop.run_forever()
 
 if __name__ == "__main__":
   main()
