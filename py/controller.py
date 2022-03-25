@@ -300,9 +300,11 @@ def connect(action_callback=None):
     print("connect0 in controller")
 
     if action_callback != None:
-        action_callback("connect in controller.py0")
+        action_callback("0 connect in controller.py")
         set_action_callback(action_callback)
-        do_action_callback("connect in controller.py1")
+
+    do_action_callback("1 connect in controller.py")
+
     loop = asyncio.get_event_loop()
     connection = Connection(
         loop, read_characteristic, write_characteristic
