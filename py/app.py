@@ -11,6 +11,13 @@ import psutil
 
 import subprocess
 
+import datetime
+
+def log(mes):
+  d = datetime.datetime.today()
+  s = d.strftime("%Y/%m/%d %H:%M:%S.%f")[:-3]
+  print("[%s] %s" % (s, mes))
+
 def get_ip_addresses(family):
   for interface, snics in psutil.net_if_addrs().items():
     for snic in snics:
@@ -67,11 +74,11 @@ def set_state(key, b):
     states[key] = _bool
 
 def get_select(index):
-  print("in get_select %s" % index)
+  log("in get_select %s" % index)
   for i, item in enumerate(selects):
-    print("in get_select for")
+    log("in get_select for")
     if i == index:
-      print("in get_select for if")
+      log("in get_select for if")
       return selects[i]
 
 def reboot():
@@ -204,7 +211,7 @@ def push_3():
 
 
 def key_callback(pin, state):
-  print("in key_callback")
+  log("in key_callback")
   name = key_names[pin]
   # screen.update("%s, %s, %s" % (name, pin, state))
   if name == "UP":
@@ -223,7 +230,7 @@ def key_callback(pin, state):
     push_3()
 
 def controller_callback(message):
-  print("in controller_callback")
+  log("in controller_callback")
   screen.add("%s in cc" % message)
 
 
@@ -234,14 +241,14 @@ def show_selects():
 def main():
   global screen
   screen = make_screen()
-  print("start app!")
+  log("start app!")
   screen.add("start app!")
   screen.add("please input! ^ < > v")
 
   loop = asyncio.get_event_loop()
-  # print("before run_until_complete1")
+  # log("before run_until_complete1")
   # loop.run_until_complete(start_standby(None, key_callback))
-  # print("before run_until_complete2")
+  # log("before run_until_complete2")
   # loop.run_until_complete(connect(controller_callback))
   asyncio.ensure_future(start_standby(None, key_callback))
   asyncio.ensure_future(connect(controller_callback))
