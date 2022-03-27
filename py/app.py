@@ -11,12 +11,7 @@ import psutil
 
 import subprocess
 
-import datetime
-
-def log(mes):
-  d = datetime.datetime.today()
-  s = d.strftime("%Y/%m/%d %H:%M:%S.%f")[:-3]
-  print("[%s] %s" % (s, mes))
+from logger import log
 
 def get_ip_addresses(family):
   for interface, snics in psutil.net_if_addrs().items():
@@ -31,8 +26,6 @@ def get_ip_string(name):
     if elm[0] == name:
       str = "%s:%s" % (elm[0], elm[1])
   return str
-
-
 
 
 screen = None
