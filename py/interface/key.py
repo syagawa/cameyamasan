@@ -2,6 +2,7 @@
 import RPi.GPIO as GPIO
 import time
 import asyncio
+from logger import log
 
 #GPIO define
 RST_PIN        = 25
@@ -50,7 +51,7 @@ pressed_keys = []
 def do_action(pressed_pin, state):
   global pressed_keys
   name = key_names[pressed_pin]
-  # print("%s %s" % (name, "pressed"))
+  # log("%s %s" % (name, "pressed"))
   pressed_keys.append(pressed_pin)
   if action_callback != None:
     action_callback(pressed_pin, state)
@@ -78,56 +79,56 @@ async def main(s_time, action):
   while True:
     if GPIO.input(KEY_UP_PIN) == GPIO.LOW:
       press(KEY_UP_PIN)
-      print("after press %s" % KEY_UP_PIN)
+      log("after press %s" % KEY_UP_PIN)
     elif GPIO.input(KEY_UP_PIN) == GPIO.HIGH:
       release(KEY_UP_PIN)
 
     if GPIO.input(KEY_LEFT_PIN) == GPIO.LOW:
       press(KEY_LEFT_PIN)
-      print("after press %s" % KEY_LEFT_PIN)
+      log("after press %s" % KEY_LEFT_PIN)
     elif GPIO.input(KEY_LEFT_PIN) == GPIO.HIGH:
       release(KEY_LEFT_PIN)
 
     if GPIO.input(KEY_RIGHT_PIN) == GPIO.LOW:
       press(KEY_RIGHT_PIN)
-      print("after press %s" % KEY_RIGHT_PIN)
+      log("after press %s" % KEY_RIGHT_PIN)
     elif GPIO.input(KEY_RIGHT_PIN) == GPIO.HIGH:
       release(KEY_RIGHT_PIN)
 
     if GPIO.input(KEY_DOWN_PIN) == GPIO.LOW:
       press(KEY_DOWN_PIN)
-      print("after press %s" % KEY_DOWN_PIN)
+      log("after press %s" % KEY_DOWN_PIN)
     elif GPIO.input(KEY_DOWN_PIN) == GPIO.HIGH:
       release(KEY_DOWN_PIN)
 
     if GPIO.input(KEY_PRESS_PIN) == GPIO.LOW:
       press(KEY_PRESS_PIN)
-      print("after press %s" % KEY_PRESS_PIN)
+      log("after press %s" % KEY_PRESS_PIN)
     elif GPIO.input(KEY_PRESS_PIN) == GPIO.HIGH:
       release(KEY_PRESS_PIN)
 
     if GPIO.input(KEY1_PIN) == GPIO.LOW:
       press(KEY1_PIN)
-      print("after press %s" % KEY1_PIN)
+      log("after press %s" % KEY1_PIN)
     elif GPIO.input(KEY1_PIN) == GPIO.HIGH:
       release(KEY1_PIN)
 
     if GPIO.input(KEY2_PIN) == GPIO.LOW:
       press(KEY2_PIN)
-      print("after press %s" % KEY2_PIN)
+      log("after press %s" % KEY2_PIN)
     elif GPIO.input(KEY2_PIN) == GPIO.HIGH:
       release(KEY2_PIN)
 
     if GPIO.input(KEY3_PIN) == GPIO.LOW:
       press(KEY3_PIN)
-      print("after press %s" % KEY3_PIN)
+      log("after press %s" % KEY3_PIN)
     elif GPIO.input(KEY3_PIN) == GPIO.HIGH:
       release(KEY3_PIN)
 
     time.sleep(s_time)
 
 async def start_standby(s_time=None, action_callback=None):
-  print("start standby key input")
+  log("start standby key input")
   if s_time == None:
     s_time = sleep_time
   await main(s_time, action_callback)
