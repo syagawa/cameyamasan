@@ -16,6 +16,7 @@ import camera
 from interface.key import start_standby
 from interface.screen import make_screen
 
+from logger import log
 
 com_start_server = '{"action":"start_server", "ssid": "%s", "pswd":"%s"}' % (ssid, ps)
 device_name = camera_device_name
@@ -297,7 +298,7 @@ write_characteristic = "00001142-0000-1000-8000-00805f9b34fb"
 
 
 def connect(action_callback=None):
-    print("connect0 in controller")
+    log("connect0 in controller")
 
     if action_callback != None:
         action_callback("0 connect in controller.py")
