@@ -6,6 +6,8 @@ from . import display_module
 
 import platform
 
+from logger import log
+
 info = display_module.getDisplayInfo()
 rows = info["rows"]
 columns = info["columns"]
@@ -36,8 +38,8 @@ def show(screen_index):
 def add(index, message):
   if index < 0:
     return
-  print("add@screen.py index: %s" % (index))
-  print("add@screen.py len: %s" % (len(screens)))
+  log("add@screen.py index: %s" % (index))
+  log("add@screen.py len: %s" % (len(screens)))
   sc = screens[index]
   sc["matrix"].append(message)
   max = sc["length"]
@@ -80,15 +82,15 @@ class Screen:
   def add(self, mes=None):
     if mes == None:
       return
-    print("self.screen_index: %s" % self.self_index)
+    log("self.screen_index: %s" % self.self_index)
     add(self.self_index, mes)
     show(self.self_index)
   def clear(self):
-    print("self.screen_index: %s" % self.self_index)
+    log("self.screen_index: %s" % self.self_index)
     clear(self.self_index)
     show(self.self_index)
   def update(self, mes=None):
-    print("self.screen_index: %s" % self.self_index)
+    log("self.screen_index: %s" % self.self_index)
     update(self.self_index, mes)
     show(self.self_index)
   def show(self):
@@ -108,10 +110,10 @@ def make_screen(lines=max_rows):
 
 def show_info():
   s = make_screen()
-  print(s)
+  log(s)
   uname = platform.uname()
-  print("aaa")
-  print(s.add)
+  log("aaa")
+  log(s.add)
   s.add()
   s.add("1")
   s.add("2")
