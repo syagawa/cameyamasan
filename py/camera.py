@@ -3,6 +3,7 @@ import urllib.request
 from datetime import datetime
 import os
 
+from logger import log
 
 framesizes = [
   { "key": "fs_96_96", "value": "0", "default": False},
@@ -29,7 +30,7 @@ def shot(ip, dir, fs):
 
   global shot_count
 
-  print("fs:", fs)
+  log("fs:", fs)
   framesize = None
   framesize_default = None
   key = ""
@@ -46,7 +47,7 @@ def shot(ip, dir, fs):
   if framesize == None:
       framesize = framesize_default
 
-  print(f"shot {framesize}, {quality}, {key}")
+  log(f"shot {framesize}, {quality}, {key}")
 
   params = {
     "fs": framesize,
@@ -57,12 +58,12 @@ def shot(ip, dir, fs):
   status_url = f"http://{ip}/status"
 
   req_status = urllib.request.Request(status_url)
-  print(req_status.full_url)
+  log(req_status.full_url)
 
   # check status
   with urllib.request.urlopen(req_status) as res_status:
     status = res_status.read()
-    print(status)
+    log(status)
 
   req = urllib.request.Request('{}?{}'.format(capture_url, urllib.parse.urlencode(params)))
 
@@ -82,7 +83,7 @@ def shots(times, interval, ip, fs):
     t = datetime.now().isoformat()
     dir = "./images/{0}".format(t)
     os.makedirs(dir, exist_ok=True)
-    print(f"Image Directory: {dir}")
+    log(f"Image Directory: {dir}")
     for i in range(times):
         shot(ip, dir, fs)
         sleep(interval)
