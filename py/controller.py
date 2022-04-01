@@ -67,20 +67,20 @@ class Connection:
         self.rx_delays = []
 
     def on_disconnect(self, client: BleakClient):
-        print("in on_disconnect")
+        log("in on_disconnect")
         self.connected = False
         # Put code here to handle what happens on disconnet.
-        print(f"Disconnected from {self.connected_device.name}!")
+        log(f"Disconnected from {self.connected_device.name}!")
 
     async def cleanup(self):
-        print("in cleanup")
+        log("in cleanup")
         if self.client:
             await self.client.stop_notify(read_characteristic)
             await self.client.disconnect()
-            print("disconnected")
+            log("disconnected")
 
     async def manager(self):
-        print("Starting connection manager.")
+        log("Starting connection manager.")
         do_action_callback("Starting connection manager.")
 
         while True:
@@ -91,7 +91,7 @@ class Connection:
                 await asyncio.sleep(10.0)
 
     async def connect(self):
-        print("in connect")
+        log("in connect")
         do_action_callback("in connect")
 
         if self.connected:
@@ -100,7 +100,7 @@ class Connection:
             await self.client.connect()
             self.connected = self.client.is_connected()
             if self.connected:
-                print(F"Connected to {self.connected_device.name}")
+                log(F"Connected to {self.connected_device.name}")
                 self.client.set_disconnected_callback(self.on_disconnect)
                 await self.client.start_notify(
                     self.read_characteristic, self.notification_handler,
@@ -110,26 +110,26 @@ class Connection:
                         break
                     await asyncio.sleep(1.0)
             else:
-                print(f"Failed to connect to {self.connected_device.name}")
+                log(f"Failed to connect to {self.connected_device.name}")
         except Exception as e:
-            print(e)
+            log(e)
 
     async def select_device(self):
-        print("Bluetooh LE hardware warming up 0")
+        log("Bluetooh LE hardware warming up 0")
         await asyncio.sleep(2.0) # Wait for BLE to initialize.
-        print("Bluetooh LE hardware warming up 1")
+        log("Bluetooh LE hardware warming up 1")
         devices = None
         try:
-            print("discovering...")
+            log("discovering...")
             devices = await discover()
         except Exception as e:
-            print(e)
+            log(e)
             return
 
-        print("Please select device: ")
+        log("Please select device: ")
         target_index = -1
         for i, device in enumerate(devices):
-            print(f"{i}: {device.name}")
+            log(f"{i}: {device.name}")
             if device.name == device_name:
                 target_index = i
 
@@ -141,21 +141,21 @@ class Connection:
                 try:
                     response = int(response.strip())
                 except:
-                    print("Please make valid selection.")
+                    log("Please make valid selection.")
                 
                 if response > -1 and response < len(devices):
                     break
                 else:
-                    print("Please make valid selection.")
+                    log("Please make valid selection.")
         else:
             response = target_index
 
-        print(f"Connecting to {devices[response].name}")
+        log(f"Connecting to {devices[response].name}")
         try:
             self.connected_device = devices[response]
             self.client = BleakClient(devices[response].address, loop=self.loop)
         except:
-            print("failed connecting device")
+            log("failed connecting device")
             
 
     def record_time_info(self):
@@ -175,14 +175,14 @@ class Connection:
         global server_is_started
         global server_ip
 
-        print(f"Received From ESP 32 Camera: {data}")
+        log(f"Received From ESP 32 Camera: {data}")
         received_data = data
         if hasattr(received_data, "decode"):
             str = received_data.decode()
-            print(f"str {str}")
+            log(f"str {str}")
             j = json.loads(received_data)
             if("ip" in j):
-                print(f"exitsts! IP: {j['ip']}")
+                log(f"exitsts! IP: {j['ip']}")
 
                 server_is_started = True
                 server_ip = j["ip"]
@@ -191,7 +191,7 @@ class Connection:
 
 
 def finally_process():
-    print("in finally_process")
+    log("in finally_process")
     loop.run_until_complete(connection.cleanup())
     signal.signal(signal.SIGTERM, signal.SIG_IGN)
     signal.signal(signal.SIGINT, signal.SIG_IGN)
@@ -202,24 +202,24 @@ def finally_process():
     sys.exit(1)
 
 def sig_handler(signum, frame) -> None:
-    print("in sig_handler")
+    log("in sig_handler")
     finally_process()
 
 def pressed_action(pressed_pin, state):
-    print(f"pressed!! {pressed_pin}: {state}")
+    log(f"pressed!! {pressed_pin}: {state}")
 
 
 #############
 # Loops
 #############
 async def send_wifi_info(connection: Connection):
-    print("in send_wifi_info")
+    log("in send_wifi_info")
     loopable = True
     while loopable:
         if connection.client and connection.connected:
             bytes_to_send = bytearray(map(ord, com_start_server))
             await connection.client.write_gatt_char(write_characteristic, bytes_to_send)
-            print(f"Sent: Wi-Fi info")
+            log(f"Sent: Wi-Fi info")
             loopable = False
         else:
             await asyncio.sleep(1.0)
@@ -228,11 +228,11 @@ async def set_camera_shot_settings():
     framesizes = camera.framesizes
     while True:
         if server_is_started:
-            print("Please select framesize by number: ")
+            log("Please select framesize by number: ")
             for i, elm in enumerate(framesizes):
                 elm = framesizes[i]
                 key = elm["key"]
-                print(f"{i}: {key}")
+                log(f"{i}: {key}")
             break
         else:
             await asyncio.sleep(5.0)
@@ -244,9 +244,9 @@ async def set_camera_shot_settings():
             response = int(response.strip())
             tgt = framesizes[response]
             framesize_value = tgt["value"]
-            print("framesize_value", framesize_value)
+            log("framesize_value", framesize_value)
         except:
-            print("Unknown Number. The default value will be selected.")
+            log("Unknown Number. The default value will be selected.")
         
         break
 
@@ -257,26 +257,26 @@ async def start_shots():
     while flg:
         # YOUR APP CODE WOULD GO HERE.
         if server_is_started:
-            print(f"server is started ! ip: {server_ip}")
+            log(f"server is started ! ip: {server_ip}")
             try:
                 global shot_started
                 if shot_started == False:
                     shot_started = True
-                    print("shot started!")
+                    log("shot started!")
                     res = False
                     try:
                         res = camera.shots(shot_times, shot_interval, server_ip, framesize_value)
                     except Exception as e:
-                        print("catch Exception", e)
-                    print("shot ended!")
+                        log("catch Exception", e)
+                    log("shot ended!")
                     if res == True:
                         connection.cleanup()
 
 
             except KeyboardInterrupt:
-                print("except KeyboardInterrupt in start_camera()")
+                log("except KeyboardInterrupt in start_camera()")
             finally:
-                print("finally in start_camera()")
+                log("finally in start_camera()")
                 # sys.exit(1)
                 flg = False
                 raise Exception("End process")
@@ -316,10 +316,10 @@ def connect(action_callback=None):
         asyncio.ensure_future(send_wifi_info(connection))
         loop.run_forever()
     except KeyboardInterrupt:
-        print()
-        print("in except KeyboardInterrupt: User stopped program.")
+        log()
+        log("in except KeyboardInterrupt: User stopped program.")
     finally:
-        print("in finally Disconnecting...")
+        log("in finally Disconnecting...")
         finally_process()
 
 
@@ -330,7 +330,7 @@ def connect_and_shot():
     connection = Connection(
         loop, read_characteristic, write_characteristic
     )
-    print("Start Controller!!!")
+    log("Start Controller!!!")
     try:
         signal.signal(signal.SIGTERM, sig_handler)
         asyncio.ensure_future(connection.manager())
@@ -339,10 +339,10 @@ def connect_and_shot():
         # asyncio.ensure_future(start_standby(None, pressed_action))
         loop.run_forever()
     except KeyboardInterrupt:
-        print()
-        print("in except KeyboardInterrupt: User stopped program.")
+        log()
+        log("in except KeyboardInterrupt: User stopped program.")
     finally:
-        print("in finally Disconnecting...")
+        log("in finally Disconnecting...")
         finally_process()
 
 if __name__ == "__main__":
