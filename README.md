@@ -142,12 +142,12 @@ sleep 3
 service hostapd restart
 ```
 
-11. check
+11. check connecting internet
 
 ```
 $ ping google.com
 
-# if not work
+# if not receive
 $ sudo dhclient wlan0
 
 ```
