@@ -223,7 +223,7 @@ def key_callback(pin, state):
     push_3()
 
 def controller_callback(message):
-  log("in controller_callback")
+  log(message)
   screen.add("%s in cc" % message)
 
 
@@ -244,8 +244,11 @@ def main():
   # log("before run_until_complete2")
   # loop.run_until_complete(connect(controller_callback))
   asyncio.ensure_future(start_standby(None, key_callback))
+  log("started app1")
   asyncio.ensure_future(connect(controller_callback))
+  log("started app2")
   loop.run_forever()
+  log("started app3")
 
 if __name__ == "__main__":
   main()

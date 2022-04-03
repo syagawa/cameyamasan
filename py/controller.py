@@ -298,13 +298,13 @@ write_characteristic = "00001142-0000-1000-8000-00805f9b34fb"
 
 
 def connect(action_callback=None):
-    log("connect0 in controller")
+    log("connect0 in controller.py")
 
     if action_callback != None:
-        action_callback("0 connect in controller.py")
+        action_callback("0 connect in cpy")
         set_action_callback(action_callback)
 
-    do_action_callback("1 connect in controller.py")
+    do_action_callback("1 connect in cpy")
 
     loop = asyncio.get_event_loop()
     connection = Connection(
