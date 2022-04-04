@@ -311,10 +311,15 @@ def connect(action_callback=None):
         loop, read_characteristic, write_characteristic
     )
     try:
+        do_action_callback("2 connect in cpy")
         signal.signal(signal.SIGTERM, sig_handler)
+        do_action_callback("3 connect in cpy")
         asyncio.ensure_future(connection.manager())
+        do_action_callback("4 connect in cpy")
         asyncio.ensure_future(send_wifi_info(connection))
+        do_action_callback("5 connect in cpy")
         loop.run_forever()
+        do_action_callback("6 connect in cpy")
     except KeyboardInterrupt:
         log()
         log("in except KeyboardInterrupt: User stopped program.")
