@@ -214,8 +214,10 @@ def pressed_action(pressed_pin, state):
 #############
 async def send_wifi_info(connection: Connection):
     log("in send_wifi_info")
+    do_action_callback("in send_wifi_info")
     loopable = True
     while loopable:
+        do_action_callback("in while loopable")
         if connection.client and connection.connected:
             bytes_to_send = bytearray(map(ord, com_start_server))
             await connection.client.write_gatt_char(write_characteristic, bytes_to_send)
