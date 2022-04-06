@@ -238,7 +238,9 @@ def main():
   screen.add("start app!")
   screen.add("please input! ^ < > v")
 
-  loop = asyncio.get_event_loop()
+  # loop = asyncio.get_event_loop()
+  new_loop = asyncio.new_event_loop()
+  loop = asyncio.set_event_loop(new_loop)
   # log("before run_until_complete1")
   # loop.run_until_complete(start_standby(None, key_callback))
   # log("before run_until_complete2")
