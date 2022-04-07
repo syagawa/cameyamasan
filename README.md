@@ -182,7 +182,7 @@ $ systemctl enable camerawithpy.service
 $ sudo reboot
 ```
 
-* referebce sites
+* reference sites
     * https://superuser.com/questions/544399/how-do-you-make-a-systemd-service-as-the-last-service-on-boot
 
 #### not start in boot
