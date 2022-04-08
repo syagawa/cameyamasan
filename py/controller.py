@@ -308,9 +308,9 @@ def connect(action_callback=None):
 
     do_action_callback("1 connect in cpy")
 
-    # loop = asyncio.get_event_loop()
-    new_loop = asyncio.new_event_loop()
-    loop = asyncio.set_event_loop(new_loop)
+    loop = asyncio.get_event_loop()
+    # new_loop = asyncio.new_event_loop()
+    # loop = asyncio.set_event_loop(new_loop)
     connection = Connection(
         loop, read_characteristic, write_characteristic
     )
@@ -334,9 +334,9 @@ def connect(action_callback=None):
 
 def connect_and_shot():
     # Create the event loop.
-    # loop = asyncio.get_event_loop()
-    new_loop = asyncio.new_event_loop()
-    loop = asyncio.set_event_loop(new_loop)
+    loop = asyncio.get_event_loop()
+    # new_loop = asyncio.new_event_loop()
+    # loop = asyncio.set_event_loop(new_loop)
 
     connection = Connection(
         loop, read_characteristic, write_characteristic
