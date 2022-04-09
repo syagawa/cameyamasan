@@ -192,7 +192,7 @@ class Connection:
 
 def finally_process():
     log("in finally_process")
-    loop.run_until_complete(connection.cleanup())
+    # loop.run_until_complete(connection.cleanup())
     signal.signal(signal.SIGTERM, signal.SIG_IGN)
     signal.signal(signal.SIGINT, signal.SIG_IGN)
     #cleanup()
@@ -227,6 +227,7 @@ async def send_wifi_info(connection: Connection):
             await asyncio.sleep(1.0)
 
 async def set_camera_shot_settings():
+    log("in set_camera_shot_settings")
     framesizes = camera.framesizes
     while True:
         if server_is_started:
@@ -286,6 +287,7 @@ async def start_shots():
 
 
 async def start_camera():
+    log("in start_camera")
     await set_camera_shot_settings()
     await start_shots()
 
