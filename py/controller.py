@@ -53,6 +53,7 @@ class Connection:
         write_characteristic: str,
         data_dump_size: int = 256,
     ):
+        log("in __init__ Connection")
         self.loop = loop
         self.read_characteristic = read_characteristic
         self.write_characteristic = write_characteristic
@@ -159,17 +160,20 @@ class Connection:
             
 
     def record_time_info(self):
+        log("in record_time_info")
         present_time = datetime.now()
         self.rx_timestamps.append(present_time)
         self.rx_delays.append((present_time - self.last_packet_time).microseconds)
         self.last_packet_time = present_time
 
     def clear_lists(self):
+        log("in clear_lists")
         self.rx_data.clear()
         self.rx_delays.clear()
         self.rx_timestamps.clear()
 
     def notification_handler(self, sender: str, data: Any):
+        log("in norific...handler")
         self.rx_data.append(int.from_bytes(data, byteorder="big"))
         self.record_time_info()
         global server_is_started
