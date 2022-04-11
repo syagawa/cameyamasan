@@ -1,6 +1,6 @@
 # ESP32 Camera controlled by Raspberry Pi
 
-Timer Camera X (M5Stack) controlled by python on Raspberry Pi.
+M5Stack Timer Camera X controlled by python on Raspberry Pi.
 
 ## specs
 
@@ -15,6 +15,7 @@ Timer Camera X (M5Stack) controlled by python on Raspberry Pi.
             * bleak
         * Wi-Fi
         * BLE
+        * OLED Display and buttons
 
 * PC(Win or Mac or Linux) for compiling to camera
     * Arduino IDE
