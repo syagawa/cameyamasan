@@ -247,7 +247,7 @@ def main():
   # loop.run_until_complete(connect(controller_callback))
   asyncio.ensure_future(start_standby(None, key_callback))
   log("started app1")
-  connect2(key_callback)
+  asyncio.ensure_future(connect2(key_callback))
   log("started app2")
   loop.run_forever()
   log("started app3")
