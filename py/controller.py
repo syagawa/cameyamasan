@@ -337,6 +337,39 @@ def connect(action_callback=None):
         log("in finally Disconnecting...")
         finally_process()
 
+async def connect2(action_callback=None):
+    log("connect2 in controller.py")
+
+    if action_callback != None:
+        action_callback("0 connect2 in cpy")
+        set_action_callback(action_callback)
+
+    do_action_callback("1 connect2 in cpy")
+
+    loop = asyncio.get_event_loop()
+    # new_loop = asyncio.new_event_loop()
+    # loop = asyncio.set_event_loop(new_loop)
+    connection = Connection(
+        loop, read_characteristic, write_characteristic
+    )
+    try:
+        do_action_callback("2 connect2 in cpy")
+        signal.signal(signal.SIGTERM, sig_handler)
+        do_action_callback("3 connect2 in cpy")
+        asyncio.ensure_future(connection.manager())
+        do_action_callback("4 connect2 in cpy")
+        asyncio.ensure_future(send_wifi_info(connection))
+        do_action_callback("5 connect2 in cpy")
+        loop.run_forever()
+        do_action_callback("6 connect2 in cpy")
+    except KeyboardInterrupt:
+        log()
+        log("in except KeyboardInterrupt: User stopped program.")
+    finally:
+        log("in finally Disconnecting...")
+        finally_process()
+
+
 
 def connect_and_shot():
     # Create the event loop.

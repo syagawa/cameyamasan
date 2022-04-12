@@ -4,7 +4,7 @@ import asyncio
 from interface.key import start_standby, key_names
 from interface.terminal import start_terminal
 from interface.screen import make_screen
-from controller import connect
+from controller import connect, connect2
 
 import socket
 import psutil
@@ -238,16 +238,16 @@ def main():
   screen.add("start app!")
   screen.add("please input! ^ < > v")
 
-  # loop = asyncio.get_event_loop()
-  new_loop = asyncio.new_event_loop()
-  loop = asyncio.set_event_loop(new_loop)
+  loop = asyncio.get_event_loop()
+  # new_loop = asyncio.new_event_loop()
+  # loop = asyncio.set_event_loop(new_loop)
   # log("before run_until_complete1")
   # loop.run_until_complete(start_standby(None, key_callback))
   # log("before run_until_complete2")
   # loop.run_until_complete(connect(controller_callback))
   asyncio.ensure_future(start_standby(None, key_callback))
   log("started app1")
-  asyncio.ensure_future(connect(controller_callback))
+  connect2(key_callback)
   log("started app2")
   loop.run_forever()
   log("started app3")
