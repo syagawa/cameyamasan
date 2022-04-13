@@ -17,13 +17,13 @@ M5Stack Timer Camera X controlled by python on Raspberry Pi.
         * BLE
         * OLED Display and buttons
 
-* PC(Win or Mac or Linux) for compiling to camera
+* PC for compiling to camera
     * Arduino IDE
 
 
 ## Compile source to Camera @PC
 
-1. git clone this repository to PC.
+1. git clone this repository.
 2. Open this repository's root by Arduino IDE.
 3. Connect Timer Camera X to PC.
 4. Compile to Timer Camera X.
