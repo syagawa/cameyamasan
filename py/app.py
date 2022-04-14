@@ -239,18 +239,45 @@ def main():
   screen.add("please input! ^ < > v")
 
   loop = asyncio.get_event_loop()
-  # new_loop = asyncio.new_event_loop()
-  # loop = asyncio.set_event_loop(new_loop)
-  # log("before run_until_complete1")
-  # loop.run_until_complete(start_standby(None, key_callback))
-  # log("before run_until_complete2")
-  # loop.run_until_complete(connect(controller_callback))
   asyncio.ensure_future(start_standby(None, key_callback))
   log("started app1")
   asyncio.ensure_future(connect2(key_callback))
+
   log("started app2")
   loop.run_forever()
   log("started app3")
 
 if __name__ == "__main__":
   main()
+
+async def main2():
+  global screen
+  screen = make_screen()
+  log("start app!")
+  screen.add("start app!")
+  screen.add("please input! ^ < > v")
+
+  # loop = asyncio.get_event_loop()
+  # new_loop = asyncio.new_event_loop()
+  # loop = asyncio.set_event_loop(new_loop)
+  # log("before run_until_complete1")
+  # loop.run_until_complete(start_standby(None, key_callback))
+  # log("before run_until_complete2")
+  # loop.run_until_complete(connect(controller_callback))
+  futures = []
+  f1 = asyncio.ensure_future(start_standby(None, key_callback))
+  futures.append(f1)
+  log("started app1")
+  f2 = asyncio.ensure_future(connect2(key_callback))
+  futures.append(f2)
+
+  log("started app2")
+  log(f1 == f2)
+  # loop.run_forever()
+  await asyncio.wait(futures)
+  log("started app3")
+
+# if __name__ == "__main__":
+#   loop = asyncio.get_event_loop()
+#   loop.run_forever()
+#   main2()
