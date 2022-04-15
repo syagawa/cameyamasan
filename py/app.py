@@ -250,7 +250,7 @@ def main():
 if __name__ == "__main__":
   main()
 
-async def main2():
+async def main2(callback):
   global screen
   screen = make_screen()
   log("start app!")
@@ -266,9 +266,11 @@ async def main2():
   # loop.run_until_complete(connect(controller_callback))
   futures = []
   f1 = asyncio.ensure_future(start_standby(None, key_callback))
+  f1.add_done_callback(callback)
   futures.append(f1)
   log("started app1")
   f2 = asyncio.ensure_future(connect2(key_callback))
+  f2.add_done_callback(callback)
   futures.append(f2)
 
   log("started app2")
@@ -278,6 +280,9 @@ async def main2():
   log("started app3")
 
 # if __name__ == "__main__":
+    # results = []
+#   def store_result(f):
+#     results.append(f.result())
 #   loop = asyncio.get_event_loop()
-#   loop.run_forever()
+#   loop.run_until_complete(main2(store_result))
 #   main2()
