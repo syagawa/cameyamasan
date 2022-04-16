@@ -265,11 +265,15 @@ async def main2(callback):
   # log("before run_until_complete2")
   # loop.run_until_complete(connect(controller_callback))
   futures = []
-  f1 = asyncio.ensure_future(start_standby(None, key_callback))
+  def cor1():
+    start_standby(None, key_callback)
+  f1 = asyncio.ensure_future(cor1)
   f1.add_done_callback(callback)
   futures.append(f1)
   log("started app1")
-  f2 = asyncio.ensure_future(connect2(key_callback))
+  def cor2():
+    connect2(key_callback)
+  f2 = asyncio.ensure_future(cor2)
   f2.add_done_callback(callback)
   futures.append(f2)
 
@@ -279,10 +283,11 @@ async def main2(callback):
   await asyncio.wait(futures)
   log("started app3")
 
-# if __name__ == "__main__":
-    # results = []
-#   def store_result(f):
-#     results.append(f.result())
-#   loop = asyncio.get_event_loop()
-#   loop.run_until_complete(main2(store_result))
-#   main2()
+if __name__ == "__main__2":
+  results = []
+  def store_result(f):
+    results.append(f.result())
+  loop = asyncio.get_event_loop()
+  loop.run_until_complete(main2(store_result))
+  for res in results:
+    log("{0}".format(res))
