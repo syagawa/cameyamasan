@@ -279,10 +279,13 @@ if __name__ == "__main__2":
   main()
 
 if __name__ == "__main__":
+  log("in main0")
   results = []
   def store_result(f):
     results.append(f.result())
   loop = asyncio.get_event_loop()
+  log("in main1")
   loop.run_until_complete(main2(store_result))
+  log("in main2")
   for res in results:
     log("{0}".format(res))
