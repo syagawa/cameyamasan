@@ -254,16 +254,19 @@ async def main2(callback):
   log("start2 app!")
   screen.add("start2 app!")
   screen.add("please2 input! ^ < > v")
+  log("s22")
 
   futures = []
-  def cor1():
-    start_standby(None, key_callback)
+  cor1 = start_standby(None, key_callback)
+  log("s23")
   f1 = asyncio.ensure_future(cor1)
+  log("s24")
   f1.add_done_callback(callback)
+  log("s25")
   futures.append(f1)
   log("started2 app1")
-  def cor2():
-    connect2(key_callback)
+  async def cor2():
+    await connect2(key_callback)
   f2 = asyncio.ensure_future(cor2)
   f2.add_done_callback(callback)
   futures.append(f2)
