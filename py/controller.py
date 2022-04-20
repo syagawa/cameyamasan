@@ -354,9 +354,10 @@ async def connect2(action_callback=None):
     )
     try:
         do_action_callback("2 connect2 in cpy")
-        signal.signal(signal.SIGTERM, sig_handler)
+        # signal.signal(signal.SIGTERM, sig_handler)
         do_action_callback("3 connect2 in cpy")
-        asyncio.ensure_future(connection.manager())
+        # asyncio.ensure_future(connection.manager())
+        await connection.manager()
         do_action_callback("4 connect2 in cpy")
         asyncio.ensure_future(send_wifi_info(connection))
         do_action_callback("5 connect2 in cpy")
