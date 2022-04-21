@@ -352,23 +352,16 @@ async def connect2(action_callback=None):
     connection = Connection(
         loop, read_characteristic, write_characteristic
     )
-    try:
-        do_action_callback("2 connect2 in cpy")
-        # signal.signal(signal.SIGTERM, sig_handler)
-        do_action_callback("3 connect2 in cpy")
-        # asyncio.ensure_future(connection.manager())
-        await connection.manager()
-        do_action_callback("4 connect2 in cpy")
-        asyncio.ensure_future(send_wifi_info(connection))
-        do_action_callback("5 connect2 in cpy")
-        loop.run_forever()
-        do_action_callback("6 connect2 in cpy")
-    except KeyboardInterrupt:
-        log()
-        log("in except KeyboardInterrupt: User stopped program.")
-    finally:
-        log("in finally Disconnecting...")
-        finally_process()
+    do_action_callback("2 connect2 in cpy")
+    # signal.signal(signal.SIGTERM, sig_handler)
+    do_action_callback("3 connect2 in cpy")
+    # asyncio.ensure_future(connection.manager())
+    await connection.manager()
+    do_action_callback("4 connect2 in cpy")
+    asyncio.ensure_future(send_wifi_info(connection))
+    do_action_callback("5 connect2 in cpy")
+    loop.run_forever()
+    do_action_callback("6 connect2 in cpy")
 
 
 

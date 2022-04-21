@@ -264,24 +264,23 @@ async def main2(callback):
   f1.add_done_callback(callback)
   log("s25")
   futures.append(f1)
-  log("started2 app1")
+  log("s26")
   cor2 = connect2(key_callback)
   f2 = asyncio.ensure_future(cor2)
   f2.add_done_callback(callback)
   futures.append(f2)
 
-  log("started2 app2")
-  log(f1 == f2)
+  log("s27")
   # loop.run_forever()
   await asyncio.wait(futures)
-  log("started2 app3")
+  log("s28")
 
 
 if __name__ == "__main__2":
   main()
 
 if __name__ == "__main__":
-  log("in main0")
+  log("---------------------")
   results = []
   def store_result(f):
     results.append(f.result())
