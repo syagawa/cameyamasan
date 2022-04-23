@@ -346,8 +346,8 @@ async def connect2(action_callback=None):
 
     do_action_callback("1 connect2 in cpy")
 
-    new_loop = asyncio.new_event_loop()
-    loop = asyncio.set_event_loop(new_loop)
+    # new_loop = asyncio.new_event_loop()
+    # loop = asyncio.set_event_loop(new_loop)
     # loop = asyncio.get_event_loop()
 
     # new_loop = asyncio.new_event_loop()
