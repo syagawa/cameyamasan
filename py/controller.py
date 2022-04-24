@@ -346,8 +346,8 @@ async def connect2(action_callback=None):
 
     do_action_callback("1 connect2 in cpy")
 
-    # new_loop = asyncio.new_event_loop()
-    # loop = asyncio.set_event_loop(new_loop)
+    new_loop = asyncio.new_event_loop()
+    loop = asyncio.set_event_loop(new_loop)
     # loop = asyncio.get_event_loop()
 
     # new_loop = asyncio.new_event_loop()
@@ -362,7 +362,7 @@ async def connect2(action_callback=None):
     do_action_callback("4 connect2 in cpy")
     asyncio.ensure_future(send_wifi_info(connection))
     do_action_callback("5 connect2 in cpy")
-    loop.run_forever()
+    # loop.run_forever()
     do_action_callback("6 connect2 in cpy")
 
 
