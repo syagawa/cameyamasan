@@ -10,6 +10,7 @@ import socket
 import psutil
 
 import subprocess
+import threading
 
 from logger import log
 
@@ -275,8 +276,22 @@ async def main2(callback):
   await asyncio.wait(futures)
   log("s28")
 
+def main3():
+  global screen
+  screen = make_screen()
+  log("start3 app!")
+  screen.add("start3 app!")
+  screen.add("please3 input! ^ < > v")
 
-if __name__ == "__main__2":
+  thread1 = threading.Thread(target=start_standby, args=(None, key_callback))
+  thread2 = threading.Thread(target=connect2, args=(key_callback,))
+  thread1.start()
+  thread2.start()
+  log("start3 ---")
+
+
+
+if __name__ == "__main__1":
   main()
 
 if __name__ == "__main__":
@@ -290,3 +305,8 @@ if __name__ == "__main__":
   log("in main2")
   for res in results:
     log("{0}".format(res))
+
+if __name__ == "__main__3":
+  log("---------------------")
+  main3()
+  log("start3 app!!!!")
