@@ -294,7 +294,7 @@ def main3():
 if __name__ == "__main__1":
   main()
 
-if __name__ == "__main__":
+if __name__ == "__main__2":
   log("---------------------")
   results = []
   def store_result(f):
@@ -306,7 +306,7 @@ if __name__ == "__main__":
   for res in results:
     log("{0}".format(res))
 
-if __name__ == "__main__3":
+if __name__ == "__main__":
   log("---------------------")
   main3()
-  log("start3 app!!!!")
+  log("after main3")
