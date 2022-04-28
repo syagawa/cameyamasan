@@ -284,7 +284,7 @@ def main3():
   screen.add("please3 input! ^ < > v")
 
   thread1 = threading.Thread(target=start_standby, args=(None, key_callback))
-  thread2 = threading.Thread(target=connect2, args=(key_callback,))
+  thread2 = threading.Thread(target=connect, args=(key_callback,))
   thread1.start()
   thread2.start()
   log("start3 ---")
