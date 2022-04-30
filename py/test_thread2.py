@@ -1,20 +1,37 @@
 import time
-import threading
+from threading import Thread
 import asyncio
 
+loop_a = asyncio.new_event_loop()
+loop_b = asyncio.new_event_loop()
 
-async def f1():
+def f1():
   for n in range(10):
     print("func1 {0}".format(n))
-    await asyncio.sleep(1)
+    time.sleep(1)
 
-async def f2():
+def f2():
   for n in range(20):
     print("func2 {0}".format(n))
-    await asyncio.sleep(0.5)
+    time.sleep(0.5)
+
+def cb_a():
+  asyncio.set_event_loop(loop_a)
+  asyncio.get_event_loop().call_soon(lambda: f1())
+  loop_a.run_forever()
+
+def cb_b():
+  asyncio.set_event_loop(loop_b)
+  asyncio.get_event_loop().call_soon(lambda: f2())
+  loop_b.run_forever()
+
+
 
 if __name__ == "__main__":
-  thread1 = threading.Thread(target=f1)
-  thread2 = threading.Thread(target=f2)
+  thread1 = Thread(target=cb_a)
+  thread2 = Thread(target=cb_b)
   thread1.start()
   thread2.start()
+
+
+
