@@ -12,19 +12,27 @@ def start_loop(loop: asyncio.AbstractEventLoop):
   loop.run_forever()
 
 async def f1():
-  for n in range(10):
+  for n in range(6):
     print("func1 {0}".format(n))
     await asyncio.sleep(1)
   return "OK1"
 
 async def f2():
-  for n in range(20):
+  for n in range(9):
     print("func2 {0}".format(n))
     await asyncio.sleep(0.5)
   return "OK2"
 
+async def f3():
+  n = -1
+  while True:
+    n = n + 1
+    print("func3 {0}".format(n))
+    await asyncio.sleep(1.5)
+
+
 async def do_actions(loop):
-  tasks = [loop.create_task(f1()), loop.create_task(f2())]
+  tasks = [loop.create_task(f1()), loop.create_task(f2()), loop.create_task(f3())]
   results = await asyncio.gather(*tasks)
   return results
 
