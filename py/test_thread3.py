@@ -36,6 +36,9 @@ async def do_actions(loop):
   results = await asyncio.gather(*tasks)
   return results
 
+def make_task_and_go(loop):
+  return asyncio.run_coroutine_threadsafe(do_actions(loop), loop)
+
 if __name__ == "__main__":
   loop = asyncio.new_event_loop()
   t = Thread(target=start_loop, args=(loop,), daemon=True)
@@ -43,7 +46,7 @@ if __name__ == "__main__":
 
   start_time = datetime.now()
 
-  task = asyncio.run_coroutine_threadsafe(do_actions(loop), loop)
+  task = make_task_and_go(loop)
   for mes in task.result():
     print(mes)
 
