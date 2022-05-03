@@ -31,15 +31,15 @@ async def f3():
     await asyncio.sleep(1.5)
 
 
-async def do_actions(loop):
+async def do_make_task_and_go(loop):
   tasks = [loop.create_task(f1()), loop.create_task(f2()), loop.create_task(f3())]
   results = await asyncio.gather(*tasks)
   return results
 
 def make_task_and_go(loop):
-  return asyncio.run_coroutine_threadsafe(do_actions(loop), loop)
+  return asyncio.run_coroutine_threadsafe(do_make_task_and_go(loop), loop)
 
-if __name__ == "__main__":
+def main():
   loop = asyncio.new_event_loop()
   t = Thread(target=start_loop, args=(loop,), daemon=True)
   t.start()
@@ -54,5 +54,8 @@ if __name__ == "__main__":
 
   print(f"It took {exec_time:,.2f} seconds to run")
   loop.stop()
+
+if __name__ == "__main__":
+  main()
 
 
