@@ -276,6 +276,14 @@ async def main2(callback):
   await asyncio.wait(futures)
   log("s28")
 
+async def do_make_task_and_go(loop, funcs):
+  tasks = [loop.create_task(f()) for f in funcs]
+  results = await asyncio.gather(*tasks)
+  return results
+
+def make_task_and_go(loop, funcs):
+  return asyncio.run_coroutine_threadsafe(do_make_task_and_go(loop, funcs), loop)
+
 def main3():
   global screen
   screen = make_screen()

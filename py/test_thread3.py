@@ -31,13 +31,14 @@ async def f3():
     await asyncio.sleep(1.5)
 
 
-async def do_make_task_and_go(loop):
-  tasks = [loop.create_task(f1()), loop.create_task(f2()), loop.create_task(f3())]
+async def do_make_task_and_go(loop, funcs):
+  # tasks = [loop.create_task(f1()), loop.create_task(f2()), loop.create_task(f3())]
+  tasks = [loop.create_task(f()) for f in funcs]
   results = await asyncio.gather(*tasks)
   return results
 
-def make_task_and_go(loop):
-  return asyncio.run_coroutine_threadsafe(do_make_task_and_go(loop), loop)
+def make_task_and_go(loop, funcs):
+  return asyncio.run_coroutine_threadsafe(do_make_task_and_go(loop, funcs), loop)
 
 def main():
   loop = asyncio.new_event_loop()
@@ -46,7 +47,7 @@ def main():
 
   start_time = datetime.now()
 
-  task = make_task_and_go(loop)
+  task = make_task_and_go(loop, [f1, f2, f3])
   for mes in task.result():
     print(mes)
 
