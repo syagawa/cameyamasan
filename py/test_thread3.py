@@ -11,19 +11,22 @@ def start_loop(loop: asyncio.AbstractEventLoop):
   asyncio.set_event_loop(loop)
   loop.run_forever()
 
-async def f1():
+async def f1(params):
+  print("func1 pram {0}".format(params))
   for n in range(6):
     print("func1 {0}".format(n))
     await asyncio.sleep(1)
   return "OK1"
 
-async def f2():
+async def f2(params):
+  print("func2 pram {0}".format(params))
   for n in range(9):
     print("func2 {0}".format(n))
     await asyncio.sleep(0.5)
   return "OK2"
 
-async def f3():
+async def f3(params):
+  print("func3 pram {0}".format(params))
   n = -1
   while True:
     n = n + 1
@@ -32,8 +35,7 @@ async def f3():
 
 
 async def do_make_task_and_go(loop, funcs):
-  # tasks = [loop.create_task(f1()), loop.create_task(f2()), loop.create_task(f3())]
-  tasks = [loop.create_task(f()) for f in funcs]
+  tasks = [loop.create_task(f["func"](f["params"])) for f in funcs]
   results = await asyncio.gather(*tasks)
   return results
 
@@ -47,7 +49,7 @@ def main():
 
   start_time = datetime.now()
 
-  task = make_task_and_go(loop, [f1, f2, f3])
+  task = make_task_and_go(loop, [{"func": f1,"params": [1]}, {"func": f2,"params": [2]}, {"func": f3,"params": [3]}])
   for mes in task.result():
     print(mes)
 

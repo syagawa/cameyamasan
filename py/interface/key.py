@@ -73,7 +73,7 @@ def release(pin):
   if pressed_pin == pin:
     pressed_pin = None
 
-def main(s_time, action):
+async def main(s_time, action):
   global action_callback
   action_callback = action
   while True:
@@ -125,15 +125,15 @@ def main(s_time, action):
     elif GPIO.input(KEY3_PIN) == GPIO.HIGH:
       release(KEY3_PIN)
 
-    time.sleep(s_time)
-    # asyncio.sleep(s_time)
+    # time.sleep(s_time)
+    await asyncio.sleep(s_time)
 
-def start_standby(s_time=None, action_callback=None):
+async def start_standby(s_time=None, action_callback=None):
   log("start standby key input")
   if s_time == None:
     s_time = sleep_time
-  main(s_time, action_callback)
-  # await main(s_time, action_callback)
+  # main(s_time, action_callback)
+  await main(s_time, action_callback)
 
 def get_key_names():
   return key_names

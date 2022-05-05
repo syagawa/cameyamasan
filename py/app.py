@@ -276,14 +276,6 @@ async def main2(callback):
   await asyncio.wait(futures)
   log("s28")
 
-async def do_make_task_and_go(loop, funcs):
-  tasks = [loop.create_task(f()) for f in funcs]
-  results = await asyncio.gather(*tasks)
-  return results
-
-def make_task_and_go(loop, funcs):
-  return asyncio.run_coroutine_threadsafe(do_make_task_and_go(loop, funcs), loop)
-
 def main3():
   global screen
   screen = make_screen()
@@ -296,6 +288,39 @@ def main3():
   thread1.start()
   thread2.start()
   log("start3 ---")
+
+def start_loop(loop: asyncio.AbstractEventLoop):
+  asyncio.set_event_loop(loop)
+  loop.run_forever()
+
+async def do_make_task_and_go(loop, funcs):
+  tasks = [loop.create_task(f["func"](*f["params"])) for f in funcs]
+  results = await asyncio.gather(*tasks)
+  return results
+
+def make_task_and_go(loop, funcs):
+  return asyncio.run_coroutine_threadsafe(do_make_task_and_go(loop, funcs), loop)
+
+def main4():
+  global screen
+  screen = make_screen()
+  log("start4 app!")
+  screen.add("start4 app!")
+  screen.add("please3 input! ^ < > v")
+
+  loop = asyncio.new_event_loop()
+  t = threading.Thread(target=start_loop, args=(loop,), daemon=True)
+  t.start()
+
+  task = make_task_and_go(loop, [
+    {"func": start_standby, "params": [None, key_callback]},
+    # {"func": connect, "params": [key_callback]}
+  ])
+
+  for mes in task.result():
+    print(mes)
+
+  log("start4 ---")
 
 
 
@@ -314,7 +339,12 @@ if __name__ == "__main__2":
   for res in results:
     log("{0}".format(res))
 
-if __name__ == "__main__":
+if __name__ == "__main__3":
   log("---------------------")
   main3()
   log("after main3")
+
+if __name__ == "__main__":
+  log("---------------------")
+  main4()
+  log("after main4")
