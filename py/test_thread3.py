@@ -35,7 +35,7 @@ async def f3(params):
 
 
 async def do_make_task_and_go(loop, funcs):
-  tasks = [loop.create_task(f["func"](f["params"])) for f in funcs]
+  tasks = [loop.create_task(f["func"](*f["params"])) for f in funcs]
   results = await asyncio.gather(*tasks)
   return results
 
