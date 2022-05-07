@@ -6,31 +6,38 @@ from datetime import datetime
 loop_a = asyncio.new_event_loop()
 loop_b = asyncio.new_event_loop()
 
+global_counter = 0
 
 def start_loop(loop: asyncio.AbstractEventLoop):
   asyncio.set_event_loop(loop)
   loop.run_forever()
 
 async def f1(params):
+  global global_counter
   print("func1 pram {0}".format(params))
   for n in range(6):
-    print("func1 {0}".format(n))
+    global_counter = global_counter + 1
+    print("func1 {0} gcounter:{1}".format(n, global_counter))
     await asyncio.sleep(1)
   return "OK1"
 
 async def f2(params):
+  global global_counter
   print("func2 pram {0}".format(params))
   for n in range(9):
-    print("func2 {0}".format(n))
+    global_counter = global_counter + 1
+    print("func2 {0} gcounter:{1}".format(n, global_counter))
     await asyncio.sleep(0.5)
   return "OK2"
 
 async def f3(params):
+  global global_counter
   print("func3 pram {0}".format(params))
   n = -1
   while True:
     n = n + 1
-    print("func3 {0}".format(n))
+    global_counter = global_counter + 1
+    print("func3 {0} gcounter:{1}".format(n, global_counter))
     await asyncio.sleep(1.5)
 
 
