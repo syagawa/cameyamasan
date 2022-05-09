@@ -39,7 +39,7 @@ def set_action_callback(action_callback=None):
 
 def do_action_callback(message):
     if action_callback_global != None:
-        action_callback_global(0, message)
+        action_callback_global(message)
 
 
 class Connection:
@@ -350,9 +350,9 @@ def connect(action_callback=None):
 async def connect2(action_callback=None):
     log("connect2 in controller.py")
 
-    # if action_callback != None:
-    #     action_callback(999, "0 connect2 in cpy")
-    #     set_action_callback(action_callback)
+    if action_callback != None:
+        action_callback("0 connect2 in cpy")
+        set_action_callback(action_callback)
 
     do_action_callback("1 connect2 in cpy")
 

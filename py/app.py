@@ -314,7 +314,7 @@ def main4():
 
   task = make_task_and_go(loop, [
     {"func": start_standby, "params": [None, key_callback]},
-    {"func": connect2, "params": [key_callback]}
+    {"func": connect2, "params": [controller_callback]}
   ])
 
   for mes in task.result():
