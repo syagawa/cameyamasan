@@ -115,7 +115,7 @@ class Connection:
         except Exception as e:
             log(e)
 
-    async def select_device(self):
+    async def _select_device(self):
         log("Bluetooh LE hardware warming up 0")
         await asyncio.sleep(2.0) # Wait for BLE to initialize.
         log("Bluetooh LE hardware warming up 1")
@@ -158,6 +158,41 @@ class Connection:
         except:
             log("failed connecting device")
             
+
+    async def select_device(self):
+        log("Bluetooh LE hardware warming up 0")
+        await asyncio.sleep(2.0) # Wait for BLE to initialize.
+        log("Bluetooh LE hardware warming up 1")
+        devices = None
+        try:
+            log("discovering...")
+            devices = await discover()
+        except Exception as e:
+            log(e)
+            return
+
+        log("Please select device: ")
+        response = -1
+        target_index = -1
+        for i, device in enumerate(devices):
+            log(f"{i}: {device.name}")
+            if device.name == device_name:
+                target_index = i
+                response = target_index
+
+
+
+        if response == -1:
+            return
+
+        log(f"Connecting to {devices[response].name}")
+        try:
+            self.connected_device = devices[response]
+            self.client = BleakClient(devices[response].address, loop=self.loop)
+        except:
+            log("failed connecting device")
+
+
 
     def record_time_info(self):
         log("in record_time_info")
