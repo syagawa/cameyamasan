@@ -87,6 +87,7 @@ class Connection:
         while True:
             if self.client:
                 await self.connect()
+                break
             else:
                 await self.select_device()
                 await asyncio.sleep(10.0)
@@ -106,10 +107,10 @@ class Connection:
                 await self.client.start_notify(
                     self.read_characteristic, self.notification_handler,
                 )
-                while True:
-                    if not self.connected:
-                        break
-                    await asyncio.sleep(1.0)
+                # while True:
+                #     if not self.connected:
+                #         break
+                #     await asyncio.sleep(1.0)
             else:
                 log(f"Failed to connect to {self.connected_device.name}")
         except Exception as e:
@@ -409,6 +410,7 @@ async def connect2(action_callback=None):
     do_action_callback("5 connect2 in cpy")
     # loop.run_forever()
     do_action_callback("6 connect2 in cpy")
+
 
 
 
