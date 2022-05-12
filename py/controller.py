@@ -223,7 +223,6 @@ class Connection:
             j = json.loads(received_data)
             if("ip" in j):
                 log(f"exitsts! IP: {j['ip']}")
-
                 server_is_started = True
                 server_ip = j["ip"]
         if len(self.rx_data) >= self.dump_size:
@@ -372,6 +371,7 @@ def connect(action_callback=None):
         do_action_callback("4 connect in cpy")
         asyncio.ensure_future(send_wifi_info(connection))
         do_action_callback("5 connect in cpy")
+        asyncio.ensure_future(start_camera())
         log("5 connect in cpy")
         loop.run_forever()
         do_action_callback("6 connect in cpy")
