@@ -57,7 +57,7 @@ def shot(ip, dir, fs):
   capture_url = f"http://{ip}/cap"
   status_url = f"http://{ip}/status"
 
-  # capture_url_sample = "http://192.168.x.x/cap?fs=0&q=1"
+  # capture_url_sample = "http://192.168.x.x/cap?fs=9&q=4"
 
   req_status = urllib.request.Request(status_url)
   log(req_status.full_url)

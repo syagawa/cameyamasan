@@ -371,7 +371,10 @@ def connect(action_callback=None):
         do_action_callback("4 connect in cpy")
         asyncio.ensure_future(send_wifi_info(connection))
         do_action_callback("5 connect in cpy")
-        asyncio.ensure_future(start_camera())
+        # asyncio.ensure_future(start_camera())
+        asyncio.ensure_future(set_camera_shot_settings())
+        asyncio.ensure_future(start_shots())
+
         log("5 connect in cpy")
         loop.run_forever()
         do_action_callback("6 connect in cpy")
