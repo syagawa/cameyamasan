@@ -267,15 +267,16 @@ async def send_wifi_info(connection: Connection):
 
 async def set_camera_shot_settings():
     log("in set_camera_shot_settings")
+    loopable = True
     framesizes = camera.framesizes
-    while True:
+    while loopable:
         if server_is_started:
             log("Please select framesize by number: ")
             for i, elm in enumerate(framesizes):
                 elm = framesizes[i]
                 key = elm["key"]
                 log(f"{i}: {key}")
-            break
+            loopable = False
         else:
             await asyncio.sleep(5.0)
 
@@ -371,9 +372,11 @@ def connect(action_callback=None):
         do_action_callback("4 connect in cpy")
         asyncio.ensure_future(send_wifi_info(connection))
         do_action_callback("5 connect in cpy")
-        # asyncio.ensure_future(start_camera())
         asyncio.ensure_future(set_camera_shot_settings())
+        do_action_callback("6 connect in cpy")
         asyncio.ensure_future(start_shots())
+        do_action_callback("7 connect in cpy")
+
 
         log("5 connect in cpy")
         loop.run_forever()
