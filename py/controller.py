@@ -262,6 +262,7 @@ async def send_wifi_info(connection: Connection):
             await connection.client.write_gatt_char(write_characteristic, bytes_to_send)
             log(f"Sent: Wi-Fi info")
             loopable = False
+            break
         else:
             await asyncio.sleep(1.0)
 
@@ -292,6 +293,20 @@ async def set_camera_shot_settings():
             log("Unknown Number. The default value will be selected.")
         
         break
+
+async def set_camera_shot_settings2():
+    log("in set_camera_shot_settings2")
+    loopable = True
+    global framesize_value
+    framesizes = camera.framesizes
+    while loopable:
+        if server_is_started:
+            tgt = framesizes[9]
+            framesize_value = tgt["value"]
+            log("framesize_value", framesize_value)
+            break
+        else:
+            await asyncio.sleep(5.0)
 
 
 
@@ -375,7 +390,7 @@ def connect(action_callback=None):
         asyncio.ensure_future(send_wifi_info(connection))
         do_action_callback("5 connect in cpy")
         log("5 connect in cpy")
-        asyncio.ensure_future(set_camera_shot_settings())
+        asyncio.ensure_future(set_camera_shot_settings2())
         do_action_callback("6 connect in cpy")
         log("6 connect in cpy")
         asyncio.ensure_future(start_shots())
