@@ -304,6 +304,7 @@ async def set_camera_shot_settings2():
             tgt = framesizes[9]
             framesize_value = tgt["value"]
             log("framesize_value", framesize_value)
+            loopable = False
             break
         else:
             await asyncio.sleep(5.0)
