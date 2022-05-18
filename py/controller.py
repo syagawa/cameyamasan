@@ -101,18 +101,17 @@ class Connection:
 
         await self.client.connect()
         self.connected = self.client.is_connected()
-        if self.connected:
-            log(F"Connected to {self.connected_device.name}")
-            self.client.set_disconnected_callback(self.on_disconnect)
-            return await self.client.start_notify(
-                self.read_characteristic, self.notification_handler,
-            )
-            # while True:
-            #     if not self.connected:
-            #         break
-            #     await asyncio.sleep(1.0)
-        else:
-            log(f"Failed to connect to {self.connected_device.name}")
+        while True:
+            if self.connected:
+                log(F"Connected to {self.connected_device.name}")
+                self.client.set_disconnected_callback(self.on_disconnect)
+                await self.client.start_notify(
+                    self.read_characteristic, self.notification_handler,
+                )
+                break
+            else:
+                await asyncio.sleep(1)
+                log(f"Failed to connect to {self.connected_device.name}")
 
 
     async def connect_(self):
