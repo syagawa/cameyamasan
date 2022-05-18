@@ -98,6 +98,29 @@ class Connection:
 
         if self.connected:
             return
+
+        await self.client.connect()
+        self.connected = self.client.is_connected()
+        if self.connected:
+            log(F"Connected to {self.connected_device.name}")
+            self.client.set_disconnected_callback(self.on_disconnect)
+            return await self.client.start_notify(
+                self.read_characteristic, self.notification_handler,
+            )
+            # while True:
+            #     if not self.connected:
+            #         break
+            #     await asyncio.sleep(1.0)
+        else:
+            log(f"Failed to connect to {self.connected_device.name}")
+
+
+    async def connect_(self):
+        log("in connect")
+        do_action_callback("in connect")
+
+        if self.connected:
+            return
         try:
             await self.client.connect()
             self.connected = self.client.is_connected()
@@ -115,6 +138,8 @@ class Connection:
                 log(f"Failed to connect to {self.connected_device.name}")
         except Exception as e:
             log(e)
+
+
 
     async def _select_device(self):
         log("Bluetooh LE hardware warming up 0")
@@ -209,7 +234,7 @@ class Connection:
         self.rx_timestamps.clear()
 
     def notification_handler(self, sender: str, data: Any):
-        log("in norific...handler")
+        log("in notific...handler")
         self.rx_data.append(int.from_bytes(data, byteorder="big"))
         self.record_time_info()
         global server_is_started
