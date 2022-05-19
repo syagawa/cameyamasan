@@ -320,6 +320,7 @@ async def set_camera_shot_settings():
 
 async def set_camera_shot_settings2():
     log("in set_camera_shot_settings2")
+    do_action_callback("set_camera_shot_settings2")
     loopable = True
     global framesize_value
     framesizes = camera.framesizes
@@ -457,8 +458,16 @@ async def connect2(action_callback=None):
     do_action_callback("4 connect2 in cpy")
     asyncio.ensure_future(send_wifi_info(connection))
     do_action_callback("5 connect2 in cpy")
-    # loop.run_forever()
+
+    asyncio.ensure_future(set_camera_shot_settings2())
     do_action_callback("6 connect2 in cpy")
+
+    asyncio.ensure_future(start_shots())
+    do_action_callback("7 connect2 in cpy")
+
+
+    # loop.run_forever()
+    do_action_callback("8 connect2 in cpy")
 
 
 
