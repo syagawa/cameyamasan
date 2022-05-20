@@ -233,7 +233,7 @@ class Connection:
         self.rx_timestamps.clear()
 
     def notification_handler(self, sender: str, data: Any):
-        log("in notific...handler")
+        log("in notification_handler")
         self.rx_data.append(int.from_bytes(data, byteorder="big"))
         self.record_time_info()
         global server_is_started
@@ -321,15 +321,13 @@ async def set_camera_shot_settings():
 async def set_camera_shot_settings2():
     log("in set_camera_shot_settings2")
     do_action_callback("set_camera_shot_settings2")
-    loopable = True
     global framesize_value
     framesizes = camera.framesizes
-    while loopable:
+    while True:
         if server_is_started:
             tgt = framesizes[9]
             framesize_value = tgt["value"]
             log("framesize_value", framesize_value)
-            loopable = False
             break
         else:
             await asyncio.sleep(5.0)
