@@ -28,7 +28,7 @@ quality = "4"
 shot_count = 0
 
 def shot(ip, dir, fs):
-
+  log("in shot1")
   global shot_count
 
   log("fs:", fs)
@@ -44,6 +44,7 @@ def shot(ip, dir, fs):
 
     if elm["default"]:
       framesize_default = val
+  log("in shot2")
 
   if framesize == None:
       framesize = framesize_default
