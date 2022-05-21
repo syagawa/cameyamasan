@@ -2,6 +2,7 @@ from time import sleep
 import urllib.request
 from datetime import datetime
 import os
+import asyncio
 
 from logger import log
 
@@ -89,4 +90,14 @@ def shots(times, interval, ip, fs):
     for i in range(times):
         shot(ip, dir, fs)
         sleep(interval)
+    return True
+
+async def shots2(times, interval, ip, fs):
+    t = datetime.now().isoformat()
+    dir = "./images/{0}".format(t)
+    os.makedirs(dir, exist_ok=True)
+    log(f"2Image Directory: {dir}")
+    for i in range(times):
+        shot(ip, dir, fs)
+        await asyncio.sleep(interval)
     return True

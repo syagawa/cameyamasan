@@ -364,6 +364,21 @@ async def start_shots():
                 raise Exception("End process")
         await asyncio.sleep(5)
 
+async def start_shots2():
+    flg = True
+    global shot_started
+    while flg:
+        if server_is_started:
+            log(f"server is started ! ip: {server_ip}")
+            shot_started = True
+            log("shot started!")
+            res = False
+            res = await camera.shots2(shot_times, shot_interval, server_ip, framesize_value)
+            if res == True:
+                connection.cleanup()
+                break
+
+        await asyncio.sleep(5)
 
 async def start_camera():
     log("in start_camera")
@@ -460,7 +475,7 @@ async def connect2(action_callback=None):
     asyncio.ensure_future(set_camera_shot_settings2())
     do_action_callback("6 connect2 in cpy")
 
-    asyncio.ensure_future(start_shots())
+    asyncio.ensure_future(start_shots2())
     do_action_callback("7 connect2 in cpy")
 
 
