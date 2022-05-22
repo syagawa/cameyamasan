@@ -31,7 +31,7 @@ def shot(ip, dir, fs):
   log("in shot1")
   global shot_count
 
-  log("fs:", fs)
+  log("fs: %s" % fs)
   framesize = None
   framesize_default = None
   key = ""
