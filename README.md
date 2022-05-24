@@ -37,7 +37,7 @@ M5Stack Timer Camera X controlled by python on Raspberry Pi with Wi-Fi.
 4. Write ssid and ps in py/variables.py
 5. install python and libraries
     ```bash
-    $ sudo apt install -y python3 python3-pip
+    $ sudo apt install -y python3 python3-pip ffmpeg
     $ sudo pip3 install bleak
     $ sudo pip3 install aioconsole
     $ sudo pip3 install psutil
