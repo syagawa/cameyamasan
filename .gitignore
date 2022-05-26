@@ -3,3 +3,4 @@ py/variables.py
 images
 __pycache__
 service/camerawithpy.service
+*.mp4
