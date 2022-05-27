@@ -367,9 +367,8 @@ async def start_shots():
 async def start_shots2():
     log("in start_shots2")
     do_action_callback("start_shots2")
-    flg = True
     global shot_started
-    while flg:
+    while True:
         if server_is_started:
             log(f"server is started ! ip: {server_ip}")
             shot_started = True

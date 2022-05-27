@@ -228,6 +228,17 @@ def controller_callback(message):
   screen.add("%s in cc" % message)
 
 
+send_controller_callback_global = None
+
+def set_controller_callback(callback=None):
+  global send_controller_callback_global
+  send_controller_callback_global = callback
+
+def do_controller_callback(message):
+  if send_controller_callback_global != None:
+    send_controller_callback_global(message)
+
+
 def show_selects():
   for index, item in enumerate(selects):
     screen.add("%s: %s" % (index + 1, item.key))
