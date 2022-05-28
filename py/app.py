@@ -253,7 +253,8 @@ def main():
   loop = asyncio.get_event_loop()
   asyncio.ensure_future(start_standby(None, key_callback))
   log("started app1")
-  asyncio.ensure_future(connect2(key_callback))
+  res_connect2 = asyncio.ensure_future(connect2(key_callback))
+  
 
   log("started app2")
   loop.run_forever()
