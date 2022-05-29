@@ -6,6 +6,8 @@ import asyncio
 
 from logger import log
 
+import global_value as g
+
 framesizes = [
   { "key": "fs_96_96", "value": "0", "default": False},
   { "key": "fs_160_120", "value": "1", "default": False},
@@ -99,6 +101,9 @@ async def shots2(times, interval, ip, fs):
     os.makedirs(dir, exist_ok=True)
     log(f"2Image Directory: {dir}")
     for i in range(times):
+        log("stop_shot %s" % str(g.stop_shot))
+        if g.stop_shot == True:
+          break
         shot(ip, dir, fs)
         await asyncio.sleep(interval)
     return True

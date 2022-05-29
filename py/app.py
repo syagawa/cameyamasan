@@ -14,6 +14,10 @@ import threading
 
 from logger import log
 
+import global_value as g
+
+g.stop_shot = False
+
 def get_ip_addresses(family):
   for interface, snics in psutil.net_if_addrs().items():
     for snic in snics:
@@ -43,6 +47,7 @@ selects = [
   { "key": "connectnet", "state": False},
   { "key": "showinfo", "state": False},
   { "key": "restartself", "state": False},
+  { "key": "stopshot", "state": False},
 ]
 select = None
 
@@ -93,6 +98,10 @@ def restartself():
   screen.add("restart app")
   subprocess.run(["sudo", "systemctl", "restart", "camerawithpy.service"])
 
+def stopshot():
+  exec("g.stop_shot=True")
+  # global g
+  # g.stop_shot=False
 
 def push_up_or_down(mode):
   if mode == None:
@@ -191,6 +200,9 @@ def push_1():
     connectnet()
   if key == "restartself":
     restartself()
+  if key == "stopshot":
+    stopshot()
+
 
   screen.add("please input! ^ < > v")
   
@@ -226,17 +238,6 @@ def key_callback(pin, state):
 def controller_callback(message):
   log(message)
   screen.add("%s in cc" % message)
-
-
-send_controller_callback_global = None
-
-def set_controller_callback(callback=None):
-  global send_controller_callback_global
-  send_controller_callback_global = callback
-
-def do_controller_callback(message):
-  if send_controller_callback_global != None:
-    send_controller_callback_global(message)
 
 
 def show_selects():

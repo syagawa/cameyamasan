@@ -39,7 +39,7 @@ def set_action_callback(action_callback=None):
 
 def do_action_callback(message):
     if action_callback_global != None:
-        action_callback_global(message)
+        return action_callback_global(message)
 
 
 class Connection:
