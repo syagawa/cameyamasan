@@ -35,11 +35,12 @@ def show(screen_index):
 #   for sc in screens:
 #     display_module.showMessages(sc["matrix"], sc["start"])
 
-def add(index, message):
+def add(index, message, nolog=False):
   if index < 0:
     return
-  log("add@screen.py index: %s" % (index))
-  log("add@screen.py len: %s" % (len(screens)))
+  if nolog == False:
+    log("add@screen.py index: %s" % (index))
+    log("add@screen.py len: %s" % (len(screens)))
   sc = screens[index]
   sc["matrix"].append(message)
   max = sc["length"]
@@ -84,6 +85,11 @@ class Screen:
       return
     log("self.screen_index: %s" % self.self_index)
     add(self.self_index, mes)
+    show(self.self_index)
+  def add_from_log(self, mes=None):
+    if mes == None:
+      return
+    add(self.self_index, mes, True)
     show(self.self_index)
   def clear(self):
     log("self.screen_index: %s" % self.self_index)

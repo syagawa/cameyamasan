@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import asyncio
+from asyncio.log import logger
 from interface.key import start_standby, key_names
 from interface.terminal import start_terminal
 from interface.screen import make_screen
@@ -12,7 +13,7 @@ import psutil
 import subprocess
 import threading
 
-from logger import log
+from logger import log, set_screen_to_log, log_screen
 
 import global_value as g
 
@@ -100,8 +101,6 @@ def restartself():
 
 def stopshot():
   exec("g.stop_shot=True")
-  # global g
-  # g.stop_shot=False
 
 def push_up_or_down(mode):
   if mode == None:
@@ -247,15 +246,14 @@ def show_selects():
 def main():
   global screen
   screen = make_screen()
+  set_screen_to_log(screen)
   log("start app!")
-  screen.add("start app!")
   screen.add("please input! ^ < > v")
 
   loop = asyncio.get_event_loop()
   asyncio.ensure_future(start_standby(None, key_callback))
   log("started app1")
   res_connect2 = asyncio.ensure_future(connect2(key_callback))
-  
 
   log("started app2")
   loop.run_forever()
@@ -317,8 +315,8 @@ def make_task_and_go(loop, funcs):
 def main4():
   global screen
   screen = make_screen()
-  log("start4 app!")
-  screen.add("start4 app!")
+  set_screen_to_log(screen)
+  log_screen("start4 app!")
   screen.add("please3 input! ^ < > v")
 
   loop = asyncio.new_event_loop()
