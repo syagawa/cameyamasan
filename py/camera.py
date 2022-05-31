@@ -4,7 +4,7 @@ from datetime import datetime
 import os
 import asyncio
 
-from logger import log
+from logger import log, log_screen
 
 import global_value as g
 
@@ -103,6 +103,7 @@ async def shots2(times, interval, ip, fs):
     for i in range(times):
         log("stop_shot %s" % str(g.stop_shot))
         if g.stop_shot == True:
+          log_screen("stop_shot!! ")
           break
         shot(ip, dir, fs)
         await asyncio.sleep(interval)
