@@ -99,7 +99,7 @@ async def shots2(times, interval, ip, fs):
     t = datetime.now().isoformat()
     dir = "./images/{0}".format(t)
     os.makedirs(dir, exist_ok=True)
-    log(f"2Image Directory: {dir}")
+    log(f"Image Directory: {dir}")
     for i in range(times):
         log("stop_shot %s" % str(g.stop_shot))
         if g.stop_shot == True:

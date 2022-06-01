@@ -16,7 +16,7 @@ import camera
 from interface.key import start_standby
 from interface.screen import make_screen
 
-from logger import log
+from logger import log, log_screen
 
 com_start_server = '{"action":"start_server", "ssid": "%s", "pswd":"%s"}' % (ssid, ps)
 device_name = camera_device_name
@@ -365,14 +365,13 @@ async def start_shots():
         await asyncio.sleep(5)
 
 async def start_shots2():
-    log("in start_shots2")
-    do_action_callback("start_shots2")
+    log_screen("in start_shots2")
     global shot_started
     while True:
         if server_is_started:
-            log(f"server is started ! ip: {server_ip}")
+            log_screen(f"server is started ! ip: {server_ip}")
             shot_started = True
-            log("shot started!")
+            log_screen("shot started!")
             res = False
             res = await camera.shots2(shot_times, shot_interval, server_ip, framesize_value)
             if res == True:
@@ -448,13 +447,10 @@ def connect(action_callback=None):
         finally_process()
 
 async def connect2(action_callback=None):
-    log("connect2 in controller.py")
+    log_screen("connect2 in controller.py")
 
     if action_callback != None:
-        action_callback("0 connect2 in cpy")
         set_action_callback(action_callback)
-
-    do_action_callback("1 connect2 in cpy")
 
     new_loop = asyncio.new_event_loop()
     loop = asyncio.set_event_loop(new_loop)
@@ -464,24 +460,25 @@ async def connect2(action_callback=None):
     connection = Connection(
         loop, read_characteristic, write_characteristic
     )
-    do_action_callback("2 connect2 in cpy")
+    # do_action_callback("2 connect2 in cpy")
     # signal.signal(signal.SIGTERM, sig_handler)
-    do_action_callback("3 connect2 in cpy")
+    # do_action_callback("3 connect2 in cpy")
     # asyncio.ensure_future(connection.manager())
     await connection.manager()
-    do_action_callback("4 connect2 in cpy")
+    # do_action_callback("4 connect2 in cpy")
     asyncio.ensure_future(send_wifi_info(connection))
-    do_action_callback("5 connect2 in cpy")
+    # do_action_callback("5 connect2 in cpy")
 
     asyncio.ensure_future(set_camera_shot_settings2())
-    do_action_callback("6 connect2 in cpy")
+    # do_action_callback("6 connect2 in cpy")
 
     asyncio.ensure_future(start_shots2())
-    do_action_callback("7 connect2 in cpy")
+    # do_action_callback("7 connect2 in cpy")
 
 
     # loop.run_forever()
-    do_action_callback("8 connect2 in cpy")
+    # do_action_callback("8 connect2 in cpy")
+    log_screen("end in connect2")
 
 
 
