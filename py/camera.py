@@ -33,6 +33,9 @@ def shot(ip, dir, fs):
   log("in shot1")
   global shot_count
 
+  if shot_count == 0:
+    log_screen("first shot!")
+
   log("fs: %s" % fs)
   framesize = None
   framesize_default = None
@@ -73,7 +76,6 @@ def shot(ip, dir, fs):
 
   req = urllib.request.Request('{}?{}'.format(capture_url, urllib.parse.urlencode(params)))
 
-
   # shot
   with urllib.request.urlopen(req) as res:
     body = res.read()
@@ -107,4 +109,5 @@ async def shots2(times, interval, ip, fs):
           break
         shot(ip, dir, fs)
         await asyncio.sleep(interval)
+    log_screen("shotted count is %s" % str(shot_count))
     return True
