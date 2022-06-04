@@ -109,5 +109,5 @@ async def shots2(times, interval, ip, fs):
           break
         shot(ip, dir, fs)
         await asyncio.sleep(interval)
-    log_screen("shotted count is %s" % str(shot_count))
+    log_screen("count: %s, inter: %s" % (str(shot_count), str(interval)))
     return True

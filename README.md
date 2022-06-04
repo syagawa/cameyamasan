@@ -35,6 +35,7 @@ M5Stack Timer Camera X controlled by python on Raspberry Pi with Wi-Fi.
 2. `cd ~/<this repository name>`
 3. `$ cp py/variables_sample.py py/variables.py`
 4. Write ssid and ps in py/variables.py
+    * ssid and ps will be used later
 5. install python and libraries
     ```bash
     $ sudo apt install -y python3 python3-pip ffmpeg
@@ -71,6 +72,8 @@ interface wlan1
 ```
 
 5. `$ sudo vim /etc/hostapd/hostapd.conf`
+
+ssid and wpa_passphrase(ps) were written in py/variables.py.
 
 ```
 interface=<wlan1>
