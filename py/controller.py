@@ -103,7 +103,7 @@ class Connection:
         self.connected = self.client.is_connected()
         while True:
             if self.connected:
-                log(F"Connected to {self.connected_device.name}")
+                log_screen(F"Connected to {self.connected_device.name}")
                 self.client.set_disconnected_callback(self.on_disconnect)
                 await self.client.start_notify(
                     self.read_characteristic, self.notification_handler,
@@ -276,16 +276,12 @@ def pressed_action(pressed_pin, state):
 # Loops
 #############
 async def send_wifi_info(connection: Connection):
-    log("in send_wifi_info")
-    do_action_callback("in send_wifi_info")
-    loopable = True
-    while loopable:
-        do_action_callback("in while loopable")
+    log_screen("in send_wifi_info")
+    while True:
         if connection.client and connection.connected:
             bytes_to_send = bytearray(map(ord, com_start_server))
             await connection.client.write_gatt_char(write_characteristic, bytes_to_send)
-            log(f"Sent: Wi-Fi info")
-            loopable = False
+            log_screen("Wi-Fi %s" % ssid)
             break
         else:
             await asyncio.sleep(1.0)
@@ -339,7 +335,7 @@ async def start_shots():
     while flg:
         # YOUR APP CODE WOULD GO HERE.
         if server_is_started:
-            log(f"server is started ! ip: {server_ip}")
+            log_screen(f"server: {server_ip} started")
             try:
                 global shot_started
                 if shot_started == False:
@@ -369,7 +365,7 @@ async def start_shots2():
     global shot_started
     while True:
         if server_is_started:
-            log_screen(f"server is started ! ip: {server_ip}")
+            log_screen(f"server: {server_ip} started")
             shot_started = True
             log_screen("shot started!")
             res = False
