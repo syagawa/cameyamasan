@@ -164,7 +164,7 @@ $ sudo dhclient wlan0
 
 ## Usage
 
-1. Start esp32 camera by connect power.
+1. Start esp32 camera by connect usb power.
 2. `$ python3 py/app.py` @Controller
 
 
@@ -197,6 +197,5 @@ $ systemctl disable camerawithpy.service
 ### start shot
 
 1. If app is starts, "app start!" on the OLED screen.
-2. Select mode push Up or Down key.
-3. After selecting mode and push key1.
-4. start shot!!!
+2. Connect timerx and start wi-fi server in timerx automatically.
+3. start shot!!!
