@@ -33,9 +33,6 @@ def shot(ip, dir, fs):
   log("in shot1")
   global shot_count
 
-  if shot_count == 0:
-    log_screen("first shot!")
-
   log("fs: %s" % fs)
   framesize = None
   framesize_default = None
@@ -93,7 +90,11 @@ def shots(times, interval, ip, fs):
     os.makedirs(dir, exist_ok=True)
     log(f"Image Directory: {dir}")
     for i in range(times):
+        if shot_count == 0:
+          log_screen("before first shot!")
         shot(ip, dir, fs)
+        if shot_count == 1:
+          log_screen("after first shot!")
         sleep(interval)
     return True
 
