@@ -71,7 +71,7 @@ class Connection:
         log("in on_disconnect")
         self.connected = False
         # Put code here to handle what happens on disconnet.
-        log(f"Disconnected from {self.connected_device.name}!")
+        log(f"Disconnected {self.connected_device.name}!")
 
     async def cleanup(self):
         log("in cleanup")
@@ -139,51 +139,6 @@ class Connection:
             log(e)
 
 
-
-    async def _select_device(self):
-        log("Bluetooh LE hardware warming up 0")
-        await asyncio.sleep(2.0) # Wait for BLE to initialize.
-        log("Bluetooh LE hardware warming up 1")
-        devices = None
-        try:
-            log("discovering...")
-            devices = await discover()
-        except Exception as e:
-            log(e)
-            return
-
-        log("Please select device: ")
-        target_index = -1
-        for i, device in enumerate(devices):
-            log(f"{i}: {device.name}")
-            if device.name == device_name:
-                target_index = i
-
-        response = -1
-
-        if target_index == -1:
-            while True:
-                response = await ainput("Select device: ")
-                try:
-                    response = int(response.strip())
-                except:
-                    log("Please make valid selection.")
-                
-                if response > -1 and response < len(devices):
-                    break
-                else:
-                    log("Please make valid selection.")
-        else:
-            response = target_index
-
-        log(f"Connecting to {devices[response].name}")
-        try:
-            self.connected_device = devices[response]
-            self.client = BleakClient(devices[response].address, loop=self.loop)
-        except:
-            log("failed connecting device")
-            
-
     async def select_device(self):
         log("Bluetooh LE hardware warming up 0")
         await asyncio.sleep(2.0) # Wait for BLE to initialize.
@@ -204,8 +159,7 @@ class Connection:
             if device.name == device_name:
                 target_index = i
                 response = target_index
-
-
+                break
 
         if response == -1:
             return
@@ -220,11 +174,12 @@ class Connection:
 
 
     def record_time_info(self):
-        log("in record_time_info")
         present_time = datetime.now()
         self.rx_timestamps.append(present_time)
         self.rx_delays.append((present_time - self.last_packet_time).microseconds)
         self.last_packet_time = present_time
+        log("record_time_info %s" % str(present_time))
+
 
     def clear_lists(self):
         log("in clear_lists")
