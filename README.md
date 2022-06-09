@@ -198,11 +198,12 @@ $ systemctl disable camerawithpy.service
 
 1. If app is starts, "app start!" on the OLED screen.
 2. Connect timerx and start wi-fi server in timerx automatically.
-3. start shot!!!
+3. start shooting!!!
 
 ### make video
 
 ```
+$ cd <directory of shot images>
 $ ls ./*.jpg | awk '{ printf "mv %s ./source%04d.jpg\n", $0, NR }' | sh
 $ ffmpeg -f image2 -r 3 -i ./source%04d.jpg -r 3 -an -vcodec libx264 -pix_fmt yuv420p ./video.mp4
 ```
