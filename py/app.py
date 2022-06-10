@@ -99,6 +99,9 @@ def restartself():
   screen.add("restart app")
   subprocess.run(["sudo", "systemctl", "restart", "camerawithpy.service"])
 
+def init_stopshot():
+  exec("g.stop_shot=False")
+
 def stopshot():
   exec("g.stop_shot=True")
 
@@ -318,6 +321,8 @@ def main4():
   set_screen_to_log(screen)
   log_screen("start4 app!")
   screen.add("please3 input! ^ < > v")
+
+  init_stopshot()
 
   loop = asyncio.new_event_loop()
   t = threading.Thread(target=start_loop, args=(loop,), daemon=True)

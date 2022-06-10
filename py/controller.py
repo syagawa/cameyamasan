@@ -71,7 +71,7 @@ class Connection:
         log("in on_disconnect")
         self.connected = False
         # Put code here to handle what happens on disconnet.
-        log(f"Disconnected {self.connected_device.name}!")
+        log_screen(f"Disconnected {self.connected_device.name}!")
 
     async def cleanup(self):
         log("in cleanup")

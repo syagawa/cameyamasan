@@ -59,17 +59,17 @@ def shot(ip, dir, fs):
   }
 
   capture_url = f"http://{ip}/cap"
-  status_url = f"http://{ip}/status"
 
   # capture_url_sample = "http://192.168.x.x/cap?fs=9&q=4"
 
-  req_status = urllib.request.Request(status_url)
-  log(req_status.full_url)
-
   # check status
-  with urllib.request.urlopen(req_status) as res_status:
-    status = res_status.read()
-    log(status)
+  if shot_count === 0:
+    status_url = f"http://{ip}/status"
+    req_status = urllib.request.Request(status_url)
+    log(req_status.full_url)
+    with urllib.request.urlopen(req_status) as res_status:
+      status = res_status.read()
+      log(status)
 
   req = urllib.request.Request('{}?{}'.format(capture_url, urllib.parse.urlencode(params)))
 
@@ -108,7 +108,11 @@ async def shots2(times, interval, ip, fs):
         if g.stop_shot == True:
           log_screen("stop_shot!! ")
           break
+        if shot_count == 0:
+          log_screen("before first shot!")
         shot(ip, dir, fs)
+        if shot_count == 1:
+          log_screen("after first shot!")
         await asyncio.sleep(interval)
     log_screen("count: %s, inter: %ss" % (str(shot_count), str(interval)))
     return True
