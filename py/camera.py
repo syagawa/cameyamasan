@@ -63,7 +63,7 @@ def shot(ip, dir, fs):
   # capture_url_sample = "http://192.168.x.x/cap?fs=9&q=4"
 
   # check status
-  if shot_count === 0:
+  if shot_count == 0:
     status_url = f"http://{ip}/status"
     req_status = urllib.request.Request(status_url)
     log(req_status.full_url)
@@ -99,6 +99,7 @@ def shots(times, interval, ip, fs):
     return True
 
 async def shots2(times, interval, ip, fs):
+    global shot_count
     t = datetime.now().isoformat()
     dir = "./images/{0}".format(t)
     os.makedirs(dir, exist_ok=True)
