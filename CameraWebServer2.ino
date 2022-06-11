@@ -351,11 +351,11 @@ void setupBLE() {
 
 }
 
-void flick_led() {
+void flick_led(int num) {
   digitalWrite(LED_BUILTIN, LOW);
-  delay(500);
+  delay(num);
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(500);
+  delay(num);
   digitalWrite(LED_BUILTIN, LOW);
 }
 
@@ -436,6 +436,8 @@ void setup() {
 
 void loop() {
 
+  flick_led(100);
+
   noInterrupts();
   if(deviceConnected){
     portENTER_CRITICAL_ISR(&storeDataMux);
@@ -459,7 +461,7 @@ void loop() {
 
   interrupts();
   if(startedCameraServer && !lighted){
-    flick_led();
+    flick_led(500);
     lighted = true;
   }
 }
