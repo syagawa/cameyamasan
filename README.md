@@ -23,10 +23,12 @@ M5Stack Timer Camera X controlled by python on Raspberry Pi with Wi-Fi.
 
 ## Compile source to Camera @PC
 
-1. git clone this repository.
-2. Open this repository's root by Arduino IDE.
-3. Connect Timer Camera X to PC.
-4. Compile to Timer Camera X.
+1. setup Arduino IDE in PC
+    set M%stack-Timer-Cam in ESP32 Arduino( not M5Stack Arduino)
+2. git clone this repository.
+3. Open this repository's root by Arduino IDE.
+4. Connect Timer Camera X to PC.
+5. Compile to Timer Camera X.
 
 
 ## Settings @Controller
