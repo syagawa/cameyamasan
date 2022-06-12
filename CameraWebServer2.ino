@@ -44,6 +44,7 @@ JSONVar receivedObj;
 
 bool startedCameraServer = false;
 bool lighted = false;
+bool loop_started = false;
 void startCameraServer();
 
 char* var_ssid = "";
@@ -436,7 +437,10 @@ void setup() {
 
 void loop() {
 
-  flick_led(100);
+  if(!loop_started){
+    flick_led(100);
+    loop_started = true;
+  }
 
   noInterrupts();
   if(deviceConnected){
@@ -454,6 +458,7 @@ void loop() {
     portEXIT_CRITICAL_ISR(&storeDataMux);
   }
   if(deviceConnectedOneLoopBefore){
+    flick_led(500);
     deviceConnectedOneLoopBefore = false;
     parseMessageFromBle(receivedObj);
     delay(1000);
