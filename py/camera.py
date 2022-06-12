@@ -28,6 +28,7 @@ framesizes = [
 
 quality = "4"
 shot_count = 0
+log_counts = [0, 10, 50, 100, 500, 1000, 2000]
 
 def shot(ip, dir, fs):
   log("in shot1")
@@ -74,14 +75,17 @@ def shot(ip, dir, fs):
   req = urllib.request.Request('{}?{}'.format(capture_url, urllib.parse.urlencode(params)))
 
   # shot
-  with urllib.request.urlopen(req) as res:
-    body = res.read()
-    t = datetime.now().isoformat()
-    filename = "{0}/{1}.jpg".format(dir, t)
-    with open(filename, mode='wb') as f:
-      f.write(body)
-  
-  shot_count = shot_count + 1
+  try:
+    with urllib.request.urlopen(req) as res:
+      body = res.read()
+      t = datetime.now().isoformat()
+      filename = "{0}/{1}.jpg".format(dir, t)
+      with open(filename, mode='wb') as f:
+        f.write(body)
+    shot_count = shot_count + 1
+  except:
+    log_screen("cant shot")
+
 
 
 def shots(times, interval, ip, fs):
@@ -109,11 +113,12 @@ async def shots2(times, interval, ip, fs):
         if g.stop_shot == True:
           log_screen("stop_shot!! ")
           break
-        if shot_count == 0:
-          log_screen("before first shot!")
+        c = shot_count
+        if c in log_counts:
+          log_screen("before %s shot" % str(c))
         shot(ip, dir, fs)
-        if shot_count == 1:
-          log_screen("after first shot!")
+        if c in log_counts:
+          log_screen("after %s shot" % str(c))
         await asyncio.sleep(interval)
     log_screen("count: %s, inter: %ss" % (str(shot_count), str(interval)))
     return True

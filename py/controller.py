@@ -140,12 +140,12 @@ class Connection:
 
 
     async def select_device(self):
-        log("Bluetooh LE hardware warming up 0")
+        # log("Bluetooh LE hardware warming up 0")
         await asyncio.sleep(2.0) # Wait for BLE to initialize.
         log("Bluetooh LE hardware warming up 1")
         devices = None
         try:
-            log("discovering...")
+            log_screen("discovering...")
             devices = await discover()
         except Exception as e:
             log(e)
@@ -240,6 +240,7 @@ async def send_wifi_info(connection: Connection):
             break
         else:
             await asyncio.sleep(1.0)
+    log_screen("wating server start...")
 
 async def set_camera_shot_settings():
     log("in set_camera_shot_settings")
