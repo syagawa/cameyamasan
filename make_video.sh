@@ -6,6 +6,6 @@ rm temp/*
 cp /images/${ARR[-1]}/* ./temp/
 
 ls ./temp/*.jpg | awk '{ printf "mv %s ./temp/source%04d.jpg\n", $0, NR }' | sh
-ffmpeg -f image2 -r 3 -i ./temp/source%04d.jpg -r 3 -an -vcodec libx264 -pix_fmt yuv420p ./temp/video.mp4
+ffmpeg -f image2 -r 6 -i ./temp/source%04d.jpg -r 6 -an -vcodec libx264 -pix_fmt yuv420p ./temp/video.mp4
 
 
