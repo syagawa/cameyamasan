@@ -102,12 +102,20 @@ def shots(times, interval, ip, fs):
         sleep(interval)
     return True
 
+
+def get_hour_minute_second(td):
+  m, s = divmod(td.seconds, 60)
+  h, m = divmod(m, 60)
+  return h, m, s
+
 async def shots2(times, interval, ip, fs):
     global shot_count
-    t = datetime.now().isoformat()
+    now = datetime.now()
+    t = now.isoformat()
     dir = "./images/{0}".format(t)
     os.makedirs(dir, exist_ok=True)
     log(f"Image Directory: {dir}")
+    start_time = now
     for i in range(times):
         log("stop_shot %s" % str(g.stop_shot))
         if g.stop_shot == True:
@@ -120,5 +128,9 @@ async def shots2(times, interval, ip, fs):
         if c in log_counts:
           log_screen("after %s shot" % str(c))
         await asyncio.sleep(interval)
+    end_time = datetime.now()
+    dt = end_time - start_time
+    gap = get_hour_minute_second(dt)
     log_screen("count: %s, inter: %ss" % (str(shot_count), str(interval)))
+    log_screen("%sh %sm %ss" % (gap[0], gap[1], gap[2]))
     return True

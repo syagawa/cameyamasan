@@ -271,8 +271,7 @@ async def set_camera_shot_settings():
         break
 
 async def set_camera_shot_settings2():
-    log("in set_camera_shot_settings2")
-    do_action_callback("set_camera_shot_settings2")
+    log_screen("in set_camera_shot_settings2")
     global framesize_value
     framesizes = camera.framesizes
     while True:
@@ -317,7 +316,7 @@ async def start_shots():
         await asyncio.sleep(5)
 
 async def start_shots2():
-    log_screen("in start_shots2")
+    log_screen("start_shots2")
     global shot_started
     while True:
         if server_is_started:
