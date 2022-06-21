@@ -30,6 +30,16 @@ M5Stack Timer Camera X controlled by python on Raspberry Pi with Wi-Fi.
 4. Connect Timer Camera X to PC.
 5. Compile to Timer Camera X.
 
+## Compile source to Camera by platformio @PC
+
+1. setup VS Code and platformio in PC
+    set M%stack-Timer-Cam
+2. git clone this repository.
+3. Open this repository in VS Code.
+4. Open ar diretory by platformio.
+5. Connect Timer Camera X to PC.
+6. Compile to Timer Camera X.
+
 
 
 
