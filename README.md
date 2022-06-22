@@ -32,7 +32,7 @@ M5Stack Timer Camera X controlled by python on Raspberry Pi with Wi-Fi.
 
 ## Compile source to Camera by platformio @PC
 
-1. setup VS Code and platformio in PC
+1. Install VS Code on pc, start VS Code, then install platformio extension.
     set M%stack-Timer-Cam
 2. git clone this repository.
 3. Open this repository in VS Code.
