@@ -221,4 +221,16 @@ $ systemctl disable camerawithpy.service
 $ cd <directory of shot images>
 $ ls ./*.jpg | awk '{ printf "mv %s ./source%04d.jpg\n", $0, NR }' | sh
 $ ffmpeg -f image2 -r 3 -i ./source%04d.jpg -r 3 -an -vcodec libx264 -pix_fmt yuv420p ./video.mp4
-```
+
+$ ffmpeg \
+  -pattern_type glob \
+  -i '*.jpg' \
+  -vf 'zoompan=d=(0.2+0.1)/0.1:s=800x600:fps=1/0.1,framerate=25:interp_start=0:interp_end=255:scene=100' \
+  -c:v mpeg4 \
+  -q:v 1 \
+  video.mp4
+
+# referred to the following page
+# https://gist.github.com/CMCDragonkai/e00d114b43e38cb2c1b04594229e1df6
+
+``
