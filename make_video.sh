@@ -6,6 +6,13 @@ rm temp/*
 cp /images/${ARR[-1]}/* ./temp/
 
 ls ./temp/*.jpg | awk '{ printf "mv %s ./temp/source%04d.jpg\n", $0, NR }' | sh
-ffmpeg -f image2 -r 6 -i ./temp/source%04d.jpg -r 6 -an -vcodec libx264 -pix_fmt yuv420p ./temp/video.mp4
+
+ffmpeg \
+  -pattern_type glob \
+  -i './temp/*.jpg' \
+  -vf 'zoompan=d=(0.2+0.1)/0.1:s=800x600:fps=1/0.1,framerate=25:interp_start=0:interp_end=255:scene=100' \
+  -c:v mpeg4 \
+  -q:v 1 \
+  video.mp4
 
 
