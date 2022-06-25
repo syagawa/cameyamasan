@@ -36,7 +36,7 @@ M5Stack Timer Camera X controlled by python on Raspberry Pi with Wi-Fi.
     set M%stack-Timer-Cam
 2. git clone this repository.
 3. Open this repository in VS Code.
-4. Open ar diretory by platformio.
+4. Open ar diretory by platformio extension.
 5. Connect Timer Camera X to PC.
 6. Compile to Timer Camera X.
 
@@ -220,7 +220,10 @@ $ systemctl disable camerawithpy.service
 ```
 $ cd <directory of shot images>
 $ ls ./*.jpg | awk '{ printf "mv %s ./source%04d.jpg\n", $0, NR }' | sh
+
 $ ffmpeg -f image2 -r 3 -i ./source%04d.jpg -r 3 -an -vcodec libx264 -pix_fmt yuv420p ./video.mp4
+
+# or
 
 $ ffmpeg \
   -pattern_type glob \
