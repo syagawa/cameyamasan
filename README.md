@@ -2,6 +2,8 @@
 
 M5Stack Timer Camera X controlled by python on Raspberry Pi with Wi-Fi.
 
+Start the Wi-Fi server with M5Stack Timer Camera X and get the image with Raspberry Pi by HTTP request.
+
 ## specs
 
 * Camera Module
