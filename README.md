@@ -6,11 +6,11 @@ Start the Wi-Fi server with M5Stack Timer Camera X and get the image with Raspbe
 
 ## specs
 
-* Camera Module
+* Camera
     * ESP32 PSRAM Timer Camera X (M5Stack)
         * Arduino
 
-* Controller Module
+* Controller
     * Raspberry Pi (with Wi-Fi)
         * python3 / pip3
             * pillow
@@ -41,8 +41,6 @@ Start the Wi-Fi server with M5Stack Timer Camera X and get the image with Raspbe
 4. Open ar diretory by platformio extension.
 5. Connect Timer Camera X to PC.
 6. Compile to Timer Camera X.
-
-
 
 
 
@@ -213,6 +211,7 @@ $ systemctl disable camerawithpy.service
 
 ### start shot
 
+0. Turn on the power of Timer Camera X and Raspberry Pi.
 1. If app is starts, "app start!" on the OLED screen.
 2. Connect timerx and start wi-fi server in timerx automatically.
 3. start shooting!!!
