@@ -1,3 +1,3 @@
 #!/bin/bash
 
-tar -cvzf ./imagesall.tar.gz /images/
+tar -czf ./imagesall.tar.gz /images/
