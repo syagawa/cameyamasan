@@ -29,6 +29,7 @@ framesizes = [
 quality = "4"
 shot_count = 0
 log_counts = [0, 10, 50, 100, 500, 1000, 2000]
+could_not_shoot = False
 
 def shot(ip, dir, fs):
   log("in shot1")
@@ -83,8 +84,12 @@ def shot(ip, dir, fs):
       with open(filename, mode='wb') as f:
         f.write(body)
     shot_count = shot_count + 1
+    if could_not_shoot == True:
+      could_not_shoot = False
+      log_screen("succeeded shooting")
   except:
-    log_screen("cant shot")
+    log_screen("could not shoot")
+    could_not_shoot = True
 
 
 
