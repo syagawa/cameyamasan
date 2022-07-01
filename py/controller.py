@@ -81,8 +81,7 @@ class Connection:
             log("disconnected")
 
     async def manager(self):
-        log("Starting connection manager.")
-        do_action_callback("Starting connection manager.")
+        log_screen("Starting connection manager.")
 
         while True:
             if self.client:
@@ -93,8 +92,7 @@ class Connection:
                 await asyncio.sleep(10.0)
 
     async def connect(self):
-        log("in connect")
-        do_action_callback("in connect")
+        log_screen("in connect")
 
         if self.connected:
             return
