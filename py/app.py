@@ -204,10 +204,8 @@ def push_1():
     restartself()
   if key == "stopshot":
     stopshot()
-
-
   screen.add("please input! ^ < > v")
-  
+
 
 def push_2():
   screen.add("shutdown...")
@@ -246,63 +244,6 @@ def show_selects():
   for index, item in enumerate(selects):
     screen.add("%s: %s" % (index + 1, item.key))
 
-def main():
-  global screen
-  screen = make_screen()
-  set_screen_to_log(screen)
-  log("start app!")
-  screen.add("please input! ^ < > v")
-
-  loop = asyncio.get_event_loop()
-  asyncio.ensure_future(start_standby(None, key_callback))
-  log("started app1")
-  res_connect2 = asyncio.ensure_future(connect2(key_callback))
-
-  log("started app2")
-  loop.run_forever()
-  log("started app3")
-
-
-async def main2(callback):
-  global screen
-  screen = make_screen()
-  log("start2 app!")
-  screen.add("start2 app!")
-  screen.add("please2 input! ^ < > v")
-  log("s22")
-
-  futures = []
-  cor1 = start_standby(None, key_callback)
-  log("s23")
-  f1 = asyncio.ensure_future(cor1)
-  log("s24")
-  f1.add_done_callback(callback)
-  log("s25")
-  futures.append(f1)
-  log("s26")
-  cor2 = connect2(key_callback)
-  f2 = asyncio.ensure_future(cor2)
-  f2.add_done_callback(callback)
-  futures.append(f2)
-
-  log("s27")
-  # loop.run_forever()
-  await asyncio.wait(futures)
-  log("s28")
-
-def main3():
-  global screen
-  screen = make_screen()
-  log("start3 app!")
-  screen.add("start3 app!")
-  screen.add("please3 input! ^ < > v")
-
-  thread1 = threading.Thread(target=start_standby, args=(None, key_callback))
-  thread2 = threading.Thread(target=connect, args=(key_callback,))
-  thread1.start()
-  thread2.start()
-  log("start3 ---")
-
 def start_loop(loop: asyncio.AbstractEventLoop):
   asyncio.set_event_loop(loop)
   loop.run_forever()
@@ -315,7 +256,7 @@ async def do_make_task_and_go(loop, funcs):
 def make_task_and_go(loop, funcs):
   return asyncio.run_coroutine_threadsafe(do_make_task_and_go(loop, funcs), loop)
 
-def main4():
+def main():
   global screen
   screen = make_screen()
   set_screen_to_log(screen)
@@ -340,27 +281,7 @@ def main4():
 
 
 
-if __name__ == "__main__1":
-  main()
-
-if __name__ == "__main__2":
-  log("---------------------")
-  results = []
-  def store_result(f):
-    results.append(f.result())
-  loop = asyncio.get_event_loop()
-  log("in main1")
-  loop.run_until_complete(main2(store_result))
-  log("in main2")
-  for res in results:
-    log("{0}".format(res))
-
-if __name__ == "__main__3":
-  log("---------------------")
-  main3()
-  log("after main3")
-
 if __name__ == "__main__":
   log("---------------------")
-  main4()
-  log("after main4")
+  main()
+  log("after main")
