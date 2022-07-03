@@ -5,7 +5,7 @@ from asyncio.log import logger
 from interface.key import start_standby, key_names
 from interface.terminal import start_terminal
 from interface.screen import make_screen
-from controller import connect, connect2
+from controller import connect
 
 import socket
 import psutil
@@ -271,7 +271,7 @@ def main():
 
   task = make_task_and_go(loop, [
     {"func": start_standby, "params": [None, key_callback]},
-    {"func": connect2, "params": [controller_callback]}
+    {"func": connect, "params": [controller_callback]}
   ])
 
   for mes in task.result():

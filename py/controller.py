@@ -344,90 +344,26 @@ read_characteristic = "00001143-0000-1000-8000-00805f9b34fb"
 write_characteristic = "00001142-0000-1000-8000-00805f9b34fb"
 
 
-def connect(action_callback=None):
-    log("connect0 in controller.py")
-    log("connect000 in controller.py")
-    if action_callback != None:
-        action_callback("0 connect in cpy")
-        log("0 connect in cpy")
-        set_action_callback(action_callback)
 
-    log("connect001 in controller.py")
 
-    do_action_callback("1 connect in cpy")
-    log("connect0011 in controller.py")
-
-    loop = asyncio.get_event_loop()
-    # new_loop = asyncio.new_event_loop()
-    # loop = asyncio.set_event_loop(new_loop)
-    log("connect002 in controller.py")
-    connection = Connection(
-        loop, read_characteristic, write_characteristic
-    )
-    log("connect1 in controller.py")
-
-    try:
-        do_action_callback("2 connect in cpy")
-        log("2 connect in cpy")
-        signal.signal(signal.SIGTERM, sig_handler)
-        do_action_callback("3 connect in cpy")
-        log("3 connect in cpy")
-        asyncio.ensure_future(connection.manager())
-        do_action_callback("4 connect in cpy")
-        log("4 connect in cpy")
-        asyncio.ensure_future(send_wifi_info(connection))
-        do_action_callback("5 connect in cpy")
-        log("5 connect in cpy")
-        asyncio.ensure_future(set_camera_shot_settings2())
-        do_action_callback("6 connect in cpy")
-        log("6 connect in cpy")
-        asyncio.ensure_future(start_shots())
-        do_action_callback("7 connect in cpy")
-        log("7 connect in cpy")
-
-        loop.run_forever()
-        do_action_callback("8 connect in cpy")
-        log("8 connect in cpy")
-    except KeyboardInterrupt:
-        log()
-        log("in except KeyboardInterrupt: User stopped program.")
-    finally:
-        log("in finally Disconnecting...")
-        finally_process()
-
-async def connect2(action_callback=None):
-    log_screen("connect2 in controller.py")
+async def connect(action_callback=None):
+    log_screen("connect in controller.py")
 
     if action_callback != None:
         set_action_callback(action_callback)
 
     new_loop = asyncio.new_event_loop()
     loop = asyncio.set_event_loop(new_loop)
-    # loop = asyncio.get_event_loop()
-
-    # new_loop = asyncio.new_event_loop()
     connection = Connection(
         loop, read_characteristic, write_characteristic
     )
-    # do_action_callback("2 connect2 in cpy")
-    # signal.signal(signal.SIGTERM, sig_handler)
-    # do_action_callback("3 connect2 in cpy")
-    # asyncio.ensure_future(connection.manager())
     await connection.manager()
-    # do_action_callback("4 connect2 in cpy")
     asyncio.ensure_future(send_wifi_info(connection))
-    # do_action_callback("5 connect2 in cpy")
 
     asyncio.ensure_future(set_camera_shot_settings2())
-    # do_action_callback("6 connect2 in cpy")
 
     asyncio.ensure_future(start_shots2())
-    # do_action_callback("7 connect2 in cpy")
-
-
-    # loop.run_forever()
-    # do_action_callback("8 connect2 in cpy")
-    log_screen("end in connect2")
+    log_screen("end in connect")
 
 
 
