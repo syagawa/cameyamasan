@@ -112,31 +112,6 @@ class Connection:
                 log(f"Failed to connect to {self.connected_device.name}")
 
 
-    async def connect_(self):
-        log("in connect")
-        do_action_callback("in connect")
-
-        if self.connected:
-            return
-        try:
-            await self.client.connect()
-            self.connected = self.client.is_connected()
-            if self.connected:
-                log(F"Connected to {self.connected_device.name}")
-                self.client.set_disconnected_callback(self.on_disconnect)
-                await self.client.start_notify(
-                    self.read_characteristic, self.notification_handler,
-                )
-                # while True:
-                #     if not self.connected:
-                #         break
-                #     await asyncio.sleep(1.0)
-            else:
-                log(f"Failed to connect to {self.connected_device.name}")
-        except Exception as e:
-            log(e)
-
-
     async def select_device(self):
         # log("Bluetooh LE hardware warming up 0")
         await asyncio.sleep(2.0) # Wait for BLE to initialize.
