@@ -258,7 +258,7 @@ async def set_camera_shot_settings2():
 
 
 
-async def start_shots():
+async def start_shots_from_main():
     flg = True
     while flg:
         # YOUR APP CODE WOULD GO HERE.
@@ -288,8 +288,8 @@ async def start_shots():
                 raise Exception("End process")
         await asyncio.sleep(5)
 
-async def start_shots2():
-    log_screen("start_shots2")
+async def start_shots_from_app():
+    log_screen("start_shots_from_app")
     global shot_started
     while True:
         if server_is_started:
@@ -307,7 +307,7 @@ async def start_shots2():
 async def start_camera():
     log("in start_camera")
     await set_camera_shot_settings()
-    await start_shots()
+    await start_shots_from_main()
 
 
 
@@ -337,7 +337,7 @@ async def connect(action_callback=None):
 
     asyncio.ensure_future(set_camera_shot_settings2())
 
-    asyncio.ensure_future(start_shots2())
+    asyncio.ensure_future(start_shots_from_app())
     log_screen("end in connect")
 
 
