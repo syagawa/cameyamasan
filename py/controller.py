@@ -213,7 +213,7 @@ async def send_wifi_info(connection: Connection):
             break
         else:
             await asyncio.sleep(1.0)
-    log_screen("wating server start...")
+    log_screen("waiting server start...")
 
 async def set_camera_shot_settings():
     log("in set_camera_shot_settings")

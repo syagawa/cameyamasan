@@ -1,4 +1,5 @@
 from time import sleep
+from urllib.error import ContentTooShortError, HTTPError, URLError
 import urllib.request
 from datetime import datetime
 import os
@@ -33,7 +34,7 @@ could_not_shoot = False
 
 def shot(ip, dir, fs):
   log("in shot1")
-  global shot_count
+  global shot_count, could_not_shoot
 
   log("fs: %s" % fs)
   framesize = None
@@ -87,7 +88,7 @@ def shot(ip, dir, fs):
     if could_not_shoot == True:
       could_not_shoot = False
       log_screen("succeeded shooting")
-  except:
+  except (URLError, HTTPError, ContentTooShortError) as e:
     log_screen("could not shoot")
     could_not_shoot = True
 
