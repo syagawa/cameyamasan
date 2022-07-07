@@ -63,8 +63,6 @@ def shot(ip, dir, fs):
 
   capture_url = f"http://{ip}/cap"
 
-  # capture_url_sample = "http://192.168.x.x/cap?fs=9&q=4"
-
   # check status
   if shot_count == 0:
     status_url = f"http://{ip}/status"

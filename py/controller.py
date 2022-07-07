@@ -137,7 +137,7 @@ class Connection:
         if response == -1:
             return
 
-        log(f"Connecting to {devices[response].name}")
+        log_screen(f"Connecting to {devices[response].name}")
         try:
             self.connected_device = devices[response]
             self.client = BleakClient(devices[response].address, loop=self.loop)
