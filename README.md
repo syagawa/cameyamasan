@@ -211,12 +211,14 @@ $ systemctl disable camerawithpy.service
 
 ### start shot
 
-0. Turn on the power of Timer Camera X and Raspberry Pi.
-1. If app is starts, "app start!" on the OLED screen on RPI.
-2. Connect timerx and start wi-fi server in Timer Camera X automatically.
-3. start shooting!!!
+1. Turn on the power of Timer Camera X and Raspberry Pi.
+2. If app is starts, "app start!" on the OLED screen on RPI.
+3. Connect timerx and start wi-fi server in Timer Camera X automatically.
+4. start shooting!!!
 
 ### make video
+
+Create a video after shooting.
 
 ```
 $ cd <directory of shot images>
