@@ -52,7 +52,7 @@ def shot(ip, dir, fs):
   log("in shot2")
 
   if framesize == None:
-      framesize = framesize_default
+    framesize = framesize_default
 
   log(f"shot {framesize}, {quality}, {key}")
 
@@ -98,12 +98,12 @@ def shots(times, interval, ip, fs):
     os.makedirs(dir, exist_ok=True)
     log(f"Image Directory: {dir}")
     for i in range(times):
-        if shot_count == 0:
-          log_screen("before first shot!")
-        shot(ip, dir, fs)
-        if shot_count == 1:
-          log_screen("after first shot!")
-        sleep(interval)
+      if shot_count == 0:
+        log_screen("before first shot!")
+      shot(ip, dir, fs)
+      if shot_count == 1:
+        log_screen("after first shot!")
+      sleep(interval)
     return True
 
 
@@ -121,17 +121,17 @@ async def shots2(times, interval, ip, fs):
     log(f"Image Directory: {dir}")
     start_time = now
     for i in range(times):
-        log("stop_shot %s" % str(g.stop_shot))
-        if g.stop_shot == True:
-          log_screen("stop_shot!! ")
-          break
-        c = shot_count
-        if c in log_counts:
-          log_screen("before %s shot" % str(c))
-        shot(ip, dir, fs)
-        if c in log_counts:
-          log_screen("after %s shot" % str(c))
-        await asyncio.sleep(interval)
+      log("stop_shot %s" % str(g.stop_shot))
+      if g.stop_shot == True:
+        log_screen("stop_shot!! ")
+        break
+      c = shot_count
+      if c in log_counts:
+        log_screen("before %s shot" % str(c))
+      shot(ip, dir, fs)
+      if c in log_counts:
+        log_screen("after %s shot" % str(c))
+      await asyncio.sleep(interval)
     end_time = datetime.now()
     dt = end_time - start_time
     gap = get_hour_minute_second(dt)
