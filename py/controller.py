@@ -212,8 +212,8 @@ async def send_wifi_info(connection: Connection):
             await asyncio.sleep(1.0)
     log_screen("waiting server start...")
 
-async def set_camera_shot_settings():
-    log("in set_camera_shot_settings")
+async def set_camera_shooting_settings():
+    log("in set_camera_shooting_settings")
     loopable = True
     framesizes = camera.framesizes
     while loopable:
@@ -240,8 +240,8 @@ async def set_camera_shot_settings():
         
         break
 
-async def set_camera_shot_settings2():
-    log_screen("in set_camera_shot_settings2")
+async def set_camera_settings():
+    log_screen("in set_camera_settings")
     global framesize_value
     framesizes = camera.framesizes
     while True:
@@ -303,7 +303,7 @@ async def start_shots_from_app():
 
 async def start_camera():
     log("in start_camera")
-    await set_camera_shot_settings()
+    await set_camera_shooting_settings()
     await start_shots_from_main()
 
 
@@ -332,7 +332,7 @@ async def connect(action_callback=None):
     await connection.manager()
     asyncio.ensure_future(send_wifi_info(connection))
 
-    asyncio.ensure_future(set_camera_shot_settings2())
+    asyncio.ensure_future(set_camera_settings())
 
     asyncio.ensure_future(start_shots_from_app())
     log_screen("end in connect")
