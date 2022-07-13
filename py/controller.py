@@ -316,10 +316,12 @@ read_characteristic = "00001143-0000-1000-8000-00805f9b34fb"
 write_characteristic = "00001142-0000-1000-8000-00805f9b34fb"
 
 
-
+connection = None
 
 async def connect(action_callback=None):
+    global connection
     log_screen("connect in controller.py")
+
 
     if action_callback != None:
         set_action_callback(action_callback)
@@ -341,6 +343,7 @@ async def connect(action_callback=None):
 
 
 def connect_and_shot():
+    global connection
     # Create the event loop.
     loop = asyncio.get_event_loop()
     # new_loop = asyncio.new_event_loop()
