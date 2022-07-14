@@ -8,7 +8,7 @@ from interface.screen import make_screen
 from controller import connect
 
 import socket
-import psutil
+from psutil import net_if_addrs
 
 import subprocess
 import threading
@@ -20,7 +20,7 @@ import global_value as g
 g.stop_shot = False
 
 def get_ip_addresses(family):
-  for interface, snics in psutil.net_if_addrs().items():
+  for interface, snics in net_if_addrs().items():
     for snic in snics:
       if snic.family == family:
         yield(interface, snic.address)
