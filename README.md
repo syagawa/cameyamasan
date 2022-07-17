@@ -1,8 +1,9 @@
-# ESP32 Camera controlled by Raspberry Pi
+# ESP32 Timelapse Camera controlled by Raspberry Pi
 
 M5Stack Timer Camera X controlled by python on Raspberry Pi with Wi-Fi.
 
 Start the server with M5Stack Timer Camera X and get the image with Raspberry Pi by HTTP request.
+
 
 ## specs
 
@@ -13,14 +14,12 @@ Start the server with M5Stack Timer Camera X and get the image with Raspberry Pi
 * Controller
     * Raspberry Pi (with Wi-Fi)
         * python3 / pip3
-            * pillow
-            * bleak
         * Wi-Fi
         * BLE
         * OLED Screen and buttons(HAT)
 
 * PC for compiling to camera
-    * Arduino IDE or platformio
+    * Arduino IDE or platform.io
 
 
 ## Compile source to Camera by Arduino @PC
