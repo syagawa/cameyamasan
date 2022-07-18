@@ -1,4 +1,4 @@
-# ESP32 Timelapse Camera controlled by Raspberry Pi
+# Timelapse Camera controlled by Raspberry Pi
 
 M5Stack Timer Camera X controlled by python on Raspberry Pi with Wi-Fi.
 
@@ -25,7 +25,7 @@ Start the server with M5Stack Timer Camera X and get the image with Raspberry Pi
 ## Compile source to Camera by Arduino @PC
 
 1. setup Arduino IDE in PC
-    set M%stack-Timer-Cam in ESP32 Arduino( not M5Stack Arduino)
+    set M5Stack-Timer-Cam in ESP32 Arduino( not M5Stack Arduino)
 2. git clone this repository.
 3. Open this repository's root by Arduino IDE.
 4. Connect Timer Camera X to PC.
@@ -34,7 +34,7 @@ Start the server with M5Stack Timer Camera X and get the image with Raspberry Pi
 ## Compile source to Camera by platformio @PC
 
 1. Install VS Code on pc, start VS Code, then install platformio extension.
-    set M%stack-Timer-Cam
+    set M5Stack-Timer-Cam
 2. git clone this repository.
 3. Open this repository in VS Code.
 4. Open ar diretory by platformio extension.
