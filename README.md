@@ -24,10 +24,10 @@ Start the server with M5Stack Timer Camera X and get the image with Raspberry Pi
 
 ## Compile source to Camera by Arduino @PC
 
-1. setup Arduino IDE in PC
+1. git clone this repository.
+2. Open this repository's root by Arduino IDE.
+3. setup Arduino IDE in PC
     set M5Stack-Timer-Cam in ESP32 Arduino( not M5Stack Arduino)
-2. git clone this repository.
-3. Open this repository's root by Arduino IDE.
 4. Connect Timer Camera X to PC.
 5. Compile to Timer Camera X.
 
