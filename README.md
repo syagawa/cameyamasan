@@ -7,16 +7,14 @@ Start the server with M5Stack Timer Camera X and get the image with Raspberry Pi
 
 ## specs
 
-* Camera
-    * ESP32 PSRAM Timer Camera X (M5Stack)
-        * Arduino
+* Camera - ESP32 PSRAM Timer Camera X (M5Stack)
+    * Arduino
 
-* Controller
-    * Raspberry Pi (with Wi-Fi)
-        * python3 / pip3
-        * Wi-Fi
-        * BLE
-        * OLED Screen and buttons(HAT)
+* Controller - Raspberry Pi (with Wi-Fi)
+    * python3 / pip3
+    * Wi-Fi
+    * BLE
+    * OLED Screen and buttons(HAT)
 
 * PC for compiling to camera
     * Arduino IDE or platform.io
