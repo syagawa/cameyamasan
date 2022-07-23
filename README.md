@@ -5,7 +5,7 @@ M5Stack Timer Camera X controlled by python on Raspberry Pi with Wi-Fi.
 Start the server with M5Stack Timer Camera X and get the image with Raspberry Pi by HTTP request.
 
 
-## specs
+## specs / machines
 
 * Camera - ESP32 PSRAM Timer Camera X (M5Stack)
     * Arduino
@@ -20,7 +20,9 @@ Start the server with M5Stack Timer Camera X and get the image with Raspberry Pi
     * Arduino IDE or platform.io
 
 
-## Compile source to Camera by Arduino in PC
+## 1. Compile
+
+### Compile source to Camera by Arduino in PC
 
 1. git clone this repository.
 2. Open this repository's root by Arduino IDE.
@@ -29,7 +31,7 @@ Start the server with M5Stack Timer Camera X and get the image with Raspberry Pi
 4. Connect Timer Camera X to PC.
 5. Compile to Timer Camera X.
 
-## Compile source to Camera by platformio in PC
+### Compile source to Camera by platformio in PC
 
 1. Install VS Code on pc, start VS Code, then install platformio extension.
     set M5Stack-Timer-Cam
