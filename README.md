@@ -20,7 +20,7 @@ Start the server with M5Stack Timer Camera X and get the image with Raspberry Pi
     * Arduino IDE or platform.io
 
 
-## 1. Compile
+## 1. Compile Timer Camera X
 
 ### Compile source to Camera by Arduino in PC
 
@@ -42,7 +42,7 @@ Start the server with M5Stack Timer Camera X and get the image with Raspberry Pi
 6. Compile to Timer Camera X.
 
 
-## Settings in Raspberry Pi
+## 2. Settings in Raspberry Pi
 
 1. git clone this repository in Raspberry Pi's `home`.
 2. `cd ~/<this repository name>`
