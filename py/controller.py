@@ -97,8 +97,13 @@ class Connection:
         if self.connected:
             return
 
-        await self.client.connect()
-        self.connected = self.client.is_connected()
+        try:
+            await self.client.connect()
+            self.connected = self.client.is_connected()
+        except Exception as e:
+            ename = e.__class__.__name__
+            log_screen("Error in client.connect %s" % ename)
+        
         while True:
             if self.connected:
                 log_screen(F"Connected to {self.connected_device.name}")
