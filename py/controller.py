@@ -92,7 +92,7 @@ class Connection:
                 await asyncio.sleep(10.0)
 
     async def connect(self):
-        log_screen("in connect")
+        log_screen("Starting connection connect.")
 
         if self.connected:
             return
@@ -325,8 +325,7 @@ connection = None
 
 async def connect(action_callback=None):
     global connection
-    log_screen("connect in controller.py")
-
+    log_screen("start connect in controller.py")
 
     if action_callback != None:
         set_action_callback(action_callback)
@@ -342,7 +341,7 @@ async def connect(action_callback=None):
     asyncio.ensure_future(set_camera_settings())
 
     asyncio.ensure_future(start_shots_from_app())
-    log_screen("end in connect")
+    log_screen("end connect in controller.py")
 
 
 
