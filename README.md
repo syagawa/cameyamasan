@@ -58,6 +58,8 @@ Start the server with M5Stack Timer Camera X and get the image with Raspberry Pi
     ```
 
 
+## 3. Wi-Fi settings
+
 ### How to use Raspberry Pi as a Wi-Fi access point (Case of RTL8188EUS USB dongle)
 
 0. Start Raspberry Pi
