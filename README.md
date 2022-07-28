@@ -60,7 +60,12 @@ Start the server with M5Stack Timer Camera X and get the image with Raspberry Pi
 
 ## 3. Wi-Fi settings
 
-### How to use Raspberry Pi as a Wi-Fi access point (Case of RTL8188EUS USB dongle)
+Set up Wi-Fi using method A or B.
+A is only Raspberry Pi and Timer Camera X. 
+B requires a Raspberry Pi, a Timer Camera X and a Wi-Fi router.
+B is easier, but A is recommended for outdoor use.
+
+### A. How to use Raspberry Pi as a Wi-Fi access point (Case of RTL8188EUS USB dongle)
 
 0. Start Raspberry Pi
 1. Install RTL8188EUS dongle driver 
@@ -175,6 +180,9 @@ $ sudo dhclient wlan0
     * https://ccie-go.com/raspberry-pi-4-chuukeiki/#toc8
     * https://passe-de-mode.uedasoft.com/ja/tips/software/device/raspberrypi/2019.11.buster_r8188eu.html#%E8%83%8C%E6%99%AF
     * https://zenn.dev/yutafujii/books/fcb457e798a3d5/viewer/fe7472
+
+
+### B. Set up Wi-Fi router
 
 
 ## Usage
