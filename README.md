@@ -60,7 +60,7 @@ Start the server with M5Stack Timer Camera X and get the image with Raspberry Pi
 
 ## 3. Wi-Fi settings
 
-Set up Wi-Fi using method A or B.
+Set up Wi-Fi by A or B below.
 A is only Raspberry Pi and Timer Camera X. 
 B requires a Raspberry Pi, a Timer Camera X and a Wi-Fi router.
 B is easier, but A is recommended for outdoor use.
