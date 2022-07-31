@@ -182,8 +182,9 @@ $ sudo dhclient wlan0
     * https://zenn.dev/yutafujii/books/fcb457e798a3d5/viewer/fe7472
 
 
-### B. Set up Wi-Fi router
+### B. Use Wi-Fi router
 
+Check Wi-Fi router ssid and password.
 
 ## Usage
 
