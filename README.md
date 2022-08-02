@@ -93,7 +93,7 @@ interface wlan1
 
 5. `$ sudo vim /etc/hostapd/hostapd.conf`
 
-Put ssid and wpa_passphrase(ps) in py/variables.py.
+Write ssid and wpa_passphrase(ps) in py/variables.py.
 
 ```
 interface=<wlan1>
@@ -185,7 +185,7 @@ $ sudo dhclient wlan0
 ### B. Use Wi-Fi router
 
 Check Wi-Fi router ssid and password.
-Put ssid and password in py/variables.py.
+Write ssid and ps in py/variables.py.
 
 ## Usage
 
