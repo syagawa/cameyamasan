@@ -47,9 +47,7 @@ Start the server with M5Stack Timer Camera X and get the image with Raspberry Pi
 1. git clone this repository in Raspberry Pi's `home`.
 2. `cd ~/<this repository name>`
 3. `$ cp py/variables_sample.py py/variables.py`
-4. Write ssid and ps in py/variables.py
-    * ssid and ps will be used later
-5. install python and libraries
+4. install python and libraries
     ```bash
     $ sudo apt install -y python3 python3-pip ffmpeg
     $ sudo pip3 install bleak
@@ -91,9 +89,13 @@ interface wlan1
  static broadcast 192.168.2.255
 ```
 
-5. `$ sudo vim /etc/hostapd/hostapd.conf`
+5. `$ vim ./py/variables.py.`
 
 Write ssid and wpa_passphrase(ps) in py/variables.py.
+
+6. `$ sudo vim /etc/hostapd/hostapd.conf`
+
+Write ssid and wpa_passphrase(ps) from py/variables.py.
 
 ```
 interface=<wlan1>
@@ -112,13 +114,13 @@ wpa_pairwise=CCMP
 wpa_passphrase=Password
 ```
 
-6. `$ sudo vim /etc/dnsmasq.conf`
+7. `$ sudo vim /etc/dnsmasq.conf`
 ```
 interface=wlan1
 dhcp-range=192.168.2.2,192.168.2.100,255.255.255.0,24h
 ```
 
-7. `$ sudo vim /etc/sysctl.conf`
+8. `$ sudo vim /etc/sysctl.conf`
 ```
 # Uncomment the next line to enable packet forwarding for IPv4
 net.ipv4.ip_forward=1
@@ -133,7 +135,7 @@ sudo iptables --table nat --append POSTROUTING --out-interface wlan0 -j MASQUERA
 sudo iptables --append FORWARD --in-interface wlan1 -j ACCEPT -->
 
 
-8. unmask
+9. unmask
 ```
 $ sudo systemctl stop hostapd
 $ sudo systemctl unmask hostapd
@@ -143,14 +145,14 @@ $ sudo systemctl start hostapd
 $ sudo systemctl start dnsmasq
 ```
 
-9. check Wi-Fi Access Point
+10. check Wi-Fi Access Point
 ```
 $ python -m http.server 3000
 ```
 Connect MY-RP=SERVER from PC or Smartphone.
 Open 192.168.2.1:3000 by Browser in PC or Smartphone.
 
-10. 
+11. 
 
 add below to /etc/rc.local at before exit 0
 
@@ -166,7 +168,7 @@ sleep 3
 service hostapd restart
 ```
 
-11. check connecting internet
+12. check connecting internet
 
 ```
 $ ping google.com
@@ -186,6 +188,11 @@ $ sudo dhclient wlan0
 
 Check Wi-Fi router ssid and password.
 Write ssid and ps in py/variables.py.
+
+1. `$ vim ./py/variables.py.`
+
+Write ssid and wpa_passphrase(ps) in py/variables.py.
+
 
 ## Usage
 
