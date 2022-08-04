@@ -187,11 +187,10 @@ $ sudo dhclient wlan0
 ### B. Use Wi-Fi router
 
 Check Wi-Fi router ssid and password.
-Write ssid and ps in py/variables.py.
 
 1. `$ vim ./py/variables.py.`
 
-Write ssid and wpa_passphrase(ps) in py/variables.py.
+Write ssid and ps(password) in py/variables.py.
 
 
 ## Usage
