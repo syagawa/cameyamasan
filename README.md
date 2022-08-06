@@ -5,7 +5,7 @@ M5Stack Timer Camera X controlled by python on Raspberry Pi with Wi-Fi.
 Start the server with M5Stack Timer Camera X and get the image with Raspberry Pi by HTTP request.
 
 
-## specs / machines
+## Specs & Machines
 
 * Camera - ESP32 PSRAM Timer Camera X (M5Stack)
     * Arduino
@@ -16,7 +16,7 @@ Start the server with M5Stack Timer Camera X and get the image with Raspberry Pi
     * BLE
     * OLED Screen and buttons(HAT)
 
-* PC for compiling to camera
+* PC for compiling to Timer Camera X
     * Arduino IDE or platform.io
 
 
