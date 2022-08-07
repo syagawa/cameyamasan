@@ -225,7 +225,7 @@ $ sudo reboot
 $ systemctl disable camerawithpy.service
 ```
 
-### start shot
+### start shooting
 
 1. Turn on the power of Timer Camera X and Raspberry Pi.
 2. If app is starts, "app start!" on the OLED screen on RPI.
@@ -237,7 +237,7 @@ $ systemctl disable camerawithpy.service
 Create a video after shooting.
 
 ```
-$ cd <directory of shot images>
+$ cd <directory of shooting images>
 $ ls ./*.jpg | awk '{ printf "mv %s ./source%04d.jpg\n", $0, NR }' | sh
 
 $ ffmpeg -f image2 -r 3 -i ./source%04d.jpg -r 3 -an -vcodec libx264 -pix_fmt yuv420p ./video.mp4
