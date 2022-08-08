@@ -301,6 +301,7 @@ async def start_shots_from_app():
             res = False
             res = await camera.shots2(shot_times, shot_interval, server_ip, framesize_value)
             if res == True:
+                log_screen("connection.cleanup()")
                 connection.cleanup()
                 break
 
