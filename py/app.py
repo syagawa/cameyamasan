@@ -47,6 +47,7 @@ selects = [
   { "key": "connectnet", "state": False},
   { "key": "showinfo", "state": False},
   { "key": "restartself", "state": False},
+  { "key": "stopself", "state": False},
   { "key": "stopshot", "state": False},
 ]
 select = None
@@ -97,6 +98,11 @@ def connectnet():
 def restartself():
   screen.add("restart app")
   subprocess.run(["sudo", "systemctl", "restart", "camerawithpy.service"])
+
+def stopself():
+  screen.add("stop app")
+  subprocess.run(["sudo", "systemctl", "stop", "camerawithpy.service"])
+
 
 def init_stopshot():
   exec("g.stop_shot=False")
@@ -201,6 +207,8 @@ def push_1():
     connectnet()
   if key == "restartself":
     restartself()
+  if key == "stopself":
+    stopself()
   if key == "stopshot":
     stopshot()
   screen.add("please input! ^ < > v")
