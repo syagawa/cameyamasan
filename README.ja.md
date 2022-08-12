@@ -2,5 +2,18 @@
 
 M5Stack Timer Camera X とRaspberry Piを使用したタイムラプスカメラ。
 
-Timer Camera XでWebサーバーを起動し、Raspberry Piが画像を取得。
+Timer Camera XでWebサーバーを起動し、Raspberry Piで画像を取得。
 
+## スペック & マシン
+
+* カメラ - ESP32 PSRAM Timer Camera X (M5Stack)
+    * Arduino
+
+* コントローラ - Raspberry Pi (with Wi-Fi)
+    * python3 / pip3
+    * Wi-Fi
+    * BLE
+    * OLED Screen and buttons(HAT)
+
+* PC(Timer Camera Xへのコンパイル)
+    * Arduino IDE or platform.io
