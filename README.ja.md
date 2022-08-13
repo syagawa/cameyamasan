@@ -9,7 +9,7 @@ Timer Camera XでWebサーバーを起動し、Raspberry Piで画像を取得。
 * カメラ - ESP32 PSRAM Timer Camera X (M5Stack)
     * Arduino
 
-* コントローラ - Raspberry Pi (with Wi-Fi)
+* コントローラ - Raspberry Pi (Wi-Fiモデル)
     * python3 / pip3
     * Wi-Fi
     * BLE
@@ -17,3 +17,6 @@ Timer Camera XでWebサーバーを起動し、Raspberry Piで画像を取得。
 
 * PC(Timer Camera Xへのコンパイル)
     * Arduino IDE or platform.io
+
+## 1. コンパイル
+
