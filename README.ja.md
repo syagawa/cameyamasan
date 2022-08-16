@@ -22,9 +22,9 @@ Timer Camera XでWebサーバーを起動し、Raspberry Piで画像を取得す
 
 ### Arduinoでのコンパイル
 
-1. このリポジトリを git clone します。
-2. Arduino IDE でこのリポジトリのルートを開きます。
+1. このリポジトリを`git clone`する
+2. Arduino IDE でこのリポジトリのルートを開く
 3. Arduino IDE のセットアップ
-     M5Stack-Timer-Cam を ESP32 Arduino に設定します (M5Stack Arduino ではありません)。
-4. Timer Camera X を PC に接続します。
-5. Timer Camera X にコンパイルします。
+     M5Stack-Timer-Cam を ESP32 Arduino に設定します (M5Stack Arduinoではない)
+4. Timer Camera X を PC に接続
+5. Timer Camera X にコンパイル
