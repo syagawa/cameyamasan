@@ -31,9 +31,10 @@ Timer Camera XでWebサーバーを起動し、Raspberry Piで画像を取得す
 
 ### PlatformIOでのコンパイル
 
-1. PC に VS Code をインストールし、VS Code P起動して、platformIO 拡張機能をインストールします。
+1. このリポジトリを`git clone`する
+2. VS Code をインストールし、VS Code P起動して、platformIO 拡張機能をインストールする
     M5Stack-Timer-Camを設定
-2. VS Code でこのリポジトリを開きます。
-3. PlatformIO 拡張機能で ar ディレクトリを開きます。
-4. タイマーカメラ X を PC に接続します。
-5. Timer Camera X にコンパイルします。
+3. VS Code でこのリポジトリを開く
+4. PlatformIO 拡張機能で ar ディレクトリを開く
+5. タイマーカメラ X を PC に接続
+6. Timer Camera X にコンパイル
