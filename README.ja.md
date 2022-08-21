@@ -38,3 +38,18 @@ Timer Camera XでWebサーバーを起動し、Raspberry Piで画像を取得す
 4. PlatformIO 拡張機能で ar ディレクトリを開く
 5. タイマーカメラ X を PC に接続
 6. Timer Camera X にコンパイル
+
+
+## 2. Settings in Raspberry Pi
+
+1. Raspberry Pi の`home`にこのリポジトリを`git clone`
+2. `cd ~/<this repository name>`
+3. `$ cp py/variables_sample.py py/variables.py`
+4. Pythonとライブラリをインストール
+    ```bash
+    $ sudo apt install -y python3 python3-pip ffmpeg
+    $ sudo pip3 install bleak
+    $ sudo pip3 install aioconsole
+    $ sudo pip3 install psutil
+    ```
+
