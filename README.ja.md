@@ -40,7 +40,7 @@ Timer Camera XでWebサーバーを起動し、Raspberry Piで画像を取得す
 6. Timer Camera X にコンパイル
 
 
-## 2. Settings in Raspberry Pi
+## 2. Raspberry Piの設定
 
 1. Raspberry Pi の`home`にこのリポジトリを`git clone`
 2. `cd ~/<this repository name>`
@@ -53,3 +53,9 @@ Timer Camera XでWebサーバーを起動し、Raspberry Piで画像を取得す
     $ sudo pip3 install psutil
     ```
 
+## 3. Wi-Fiの設定
+
+AまたはBの方法でWi-Fiを設定します。
+AはRaspberry PiとTimer Camera Xのみ。
+B には Raspberry Pi、Timer Camera X、Wi-Fi ルーターが必要です。
+Bの方が簡単ですが、屋外での使用にはAがおすすめです。
