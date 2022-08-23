@@ -59,3 +59,21 @@ AまたはBの方法でWi-Fiを設定します。
 AはRaspberry PiとTimer Camera Xのみ。
 B には Raspberry Pi、Timer Camera X、Wi-Fi ルーターが必要です。
 Bの方が簡単ですが、屋外での使用にはAがおすすめです。
+
+
+### A. Raspberry Pi を Wi-Fi アクセスポイントとして使用する方法（RTL8188EUS USB ドングルの場合）
+
+0. ラズベリーパイを起動
+1. RTL8188EUS ドングル ドライバーをインストールします。
+     * http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/
+     * ラズパイゼロの例 http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
+
+2. `$ iwconfig` で wlan1 が存在するかどうかを確認する
+
+3. インストール
+```bash
+$ sudo apt update
+$ sudo apt upgrade
+$ sudo apt install hostapd
+$ sudo apt install dnsmasq
+```
