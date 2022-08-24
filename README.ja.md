@@ -77,3 +77,37 @@ $ sudo apt upgrade
 $ sudo apt install hostapd
 $ sudo apt install dnsmasq
 ```
+
+4. `$ sudo vim /etc/dhcpcd.conf`
+```
+interface wlan1
+ static ip_address=192.168.2.1/24
+ static routers=192.168.2.1
+ static domain_name_servers=192.168.2.1
+ static broadcast 192.168.2.255
+```
+
+5. `$ vim ./py/variables.py.`
+
+py/variables.py の ssid と wpa_passphrase(ps)を変更します。
+
+6. `$ sudo vim /etc/hostapd/hostapd.conf`
+
+py/variables.pyに書いたssid と wpa_passphrase(ps) を /etc/hostapd/hostapd.conf に書きます。
+
+```
+interface=<wlan1>
+driver=nl80211
+ssid=MY-RP-SERVER
+hw_mode=g
+#channel=11
+channel=3
+wmm_enabled=0
+macaddr_acl=0
+auth_algs=1
+ieee80211n=1
+wpa=2
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=CCMP
+wpa_passphrase=Password
+```
