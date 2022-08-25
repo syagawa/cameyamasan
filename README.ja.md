@@ -93,7 +93,7 @@ py/variables.py の ssid と wpa_passphrase(ps)を変更します。
 
 6. `$ sudo vim /etc/hostapd/hostapd.conf`
 
-py/variables.pyに書いたssid と wpa_passphrase(ps) を /etc/hostapd/hostapd.conf に書きます。
+py/variables.pyに書いたssid と wpa_passphrase(ps) と同じ値を /etc/hostapd/hostapd.conf の下記部分に設定します。
 
 ```
 interface=<wlan1>
