@@ -64,7 +64,7 @@ Bの方が簡単ですが、屋外での使用にはAがおすすめです。
 ### A. Raspberry Pi を Wi-Fi アクセスポイントとして使用する方法（RTL8188EUS USB ドングルの場合）
 
 0. ラズベリーパイを起動
-1. RTL8188EUS ドングル ドライバーをインストールします。
+1. RTL8188EUS ドングル ドライバーをインストールする
      * http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/
      * ラズパイゼロの例 http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
 
@@ -89,11 +89,11 @@ interface wlan1
 
 5. `$ vim ./py/variables.py.`
 
-py/variables.py の ssid と wpa_passphrase(ps)を変更します。
+py/variables.py の ssid と wpa_passphrase(ps)を変更
 
 6. `$ sudo vim /etc/hostapd/hostapd.conf`
 
-py/variables.pyに書いたssid と wpa_passphrase(ps) と同じ値を /etc/hostapd/hostapd.conf の下記部分に設定します。
+py/variables.pyに書いたssid と wpa_passphrase(ps) と同じ値を /etc/hostapd/hostapd.conf の下記部分に設定
 
 ```
 interface=<wlan1>
@@ -112,10 +112,21 @@ wpa_pairwise=CCMP
 wpa_passphrase=Password
 ```
 
-7. dnsmsqを編集します。
+7. dnsmsqを編集
 
 `$ sudo vim /etc/dnsmasq.conf`
 ```
 interface=wlan1
 dhcp-range=192.168.2.2,192.168.2.100,255.255.255.0,24h
 ```
+
+8. sysctl.confを編集
+
+ `$ sudo vim /etc/sysctl.conf`
+```
+# Uncomment the next line to enable packet forwarding for IPv4
+net.ipv4.ip_forward=1
+
+```
+`$ sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE`
+`$ sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"`
