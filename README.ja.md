@@ -123,8 +123,10 @@ dhcp-range=192.168.2.2,192.168.2.100,255.255.255.0,24h
 8. sysctl.confを編集
 
  `$ sudo vim /etc/sysctl.conf`
+
+net.ipv4.ipforward=0の部分のコメントアウトをキャンセルして、値を1にします。
+
 ```
-# Uncomment the next line to enable packet forwarding for IPv4
 net.ipv4.ip_forward=1
 
 ```
