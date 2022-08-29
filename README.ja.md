@@ -132,3 +132,20 @@ net.ipv4.ip_forward=1
 ```
 `$ sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE`
 `$ sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"`
+
+9. unmaskの設定
+```
+$ sudo systemctl stop hostapd
+$ sudo systemctl unmask hostapd
+($ sudo hostapd /etc/hostapd/hostapd.conf)
+$ sudo systemctl enable hostapd
+$ sudo systemctl start hostapd
+$ sudo systemctl start dnsmasq
+```
+
+10. Wi-Fi アクセスポイントの確認
+```
+$ python -m http.server 3000
+```
+
+PCかスマホなどでMY-RP=SERVERに接続し、ブラウザで192.168.2.1:3000を開きます。
