@@ -151,9 +151,7 @@ $ python -m http.server 3000
 Connect MY-RP=SERVER from PC or Smartphone.
 Open 192.168.2.1:3000 by Browser in PC or Smartphone.
 
-11. 
-
-add below to /etc/rc.local at before exit 0
+11. add below to /etc/rc.local at before exit 0
 
 ```
 iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
