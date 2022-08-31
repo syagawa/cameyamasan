@@ -150,7 +150,7 @@ $ python -m http.server 3000
 
 PCかスマホでMY-RP=SERVERに接続し、ブラウザで192.168.2.1:3000を開きます。
 
-11. `$ sudo vim /etc/rc.local`で `exit 0`の前の部分に下記の記述を追加
+11. `$ sudo vim /etc/rc.local`で `exit 0`の前の部分に下記の記述を追加する
 
 ```
 iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
@@ -162,4 +162,14 @@ service dnsmasq start
 iptables-restore < /etc/iptables.ipv4.nat
 sleep 3
 service hostapd restart
+```
+
+12. インターネットへの接続を確認
+
+```
+$ ping google.com
+
+# 何も返ってこないようなら
+$ sudo dhclient wlan0
+
 ```
