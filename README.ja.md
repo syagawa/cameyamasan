@@ -173,3 +173,8 @@ $ ping google.com
 $ sudo dhclient wlan0
 
 ```
+
+* 参考サイト
+    * https://ccie-go.com/raspberry-pi-4-chuukeiki/#toc8
+    * https://passe-de-mode.uedasoft.com/ja/tips/software/device/raspberrypi/2019.11.buster_r8188eu.html#%E8%83%8C%E6%99%AF
+    * https://zenn.dev/yutafujii/books/fcb457e798a3d5/viewer/fe7472
