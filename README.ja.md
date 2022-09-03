@@ -178,3 +178,13 @@ $ sudo dhclient wlan0
     * https://ccie-go.com/raspberry-pi-4-chuukeiki/#toc8
     * https://passe-de-mode.uedasoft.com/ja/tips/software/device/raspberrypi/2019.11.buster_r8188eu.html#%E8%83%8C%E6%99%AF
     * https://zenn.dev/yutafujii/books/fcb457e798a3d5/viewer/fe7472
+
+### B. Wi-Fi ルータを使用
+
+Wi-Fi ルーターのssid と passwordを確認
+
+1. py/variables.pyにssidとpasswordを記入
+
+`$ vim ./py/variables.py.`
+
+
