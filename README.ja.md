@@ -188,3 +188,7 @@ Wi-Fi ルーターのssid と passwordを確認
 `$ vim ./py/variables.py.`
 
 
+## 使用方法
+
+1. Timer Camera XにUSB電源を接続して起動
+2. Raspberry Piで `$ python3 py/app.py`
