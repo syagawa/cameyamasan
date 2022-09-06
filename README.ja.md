@@ -192,3 +192,25 @@ Wi-Fi ルーターのssid と passwordを確認
 
 1. Timer Camera XにUSB電源を接続して起動
 2. Raspberry Piでこのレポジトリのホームへ行き `$ python3 py/app.py`を実行
+
+
+### 起動時にスタートさせる方法
+
+```bash
+$ cd <this repository directory>
+$ cp ./service/example-camerawithpy.service ./camerawithpy.service
+```
+Edit <this app directory name> in ./camerawithpy.service
+Edit <this py directory name> in ./start.sh
+
+```bash
+$ chmod a+x ./py/*
+$ chmod a+x ./py/interface/*
+$ chmod a+x ./start.sh
+$ sudo cp ./camerawithpy.service /etc/systemd/system/
+$ systemctl enable camerawithpy.service
+$ sudo reboot
+```
+
+* reference sites
+    * https://superuser.com/questions/544399/how-do-you-make-a-systemd-service-as-the-last-service-on-boot
