@@ -197,11 +197,11 @@ Wi-Fi ルーターのssid と passwordを確認
 ### 起動時にスタートさせる方法
 
 ```bash
-$ cd <this repository directory>
+$ cd <このレポジトリ>
 $ cp ./service/example-camerawithpy.service ./camerawithpy.service
 ```
-Edit <this app directory name> in ./camerawithpy.service
-Edit <this py directory name> in ./start.sh
+`./camerawithpy.service` の <this app directory name> を編集
+`./start.sh` の <this py directory name> を編集
 
 ```bash
 $ chmod a+x ./py/*
@@ -212,5 +212,5 @@ $ systemctl enable camerawithpy.service
 $ sudo reboot
 ```
 
-* reference sites
+* 参照サイト
     * https://superuser.com/questions/544399/how-do-you-make-a-systemd-service-as-the-last-service-on-boot
