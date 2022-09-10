@@ -214,3 +214,8 @@ $ sudo reboot
 
 * 参照サイト
     * https://superuser.com/questions/544399/how-do-you-make-a-systemd-service-as-the-last-service-on-boot
+
+#### 起動時にスタートさせない場合
+```bash
+$ systemctl disable camerawithpy.service
+```
