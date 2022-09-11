@@ -219,3 +219,12 @@ $ sudo reboot
 ```bash
 $ systemctl disable camerawithpy.service
 ```
+
+
+
+### 撮影開始
+
+1. Timer Camera XとRassberry Piを起動
+2. Rassberry Piの OLEDスクリーンに "app start!"と表示されます
+3. Timer Camera Xに接続し、サーバーがスタートします
+4. 撮影が開始されます
