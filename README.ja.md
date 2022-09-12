@@ -220,11 +220,33 @@ $ sudo reboot
 $ systemctl disable camerawithpy.service
 ```
 
-
-
 ### 撮影開始
 
 1. Timer Camera XとRassberry Piを起動
 2. Rassberry Piの OLEDスクリーンに "app start!"と表示されます
-3. Timer Camera Xに接続し、サーバーがスタートします
+3. Rassberry PiがTimer Camera Xに接続し、CameraのWi-Fiサーバーがスタートします
 4. 撮影が開始されます
+
+### 動画の作成
+
+撮影後の動画の作成
+
+```
+$ cd <撮影した画像のあるディレクトリ>
+$ ls ./*.jpg | awk '{ printf "mv %s ./source%04d.jpg\n", $0, NR }' | sh
+
+$ ffmpeg -f image2 -r 3 -i ./source%04d.jpg -r 3 -an -vcodec libx264 -pix_fmt yuv420p ./video.mp4
+
+# または
+
+$ ffmpeg \
+  -pattern_type glob \
+  -i '*.jpg' \
+  -vf 'zoompan=d=(0.2+0.1)/0.1:s=800x600:fps=1/0.1,framerate=25:interp_start=0:interp_end=255:scene=100' \
+  -c:v mpeg4 \
+  -q:v 1 \
+  video.mp4
+```
+
+参照ページ
+https://gist.github.com/CMCDragonkai/e00d114b43e38cb2c1b04594229e1df6
