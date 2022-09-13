@@ -1,4 +1,4 @@
-# Timer Camera X タイムラプスカメラ
+# Raspberry Piで制御するタイムラプスカメラ
 
 M5Stack Timer Camera X とRaspberry Piを使用したタイムラプスカメラ。
 
@@ -14,6 +14,8 @@ Timer Camera XでWebサーバーを起動し、Raspberry Piで画像を取得す
     * Wi-Fi
     * BLE
     * OLED Screen and buttons(HAT)
+        128x64, 1.3inch OLED display HAT for Raspberry Pi
+        https://www.waveshare.com/1.3inch-oled-hat.htm
 
 * PC(Timer Camera Xへのコンパイル)
     * Arduino IDE or platform.io
