@@ -15,8 +15,7 @@ Start the server with M5Stack Timer Camera X and get the image with Raspberry Pi
     * Wi-Fi
     * BLE
     * OLED Screen and buttons(HAT)
-        128x64, 1.3inch OLED display HAT for Raspberry Pi
-        https://www.waveshare.com/1.3inch-oled-hat.htm
+        128x64, 1.3inch OLED display HAT for Raspberry Pi https://www.waveshare.com/1.3inch-oled-hat.htm
 
 
 * PC for compiling to Timer Camera X
