@@ -17,10 +17,8 @@ Start the server with M5Stack Timer Camera X and get the image with Raspberry Pi
     * OLED Screen and buttons(HAT)
         128x64, 1.3inch OLED display HAT for Raspberry Pi https://www.waveshare.com/1.3inch-oled-hat.htm
 
-
 * PC for compiling to Timer Camera X
-    * Arduino IDE or platform.io
-
+    * Arduino IDE or platformIO
 
 ## 1. Compile Timer Camera X
 
@@ -35,12 +33,13 @@ Start the server with M5Stack Timer Camera X and get the image with Raspberry Pi
 
 ### Compile source to Camera by PlatformIO in PC
 
-1. Install VS Code on pc, start VS Code, then install PlatformIO extension.
+1. git clone this repository.
+2. Install VS Code on pc, start VS Code, then install PlatformIO extension.
     set M5Stack-Timer-Cam
-2. Open this repository in VS Code.
-3. Open ar diretory by PlatformIO extension.
-4. Connect Timer Camera X to PC.
-5. Compile to Timer Camera X.
+3. Open this repository in VS Code.
+4. Open ar diretory by PlatformIO extension.
+5. Connect Timer Camera X to PC.
+6. Compile to Timer Camera X.
 
 
 ## 2. Settings in Raspberry Pi

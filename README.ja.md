@@ -18,7 +18,7 @@ Timer Camera XでWebサーバーを起動し、Raspberry PiからのHTTP
         128x64, 1.3inch OLED display HAT for Raspberry Pi https://www.waveshare.com/1.3inch-oled-hat.htm
 
 * PC(Timer Camera Xへのコンパイル)
-    * Arduino IDE or platform.io
+    * Arduino IDE or platformIO
 
 ## 1. コンパイル
 
