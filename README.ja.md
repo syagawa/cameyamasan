@@ -45,7 +45,7 @@ Timer Camera XでWebサーバーを起動し、Raspberry PiからのHTTP
 ## 2. Raspberry Piの設定
 
 1. Raspberry Pi の`home`にこのリポジトリを`git clone`
-2. `cd ~/<this repository name>`
+2. `$ cd ~/<this repository name>`
 3. `$ cp py/variables_sample.py py/variables.py`
 4. Pythonとライブラリをインストール
     ```bash

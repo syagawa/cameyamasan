@@ -42,10 +42,10 @@ Start the server with M5Stack Timer Camera X and get the image with Raspberry Pi
 6. Compile to Timer Camera X.
 
 
-## 2. Settings in Raspberry Pi
+## 2. Raspberry Pi settings
 
 1. git clone this repository in Raspberry Pi's `home`.
-2. `cd ~/<this repository name>`
+2. `$ cd ~/<this repository name>`
 3. `$ cp py/variables_sample.py py/variables.py`
 4. install python and python libraries
     ```bash
