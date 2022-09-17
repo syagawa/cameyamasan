@@ -47,7 +47,7 @@ Timer Camera XでWebサーバーを起動し、Raspberry PiからのHTTP
 1. Raspberry Pi の`home`にこのリポジトリを`git clone`
 2. `$ cd ~/<this repository name>`
 3. `$ cp py/variables_sample.py py/variables.py`
-4. Pythonとライブラリをインストール
+4. Python3とライブラリをインストール
     ```bash
     $ sudo apt install -y python3 python3-pip ffmpeg
     $ sudo pip3 install bleak
@@ -59,7 +59,7 @@ Timer Camera XでWebサーバーを起動し、Raspberry PiからのHTTP
 
 AまたはBの方法でWi-Fiを設定します。
 AはRaspberry PiとTimer Camera Xのみ。
-B には Raspberry Pi、Timer Camera X、Wi-Fi ルーターが必要です。
+Bには Raspberry Pi、Timer Camera X、Wi-Fi ルーターが必要です。
 Bの方が簡単ですが、屋外での使用にはAがおすすめです。
 
 
