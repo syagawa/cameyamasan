@@ -63,7 +63,7 @@ Bには Raspberry Pi、Timer Camera X、Wi-Fi ルーターが必要です。
 Bの方が簡単ですが、屋外での使用にはAがおすすめです。
 
 
-### A. Raspberry Pi を Wi-Fi アクセスポイントとして使用する方法（RTL8188EUS USB ドングルの場合）
+### A. Raspberry Pi を Wi-Fi アクセスポイントとして使用する方法（RTL8188EUS USB ドングルを使用）
 
 0. ラズベリーパイを起動
 1. RTL8188EUS ドングル ドライバーをインストールする
@@ -152,7 +152,7 @@ $ python -m http.server 3000
 
 PCかスマホでMY-RP=SERVERに接続し、ブラウザで192.168.2.1:3000を開きます。
 
-11. `$ sudo vim /etc/rc.local`で `exit 0`の前の部分に下記の記述を追加する
+11. `$ sudo vim /etc/rc.local`で `exit 0`の直前の行に下記の記述を追加する
 
 ```
 iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
@@ -173,7 +173,6 @@ $ ping google.com
 
 # 何も返ってこないようなら
 $ sudo dhclient wlan0
-
 ```
 
 * 参考サイト
