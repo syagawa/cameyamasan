@@ -2,8 +2,7 @@
 
 M5Stack Timer Camera X とRaspberry Piを使用したタイムラプスカメラ。
 
-Timer Camera XでWebサーバーを起動し、Raspberry PiからのHTTP
- リクエストで画像を取得する。
+Timer Camera XとRaspberry Piを同じWi-Fiネットワーク上に置き、Timer Camera XでWebサーバーを起動し、Raspberry PiからのHTTPリクエストで画像を取得する。
 
 ## スペック & マシン
 

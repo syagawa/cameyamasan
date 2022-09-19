@@ -251,5 +251,5 @@ $ ffmpeg \
 
 ```
 
-referred to the following page
+Rreferred to the following page
 https://gist.github.com/CMCDragonkai/e00d114b43e38cb2c1b04594229e1df6
