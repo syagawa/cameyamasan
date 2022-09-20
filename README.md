@@ -1,8 +1,8 @@
 # Timelapse Camera controlled by Raspberry Pi
 
-M5Stack Timer Camera X controlled by python on Raspberry Pi with Wi-Fi.
+Time-lapse camera using M5Stack Timer Camera X and Raspberry Pi.
 
-Start the server with M5Stack Timer Camera X and get the image with Raspberry Pi by HTTP request.
+Set Timer Camera X and Raspberry Pi on the same Wi-Fi network, start a web server on Timer Camera X, and get images with HTTP requests from Raspberry Pi.
 
 
 ## Specs & Machines
