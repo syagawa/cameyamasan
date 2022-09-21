@@ -4,9 +4,9 @@ M5Stack Timer Camera X とRaspberry Piを使用したタイムラプスカメラ
 
 Timer Camera XとRaspberry Piを同じWi-Fiネットワーク上に置き、Timer Camera XでWebサーバーを起動し、Raspberry PiからのHTTPリクエストで画像を取得する。
 
-## スペック & マシン
+## スペック
 
-* カメラ - ESP32 PSRAM Timer Camera X (M5Stack)
+* カメラ - ESP32 PSRAM Timer Camera X (M5Stack) https://shop.m5stack.com/products/esp32-psram-timer-camera-x-ov3660
     * Arduino
 
 * コントローラ - Raspberry Pi (Wi-Fiモデル)

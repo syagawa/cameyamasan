@@ -5,9 +5,9 @@ Time-lapse camera using M5Stack Timer Camera X and Raspberry Pi.
 Set Timer Camera X and Raspberry Pi on the same Wi-Fi network, start a web server on Timer Camera X, and get images with HTTP requests from Raspberry Pi.
 
 
-## Specs & Machines
+## Specs
 
-* Camera - ESP32 PSRAM Timer Camera X (M5Stack)
+* Camera - ESP32 PSRAM Timer Camera X (M5Stack) https://shop.m5stack.com/products/esp32-psram-timer-camera-x-ov3660
     * Arduino
 
 * Controller - Raspberry Pi (with Wi-Fi)
