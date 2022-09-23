@@ -7,7 +7,8 @@ Set Timer Camera X and Raspberry Pi on the same Wi-Fi network, start a web serve
 
 ## Specs
 
-* Camera - ESP32 PSRAM Timer Camera X (M5Stack) https://shop.m5stack.com/products/esp32-psram-timer-camera-x-ov3660
+* Camera - ESP32 PSRAM Timer Camera X (M5Stack)
+    * https://shop.m5stack.com/products/esp32-psram-timer-camera-x-ov3660
     * Arduino
 
 * Controller - Raspberry Pi (with Wi-Fi)

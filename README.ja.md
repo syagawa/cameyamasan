@@ -14,7 +14,7 @@ Timer Camera XとRaspberry Piを同じWi-Fiネットワーク上に置き、Time
     * python3 / pip3
     * Wi-Fi
     * BLE
-    * OLED Screen and buttons(HAT)
+    * OLED スクリーンとボタンの付いたHAT
         128x64, 1.3inch OLED display HAT for Raspberry Pi https://www.waveshare.com/1.3inch-oled-hat.htm
 
 * PC(Timer Camera Xへのコンパイルに必要)
