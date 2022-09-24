@@ -17,10 +17,10 @@ Timer Camera XとRaspberry Piを同じWi-Fiネットワーク上に置き、Time
     * OLED スクリーンとボタンの付いたHAT
         128x64, 1.3inch OLED display HAT for Raspberry Pi https://www.waveshare.com/1.3inch-oled-hat.htm
 
-* PC(Timer Camera Xへのコンパイルに必要)
+* PC(Timer Camera Xへのコンパイル)
     * Arduino IDE or platformIO
 
-## 1. コンパイル
+## 1. Timer Camera X へのコンパイル
 
 ### Arduinoでのコンパイル
 
@@ -44,10 +44,10 @@ Timer Camera XとRaspberry Piを同じWi-Fiネットワーク上に置き、Time
 
 ## 2. Raspberry Piの設定
 
-1. Raspberry Pi の`home`にこのリポジトリを`git clone`
+1. Raspberry Pi の`home`にこのリポジトリを`$ git clone`
 2. `$ cd ~/<this repository name>`
 3. `$ cp py/variables_sample.py py/variables.py`
-4. Python3とライブラリをインストール
+4. Python3とpipとライブラリをインストール
     ```bash
     $ sudo apt install -y python3 python3-pip ffmpeg
     $ sudo pip3 install bleak
