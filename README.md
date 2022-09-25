@@ -25,6 +25,7 @@ Set Timer Camera X and Raspberry Pi on the same Wi-Fi network, start a web serve
 
 ### Compile source to Camera by Arduino in PC
 
+0. Install Arduino IDE
 1. git clone this repository.
 2. Open this repository's root by Arduino IDE.
 3. setup Arduino IDE

@@ -18,12 +18,13 @@ Timer Camera XとRaspberry Piを同じWi-Fiネットワーク上に置き、Time
         128x64, 1.3inch OLED display HAT for Raspberry Pi https://www.waveshare.com/1.3inch-oled-hat.htm
 
 * PC(Timer Camera Xへのコンパイル)
-    * Arduino IDE or platformIO
+    * Arduino IDE もしくは platformIO
 
 ## 1. Timer Camera X へのコンパイル
 
 ### Arduinoでのコンパイル
 
+0. Arduino IDEのインストール
 1. このリポジトリを`git clone`する
 2. Arduino IDE でこのリポジトリのルートを開く
 3. Arduino IDE のセットアップ
