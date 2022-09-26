@@ -34,6 +34,7 @@ Timer Camera XとRaspberry Piを同じWi-Fiネットワーク上に置き、Time
 
 ### PlatformIOでのコンパイル
 
+0. VS CodeとPlatformIOのインストール
 1. このリポジトリを`git clone`する
 2. VS Code をインストールし、VS Code P起動して、platformIO 拡張機能をインストールする
     M5Stack-Timer-Camを設定
