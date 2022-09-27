@@ -35,11 +35,11 @@ Set Timer Camera X and Raspberry Pi on the same Wi-Fi network, start a web serve
 
 ### Compile source to Camera by PlatformIO in PC
 
-0. Install VS Code & PlatformIO
+0. Install VSCode & PlatformIO
 1. git clone this repository.
-2. Install VS Code on pc, start VS Code, then install PlatformIO extension.
+2. Install VSCode on pc, start VSCode, then install PlatformIO extension.
     set M5Stack-Timer-Cam
-3. Open this repository in VS Code.
+3. Open this repository in VSCode.
 4. Open ar diretory by PlatformIO extension.
 5. Connect Timer Camera X to PC.
 6. Compile to Timer Camera X.
