@@ -50,7 +50,7 @@ Set Timer Camera X and Raspberry Pi on the same Wi-Fi network, start a web serve
 1. git clone this repository in Raspberry Pi's `home`.
 2. `$ cd ~/<this repository name>`
 3. `$ cp py/variables_sample.py py/variables.py`
-4. install python3 and python libraries
+4. install python3, pip and python libraries
     ```bash
     $ sudo apt install -y python3 python3-pip ffmpeg
     $ sudo pip3 install bleak

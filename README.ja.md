@@ -49,7 +49,7 @@ Timer Camera XとRaspberry Piを同じWi-Fiネットワーク上に置き、Time
 1. Raspberry Pi の`home`にこのリポジトリを`$ git clone`
 2. `$ cd ~/<this repository name>`
 3. `$ cp py/variables_sample.py py/variables.py`
-4. Python3とpipとライブラリをインストール
+4. Python3とpipとpythonライブラリをインストール
     ```bash
     $ sudo apt install -y python3 python3-pip ffmpeg
     $ sudo pip3 install bleak
