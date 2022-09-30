@@ -67,10 +67,10 @@ Bの方が簡単ですが、屋外での使用にはAがおすすめです。
 
 ### A. Raspberry Pi を Wi-Fi アクセスポイントとして使用する方法（RTL8188EUS USB ドングルを使用）
 
-0. ラズベリーパイを起動
+0. Raspbery Piを起動
 1. RTL8188EUS ドングル ドライバーをインストールする
      * http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/
-     * ラズパイゼロの例 http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
+     * Raspberry Pi Zero の例 http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
 
 2. `$ iwconfig` で wlan1 が存在するかどうかを確認する
 
