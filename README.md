@@ -77,12 +77,15 @@ B is easier, but A is recommended for outdoor use.
 3. install
 ```bash
 $ sudo apt update
-$ sudo apt upgrade
+$ sudo apt upgrade -y
 $ sudo apt install hostapd
 $ sudo apt install dnsmasq
 ```
 
-4. `$ sudo vim /etc/dhcpcd.conf`
+4. /etc/dhcpcd.conf
+
+`$ sudo vim /etc/dhcpcd.conf`
+
 ```
 interface wlan1
  static ip_address=192.168.2.1/24
