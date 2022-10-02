@@ -72,7 +72,7 @@ Bの方が簡単ですが、屋外での使用にはAがおすすめです。
      * http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/
      * Raspberry Pi Zero の例 http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
 
-2. `$ iwconfig` で wlan1 が存在するかどうかを確認する
+2. `$ iwconfig` コマンドをたたいて wlan1 が存在するかどうかを確認する
 
 3. インストール
 ```bash
@@ -94,11 +94,15 @@ interface wlan1
  static broadcast 192.168.2.255
 ```
 
-5. `$ vim ./py/variables.py.`
+5. ./py/variables.py.
+
+`$ vim ./py/variables.py.`
 
 py/variables.py の ssid と wpa_passphrase(ps)を変更
 
-6. `$ sudo vim /etc/hostapd/hostapd.conf`
+6. /etc/hostapd/hostapd.conf
+
+`$ sudo vim /etc/hostapd/hostapd.conf`
 
 py/variables.pyに書いたssid と wpa_passphrase(ps) と同じ値を /etc/hostapd/hostapd.conf の下記部分に設定
 
