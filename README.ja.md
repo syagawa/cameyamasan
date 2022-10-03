@@ -126,6 +126,7 @@ wpa_passphrase=Password
 7. dnsmsqを編集
 
 `$ sudo vim /etc/dnsmasq.conf`
+
 ```
 interface=wlan1
 dhcp-range=192.168.2.2,192.168.2.100,255.255.255.0,24h
