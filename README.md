@@ -151,7 +151,7 @@ sudo iptables --table nat --append POSTROUTING --out-interface wlan0 -j MASQUERA
 sudo iptables --append FORWARD --in-interface wlan1 -j ACCEPT -->
 
 
-9. unmask
+9. unmask settings
 ```
 $ sudo systemctl stop hostapd
 $ sudo systemctl unmask hostapd
@@ -165,7 +165,7 @@ $ sudo systemctl start dnsmasq
 ```
 $ python -m http.server 3000
 ```
-Connect MY-RP=SERVER from PC or Smartphone.
+Connect MY-RP-SERVER from PC or Smartphone.
 Open 192.168.2.1:3000 by Browser in PC or Smartphone.
 
 11. add below to /etc/rc.local at before exit 0
@@ -209,8 +209,8 @@ Write ssid and ps(password) in py/variables.py.
 
 ## Usage
 
-1. Start esp32 camera by connect usb power.
-2. `$ python3 py/app.py` @Controller
+1. Start esp32 camera by connect USB Power.
+2. `$ python3 py/app.py` in Raspberry Pi's this repository home.
 
 
 ### start app in boot

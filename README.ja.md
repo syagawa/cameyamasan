@@ -145,6 +145,12 @@ net.ipv4.ip_forward=1
 `$ sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE`
 `$ sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"`
 
+
+
+
+
+
+
 9. unmaskの設定
 ```
 $ sudo systemctl stop hostapd
@@ -160,7 +166,7 @@ $ sudo systemctl start dnsmasq
 $ python -m http.server 3000
 ```
 
-PCかスマホでMY-RP=SERVERに接続し、ブラウザで192.168.2.1:3000を開きます。
+PCかスマホでMY-RP-SERVERに接続し、ブラウザで192.168.2.1:3000を開きます。
 
 11. `$ sudo vim /etc/rc.local`で `exit 0`の直前の行に下記の記述を追加する
 
