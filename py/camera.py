@@ -121,9 +121,9 @@ async def shots2(times, interval, ip, fs):
     log(f"Image Directory: {dir}")
     start_time = now
     for i in range(times):
-      log("stop_shot %s" % str(g.stop_shot))
-      if g.stop_shot == True:
-        log_screen("stop_shot!! ")
+      log("stop_shoot %s" % str(g.stop_shoot))
+      if g.stop_shoot == True:
+        log_screen("stop_shoot!! ")
         break
       c = shot_count
       if c in log_counts:

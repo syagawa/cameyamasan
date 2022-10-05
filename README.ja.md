@@ -243,6 +243,7 @@ $ systemctl disable camerawithpy.service
 2. Rassberry Piの OLEDスクリーンに "app start!"と表示されます
 3. Rassberry PiがTimer Camera Xに接続し、CameraのWi-Fiサーバーがスタートします
 4. 撮影が開始されます
+5. ボタンの上下を押して OLED スクリーンに `stopshoot ?` を表示させ`key1`を押すと撮影が終了します。
 
 ### 動画の作成
 

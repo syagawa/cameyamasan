@@ -16,7 +16,7 @@ from logger import log, set_screen_to_log, log_screen
 
 import global_value as g
 
-g.stop_shot = False
+g.stop_shoot = False
 
 def get_ip_addresses(family):
   for interface, snics in net_if_addrs().items():
@@ -48,7 +48,7 @@ selects = [
   { "key": "showinfo", "state": False},
   { "key": "restartself", "state": False},
   { "key": "stopself", "state": False},
-  { "key": "stopshot", "state": False},
+  { "key": "stopshoot", "state": False},
 ]
 select = None
 
@@ -104,11 +104,11 @@ def stopself():
   subprocess.run(["sudo", "systemctl", "stop", "camerawithpy.service"])
 
 
-def init_stopshot():
-  exec("g.stop_shot=False")
+def init_stopshoot():
+  exec("g.stop_shoot=False")
 
-def stopshot():
-  exec("g.stop_shot=True")
+def stopshoot():
+  exec("g.stop_shoot=True")
 
 def push_up_or_down(mode):
   if mode == None:
@@ -209,8 +209,8 @@ def push_1():
     restartself()
   if key == "stopself":
     stopself()
-  if key == "stopshot":
-    stopshot()
+  if key == "stopshoot":
+    stopshoot()
   screen.add("please input! ^ < > v")
 
 
@@ -270,7 +270,7 @@ def main():
   log_screen("start4 app!")
   screen.add("please3 input! ^ < > v")
 
-  init_stopshot()
+  init_stopshoot()
 
   loop = asyncio.new_event_loop()
   t = threading.Thread(target=start_loop, args=(loop,), daemon=True)
