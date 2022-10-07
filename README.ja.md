@@ -245,14 +245,15 @@ $ systemctl disable camerawithpy.service
 4. 撮影が開始されます
 5. ボタンの上下を押して OLED スクリーンに `stopshoot ?` を表示させ`key1`を押すと撮影が終了します。
 
+
 ### 動画の作成
 
 撮影後の動画の作成
 
 ```
-# in Raspberry Pi
+# Raspberry Piで
 $ cd <レポジトリのルート>
-$ ./make_static_video_current_dir
+$ ./make_static_video_current_dir.sh
 ```
 
 参照ページ
