@@ -246,7 +246,7 @@ $ systemctl disable camerawithpy.service
 5. ボタンの上下を押して OLED スクリーンに `stopshoot ?` を表示させ`key1`を押すと撮影が終了します。
 
 
-### 動画の作成
+### タイムラプス動画の作成
 
 撮影後の動画の作成
 

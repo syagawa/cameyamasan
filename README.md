@@ -246,7 +246,7 @@ $ systemctl disable camerawithpy.service
 3. Connect timerx and start wi-fi server in Timer Camera X automatically.
 4. start shooting!!!
 
-### make video
+### make timelapse video
 
 Create a video after shooting.
 
