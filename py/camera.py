@@ -9,6 +9,7 @@ from logger import log, log_screen
 
 import global_value as g
 
+
 framesizes = [
   { "key": "fs_96_96", "value": "0", "default": False},
   { "key": "fs_160_120", "value": "1", "default": False},
@@ -31,6 +32,8 @@ quality = "4"
 shot_count = 0
 log_counts = [0, 10, 50, 100, 500, 1000, 2000]
 could_not_shoot = False
+
+pwd = os.getcwd()
 
 def shot(ip, dir, fs):
   log("in shot1")
