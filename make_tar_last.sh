@@ -1,6 +1,6 @@
 #!/bin/bash
 
-eval ARR=("$(ls /images/ --quoting-style=shell)")
+eval ARR=("$(ls ./images/ --quoting-style=shell)")
 mkdir -p ./temp
 rm temp/*
 cp /images/${ARR[-1]}/* ./temp/
