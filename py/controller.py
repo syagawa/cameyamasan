@@ -24,7 +24,7 @@ device_name = camera_device_name
 received_data = ""
 server_is_started = False
 server_ip = ""
-shot_started = False
+shooting_is_started = False
 shot_times = camera_shot_times
 shot_interval = camera_shot_interval
 framesize_value = None
@@ -267,10 +267,10 @@ async def start_shots_from_main():
         if server_is_started:
             log_screen(f"server: {server_ip} started")
             try:
-                global shot_started
-                if shot_started == False:
-                    shot_started = True
-                    log("shot started!")
+                global shooting_is_started
+                if shooting_is_started == False:
+                    shooting_is_started = True
+                    log("started shooting!")
                     res = False
                     try:
                         res = camera.shots(shot_times, shot_interval, server_ip, framesize_value)
@@ -292,12 +292,12 @@ async def start_shots_from_main():
 
 async def start_shots_from_app():
     log_screen("start_shots_from_app")
-    global shot_started
+    global shooting_is_started
     while True:
         if server_is_started:
             log_screen(f"server: {server_ip} started")
-            shot_started = True
-            log_screen("shot started!")
+            shooting_is_started = True
+            log_screen("started shooting!")
             res = False
             res = await camera.shots2(shot_times, shot_interval, server_ip, framesize_value)
             if res == True:
