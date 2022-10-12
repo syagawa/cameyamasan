@@ -97,7 +97,7 @@ def shot(ip, dir, fs):
 
 def shots(times, interval, ip, fs):
     t = datetime.now().isoformat()
-    dir = "./images/{0}".format(t)
+    dir = "{0}/images/{1}".format(pwd, t)
     os.makedirs(dir, exist_ok=True)
     log(f"Image Directory: {dir}")
     for i in range(times):
@@ -119,7 +119,7 @@ async def shots2(times, interval, ip, fs):
     global shot_count
     now = datetime.now()
     t = now.isoformat()
-    dir = "./images/{0}".format(t)
+    dir = "{0}/images/{1}".format(pwd, t)
     os.makedirs(dir, exist_ok=True)
     log(f"Image Directory: {dir}")
     start_time = now
