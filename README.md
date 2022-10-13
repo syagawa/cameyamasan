@@ -220,6 +220,7 @@ $ cd <this repository directory>
 $ cp ./service/example-camerawithpy.service ./camerawithpy.service
 ```
 Edit <this app directory name> in ./camerawithpy.service
+Edit <change me> in ./camerawithpy.service and Uncomment
 Edit <this py directory name> in ./start.sh
 
 ```bash
