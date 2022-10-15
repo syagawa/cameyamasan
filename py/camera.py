@@ -29,7 +29,7 @@ framesizes = [
 ]
 
 quality = "4"
-shot_count = 0
+shooting_counts = 0
 log_counts = [0, 10, 50, 100, 500, 1000, 2000]
 could_not_shoot = False
 
@@ -37,7 +37,7 @@ pwd = os.getcwd()
 
 def shot(ip, dir, fs):
   log("in shot1")
-  global shot_count, could_not_shoot
+  global shooting_counts, could_not_shoot
 
   log("fs: %s" % fs)
   framesize = None
@@ -67,7 +67,7 @@ def shot(ip, dir, fs):
   capture_url = f"http://{ip}/cap"
 
   # check status
-  if shot_count == 0:
+  if shooting_counts == 0:
     status_url = f"http://{ip}/status"
     req_status = urllib.request.Request(status_url)
     log(req_status.full_url)
@@ -85,7 +85,7 @@ def shot(ip, dir, fs):
       filename = "{0}/{1}.jpg".format(dir, t)
       with open(filename, mode='wb') as f:
         f.write(body)
-    shot_count = shot_count + 1
+    shooting_counts = shooting_counts + 1
     if could_not_shoot == True:
       could_not_shoot = False
       log_screen("succeeded shooting")
@@ -101,10 +101,10 @@ def shots(times, interval, ip, fs):
     os.makedirs(dir, exist_ok=True)
     log(f"Image Directory: {dir}")
     for i in range(times):
-      if shot_count == 0:
+      if shooting_counts == 0:
         log_screen("before first shot!")
       shot(ip, dir, fs)
-      if shot_count == 1:
+      if shooting_counts == 1:
         log_screen("after first shot!")
       sleep(interval)
     return True
@@ -116,7 +116,7 @@ def get_hour_minute_second(td):
   return h, m, s
 
 async def shots2(times, interval, ip, fs):
-    global shot_count
+    global shooting_counts
     now = datetime.now()
     t = now.isoformat()
     dir = "{0}/images/{1}".format(pwd, t)
@@ -128,7 +128,7 @@ async def shots2(times, interval, ip, fs):
       if g.stop_shoot == True:
         log_screen("stop_shoot!! ")
         break
-      c = shot_count
+      c = shooting_counts
       if c in log_counts:
         log_screen("before %s shot" % str(c))
       shot(ip, dir, fs)
@@ -138,6 +138,6 @@ async def shots2(times, interval, ip, fs):
     end_time = datetime.now()
     dt = end_time - start_time
     gap = get_hour_minute_second(dt)
-    log_screen("count: %s, inter: %ss" % (str(shot_count), str(interval)))
+    log_screen("count: %s, inter: %ss" % (str(shooting_counts), str(interval)))
     log_screen("%sh %sm %ss" % (gap[0], gap[1], gap[2]))
     return True
