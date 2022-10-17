@@ -9,7 +9,7 @@ from typing import Callable, Any
 from aioconsole import ainput
 from bleak import BleakClient, discover
 
-from variables import ssid, ps, camera_device_name, max_camera_shooting_counts, camera_shot_interval
+from variables import ssid, ps, camera_device_name, max_camera_shooting_counts, camera_shooting_interval
 import json
 import camera
 
@@ -26,7 +26,7 @@ server_is_started = False
 server_ip = ""
 shooting_is_started = False
 max_shooting_counts = max_camera_shooting_counts
-shot_interval = camera_shot_interval
+shooting_interval = camera_shooting_interval
 framesize_value = None
 
 screen = None
@@ -273,7 +273,7 @@ async def start_shots_from_main():
                     log("started shooting!")
                     res = False
                     try:
-                        res = camera.shots(max_shooting_counts, shot_interval, server_ip, framesize_value)
+                        res = camera.shots(max_shooting_counts, shooting_interval, server_ip, framesize_value)
                     except Exception as e:
                         log("catch Exception", e)
                     log("shot ended!")
@@ -299,7 +299,7 @@ async def start_shots_from_app():
             shooting_is_started = True
             log_screen("started shooting!")
             res = False
-            res = await camera.shots2(max_shooting_counts, shot_interval, server_ip, framesize_value)
+            res = await camera.shots2(max_shooting_counts, shooting_interval, server_ip, framesize_value)
             if res == True:
                 log_screen("connection.cleanup()")
                 connection.cleanup()
