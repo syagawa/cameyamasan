@@ -347,7 +347,7 @@ async def connect(action_callback=None):
 
 
 
-def connect_and_shot():
+def connect_and_shooting():
     global connection
     # Create the event loop.
     loop = asyncio.get_event_loop()
@@ -372,4 +372,4 @@ def connect_and_shot():
         finally_process()
 
 if __name__ == "__main__":
-    connect_and_shot()
+    connect_and_shooting()
