@@ -260,7 +260,7 @@ async def set_camera_settings():
 
 
 
-async def start_shots_from_main():
+async def start_shooting_from_main():
     flg = True
     while flg:
         # YOUR APP CODE WOULD GO HERE.
@@ -310,7 +310,7 @@ async def start_shots_from_app():
 async def start_camera():
     log("in start_camera")
     await set_camera_shooting_settings()
-    await start_shots_from_main()
+    await start_shooting_from_main()
 
 
 
