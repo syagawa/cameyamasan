@@ -290,8 +290,8 @@ async def start_shooting_from_main():
                 raise Exception("End process")
         await asyncio.sleep(5)
 
-async def start_shots_from_app():
-    log_screen("start_shots_from_app")
+async def start_shooting_from_app():
+    log_screen("start_shooting_from_app")
     global shooting_is_started
     while True:
         if server_is_started:
@@ -341,7 +341,7 @@ async def connect(action_callback=None):
 
     asyncio.ensure_future(set_camera_settings())
 
-    asyncio.ensure_future(start_shots_from_app())
+    asyncio.ensure_future(start_shooting_from_app())
     log_screen("end connect in controller.py")
 
 
