@@ -299,7 +299,7 @@ async def start_shooting_from_app():
             shooting_is_started = True
             log_screen("started shooting!")
             res = False
-            res = await camera.shots2(max_shooting_counts, shooting_interval, server_ip, framesize_value)
+            res = await camera.shoot_images(max_shooting_counts, shooting_interval, server_ip, framesize_value)
             if res == True:
                 log_screen("connection.cleanup()")
                 connection.cleanup()

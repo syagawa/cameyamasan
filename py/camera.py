@@ -115,7 +115,7 @@ def get_hour_minute_second(td):
   h, m = divmod(m, 60)
   return h, m, s
 
-async def shots2(times, interval, ip, fs):
+async def shoot_images(times, interval, ip, fs):
     global shooting_counts
     now = datetime.now()
     t = now.isoformat()
