@@ -95,17 +95,17 @@ def shot(ip, dir, fs):
 
 
 
-def shots(times, interval, ip, fs):
+def shoot_images_old(times, interval, ip, fs):
     t = datetime.now().isoformat()
     dir = "{0}/images/{1}".format(pwd, t)
     os.makedirs(dir, exist_ok=True)
     log(f"Image Directory: {dir}")
     for i in range(times):
       if shooting_counts == 0:
-        log_screen("before first shot!")
+        log_screen("before first shooting!")
       shot(ip, dir, fs)
       if shooting_counts == 1:
-        log_screen("after first shot!")
+        log_screen("after first shooting!")
       sleep(interval)
     return True
 
