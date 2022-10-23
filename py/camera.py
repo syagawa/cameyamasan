@@ -35,8 +35,8 @@ could_not_shoot = False
 
 pwd = os.getcwd()
 
-def shot(ip, dir, fs):
-  log("in shot1")
+def shoot_image(ip, dir, fs):
+  log("in shoot1")
   global shooting_counts, could_not_shoot
 
   log("fs: %s" % fs)
@@ -52,12 +52,12 @@ def shot(ip, dir, fs):
 
     if elm["default"]:
       framesize_default = val
-  log("in shot2")
+  log("in shoot2")
 
   if framesize == None:
     framesize = framesize_default
 
-  log(f"shot {framesize}, {quality}, {key}")
+  log(f"shoot {framesize}, {quality}, {key}")
 
   params = {
     "fs": framesize,
@@ -77,7 +77,7 @@ def shot(ip, dir, fs):
 
   req = urllib.request.Request('{}?{}'.format(capture_url, urllib.parse.urlencode(params)))
 
-  # shot
+  # shoot
   try:
     with urllib.request.urlopen(req) as res:
       body = res.read()
@@ -103,7 +103,7 @@ def shoot_images_old(times, interval, ip, fs):
     for i in range(times):
       if shooting_counts == 0:
         log_screen("before first shooting!")
-      shot(ip, dir, fs)
+      shoot_image(ip, dir, fs)
       if shooting_counts == 1:
         log_screen("after first shooting!")
       sleep(interval)
@@ -130,10 +130,10 @@ async def shoot_images(times, interval, ip, fs):
         break
       c = shooting_counts
       if c in log_counts:
-        log_screen("before %s shot" % str(c))
-      shot(ip, dir, fs)
+        log_screen("before %s shoot" % str(c))
+      shoot_image(ip, dir, fs)
       if c in log_counts:
-        log_screen("after %s shot" % str(c))
+        log_screen("after %s shoot" % str(c))
       await asyncio.sleep(interval)
     end_time = datetime.now()
     dt = end_time - start_time
