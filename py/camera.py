@@ -95,7 +95,7 @@ def shoot_image(ip, dir, fs):
 
 
 
-def shoot_images_old(times, interval, ip, fs):
+def shoot_images_for_main(times, interval, ip, fs):
     t = datetime.now().isoformat()
     dir = "{0}/images/{1}".format(pwd, t)
     os.makedirs(dir, exist_ok=True)
@@ -130,10 +130,10 @@ async def shoot_images(times, interval, ip, fs):
         break
       c = shooting_counts
       if c in log_counts:
-        log_screen("before %s shoot" % str(c))
+        log_screen("before %s shot" % str(c))
       shoot_image(ip, dir, fs)
       if c in log_counts:
-        log_screen("after %s shoot" % str(c))
+        log_screen("after %s shot" % str(c))
       await asyncio.sleep(interval)
     end_time = datetime.now()
     dt = end_time - start_time

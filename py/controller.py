@@ -273,7 +273,7 @@ async def start_shooting_from_main():
                     log("started shooting!")
                     res = False
                     try:
-                        res = camera.shoot_images_old(max_shooting_counts, shooting_interval, server_ip, framesize_value)
+                        res = camera.shoot_images_for_main(max_shooting_counts, shooting_interval, server_ip, framesize_value)
                     except Exception as e:
                         log("catch Exception", e)
                     log("shooting ended!")
