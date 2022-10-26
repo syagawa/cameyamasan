@@ -263,7 +263,7 @@ https://gist.github.com/CMCDragonkai/e00d114b43e38cb2c1b04594229e1df6
 
 ### 撮影条件の変更
 
-`py/variables.py`を書き換えることで行う。
+`py/variables.py`を書き換える。
 
 ```
 max_camera_shooting_counts: 最大撮影回数
