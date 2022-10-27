@@ -263,6 +263,7 @@ https://gist.github.com/CMCDragonkai/e00d114b43e38cb2c1b04594229e1df6
 
 ### 撮影条件の変更
 
+`$ cp py/variables_sample.py py/variables.py`
 `py/variables.py`を書き換える。
 
 ```

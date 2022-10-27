@@ -261,9 +261,13 @@ Rreferred to the following page
 https://gist.github.com/CMCDragonkai/e00d114b43e38cb2c1b04594229e1df6
 
 
-### change settings of shooting conditions
+### Change settings of shooting conditions
 
-change `py/variables.py`.
+`$ cp py/variables_sample.py py/variables.py`
+Change `py/variables.py`.
+
+
+
 
 ```
 max_camera_shooting_counts: max shooting counts
