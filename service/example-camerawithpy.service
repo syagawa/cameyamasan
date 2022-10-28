@@ -5,8 +5,8 @@ After=systemd-user-sessions.service
 [Service]
 Type=simple
 #ExecStart=/home/pi/<this app directory name>/py/app.py
-ExecStart=/home/pi/<this app directory name>/start.sh
-#WorkingDirectory=/home/pi/<absolute path of this app directory>
+ExecStart=/bin/bash /home/pi/<this app directory name>/start.sh
+WorkingDirectory=/home/pi/<absolute path of this app directory>
 
 User=root
 Group=root
