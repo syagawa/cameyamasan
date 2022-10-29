@@ -217,8 +217,7 @@ Wi-Fi ルーターのssid と passwordを確認
 $ cd <このレポジトリ>
 $ cp ./service/example-camerawithpy.service ./camerawithpy.service
 ```
-`./camerawithpy.service` の <this app directory name> を編集
-`./camerawithpy.service` の <absolute path of this app directory> をこのレポジトリのディレクトリへの絶対パスにして、コメントを外す
+`./camerawithpy.service` の <this app directory name> を編集しこのアプリディレクトリのパスにして、コメントを外す
 `./start.sh` の <this py directory name> を編集
 
 ```bash
