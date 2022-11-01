@@ -7,7 +7,7 @@ Timer Camera XとRaspberry Piを同じWi-Fiネットワーク上に置き、Time
 ## スペック
 
 * カメラ - ESP32 PSRAM Timer Camera X (M5Stack)
-    * M5StackのTimer Camera Xを使用 https://shop.m5stack.com/products/esp32-psram-timer-camera-x-ov3660
+    * https://shop.m5stack.com/products/esp32-psram-timer-camera-x-ov3660
     * Arduino
 
 * コントローラ - Raspberry Pi (Wi-Fiモデル)
