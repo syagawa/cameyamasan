@@ -118,9 +118,8 @@ class Connection:
 
 
   async def select_device(self):
-    # log("Bluetooh LE hardware warming up 0")
     await asyncio.sleep(2.0) # Wait for BLE to initialize.
-    log("Bluetooh LE hardware warming up 1")
+    log("Bluetooh LE hardware warming up")
     devices = None
     try:
       log_screen("discovering...")
@@ -129,7 +128,7 @@ class Connection:
       log(e)
       return
 
-    log("Please select device: ")
+    log("Please select a device: ")
     response = -1
     target_index = -1
     for i, device in enumerate(devices):
