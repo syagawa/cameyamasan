@@ -262,7 +262,6 @@ async def set_camera_settings():
 async def start_shooting_from_main():
   flg = True
   while flg:
-    # YOUR APP CODE WOULD GO HERE.
     if server_is_started:
       log_screen(f"server: {server_ip} started")
       try:
@@ -284,7 +283,6 @@ async def start_shooting_from_main():
         log("except KeyboardInterrupt in start_camera()")
       finally:
         log("finally in start_camera()")
-        # sys.exit(1)
         flg = False
         raise Exception("End process")
     await asyncio.sleep(5)
@@ -348,10 +346,7 @@ async def connect(action_callback=None):
 
 def connect_and_shooting():
   global connection
-  # Create the event loop.
   loop = asyncio.get_event_loop()
-  # new_loop = asyncio.new_event_loop()
-  # loop = asyncio.set_event_loop(new_loop)
 
   connection = Connection(
     loop, read_characteristic, write_characteristic
