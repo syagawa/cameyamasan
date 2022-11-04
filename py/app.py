@@ -226,7 +226,6 @@ def push_3():
 def key_callback(pin, state):
   log("in key_callback")
   name = key_names[pin]
-  # screen.update("%s, %s, %s" % (name, pin, state))
   if name == "UP":
     push_up()
   if name == "DOWN":

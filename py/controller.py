@@ -70,7 +70,6 @@ class Connection:
   def on_disconnect(self, client: BleakClient):
     log("in on_disconnect")
     self.connected = False
-    # Put code here to handle what happens on disconnet.
     log_screen(f"Disconnected {self.connected_device.name}!")
 
   async def cleanup(self):
@@ -187,10 +186,8 @@ class Connection:
 
 def finally_process():
   log("in finally_process")
-  # loop.run_until_complete(connection.cleanup())
   signal.signal(signal.SIGTERM, signal.SIG_IGN)
   signal.signal(signal.SIGINT, signal.SIG_IGN)
-  #cleanup()
   signal.signal(signal.SIGTERM, signal.SIG_DFL)
   signal.signal(signal.SIGINT, signal.SIG_DFL)
 
