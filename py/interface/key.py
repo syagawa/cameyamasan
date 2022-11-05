@@ -132,7 +132,6 @@ async def start_standby(s_time=None, action_callback=None):
   log("start standby key input")
   if s_time == None:
     s_time = sleep_time
-  # main(s_time, action_callback)
   await main(s_time, action_callback)
 
 def get_key_names():

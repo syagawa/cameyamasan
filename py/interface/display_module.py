@@ -61,7 +61,6 @@ def showMessage(mes, line):
   l = line - 1
   draw.text( (x, top + (line_height * l) ), mes, font=font, fill=white)
   d.ShowImage(d.getbuffer(image))
-  # d.show()
 
 def showMessages(messages, start):
   length = len(messages)
@@ -70,16 +69,11 @@ def showMessages(messages, start):
     mes = messages[i]
     draw.text( (x, top + (line_height * l) ), mes, font=font, fill=white)
   d.ShowImage(d.getbuffer(image))
-  # d.show()
-
-
 
 def getDisplayInfo():
   return { "columns": columns, "rows": rows }
 
-
 drawBlackRect()
-
 
 def test_display():
   count = 0
