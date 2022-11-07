@@ -125,7 +125,6 @@ async def main(s_time, action):
     elif GPIO.input(KEY3_PIN) == GPIO.HIGH:
       release(KEY3_PIN)
 
-    # time.sleep(s_time)
     await asyncio.sleep(s_time)
 
 async def start_standby(s_time=None, action_callback=None):

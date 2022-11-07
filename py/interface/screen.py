@@ -30,11 +30,6 @@ def show(screen_index):
   sc = screens[screen_index]
   display_module.showMessages(sc["matrix"], sc["start"])
 
-# def show():
-#   display_module.drawBlackRect()
-#   for sc in screens:
-#     display_module.showMessages(sc["matrix"], sc["start"])
-
 def add(index, message, nolog=False):
   if index < 0:
     return
