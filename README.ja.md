@@ -9,7 +9,7 @@ Timer Camera XとRaspberry Piを同じWi-Fiネットワーク上に置き、Time
 * カメラ - ESP32 PSRAM Timer Camera X (M5Stack)
     * https://shop.m5stack.com/products/esp32-psram-timer-camera-x-ov3660
     * Arduino
-    * 電源 モバイルバッテリ等
+    * 電源 モバイルバッテリ / USB電源
 
 * コントローラ - Raspberry Pi (Wi-Fiモデル)
     * python3 / pip3
@@ -17,7 +17,7 @@ Timer Camera XとRaspberry Piを同じWi-Fiネットワーク上に置き、Time
     * BLE
     * OLED スクリーンとボタンの付いたHAT
         128x64, 1.3inch OLED display HAT for Raspberry Pi https://www.waveshare.com/1.3inch-oled-hat.htm
-    * 電源 モバイルバッテリ等
+    * 電源 モバイルバッテリ / USB電源
 
 
 * PC(Timer Camera Xへのコンパイル)

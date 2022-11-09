@@ -10,6 +10,7 @@ Set Timer Camera X and Raspberry Pi on the same Wi-Fi network, start a web serve
 * Camera - ESP32 PSRAM Timer Camera X (M5Stack)
     * https://shop.m5stack.com/products/esp32-psram-timer-camera-x-ov3660
     * Arduino
+    * Power Mobile battery or USB power
 
 * Controller - Raspberry Pi (with Wi-Fi)
     * python3 / pip3
@@ -17,6 +18,7 @@ Set Timer Camera X and Raspberry Pi on the same Wi-Fi network, start a web serve
     * BLE
     * OLED Screen and buttons(HAT)
         128x64, 1.3inch OLED display HAT for Raspberry Pi https://www.waveshare.com/1.3inch-oled-hat.htm
+    * Power Mobile battery or USB power
 
 * PC for compiling to Timer Camera X
     * Arduino IDE or platformIO
