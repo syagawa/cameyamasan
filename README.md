@@ -11,7 +11,8 @@ Set Timer Camera X and Raspberry Pi on the same Wi-Fi network, start a web serve
     * https://shop.m5stack.com/products/esp32-psram-timer-camera-x-ov3660
     * Arduino
     * Power
-        Mobile battery or USB power
+        Mobile battery ( e.g. Anker PowerCore Fusion 5000 https://www.ankerjapan.com/products/a1621 )
+        or USB power
 
 * Controller - Raspberry Pi (with Wi-Fi)
     * python3 / pip3
@@ -20,7 +21,8 @@ Set Timer Camera X and Raspberry Pi on the same Wi-Fi network, start a web serve
     * OLED Screen and buttons(HAT)
         128x64, 1.3inch OLED display HAT for Raspberry Pi https://www.waveshare.com/1.3inch-oled-hat.htm
     * Power
-        Mobile battery or USB power
+        Mobile battery ( e.g. cheero Canvas 3200mAh IoT 機器対応 https://cheero.shop/products/che-061 )
+        or USB power
 
 * PC for compiling to Timer Camera X
     * Arduino IDE or platformIO
