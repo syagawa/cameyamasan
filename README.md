@@ -25,7 +25,7 @@ Set Timer Camera X and Raspberry Pi on the same Wi-Fi network, start a web serve
         or USB power
 
 * PC for compiling to Timer Camera X
-    * Arduino IDE or platformIO
+    * Arduino IDE or VSCode + platformIO
 
 ## 1. Compile Timer Camera X
 
