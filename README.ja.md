@@ -37,7 +37,7 @@ Timer Camera XとRaspberry Piを同じWi-Fiネットワーク上に置き、Time
 2. Arduino IDE でこのリポジトリのルートを開く
 3. Arduino IDE のセットアップ
      M5Stack-Timer-Cam を ESP32 Arduino に設定します (M5Stack Arduinoではない)
-4. Timer Camera X を PC に接続
+4. Timer Camera X を USBでPC に接続
 5. Timer Camera X にコンパイル
 
 ### PlatformIOでのコンパイル
@@ -48,7 +48,7 @@ Timer Camera XとRaspberry Piを同じWi-Fiネットワーク上に置き、Time
     M5Stack-Timer-Camを設定
 3. VSCode でこのリポジトリを開く
 4. PlatformIO(拡張機能)で ar ディレクトリを開く
-5. Timer Camera X を PC に接続
+5. Timer Camera X を USBでPC に接続
 6. Timer Camera X にコンパイル
 
 

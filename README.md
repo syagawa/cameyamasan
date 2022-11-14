@@ -36,7 +36,7 @@ Set Timer Camera X and Raspberry Pi on the same Wi-Fi network, start a web serve
 2. Open this repository's root by Arduino IDE.
 3. setup Arduino IDE
     set M5Stack-Timer-Cam in ESP32 Arduino( not M5Stack Arduino)
-4. Connect Timer Camera X to PC.
+4. Connect Timer Camera X to PC by USB.
 5. Compile to Timer Camera X.
 
 ### Compile source to Camera by PlatformIO in PC
@@ -47,7 +47,7 @@ Set Timer Camera X and Raspberry Pi on the same Wi-Fi network, start a web serve
     set M5Stack-Timer-Cam
 3. Open this repository in VSCode.
 4. Open ar diretory by PlatformIO extension.
-5. Connect Timer Camera X to PC.
+5. Connect Timer Camera X to PC by USB.
 6. Compile to Timer Camera X.
 
 
