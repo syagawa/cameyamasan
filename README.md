@@ -215,8 +215,9 @@ Write ssid and ps(password) in py/variables.py.
 
 ## Usage
 
-1. Start esp32 camera by connect USB Power.
-2. `$ python3 py/app.py` in Raspberry Pi's this repository home.
+1. Start Timer Camera X by connect USB Power.
+1. Start Raspberry Pi by connect USB Power.
+3. `$ python3 py/app.py` in Raspberry Pi's this repository home.
 
 
 ### start app in boot

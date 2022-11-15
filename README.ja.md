@@ -216,7 +216,8 @@ Wi-Fi ルーターのssid と passwordを確認
 ## 使用方法
 
 1. Timer Camera XにUSB電源を接続して起動
-2. Raspberry Piでこのレポジトリのホームへ行き `$ python3 py/app.py`を実行
+2. Raspberry PiにUSB電源を接続して起動
+3. Raspberry Piでこのレポジトリのホームへ行き `$ python3 py/app.py`を実行
 
 
 ### 起動時にスタートさせる方法
