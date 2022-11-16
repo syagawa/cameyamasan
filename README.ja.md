@@ -13,7 +13,7 @@ Timer Camera XとRaspberry Piを同じWi-Fiネットワーク上に置き、Time
         モバイルバッテリ ( 例: Anker PowerCore Fusion 5000 https://www.ankerjapan.com/products/a1621 )
         またはUSB電源
 
-* コントローラ - Raspberry Pi (Wi-Fiモデル)
+* コントローラ - Raspberry Pi (Wi-Fi/ピンヘッダ付きのモデル Raspberry Pi Zero WHなど)
     * python3 / pip3
     * Wi-Fi
     * BLE
@@ -215,9 +215,10 @@ Wi-Fi ルーターのssid と passwordを確認
 
 ## 使用方法
 
-1. Timer Camera XにUSB電源を接続して起動
+1. Raspberry PiにHAT(OLED Screen and buttons HAT)を装着
 2. Raspberry PiにUSB電源を接続して起動
 3. Raspberry Piでこのレポジトリのホームへ行き `$ python3 py/app.py`を実行
+4. Timer Camera XにUSB電源を接続して起動
 
 
 ### 起動時にスタートさせる方法

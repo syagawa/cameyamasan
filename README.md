@@ -14,7 +14,7 @@ Set Timer Camera X and Raspberry Pi on the same Wi-Fi network, start a web serve
         Mobile battery ( e.g. Anker PowerCore Fusion 5000 https://www.ankerjapan.com/products/a1621 )
         or USB power
 
-* Controller - Raspberry Pi (with Wi-Fi)
+* Controller - Raspberry Pi (with Wi-Fi / Pin Header e.g. Raspberry Pi Zero WH)
     * python3 / pip3
     * Wi-Fi
     * BLE
