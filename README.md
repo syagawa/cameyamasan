@@ -214,10 +214,10 @@ Write ssid and ps(password) in py/variables.py.
 
 
 ## Usage
-
-1. Start Timer Camera X by connect USB Power.
-1. Start Raspberry Pi by connect USB Power.
+1. Set HAT(OLED Screen and buttons HAT) to Raspberry Pi.
+2. Start Raspberry Pi by connect USB Power.
 3. `$ python3 py/app.py` in Raspberry Pi's this repository home.
+4. Start Timer Camera X by connect USB Power.
 
 
 ### start app in boot
