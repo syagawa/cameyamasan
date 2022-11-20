@@ -24,7 +24,7 @@ Timer Camera XとRaspberry Piを同じWi-Fiネットワーク上に置き、Time
         またはUSB電源
 
 
-* PC(Timer Camera Xへのコンパイル)
+* PC Timer Camera Xへのコンパイル windows, Mac, Linux
     * Arduino IDE もしくは VSCode + platformIO
 
 

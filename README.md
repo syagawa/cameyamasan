@@ -24,7 +24,7 @@ Set Timer Camera X and Raspberry Pi on the same Wi-Fi network, start a web serve
         Mobile battery ( e.g. cheero Canvas 3200mAh IoT 機器対応 https://cheero.shop/products/che-061 )
         or USB power
 
-* PC for compiling to Timer Camera X
+* PC for compiling to Timer Camera X (Windows, Mac or Linux)
     * Arduino IDE or VSCode + platformIO
 
 ## 1. Compile Timer Camera X
