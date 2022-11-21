@@ -54,6 +54,7 @@ Timer Camera XとRaspberry Piを同じWi-Fiネットワーク上に置き、Time
 
 ## 2. Raspberry Piの設定
 
+0. Raspberry Pi OS を Raspberry Pi にインストールする
 1. Raspberry Pi の`home`にこのリポジトリを`$ git clone`
 2. `$ cd ~/<this repository name>`
 3. `$ cp py/variables_sample.py py/variables.py`

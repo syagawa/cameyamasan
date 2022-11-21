@@ -53,6 +53,7 @@ Set Timer Camera X and Raspberry Pi on the same Wi-Fi network, start a web serve
 
 ## 2. Raspberry Pi settings
 
+0. Install Raspberry Pi OS to Raspberry Pi.
 1. git clone this repository in Raspberry Pi's `home`.
 2. `$ cd ~/<this repository name>`
 3. `$ cp py/variables_sample.py py/variables.py`
