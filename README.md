@@ -31,33 +31,33 @@ Set Timer Camera X and Raspberry Pi on the same Wi-Fi network, start a web serve
 
 ### Compile source to Camera by Arduino in PC
 
-0. Install Arduino IDE
-1. git clone this repository.
-2. Open this repository's root by Arduino IDE.
-3. setup Arduino IDE
+1. Install Arduino IDE
+2. git clone this repository.
+3. Open this repository's root by Arduino IDE.
+4. setup Arduino IDE
     set M5Stack-Timer-Cam in ESP32 Arduino( not M5Stack Arduino)
-4. Connect Timer Camera X to PC by USB.
-5. Compile to Timer Camera X.
+5. Connect Timer Camera X to PC by USB.
+6. Compile to Timer Camera X.
 
 ### Compile source to Camera by PlatformIO in PC
 
-0. Install VSCode & PlatformIO
-1. git clone this repository.
-2. Install VSCode on pc, start VSCode, then install PlatformIO extension.
+1. Install VSCode & PlatformIO
+2. git clone this repository.
+3. Install VSCode on pc, start VSCode, then install PlatformIO extension.
     set M5Stack-Timer-Cam
-3. Open this repository in VSCode.
-4. Open ar diretory by PlatformIO extension.
-5. Connect Timer Camera X to PC by USB.
-6. Compile to Timer Camera X.
+4. Open this repository in VSCode.
+5. Open ar diretory by PlatformIO extension.
+6. Connect Timer Camera X to PC by USB.
+7. Compile to Timer Camera X.
 
 
 ## 2. Raspberry Pi settings
 
-0. Install Raspberry Pi OS to Raspberry Pi. ( https://www.raspberrypi.com/documentation/computers/getting-started.html )
-1. git clone this repository in Raspberry Pi's `home`.
-2. `$ cd ~/<this repository name>`
-3. `$ cp py/variables_sample.py py/variables.py`
-4. install python3, pip and python libraries
+1. Install Raspberry Pi OS to Raspberry Pi. ( https://www.raspberrypi.com/documentation/computers/getting-started.html )
+2. git clone this repository in Raspberry Pi's `home`.
+3. `$ cd ~/<this repository name>`
+4. `$ cp py/variables_sample.py py/variables.py`
+5. install python3, pip and python libraries
     ```bash
     $ sudo apt install -y python3 python3-pip ffmpeg
     $ sudo pip3 install bleak

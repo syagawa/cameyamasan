@@ -32,33 +32,33 @@ Timer Camera XとRaspberry Piを同じWi-Fiネットワーク上に置き、Time
 
 ### Arduinoでのコンパイル
 
-0. Arduino IDEのインストール
-1. このリポジトリを`git clone`する
-2. Arduino IDE でこのリポジトリのルートを開く
-3. Arduino IDE のセットアップ
+1. Arduino IDEのインストール
+2. このリポジトリを`git clone`する
+3. Arduino IDE でこのリポジトリのルートを開く
+4. Arduino IDE のセットアップ
      M5Stack-Timer-Cam を ESP32 Arduino に設定します (M5Stack Arduinoではない)
-4. Timer Camera X を USBでPC に接続
-5. Timer Camera X にコンパイル
+5. Timer Camera X を USBでPC に接続
+6. Timer Camera X にコンパイル
 
 ### PlatformIOでのコンパイル
 
-0. VSCodeとPlatformIOのインストール
-1. このリポジトリを`git clone`する
-2. VSCode をインストールし、VSCode P起動して、platformIO(拡張機能)をインストールする
+1. VSCodeとPlatformIOのインストール
+2. このリポジトリを`git clone`する
+3. VSCode をインストールし、VSCode P起動して、platformIO(拡張機能)をインストールする
     M5Stack-Timer-Camを設定
-3. VSCode でこのリポジトリを開く
-4. PlatformIO(拡張機能)で ar ディレクトリを開く
-5. Timer Camera X を USBでPC に接続
-6. Timer Camera X にコンパイル
+4. VSCode でこのリポジトリを開く
+5. PlatformIO(拡張機能)で ar ディレクトリを開く
+6. Timer Camera X を USBでPC に接続
+7. Timer Camera X にコンパイル
 
 
 ## 2. Raspberry Piの設定
 
-0. Raspberry Pi OS を Raspberry Pi にインストールする ( https://www.raspberrypi.com/documentation/computers/getting-started.html )
-1. Raspberry Pi の`home`にこのリポジトリを`$ git clone`
-2. `$ cd ~/<this repository name>`
-3. `$ cp py/variables_sample.py py/variables.py`
-4. Python3とpipとpythonライブラリをインストール
+1. Raspberry Pi OS を Raspberry Pi にインストールする ( https://www.raspberrypi.com/documentation/computers/getting-started.html )
+2. Raspberry Pi の`home`にこのリポジトリを`$ git clone`
+3. `$ cd ~/<this repository name>`
+4. `$ cp py/variables_sample.py py/variables.py`
+5. Python3とpipとpythonライブラリをインストール
     ```bash
     $ sudo apt install -y python3 python3-pip ffmpeg
     $ sudo pip3 install bleak
