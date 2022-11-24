@@ -76,14 +76,14 @@ Bの方が簡単ですが、屋外での使用にはAがおすすめです。
 
 ### A. Raspberry Pi を Wi-Fi アクセスポイントとして使用する方法（RTL8188EUS USB ドングルを使用）
 
-0. Raspbery Piを起動
-1. RTL8188EUS ドングル ドライバーをインストールする
+1. Raspbery Piを起動
+2. RTL8188EUS ドングル ドライバーをインストールする
      * http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/
      * Raspberry Pi Zero の例 http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
 
-2. `$ iwconfig` コマンドをたたいて wlan1 が存在するかどうかを確認する
+3. `$ iwconfig` コマンドをたたいて wlan1 が存在するかどうかを確認する
 
-3. インストール
+4. インストール
 ```bash
 $ sudo apt update
 $ sudo apt upgrade -y
@@ -91,7 +91,7 @@ $ sudo apt install hostapd
 $ sudo apt install dnsmasq
 ```
 
-4. /etc/dhcpcd.conf
+5. /etc/dhcpcd.conf
 
 `$ sudo vim /etc/dhcpcd.conf`
 
@@ -103,13 +103,13 @@ interface wlan1
  static broadcast 192.168.2.255
 ```
 
-5. ./py/variables.py.
+6. ./py/variables.py.
 
 `$ vim ./py/variables.py.`
 
 py/variables.py の ssid と wpa_passphrase(ps)を変更
 
-6. /etc/hostapd/hostapd.conf
+7. /etc/hostapd/hostapd.conf
 
 `$ sudo vim /etc/hostapd/hostapd.conf`
 
@@ -132,7 +132,7 @@ wpa_pairwise=CCMP
 wpa_passphrase=Password
 ```
 
-7. dnsmsqを編集
+8. dnsmsqを編集
 
 `$ sudo vim /etc/dnsmasq.conf`
 
@@ -141,7 +141,7 @@ interface=wlan1
 dhcp-range=192.168.2.2,192.168.2.100,255.255.255.0,24h
 ```
 
-8. sysctl.confを編集
+9. sysctl.confを編集
 
  `$ sudo vim /etc/sysctl.conf`
 
@@ -160,7 +160,7 @@ net.ipv4.ip_forward=1
 
 
 
-9. unmaskの設定
+10. unmaskの設定
 ```
 $ sudo systemctl stop hostapd
 $ sudo systemctl unmask hostapd
@@ -170,14 +170,14 @@ $ sudo systemctl start hostapd
 $ sudo systemctl start dnsmasq
 ```
 
-10. Wi-Fi アクセスポイントの確認
+11. Wi-Fi アクセスポイントの確認
 ```
 $ python -m http.server 3000
 ```
 
 PCかスマホでMY-RP-SERVERに接続し、ブラウザで192.168.2.1:3000を開きます。
 
-11. `$ sudo vim /etc/rc.local`で `exit 0`の直前の行に下記の記述を追加する
+12. `$ sudo vim /etc/rc.local`で `exit 0`の直前の行に下記の記述を追加する
 
 ```
 iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
@@ -191,7 +191,7 @@ sleep 3
 service hostapd restart
 ```
 
-12. インターネットへの接続を確認
+13. インターネットへの接続を確認
 
 ```
 $ ping google.com
@@ -200,7 +200,7 @@ $ ping google.com
 $ sudo dhclient wlan0
 ```
 
-* 参考サイト
+* 参考ページ
     * https://ccie-go.com/raspberry-pi-4-chuukeiki/#toc8
     * https://passe-de-mode.uedasoft.com/ja/tips/software/device/raspberrypi/2019.11.buster_r8188eu.html#%E8%83%8C%E6%99%AF
     * https://zenn.dev/yutafujii/books/fcb457e798a3d5/viewer/fe7472

@@ -74,14 +74,14 @@ B is easier, but A is recommended for outdoor use.
 
 ### A. How to use Raspberry Pi as a Wi-Fi access point (Case of RTL8188EUS USB dongle)
 
-0. Start Raspberry Pi
-1. Install RTL8188EUS dongle driver 
+1. Start Raspberry Pi
+2. Install RTL8188EUS dongle driver 
     * http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/
     * example raspberry pi zero w http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
 
-2. `$ iwconfig` to see if wlan1 exists
+3. `$ iwconfig` to see if wlan1 exists
 
-3. install
+4. install
 ```bash
 $ sudo apt update
 $ sudo apt upgrade -y
@@ -89,7 +89,7 @@ $ sudo apt install hostapd
 $ sudo apt install dnsmasq
 ```
 
-4. /etc/dhcpcd.conf
+5. /etc/dhcpcd.conf
 
 `$ sudo vim /etc/dhcpcd.conf`
 
@@ -101,13 +101,13 @@ interface wlan1
  static broadcast 192.168.2.255
 ```
 
-5. ./py/variables.py.
+6. ./py/variables.py.
 
 `$ vim ./py/variables.py.`
 
 Write ssid and wpa_passphrase(ps) in py/variables.py.
 
-6. /etc/hostapd/hostapd.conf
+7. /etc/hostapd/hostapd.conf
 
 `$ sudo vim /etc/hostapd/hostapd.conf`
 
@@ -130,7 +130,7 @@ wpa_pairwise=CCMP
 wpa_passphrase=Password
 ```
 
-7. edit dnsmsq
+8. edit dnsmsq
 
 `$ sudo vim /etc/dnsmasq.conf`
 
@@ -139,7 +139,7 @@ interface=wlan1
 dhcp-range=192.168.2.2,192.168.2.100,255.255.255.0,24h
 ```
 
-8. edit syctl.conf
+9. edit syctl.conf
 
 `$ sudo vim /etc/sysctl.conf`
 
@@ -158,7 +158,7 @@ sudo iptables --table nat --append POSTROUTING --out-interface wlan0 -j MASQUERA
 sudo iptables --append FORWARD --in-interface wlan1 -j ACCEPT -->
 
 
-9. unmask settings
+10. unmask settings
 ```
 $ sudo systemctl stop hostapd
 $ sudo systemctl unmask hostapd
@@ -168,14 +168,14 @@ $ sudo systemctl start hostapd
 $ sudo systemctl start dnsmasq
 ```
 
-10. check Wi-Fi Access Point
+11. check Wi-Fi Access Point
 ```
 $ python -m http.server 3000
 ```
 Connect MY-RP-SERVER from PC or Smartphone.
 Open 192.168.2.1:3000 by Browser in PC or Smartphone.
 
-11. add below to /etc/rc.local at before exit 0
+12. add below to /etc/rc.local at before exit 0
 
 ```
 iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
@@ -189,7 +189,7 @@ sleep 3
 service hostapd restart
 ```
 
-12. check connecting internet
+13. check connecting internet
 
 ```
 $ ping google.com
@@ -199,7 +199,7 @@ $ sudo dhclient wlan0
 
 ```
 
-* reference sites
+* reference pages
     * https://ccie-go.com/raspberry-pi-4-chuukeiki/#toc8
     * https://passe-de-mode.uedasoft.com/ja/tips/software/device/raspberrypi/2019.11.buster_r8188eu.html#%E8%83%8C%E6%99%AF
     * https://zenn.dev/yutafujii/books/fcb457e798a3d5/viewer/fe7472
