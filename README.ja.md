@@ -32,6 +32,8 @@ M5StackのTimer CameraX とWi-FiモデルのRaspberry Piを使用します。推
 
 ## 1. Timer Camera X へのコンパイル
 
+PCでソフトウェアをコンパイルし、Timer Camera Xに書き込みます。
+
 ### Arduinoでのコンパイル
 
 1. Arduino IDEのインストール
