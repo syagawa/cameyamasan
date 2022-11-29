@@ -6,7 +6,7 @@ Set Timer Camera X and Raspberry Pi on the same Wi-Fi network, start a web serve
 
 ## Specs
 
-Use M5Stack Timer CameraX and Raspberry Pi Wi-Fi model. The recommended model is Raspberry Pi Zero WH. I recommend the one with the pin header because the HAT is also used.
+Use M5Stack Timer Camera X and Raspberry Pi Wi-Fi model. The recommended model is Raspberry Pi Zero WH. I recommend the one with the pin header because the HAT is also used.
 
 * Camera - ESP32 PSRAM Timer Camera X (M5Stack)
     * https://shop.m5stack.com/products/esp32-psram-timer-camera-x-ov3660
@@ -29,6 +29,8 @@ Use M5Stack Timer CameraX and Raspberry Pi Wi-Fi model. The recommended model is
     * Arduino IDE or VSCode + platformIO
 
 ## 1. Compile Timer Camera X
+
+Compile software for camera on PC and write it to Timer Camera X.
 
 ### Compile source to Camera by Arduino in PC
 
