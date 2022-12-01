@@ -46,6 +46,8 @@ PC(Windows, Mac, Linux)でカメラ用のソフトウェアをコンパイルし
 
 ### PlatformIOでのコンパイル
 
+PlatformIOでのコンパイルについてはテストがあまりできていないのでArduinoでのコンパイルをお勧めします。
+
 1. VSCodeとPlatformIOのインストール
 2. このリポジトリを`git clone`する
 3. VSCode をインストールし、VSCode P起動して、platformIO(拡張機能)をインストールする
