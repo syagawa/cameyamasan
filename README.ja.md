@@ -46,8 +46,6 @@ PC(Windows, Mac, Linux)でカメラ用のソフトウェアをコンパイルし
 
 ### PlatformIOでのコンパイル
 
-PlatformIOでのコンパイルについてはテストがあまりできていないのでArduinoでのコンパイルをお勧めします。
-
 1. VSCodeとPlatformIOのインストール
 2. このリポジトリを`git clone`する
 3. VSCode をインストールし、VSCode P起動して、platformIO(拡張機能)をインストールする
@@ -57,6 +55,7 @@ PlatformIOでのコンパイルについてはテストがあまりできてい�
 6. Timer Camera X を USBでPC に接続
 7. Timer Camera X にコンパイル
 
+*** PlatformIOでのコンパイルについてはテストがあまりできていないのでArduinoでのコンパイルをお勧めします。 ***
 
 ## 2. Raspberry Piの設定
 

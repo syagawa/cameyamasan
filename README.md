@@ -53,6 +53,7 @@ Compile software for camera on PC and write it to Timer Camera X.
 6. Connect Timer Camera X to PC by USB.
 7. Compile to Timer Camera X.
 
+*** Compiling on PlatformIO is not well tested, so I recommend compiling on Arduino. ***
 
 ## 2. Raspberry Pi settings
 
