@@ -57,7 +57,7 @@ Compile software for camera on PC and write it to Timer Camera X.
 
 ## 2. Raspberry Pi settings
 
-1. Install Raspberry Pi OS to Raspberry Pi. ( https://www.raspberrypi.com/documentation/computers/getting-started.html )
+1. Install Raspberry Pi OS to Raspberry Pi. Refer to the following link for the installation. https://www.raspberrypi.com/documentation/computers/getting-started.html
 2. git clone this repository in Raspberry Pi's `home`.
 3. `$ cd ~/<this repository name>`
 4. `$ cp py/variables_sample.py py/variables.py`

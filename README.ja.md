@@ -59,7 +59,7 @@ PC(Windows, Mac, Linux)でカメラ用のソフトウェアをコンパイルし
 
 ## 2. Raspberry Piの設定
 
-1. Raspberry Pi OS を Raspberry Pi にインストールする ( https://www.raspberrypi.com/documentation/computers/getting-started.html )
+1. Raspberry Pi OS を Raspberry Pi にインストールします。インストール方法は次のリンクを参照してください。 https://www.raspberrypi.com/documentation/computers/getting-started.html
 2. Raspberry Pi の`home`にこのリポジトリを`$ git clone`
 3. `$ cd ~/<this repository name>`
 4. `$ cp py/variables_sample.py py/variables.py`
