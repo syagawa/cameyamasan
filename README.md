@@ -47,7 +47,7 @@ Compile software for camera on PC and write it to Timer Camera X.
 1. Install VSCode & PlatformIO
 2. git clone this repository.
 3. Install VSCode on pc, start VSCode, then install PlatformIO extension.
-    set M5Stack-Timer-Cam
+    * Set M5Stack-Timer-Cam
 4. Open this repository in VSCode.
 5. Open ar diretory by PlatformIO extension.
 6. Connect Timer Camera X to PC by USB.
@@ -58,7 +58,7 @@ Compile software for camera on PC and write it to Timer Camera X.
 ## 2. Raspberry Pi settings
 
 1. Install Raspberry Pi OS to Raspberry Pi. Refer to the following link for the installation. https://www.raspberrypi.com/documentation/computers/getting-started.html
-2. git clone this repository in Raspberry Pi's `home`.
+2. Start Raspberry Pi and git clone this repository in Raspberry Pi's `home`.
 3. `$ cd ~/<this repository name>`
 4. `$ cp py/variables_sample.py py/variables.py`
 5. install python3, pip and python libraries

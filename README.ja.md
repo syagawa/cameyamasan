@@ -49,7 +49,7 @@ PC(Windows, Mac, Linux)でカメラ用のソフトウェアをコンパイルし
 1. VSCodeとPlatformIOのインストール
 2. このリポジトリを`git clone`する
 3. VSCode をインストールし、VSCode P起動して、platformIO(拡張機能)をインストールする
-    M5Stack-Timer-Camを設定
+    * M5Stack-Timer-Camを設定
 4. VSCode でこのリポジトリを開く
 5. PlatformIO(拡張機能)で ar ディレクトリを開く
 6. Timer Camera X を USBでPC に接続
@@ -60,7 +60,7 @@ PC(Windows, Mac, Linux)でカメラ用のソフトウェアをコンパイルし
 ## 2. Raspberry Piの設定
 
 1. Raspberry Pi OS を Raspberry Pi にインストールします。インストール方法は次のリンクを参照してください。 https://www.raspberrypi.com/documentation/computers/getting-started.html
-2. Raspberry Pi の`home`にこのリポジトリを`$ git clone`
+2. Raspberry Piを起動し、Raspberry Pi の`home`にこのリポジトリを`$ git clone`
 3. `$ cd ~/<this repository name>`
 4. `$ cp py/variables_sample.py py/variables.py`
 5. Python3とpipとpythonライブラリをインストール
