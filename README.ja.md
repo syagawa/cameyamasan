@@ -60,10 +60,16 @@ PC(Windows, Mac, Linux)でカメラ用のソフトウェアをコンパイルし
 ## 2. Raspberry Piの設定
 
 1. Raspberry Pi OS を Raspberry Pi にインストールします。インストール方法は次のリンクを参照してください。 https://www.raspberrypi.com/documentation/computers/getting-started.html
-2. Raspberry Piを起動し、Raspberry Pi の`home`にこのリポジトリを`$ git clone`
-3. `$ cd ~/<this repository name>`
-4. `$ cp py/variables_sample.py py/variables.py`
-5. Python3とpipとpythonライブラリをインストール
+2. gitのインストール
+    ```bash
+    $ sudo apt update
+    $ sudo apt upgrade
+    $ sudo apt install git
+    ```
+3. Raspberry Piを起動し、Raspberry Pi の`home`にこのリポジトリを`$ git clone`します。
+4. `$ cd ~/<this repository name>`
+5. `$ cp py/variables_sample.py py/variables.py`
+6. Python3とpipとpythonライブラリをインストール
     ```bash
     $ sudo apt install -y python3 python3-pip ffmpeg
     $ sudo pip3 install bleak

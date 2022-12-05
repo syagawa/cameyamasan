@@ -58,10 +58,16 @@ Compile software for camera on PC and write it to Timer Camera X.
 ## 2. Raspberry Pi settings
 
 1. Install Raspberry Pi OS to Raspberry Pi. Refer to the following link for the installation. https://www.raspberrypi.com/documentation/computers/getting-started.html
-2. Start Raspberry Pi and git clone this repository in Raspberry Pi's `home`.
-3. `$ cd ~/<this repository name>`
-4. `$ cp py/variables_sample.py py/variables.py`
-5. install python3, pip and python libraries
+2. Install git.
+    ```bash
+    $ sudo apt update
+    $ sudo apt upgrade
+    $ sudo apt install git
+    ```
+3. Start Raspberry Pi and git clone this repository in Raspberry Pi's `home`.
+4. `$ cd ~/<this repository name>`
+5. `$ cp py/variables_sample.py py/variables.py`
+6. install python3, pip and python libraries
     ```bash
     $ sudo apt install -y python3 python3-pip ffmpeg
     $ sudo pip3 install bleak
