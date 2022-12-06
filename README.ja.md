@@ -36,7 +36,7 @@ PC(Windows, Mac, Linux)でカメラ用のソフトウェアをコンパイルし
 
 ### Arduinoでのコンパイル
 
-1. Arduino IDEのインストール
+1. PCにArduino IDEをインストール
 2. このリポジトリを`git clone`する
 3. Arduino IDE でこのリポジトリのルートを開く
 4. Arduino IDE のセットアップ
@@ -46,7 +46,7 @@ PC(Windows, Mac, Linux)でカメラ用のソフトウェアをコンパイルし
 
 ### PlatformIOでのコンパイル
 
-1. VSCodeとPlatformIOのインストール
+1. PCにVSCodeとPlatformIOをインストール
 2. このリポジトリを`git clone`する
 3. VSCode をインストールし、VSCode P起動して、platformIO(拡張機能)をインストールする
     * M5Stack-Timer-Camを設定

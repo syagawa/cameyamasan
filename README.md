@@ -34,7 +34,7 @@ Compile software for camera on PC and write it to Timer Camera X.
 
 ### Compile source to Camera by Arduino in PC
 
-1. Install Arduino IDE
+1. Install Arduino IDE to PC.
 2. git clone this repository.
 3. Open this repository's root by Arduino IDE.
 4. setup Arduino IDE
@@ -44,7 +44,7 @@ Compile software for camera on PC and write it to Timer Camera X.
 
 ### Compile source to Camera by PlatformIO in PC
 
-1. Install VSCode & PlatformIO
+1. Install VSCode & PlatformIO to PC.
 2. git clone this repository.
 3. Install VSCode on pc, start VSCode, then install PlatformIO extension.
     * Set M5Stack-Timer-Cam
