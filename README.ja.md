@@ -69,7 +69,7 @@ PC(Windows, Mac, Linux)でカメラ用のソフトウェアをコンパイルし
 3. Raspberry Piを起動し、Raspberry Pi の`home`にこのリポジトリを`$ git clone`します。
 4. `$ cd ~/<this repository name>`
 5. `$ cp py/variables_sample.py py/variables.py`
-6. Python3とpipとpythonライブラリをインストール
+6. Python3とpipとffmpegをインストール
     ```bash
     $ sudo apt install -y python3 python3-pip ffmpeg
     $ sudo pip3 install bleak

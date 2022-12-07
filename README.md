@@ -37,7 +37,7 @@ Compile software for camera on PC and write it to Timer Camera X.
 1. Install Arduino IDE to PC.
 2. git clone this repository.
 3. Open this repository's root by Arduino IDE.
-4. setup Arduino IDE
+4. Setup Arduino IDE
     set M5Stack-Timer-Cam in ESP32 Arduino( not M5Stack Arduino)
 5. Connect Timer Camera X to PC by USB.
 6. Compile to Timer Camera X.
@@ -67,7 +67,7 @@ Compile software for camera on PC and write it to Timer Camera X.
 3. Start Raspberry Pi and git clone this repository in Raspberry Pi's `home`.
 4. `$ cd ~/<this repository name>`
 5. `$ cp py/variables_sample.py py/variables.py`
-6. install python3, pip and python libraries
+6. Install python3, pip and ffmpeg.
     ```bash
     $ sudo apt install -y python3 python3-pip ffmpeg
     $ sudo pip3 install bleak
