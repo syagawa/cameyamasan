@@ -24,6 +24,7 @@ Use M5Stack Timer Camera X and Raspberry Pi Wi-Fi model. The recommended model i
     * Power
         Mobile battery ( e.g. cheero Canvas 3200mAh IoT 機器対応 https://cheero.shop/products/che-061 )
         or USB power
+    * micro SD card
 
 * PC for compiling to Timer Camera X (Windows, Mac or Linux)
     * Arduino IDE or VSCode + platformIO

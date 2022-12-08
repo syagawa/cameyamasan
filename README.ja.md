@@ -24,6 +24,7 @@ M5StackのTimer Camera X とWi-FiモデルのRaspberry Piを使用します。�
     * 電源
         モバイルバッテリ ( 例: cheero Canvas 3200mAh IoT 機器対応 https://cheero.shop/products/che-061 )
         またはUSB電源
+    * micro SDカード
 
 
 * PC Timer Camera Xへのコンパイル windows, Mac, Linux
@@ -83,6 +84,7 @@ AまたはBの方法でWi-Fiを設定します。
 AはRaspberry PiとTimer Camera Xのみ。
 Bには Raspberry Pi、Timer Camera X、Wi-Fi ルーターが必要です。
 Bの方が簡単ですが、屋外での使用にはAがおすすめです。
+
 
 
 ### A. Raspberry Pi を Wi-Fi アクセスポイントとして使用する方法（RTL8188EUS USB ドングルを使用）
