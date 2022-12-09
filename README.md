@@ -92,7 +92,7 @@ B is easier, but A is recommended for outdoor use.
 
 3. `$ iwconfig` to see if wlan1 exists
 
-4. install
+4. Install
 ```bash
 $ sudo apt update
 $ sudo apt upgrade -y
@@ -100,7 +100,7 @@ $ sudo apt install hostapd
 $ sudo apt install dnsmasq
 ```
 
-5. /etc/dhcpcd.conf
+5. Edit /etc/dhcpcd.conf
 
 `$ sudo vim /etc/dhcpcd.conf`
 

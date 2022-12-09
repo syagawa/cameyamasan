@@ -104,7 +104,7 @@ $ sudo apt install hostapd
 $ sudo apt install dnsmasq
 ```
 
-5. /etc/dhcpcd.conf
+5. /etc/dhcpcd.confの編集
 
 `$ sudo vim /etc/dhcpcd.conf`
 
