@@ -112,13 +112,13 @@ interface wlan1
  static broadcast 192.168.2.255
 ```
 
-6. ./py/variables.py.
+6. Edit ./py/variables.py
 
 `$ vim ./py/variables.py.`
 
 Write ssid and wpa_passphrase(ps) in py/variables.py.
 
-7. /etc/hostapd/hostapd.conf
+7. Edit /etc/hostapd/hostapd.conf
 
 `$ sudo vim /etc/hostapd/hostapd.conf`
 

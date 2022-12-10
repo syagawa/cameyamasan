@@ -104,7 +104,7 @@ $ sudo apt install hostapd
 $ sudo apt install dnsmasq
 ```
 
-5. /etc/dhcpcd.confの編集
+5. /etc/dhcpcd.conf の編集
 
 `$ sudo vim /etc/dhcpcd.conf`
 
@@ -116,7 +116,7 @@ interface wlan1
  static broadcast 192.168.2.255
 ```
 
-6. ./py/variables.py.
+6. ./py/variables.py の編集
 
 `$ vim ./py/variables.py.`
 
