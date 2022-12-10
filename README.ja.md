@@ -122,7 +122,7 @@ interface wlan1
 
 py/variables.py の ssid と wpa_passphrase(ps)を変更
 
-7. /etc/hostapd/hostapd.conf
+7. /etc/hostapd/hostapd.conf の編集
 
 `$ sudo vim /etc/hostapd/hostapd.conf`
 
