@@ -150,7 +150,7 @@ interface=wlan1
 dhcp-range=192.168.2.2,192.168.2.100,255.255.255.0,24h
 ```
 
-9. edit syctl.conf
+9. Edit syctl.conf
 
 `$ sudo vim /etc/sysctl.conf`
 
@@ -179,12 +179,12 @@ $ sudo systemctl start hostapd
 $ sudo systemctl start dnsmasq
 ```
 
-11. check Wi-Fi Access Point
+11. Check Wi-Fi Access Point
 ```
 $ python -m http.server 3000
 ```
 Connect MY-RP-SERVER from PC or Smartphone.
-Open 192.168.2.1:3000 by Browser in PC or Smartphone.
+Open 192.168.2.1:3000.
 
 12. add below to /etc/rc.local at before exit 0
 
