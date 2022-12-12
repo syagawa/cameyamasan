@@ -88,7 +88,7 @@ B is easier, but A is recommended for outdoor use.
 1. Start Raspberry Pi
 2. Install RTL8188EUS dongle driver 
     * http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/
-    * example raspberry pi zero w http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
+    * Example of raspberry pi zero w http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
 
 3. `$ iwconfig` to see if wlan1 exists
 
@@ -141,7 +141,7 @@ wpa_pairwise=CCMP
 wpa_passphrase=Password
 ```
 
-8. edit dnsmsq
+8. Edit dnsmsq
 
 `$ sudo vim /etc/dnsmasq.conf`
 
@@ -187,6 +187,7 @@ Connect MY-RP-SERVER from PC or Smartphone.
 Open 192.168.2.1:3000.
 
 12. add below to /etc/rc.local at before exit 0
+`$ sudo vim /etc/rc.local`
 
 ```
 iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
@@ -200,6 +201,9 @@ sleep 3
 service hostapd restart
 ```
 
+
+
+
 13. check connecting internet
 
 ```
@@ -207,7 +211,6 @@ $ ping google.com
 
 # if not receive
 $ sudo dhclient wlan0
-
 ```
 
 * reference pages
