@@ -209,7 +209,7 @@ service hostapd restart
 ```
 $ ping google.com
 
-# if not receive
+# if nothing receives
 $ sudo dhclient wlan0
 ```
 
@@ -223,9 +223,11 @@ $ sudo dhclient wlan0
 
 Check Wi-Fi router's ssid and password.
 
-1. `$ vim ./py/variables.py.`
+1. Write ssid and ps(password) in py/variables.py.
 
-Write ssid and ps(password) in py/variables.py.
+`$ vim ./py/variables.py.`
+
+
 
 
 
