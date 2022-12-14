@@ -236,7 +236,7 @@ Wi-Fi ルーターのssid と passwordを確認
 4. Timer Camera XにUSB電源を接続して起動
 
 
-### 起動時にスタートさせる方法
+### Raspberry Pi 起動時にスタートさせる方法
 
 ```bash
 $ cd <このレポジトリ>
