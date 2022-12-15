@@ -236,10 +236,12 @@ Wi-Fi ルーターのssid と passwordを確認
 4. Timer Camera XにUSB電源を接続して起動
 
 
+
+
 ### Raspberry Pi 起動時にスタートさせる方法
 
 ```bash
-$ cd <このレポジトリ>
+$ cd <このレポジトリのホームディレクトリ>
 $ cp ./service/example-camerawithpy.service ./camerawithpy.service
 ```
 `./camerawithpy.service` の <this app directory name> を編集しこのアプリディレクトリのパスにして、コメントを外す

@@ -241,7 +241,7 @@ Check Wi-Fi router's ssid and password.
 ### start app in boot Raspberry Pi
 
 ```bash
-$ cd <this repository directory>
+$ cd <home directory of this repository>
 $ cp ./service/example-camerawithpy.service ./camerawithpy.service
 ```
 Edit <this app directory name> in ./camerawithpy.service and Uncomment
