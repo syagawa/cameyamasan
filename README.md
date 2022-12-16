@@ -238,7 +238,7 @@ Check Wi-Fi router's ssid and password.
 4. Start Timer Camera X by connect USB Power.
 
 
-### start app in boot Raspberry Pi
+### Start app at Raspberry Pi boots
 
 ```bash
 $ cd <home directory of this repository>
