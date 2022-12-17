@@ -245,7 +245,7 @@ $ cd <home directory of this repository>
 $ cp ./service/example-camerawithpy.service ./camerawithpy.service
 ```
 Edit <this app directory name> in ./camerawithpy.service and Uncomment
-Edit <this py directory name> in ./start.sh
+Edit <this py directory name> in ./start.sh.
 
 ```bash
 $ chmod a+x ./py/*
@@ -259,12 +259,12 @@ $ sudo reboot
 * reference sites
     * https://superuser.com/questions/544399/how-do-you-make-a-systemd-service-as-the-last-service-on-boot
 
-#### not start in boot
+#### Not start in boot
 ```bash
 $ systemctl disable camerawithpy.service
 ```
 
-### start shooting
+### Start shooting
 
 1. Turn on the power of Timer Camera X and Raspberry Pi.
 2. If app is starts, "app start!" on the OLED screen on RPI.
