@@ -270,6 +270,7 @@ $ systemctl disable camerawithpy.service
 2. If app is starts, "app start!" on the OLED screen on RPI.
 3. Connect timerx and start wi-fi server in Timer Camera X automatically.
 4. start shooting!!!
+5. Press the button up or down to display `stopshoot ?` on the OLED screen and press `key1` to finish shooting.
 
 ### make timelapse video
 
