@@ -268,7 +268,7 @@ $ systemctl disable camerawithpy.service
 
 1. Turn on the power of Timer Camera X and Raspberry Pi.
 2. If app is starts, "app start!" on the OLED screen on RPI.
-3. Connect timerx and start wi-fi server in Timer Camera X automatically.
+3. Raspberry Pi connects timerx and Timer Camera X starts wi-fi server automatically.
 4. start shooting!!!
 5. Press the button up or down to display `stopshoot ?` on the OLED screen and press `key1` to finish shooting.
 
