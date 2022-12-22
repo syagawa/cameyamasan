@@ -294,5 +294,5 @@ https://gist.github.com/CMCDragonkai/e00d114b43e38cb2c1b04594229e1df6
 
 ```
 max_camera_shooting_counts: 最大撮影回数
-camera_shooting_interval: 撮影間隔
+camera_shooting_interval: 撮影間隔(秒)
 ```

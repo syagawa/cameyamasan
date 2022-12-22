@@ -288,8 +288,8 @@ https://gist.github.com/CMCDragonkai/e00d114b43e38cb2c1b04594229e1df6
 
 ### Change settings of shooting conditions
 
-`$ cp py/variables_sample.py py/variables.py`
 Change `py/variables.py`.
+`$ cp py/variables_sample.py py/variables.py`
 
 
 
