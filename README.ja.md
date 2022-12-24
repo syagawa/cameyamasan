@@ -292,8 +292,8 @@ https://gist.github.com/CMCDragonkai/e00d114b43e38cb2c1b04594229e1df6
 `$ cp py/variables_sample.py py/variables.py`
 `py/variables.py`を書き換える。
 
+変数について
 ```
-# 変数
 max_camera_shooting_counts: 最大撮影回数
 camera_shooting_interval: 撮影間隔(秒)
 ```
