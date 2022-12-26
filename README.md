@@ -20,7 +20,7 @@ Use M5Stack Timer Camera X and Raspberry Pi Wi-Fi model. The recommended model i
     * Wi-Fi
     * BLE
     * OLED Screen and buttons(HAT)
-        128x64, 1.3inch OLED display HAT for Raspberry Pi https://www.waveshare.com/1.3inch-oled-hat.htm
+        [128x64, 1.3inch OLED display HAT for Raspberry Pi] https://www.waveshare.com/1.3inch-oled-hat.htm
     * Power
         Mobile battery ( e.g. cheero Canvas 3200mAh IoT 機器対応 https://cheero.shop/products/che-061 )
         or USB power
