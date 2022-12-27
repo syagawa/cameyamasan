@@ -10,13 +10,11 @@ Use M5Stack Timer Camera X and Raspberry Pi Wi-Fi model. The recommended model i
 
 * Camera - ESP32 PSRAM Timer Camera X (M5Stack)
     * https://shop.m5stack.com/products/esp32-psram-timer-camera-x-ov3660
-    * Arduino
     * Power
         Mobile battery ( e.g. Anker PowerCore Fusion 5000 https://www.ankerjapan.com/products/a1621 )
         or USB power
 
 * Controller - Raspberry Pi (with Wi-Fi / Pin Header e.g. Raspberry Pi Zero WH)
-    * python3 / pip3
     * Wi-Fi
     * BLE
     * OLED Screen and buttons(HAT)
