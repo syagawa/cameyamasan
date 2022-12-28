@@ -15,8 +15,6 @@ Use M5Stack Timer Camera X and Raspberry Pi Wi-Fi model. The recommended model i
         or USB power
 
 * Controller - Raspberry Pi (with Wi-Fi / Pin Header e.g. Raspberry Pi Zero WH)
-    * Wi-Fi
-    * BLE
     * OLED Screen and buttons(HAT)
         [128x64, 1.3inch OLED display HAT for Raspberry Pi] https://www.waveshare.com/1.3inch-oled-hat.htm
     * Power

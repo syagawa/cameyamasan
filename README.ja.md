@@ -15,8 +15,6 @@ M5StackのTimer Camera X とWi-FiモデルのRaspberry Piを使用します。�
         またはUSB電源
 
 * コントローラ - Raspberry Pi (Wi-Fi/ピンヘッダ付きのモデル Raspberry Pi Zero WHなど)
-    * Wi-Fi
-    * BLE
     * OLEDスクリーンとボタン(HAT)
         [128x64, 1.3inch OLED display HAT for Raspberry Pi] https://www.waveshare.com/1.3inch-oled-hat.htm
     * 電源
@@ -25,7 +23,7 @@ M5StackのTimer Camera X とWi-FiモデルのRaspberry Piを使用します。�
     * micro SDカード
 
 
-* PC Timer Camera Xへのコンパイル windows, Mac, Linux
+* PC Timer Camera Xへのコンパイル (Windows, Mac, Linux)
     * Arduino IDE もしくは VSCode + platformIO
 
 
