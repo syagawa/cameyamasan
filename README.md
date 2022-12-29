@@ -22,8 +22,8 @@ Use M5Stack Timer Camera X and Raspberry Pi Wi-Fi model. The recommended model i
         or USB power
     * micro SD card
 
-* PC for compiling to Timer Camera X (Windows, Mac or Linux)
-    * Arduino IDE or VSCode + platformIO
+* PC - for compiling to Timer Camera X (Windows, Mac or Linux)
+    * Arduino IDE
 
 ## 1. Compile Timer Camera X
 
@@ -38,19 +38,6 @@ Compile software for camera on PC and write it to Timer Camera X.
     set M5Stack-Timer-Cam in ESP32 Arduino( not M5Stack Arduino)
 5. Connect Timer Camera X to PC by USB.
 6. Compile to Timer Camera X.
-
-### Compile source to Camera by PlatformIO in PC
-
-1. Install VSCode & PlatformIO to PC.
-2. git clone this repository.
-3. Install VSCode on pc, start VSCode, then install PlatformIO extension.
-    * Set M5Stack-Timer-Cam
-4. Open this repository in VSCode.
-5. Open ar diretory by PlatformIO extension.
-6. Connect Timer Camera X to PC by USB.
-7. Compile to Timer Camera X.
-
-*** Compiling on PlatformIO is not well tested, so I recommend compiling on Arduino. ***
 
 ## 2. Raspberry Pi settings
 

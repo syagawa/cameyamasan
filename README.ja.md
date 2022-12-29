@@ -23,8 +23,8 @@ M5StackのTimer Camera X とWi-FiモデルのRaspberry Piを使用します。�
     * micro SDカード
 
 
-* PC Timer Camera Xへのコンパイル (Windows, Mac, Linux)
-    * Arduino IDE もしくは VSCode + platformIO
+* PC - Timer Camera Xへのコンパイル (Windows, Mac, Linux)
+    * Arduino IDE
 
 
 ## 1. Timer Camera X へのコンパイル
@@ -40,19 +40,6 @@ PC(Windows, Mac, Linux)でカメラ用のソフトウェアをコンパイルし
      M5Stack-Timer-Cam を ESP32 Arduino に設定します (M5Stack Arduinoではない)
 5. Timer Camera X を USBでPC に接続
 6. Timer Camera X にコンパイル
-
-### PlatformIOでのコンパイル
-
-1. PCにVSCodeとPlatformIOをインストール
-2. このリポジトリを`git clone`する
-3. VSCode をインストールし、VSCode P起動して、platformIO(拡張機能)をインストールする
-    * M5Stack-Timer-Camを設定
-4. VSCode でこのリポジトリを開く
-5. PlatformIO(拡張機能)で ar ディレクトリを開く
-6. Timer Camera X を USBでPC に接続
-7. Timer Camera X にコンパイル
-
-*** PlatformIOでのコンパイルについてはテストがあまりできていないのでArduinoでのコンパイルをお勧めします。 ***
 
 ## 2. Raspberry Piの設定
 
