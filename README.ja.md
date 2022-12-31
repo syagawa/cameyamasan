@@ -6,7 +6,7 @@ Timer Camera XとRaspberry Piを同じWi-Fiネットワーク上に置き、Time
 
 ## スペック
 
-M5StackのTimer Camera X とWi-FiモデルのRaspberry Piを使用します。推奨モデルはRaspberry Pi Zero WHとなります。操作にHATを使うためピンヘッダが付いているものをお勧めします。
+M5Stack Timer Camera X とWi-FiモデルのRaspberry Piを使用します。推奨モデルはRaspberry Pi Zero WHとなります。操作にHATを使うためピンヘッダが付いているものをお勧めします。
 
 * カメラ - ESP32 PSRAM Timer Camera X (M5Stack)
     * https://shop.m5stack.com/products/esp32-psram-timer-camera-x-ov3660
@@ -25,6 +25,10 @@ M5StackのTimer Camera X とWi-FiモデルのRaspberry Piを使用します。�
 
 * PC - Timer Camera Xへのコンパイル (Windows, Mac, Linux)
     * Arduino IDE
+
+* 使用言語
+    * python - コントローラ側
+    * Arduino(C++) - カメラ側
 
 
 ## 1. Timer Camera X へのコンパイル
