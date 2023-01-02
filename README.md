@@ -26,7 +26,7 @@ Use M5Stack Timer Camera X and Raspberry Pi Wi-Fi model. The recommended model i
     * Arduino IDE
 
 * Languages
-    * python3 - contrller
+    * python3 - Contrller
     * Arduino(C++) - Camera
 
 
