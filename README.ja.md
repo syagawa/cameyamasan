@@ -266,6 +266,7 @@ $ systemctl disable camerawithpy.service
 
 ```
 # Raspberry Piで
+$ sudo apt install ffmpeg
 $ cd <レポジトリのルート>
 $ ./make_static_video_current_dir.sh
 ```

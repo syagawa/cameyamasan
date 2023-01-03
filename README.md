@@ -267,6 +267,7 @@ Create a video after shooting.
 
 ```
 # in Raspberry Pi
+$ sudo apt install ffmpeg
 $ cd <this repository root>
 $ ./make_static_video_current_dir.sh
 ```
