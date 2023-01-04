@@ -260,6 +260,19 @@ $ systemctl disable camerawithpy.service
 5. ボタンの上下を押して OLED スクリーンに `stopshoot ?` を表示させ`key1`を押すと撮影が終了する
 
 
+
+
+### 撮影条件の変更
+
+`$ cp py/variables_sample.py py/variables.py`
+`py/variables.py`を書き換える。
+
+変数について
+```
+max_camera_shooting_counts: 最大撮影回数
+camera_shooting_interval: 撮影間隔(秒)
+```
+
 ### タイムラプス動画の作成
 
 撮影後の動画の作成
@@ -275,13 +288,10 @@ $ ./make_static_video_current_dir.sh
 https://gist.github.com/CMCDragonkai/e00d114b43e38cb2c1b04594229e1df6
 
 
-### 撮影条件の変更
+### 撮影した画像をZipにまとめる
 
-`$ cp py/variables_sample.py py/variables.py`
-`py/variables.py`を書き換える。
-
-変数について
 ```
-max_camera_shooting_counts: 最大撮影回数
-camera_shooting_interval: 撮影間隔(秒)
+# Raspberry Piで
+$ cd <レポジトリのルート>
+$ ./make_tar_arr.sh
 ```
