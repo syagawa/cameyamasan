@@ -281,6 +281,7 @@ camera_shooting_interval: 撮影間隔(秒)
 # Raspberry Piで
 $ sudo apt install ffmpeg
 $ cd <レポジトリのルート>
+$ chmod +x ./make_static_video_current_dir.sh
 $ ./make_static_video_current_dir.sh
 ```
 
@@ -293,5 +294,6 @@ https://gist.github.com/CMCDragonkai/e00d114b43e38cb2c1b04594229e1df6
 ```
 # Raspberry Piで
 $ cd <レポジトリのルート>
+$ chmod +x ./make_tar_arr.sh
 $ ./make_tar_arr.sh
 ```
