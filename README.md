@@ -291,3 +291,11 @@ Rreferred to the following page
 https://gist.github.com/CMCDragonkai/e00d114b43e38cb2c1b04594229e1df6
 
 
+### Captured images to Zip file
+
+```
+# in Raspberry Pi
+$ cd <this repository root>
+$ chmod +x ./make_tar_arr.sh
+$ ./make_tar_arr.sh
+```
