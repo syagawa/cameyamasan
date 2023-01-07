@@ -275,7 +275,7 @@ camera_shooting_interval: shooting interval in seconds
 ```
 
 
-### make timelapse video
+### Make timelapse video
 
 Create a video after shooting.
 
@@ -291,7 +291,7 @@ Rreferred to the following page
 https://gist.github.com/CMCDragonkai/e00d114b43e38cb2c1b04594229e1df6
 
 
-### Captured images to Zip file
+### Shot images to Zip file
 
 ```
 # in Raspberry Pi
