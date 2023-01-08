@@ -215,7 +215,7 @@ Wi-Fi ルーターのssid と passwordを確認
 `$ vim ./py/variables.py.`
 
 
-## 使用方法
+## 4. 使用方法
 
 1. Raspberry PiにHAT(OLED Screen and buttons HAT)を装着
 2. Raspberry PiにUSB電源を接続して起動

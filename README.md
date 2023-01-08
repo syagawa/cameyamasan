@@ -220,7 +220,7 @@ Check Wi-Fi router's ssid and password.
 
 
 
-## Usage
+## 4. Usage
 1. Set HAT(OLED Screen and buttons HAT) to Raspberry Pi.
 2. Start Raspberry Pi by connect USB Power.
 3. `$ python3 py/app.py` in Raspberry Pi's this repository home.
