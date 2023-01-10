@@ -262,10 +262,12 @@ $ systemctl disable camerawithpy.service
 5. Press the button up or down to display `stopshoot ?` on the OLED screen and press `key1` to finish shooting.
 
 
-### Change shooting counts or intervel
+### Change shooting counts or intervels
 
-`$ cp py/variables_sample.py py/variables.py`
-Change `py/variables.py`.
+```bash
+$ cp py/variables_sample.py py/variables.py
+$ vim py/variables.py
+```
 
 
 About variables

@@ -264,8 +264,10 @@ $ systemctl disable camerawithpy.service
 
 ### 撮影回数や間隔の変更
 
-`$ cp py/variables_sample.py py/variables.py`
-`py/variables.py`を書き換える。
+```bash
+$ cp py/variables_sample.py py/variables.py
+$ vim py/variables.py
+```
 
 変数について
 ```
