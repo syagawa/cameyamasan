@@ -1,4 +1,4 @@
-# Timelapse Camera controlled by Raspberry Pi
+# cameyamasan ver1
 
 Time-lapse camera using M5Stack Timer Camera X and Raspberry Pi.
 
