@@ -1,4 +1,4 @@
-# CAMEYAMASAN ver.1
+# CAMEYAMASAN version 1
 
 CAMEYAMASAN(ver.1)はM5Stack Timer Camera X とRaspberry Piを使用したタイムラプスカメラです。
 

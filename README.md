@@ -1,4 +1,4 @@
-# CAMEYAMASAN ver.1
+# CAMEYAMASAN version 1
 
 CAMEYAMASAN(ver.1) is Time-lapse camera using M5Stack Timer Camera X and Raspberry Pi.
 
