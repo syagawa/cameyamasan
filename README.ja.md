@@ -27,8 +27,8 @@ M5Stack Timer Camera X とWi-FiモデルのRaspberry Piを使用します。操�
     * Arduino IDE
 
 * 使用言語
-    * python3 - コントローラ
-    * Arduino(C++) - カメラ
+    * python3 - コントローラ Raspberry Pi
+    * Arduino(C++) - カメラ Timer Camera X
 
 
 ## 1. Timer Camera X へのコンパイル
