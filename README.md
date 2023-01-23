@@ -25,9 +25,9 @@ Use M5Stack Timer Camera X and Raspberry Pi Wi-Fi model. Use Raspberry Pi with p
 * PC - for compiling to Timer Camera X (Windows, Mac or Linux)
     * Arduino IDE
 
-* Languages
-    * python3 - Contrller
-    * Arduino(C++) - Camera
+* Languages / Tools
+    * python3 - Contrller - Raspberry Pi
+    * Arduino(C++) - Camera - M%stack Timer Camera X
 
 
 
