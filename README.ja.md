@@ -48,13 +48,13 @@ PC(Windows, Mac, Linux)でTimer Camera X用のソフトウェアをコンパイ�
 ## 2. Raspberry Piの設定
 
 1. Raspberry Pi OS を Raspberry Pi にインストールします。インストール方法は次のリンクを参照してください。 https://www.raspberrypi.com/documentation/computers/getting-started.html
-2. gitのインストール
+2. Raspberry Pi を起動しgitのインストール
     ```bash
     $ sudo apt update
     $ sudo apt upgrade
     $ sudo apt install git
     ```
-3. Raspberry Piを起動し、Raspberry Pi の`home`にこのリポジトリを`$ git clone`します。
+3. Raspberry Pi の`home`にこのリポジトリを`$ git clone`します。
 4. `$ cd ~/<this repository name>`
 5. `$ cp py/variables_sample.py py/variables.py`
 6. Python3とpipとffmpegをインストール
