@@ -41,18 +41,18 @@ PC(Windows, Mac, Linux)でTimer Camera X用のソフトウェアをコンパイ�
 2. このリポジトリを`git clone`する
 3. Arduino IDE でこのリポジトリのルートを開く
 4. Arduino IDE のセットアップ
-     M5Stack-Timer-Cam を ESP32 Arduino に設定します (M5Stack Arduinoではない)
+    M5Stack-Timer-Cam を ESP32 Arduino に設定します (M5Stack Arduinoではない)
 5. Timer Camera X を USBでPC に接続
 6. Timer Camera X にコンパイル
 
 ## 2. Raspberry Piの設定
 
 1. Raspberry Pi OS を Raspberry Pi にインストールします。インストール方法は次のリンクを参照してください。 https://www.raspberrypi.com/documentation/computers/getting-started.html
-2. Raspberry Pi を起動しgitのインストール
+2. Raspberry Pi を起動しgitとvimのインストール
     ```bash
     $ sudo apt update
     $ sudo apt upgrade
-    $ sudo apt install git
+    $ sudo apt install git vim
     ```
 3. Raspberry Pi の`home`にこのリポジトリを`$ git clone`します。
 4. `$ cd ~/<this repository name>`
