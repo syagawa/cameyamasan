@@ -37,7 +37,7 @@ PC(Windows, Mac, Linux)でTimer Camera X用のソフトウェアをコンパイ�
 
 ### Arduinoでのコンパイル
 
-1. PCにArduino IDEをインストール
+1. PCにArduino IDE(https://www.arduino.cc/en/software)をインストール
 2. このリポジトリを`git clone`する
 3. Arduino IDE でこのリポジトリのルートを開く
 4. Arduino IDE のセットアップ

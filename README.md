@@ -37,7 +37,7 @@ Compile software for camera on PC and write it to Timer Camera X.
 
 ### Compile source to Camera by Arduino in PC
 
-1. Install Arduino IDE to PC.
+1. Install Arduino IDE(https://www.arduino.cc/en/software) to PC.
 2. git clone this repository.
 3. Open this repository's root by Arduino IDE.
 4. Setup Arduino IDE
