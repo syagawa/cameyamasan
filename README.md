@@ -48,11 +48,11 @@ Compile software for camera on PC and write it to Timer Camera X.
 ## 2. Raspberry Pi settings
 
 1. Install Raspberry Pi OS to Raspberry Pi. Refer to the following link for the installation. https://www.raspberrypi.com/documentation/computers/getting-started.html
-2. Install git.
+2. Boot Raspberry Pi, connect with SSH, install git and vim.
     ```bash
     $ sudo apt update
     $ sudo apt upgrade
-    $ sudo apt install git
+    $ sudo apt install git vim
     ```
 3. Start Raspberry Pi and git clone this repository in Raspberry Pi's `home`.
 4. `$ cd ~/<this repository name>`

@@ -48,7 +48,7 @@ PC(Windows, Mac, Linux)でTimer Camera X用のソフトウェアをコンパイ�
 ## 2. Raspberry Piの設定
 
 1. Raspberry Pi OS を Raspberry Pi にインストールします。インストール方法は次のリンクを参照してください。 https://www.raspberrypi.com/documentation/computers/getting-started.html
-2. Raspberry Pi を起動しgitとvimのインストール
+2. Raspberry Pi を起動し、sshで接続しgitとvimのインストール
     ```bash
     $ sudo apt update
     $ sudo apt upgrade
