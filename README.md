@@ -33,7 +33,7 @@ Use M5Stack Timer Camera X and Raspberry Pi Wi-Fi model. Use Raspberry Pi with p
 
 ## 1. Compile Timer Camera X
 
-Compile software for camera on PC and write it to Timer Camera X.
+Compile software for Timer Camera X on PC and write it.
 
 ### Compile source to Camera by Arduino in PC
 
@@ -42,7 +42,7 @@ Compile software for camera on PC and write it to Timer Camera X.
 3. Open this repository's root by Arduino IDE.
 4. Setup Arduino IDE
     set M5Stack-Timer-Cam in ESP32 Arduino( not M5Stack Arduino)
-5. Connect Timer Camera X to PC by USB.
+5. Connect Timer Camera X to PC by USB cable.
 6. Compile to Timer Camera X.
 
 ## 2. Raspberry Pi settings
