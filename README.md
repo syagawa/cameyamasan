@@ -55,9 +55,13 @@ Compile software for Timer Camera X on PC and write it.
     $ sudo apt install git vim
     ```
 3. Start Raspberry Pi and git clone this repository in Raspberry Pi's `home`.
-4. `$ cd ~/<this repository name>`
-5. `$ cp py/variables_sample.py py/variables.py`
-6. Install python3, pip and ffmpeg.
+```bash
+$ cd ~
+$ git clone <this repository url>
+$ cd ~/<this repository dir name>
+```
+4. `$ cp py/variables_sample.py py/variables.py`
+5. Install python3, pip and ffmpeg.
     ```bash
     $ sudo apt install -y python3 python3-pip ffmpeg
     $ sudo pip3 install bleak
