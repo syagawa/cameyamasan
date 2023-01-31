@@ -74,13 +74,13 @@ $ cd ~/<this repository dir name>
 AまたはBの方法でWi-Fiを設定します。
 AはRaspberry PiとTimer Camera Xのみ。
 Bには Raspberry Pi、Timer Camera X、Wi-Fi ルーターが必要です。
-Bの方が簡単ですが、屋外での使用にはAがおすすめです。
+Bの方が簡単ですが、屋外で使用する際にはAにする必要があります。
 
 
 
 ### A. Raspberry Pi を Wi-Fi アクセスポイントとして使用する方法（RTL8188EUS USB ドングルを使用）
 
-1. Raspbery Piを起動
+1. Raspbery Piを起動しSSHでRaspberry Piにログイン
 2. RTL8188EUS ドングル ドライバーをインストールする
      * http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/
      * Raspberry Pi Zero の例 http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
