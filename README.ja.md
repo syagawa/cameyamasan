@@ -72,10 +72,9 @@ $ cd ~/<this repository dir name>
 ## 3. Wi-Fiの設定
 
 AまたはBの方法でWi-Fiを設定します。
-AはRaspberry PiとTimer Camera Xのみ。
+AはRaspberry PiとTimer Camera Xのみを使用します。
 Bには Raspberry Pi、Timer Camera X、Wi-Fi ルーターが必要です。
-Bの方が簡単ですが、屋外で使用する際にはAにする必要があります。
-
+Bの方が設定は簡単ですが、屋外で使用する際にはAにする必要があります。
 
 
 ### A. Raspberry Pi を Wi-Fi アクセスポイントとして使用する方法（RTL8188EUS USB ドングルを使用）
