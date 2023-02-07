@@ -82,7 +82,7 @@ Bの方が設定は簡単ですが、屋外で使用する際にはAにする必
 1. Raspbery Piを起動しSSHでRaspberry Piにログイン
 2. RTL8188EUS ドングル ドライバーをインストールする
      * http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/
-     * Raspberry Pi Zero の例 http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
+     * Raspberry Pi Zero の場合 http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
 
 3. `$ iwconfig` コマンドをたたいて wlan1 が存在するかどうかを確認する
 
