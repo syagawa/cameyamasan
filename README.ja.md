@@ -98,6 +98,8 @@ $ sudo apt install dnsmasq
 
 `$ sudo vim /etc/dhcpcd.conf`
 
+下記を追記する
+
 ```
 interface wlan1
  static ip_address=192.168.2.1/24
