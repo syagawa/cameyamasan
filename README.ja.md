@@ -86,7 +86,7 @@ Bの方が設定は簡単ですが、屋外で使用する際にはAにする必
 
 3. `$ iwconfig` コマンドをたたいて wlan1 が存在するかどうかを確認する
 
-4. インストール
+4. hostapd と dnsmasq のインストール
 ```bash
 $ sudo apt update
 $ sudo apt upgrade -y
