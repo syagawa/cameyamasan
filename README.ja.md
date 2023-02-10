@@ -6,7 +6,7 @@ Timer Camera XとRaspberry Piを同じWi-Fiネットワーク上に配置し、T
 
 ## スペック
 
-M5Stack Timer Camera X とWi-FiモデルのRaspberry Piを使用します。操作と表示にHATを使うためピンヘッダが付いているものを使ってください。推奨モデルはRaspberry Pi Zero WHとなります。
+M5Stack Timer Camera X とWi-FiモデルのRaspberry Piを使用します。操作と表示にHATを使うためピンヘッダが付いているものを使うか、ピンヘッダを付けて使ってください。推奨モデルはRaspberry Pi Zero WHとなります。
 
 * カメラ - ESP32 PSRAM Timer Camera X (M5Stack)
     * https://shop.m5stack.com/products/esp32-psram-timer-camera-x-ov3660
