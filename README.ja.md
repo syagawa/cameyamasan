@@ -156,8 +156,13 @@ net.ipv4.ipforward=0の部分のコメントアウトをキャンセルして、
 net.ipv4.ip_forward=1
 
 ```
-`$ sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE`
-`$ sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"`
+
+/etc/sysctl.confの値を変更したら下記コマンドを実行します
+
+```bash
+$ sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
+$ sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
+```
 
 
 
