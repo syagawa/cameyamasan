@@ -174,7 +174,7 @@ $ sudo systemctl start dnsmasq
 
 11. Check Wi-Fi Access Point
 ```
-$ python -m http.server 3000
+$ python3 -m http.server 3000
 ```
 Connect MY-RP-SERVER from PC or Smartphone.
 Open 192.168.2.1:3000.
