@@ -235,9 +235,10 @@ Wi-Fi ルーターのssid と passwordを確認
 
 
 
-### Raspberry Pi 起動時にスタートさせる方法
+### Raspberry Pi起動時にスタートさせる方法
 
 ```bash
+# Raspberry PiにSSH接続して
 $ cd <このレポジトリのホームディレクトリ>
 $ cp ./service/example-camerawithpy.service ./camerawithpy.service
 ```
