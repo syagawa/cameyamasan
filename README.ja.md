@@ -257,7 +257,7 @@ $ sudo reboot
 * 参照サイト
     * https://superuser.com/questions/544399/how-do-you-make-a-systemd-service-as-the-last-service-on-boot
 
-#### 起動時にスタートさせない場合
+#### Raspberry Pi 起動時にスタートさせない場合
 ```bash
 $ systemctl disable camerawithpy.service
 ```
@@ -280,7 +280,7 @@ $ cp py/variables_sample.py py/variables.py
 $ vim py/variables.py
 ```
 
-変数について
+py/variables.pyの変数について
 ```
 max_camera_shooting_counts: 最大撮影回数
 camera_shooting_interval: 撮影間隔(秒)
