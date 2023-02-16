@@ -290,8 +290,8 @@ camera_shooting_interval: 撮影間隔(秒)
 
 撮影後の動画の作成
 
-```
-# Raspberry Piで
+```bash
+# Raspberry PiにSSH接続して
 $ sudo apt install ffmpeg
 $ cd <レポジトリのルート>
 $ chmod +x ./make_static_video_current_dir.sh
@@ -306,7 +306,7 @@ https://gist.github.com/CMCDragonkai/e00d114b43e38cb2c1b04594229e1df6
 
 ### 撮影した画像をZipにまとめる
 
-```
+```bash
 # Raspberry Piで
 $ cd <レポジトリのルート>
 $ chmod +x ./make_tar_arr.sh
