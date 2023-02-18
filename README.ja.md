@@ -288,7 +288,7 @@ camera_shooting_interval: 撮影間隔(秒)
 
 ### タイムラプス動画の作成
 
-撮影後の動画の作成。video.mp4というファイルが出来上がる。
+撮影した画像をタイムラプス動画にする。video.mp4というファイルが出来る。
 
 ```bash
 # Raspberry PiにSSH接続して
@@ -306,7 +306,7 @@ https://gist.github.com/CMCDragonkai/e00d114b43e38cb2c1b04594229e1df6
 
 ### 撮影した画像をZipにまとめる
 
-imagesall.tar.gzという名前のファイルが出来上がる。
+imagesall.tar.gzという名前のファイルが出来る。
 
 ```bash
 # Raspberry Piで
