@@ -4,6 +4,7 @@ CAMEYAMASAN(version.1)はM5Stack Timer Camera XとRaspberry Piを使用したタ
 
 Timer Camera XとRaspberry Piを同じWi-Fiネットワーク上に配置し、Timer Camera XでWebサーバーを起動後、Raspberry PiからHTTPリクエストを使用しカメラ画像を取得します。
 
+
 ## スペック
 
 M5Stack Timer Camera X とWi-FiモデルのRaspberry Piを使用します。操作と表示にHATを使うためピンヘッダが付いているものを使うか、ピンヘッダを付けて使ってください。推奨モデルはRaspberry Pi Zero WHとなります。
@@ -35,6 +36,7 @@ M5Stack Timer Camera X とWi-FiモデルのRaspberry Piを使用します。操�
 
 PC(Windows, Mac, Linux)でTimer Camera X用のソフトウェアをコンパイルし、Timer Camera Xに書き込みます。
 
+
 ### Arduinoでのコンパイル
 
 1. PCにArduino IDE(https://www.arduino.cc/en/software)をインストール
@@ -44,6 +46,7 @@ PC(Windows, Mac, Linux)でTimer Camera X用のソフトウェアをコンパイ�
     M5Stack-Timer-Cam を ESP32 Arduino に設定します (M5Stack Arduinoではない)
 5. Timer Camera X を USBケーブルでPC に接続
 6. Timer Camera X にコンパイル
+
 
 ## 2. Raspberry Piの設定
 
@@ -68,6 +71,7 @@ $ cd ~/<this repository dir name>
     $ sudo pip3 install aioconsole
     $ sudo pip3 install psutil
     ```
+
 
 ## 3. Wi-Fiの設定
 
@@ -164,12 +168,6 @@ $ sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
 $ sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
 ```
 
-
-
-
-
-
-
 10. unmaskの設定
 ```
 $ sudo systemctl stop hostapd
@@ -233,8 +231,6 @@ Wi-Fi ルーターのssid と passwordを確認
 4. Timer Camera XにUSB電源を接続して起動
 
 
-
-
 ### Raspberry Pi起動時にスタートさせる方法
 
 ```bash
@@ -257,6 +253,7 @@ $ sudo reboot
 * 参照サイト
     * https://superuser.com/questions/544399/how-do-you-make-a-systemd-service-as-the-last-service-on-boot
 
+
 #### Raspberry Pi 起動時にスタートさせない場合
 ```bash
 $ systemctl disable camerawithpy.service
@@ -269,8 +266,6 @@ $ systemctl disable camerawithpy.service
 3. Rassberry PiがTimer Camera Xに接続し、Timer Camera XのWi-Fiサーバーがスタート
 4. 撮影が開始される
 5. HATのボタンの上下を押して OLED スクリーンに `stopshoot ?` を表示させ`key1`を押すと撮影が終了する
-
-
 
 
 ### 撮影回数や間隔の変更
@@ -286,9 +281,10 @@ max_camera_shooting_counts: 最大撮影回数
 camera_shooting_interval: 撮影間隔(秒)
 ```
 
+
 ### タイムラプス動画の作成
 
-撮影した画像をタイムラプス動画にします。video.mp4というファイルが作成されます。
+撮影した画像を使ってタイムラプス動画を作成します。video.mp4というファイルが作成されます。
 
 ```bash
 # Raspberry PiにSSH接続して
@@ -300,8 +296,6 @@ $ ./make_static_video_current_dir.sh
 
 参照ページ
 https://gist.github.com/CMCDragonkai/e00d114b43e38cb2c1b04594229e1df6
-
-
 
 
 ### 撮影した画像をZipにまとめる
