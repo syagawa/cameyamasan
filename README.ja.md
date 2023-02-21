@@ -1,6 +1,6 @@
 # CAMEYAMASAN version 1
 
-CAMEYAMASAN(version.1)はM5Stack Timer Camera XとRaspberry Piを使用したタイムラプスカメラです。
+CAMEYAMASAN(version 1)はM5Stack Timer Camera XとRaspberry Piを使用したタイムラプスカメラです。
 
 Timer Camera XとRaspberry Piを同じWi-Fiネットワーク上に配置し、Timer Camera XでWebサーバーを起動後、Raspberry PiからHTTPリクエストを使用しカメラ画像を取得します。
 
@@ -24,12 +24,12 @@ M5Stack Timer Camera X とWi-FiモデルのRaspberry Piを使用します。操�
     * micro SDカード
 
 
-* PC - Timer Camera Xへのコンパイル (Windows, Mac, Linux)
+* PC - Timer Camera Xへのコンパイル に使用(Windows, Mac, Linux)
     * Arduino IDE
 
 * 使用言語 / ツール
-    * python3 - コントローラ - Raspberry Pi
     * Arduino(C++) - カメラ - M5Stack Timer Camera X
+    * python3 - コントローラ - Raspberry Pi
 
 
 ## 1. Timer Camera X へのコンパイル
