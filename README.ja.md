@@ -44,7 +44,7 @@ PC(Windows, Mac, Linux)でTimer Camera X用のソフトウェアをコンパイ�
 3. Arduino IDE でこのリポジトリのルートを開く
 4. Arduino IDE のセットアップ
     M5Stack-Timer-Cam を ESP32 Arduino に設定します (M5Stack Arduinoではない)
-5. Timer Camera X を USBケーブルでPC に接続
+5. Timer Camera X とPCをUSBケーブルで接続
 6. Timer Camera X にコンパイル
 
 
