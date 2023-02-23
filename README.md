@@ -1,8 +1,8 @@
 # CAMEYAMASAN version 1
 
-CAMEYAMASAN(version.1) is Time-lapse camera using M5Stack Timer Camera X and Raspberry Pi.
+CAMEYAMASAN(version 1) is Time-lapse camera using M5Stack Timer Camera X and Raspberry Pi.
 
-Set Timer Camera X and Raspberry Pi on the same Wi-Fi network, start a web server on Timer Camera X, and then use HTTP requests from Raspberry Pi to acquire camera images.
+Set Timer Camera X and Raspberry Pi on the same Wi-Fi network, start a web server on Timer Camera X, and then use HTTP requests from Raspberry Pi to get camera images.
 
 ## Specs
 
