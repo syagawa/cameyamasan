@@ -49,11 +49,11 @@ Compile software for Timer Camera X on PC and write it.
 
 1. Install Raspberry Pi OS to Raspberry Pi. Refer to the following link for the installation. https://www.raspberrypi.com/documentation/computers/getting-started.html
 2. Boot Raspberry Pi, connect with SSH, install git and vim.
-    ```bash
-    $ sudo apt update
-    $ sudo apt upgrade
-    $ sudo apt install git vim
-    ```
+```bash
+$ sudo apt update
+$ sudo apt upgrade
+$ sudo apt install git vim
+```
 3. Start Raspberry Pi and git clone this repository in Raspberry Pi's `home`.
 ```bash
 $ cd ~
@@ -78,7 +78,7 @@ B is easier, but A is recommended for outdoor use.
 
 ### A. How to use Raspberry Pi as a Wi-Fi access point (Case of RTL8188EUS USB dongle)
 
-1. Start Raspberry Pi
+1. Start Raspberry Pi and Log in by ssh
 2. Install RTL8188EUS dongle driver 
     * http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/
     * Example of raspberry pi zero w http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
