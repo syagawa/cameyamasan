@@ -48,11 +48,11 @@ Compile software for Timer Camera X on PC and write it.
 ## 2. Raspberry Pi settings
 
 1. Install Raspberry Pi OS to Raspberry Pi. Refer to the following link for the installation. https://www.raspberrypi.com/documentation/computers/getting-started.html
-2. Boot Raspberry Pi, connect with SSH, install git and vim.
+2. Boot Raspberry Pi, connect with SSH, install git, vim and others.
 ```bash
 $ sudo apt update
 $ sudo apt upgrade
-$ sudo apt install git vim
+$ sudo apt install git vim wget unzip
 ```
 3. Start Raspberry Pi and git clone this repository in Raspberry Pi's `home`.
 ```bash
@@ -84,6 +84,7 @@ B is easier, but A is recommended for outdoor use.
     * Example of raspberry pi zero w http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
 
     ```bash
+    $ wget http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
     $ tar -xvzf 8188eu-5.4.83-1379.tar.gz
     $ ./install.sh
     ```
