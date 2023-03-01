@@ -61,9 +61,9 @@ $ git clone <this repository url>
 $ cd ~/<this repository dir name>
 ```
 4. `$ cp py/variables_sample.py py/variables.py`
-5. Install python3, pip and ffmpeg.
+5. Install python3, pip, ffmpeg and wget.
     ```bash
-    $ sudo apt install -y python3 python3-pip ffmpeg
+    $ sudo apt install -y python3 python3-pip ffmpeg wget
     $ sudo pip3 install bleak
     $ sudo pip3 install aioconsole
     $ sudo pip3 install psutil
