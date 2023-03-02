@@ -4,6 +4,7 @@ CAMEYAMASAN(version 1) is Time-lapse camera using M5Stack Timer Camera X and Ras
 
 Set Timer Camera X and Raspberry Pi on the same Wi-Fi network, start a web server on Timer Camera X, and then use HTTP requests from Raspberry Pi to get camera images.
 
+
 ## Specs
 
 Use M5Stack Timer Camera X and Raspberry Pi Wi-Fi model. Use Raspberry Pi with pin headers to use HAT for operation and display. The recommended model is Raspberry Pi Zero WH.
@@ -30,10 +31,10 @@ Use M5Stack Timer Camera X and Raspberry Pi Wi-Fi model. Use Raspberry Pi with p
     * python3 - Controller - Raspberry Pi
 
 
-
 ## 1. Compile Timer Camera X
 
 Compile software for Timer Camera X on PC and write it.
+
 
 ### Compile source to Camera by Arduino in PC
 
@@ -44,6 +45,7 @@ Compile software for Timer Camera X on PC and write it.
     set M5Stack-Timer-Cam in ESP32 Arduino( not M5Stack Arduino)
 5. Connect Timer Camera X to PC by USB cable.
 6. Compile to Timer Camera X.
+
 
 ## 2. Raspberry Pi settings
 
@@ -75,6 +77,7 @@ Set up Wi-Fi by A or B below.
 A is only Raspberry Pi and Timer Camera X. 
 B requires a Raspberry Pi, a Timer Camera X and a Wi-Fi router.
 B is easier, but A is recommended for outdoor use.
+
 
 ### A. How to use Raspberry Pi as a Wi-Fi access point (Case of RTL8188EUS USB dongle)
 
