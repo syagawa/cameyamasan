@@ -89,6 +89,7 @@ B is easier, but A is recommended for outdoor use.
     ```bash
     $ wget http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
     $ tar -xvzf 8188eu-5.4.83-1379.tar.gz
+    $ chmod +x ./install.sh
     $ ./install.sh
     ```
 

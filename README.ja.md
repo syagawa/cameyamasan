@@ -90,6 +90,7 @@ Bの方が設定は簡単ですが、屋外で使用する際にはAにする必
     ```bash
     $ wget http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
     $ tar -xvzf 8188eu-5.4.83-1379.tar.gz
+    $ chmod +x ./install.sh
     $ ./install.sh
     ```
 3. `$ iwconfig` コマンドをたたいて wlan1 が存在するかどうかを確認する
