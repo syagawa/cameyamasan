@@ -188,7 +188,7 @@ $ sudo systemctl start dnsmasq
 $ python3 -m http.server 3000
 ```
 
-PCかスマホでMY-RP-SERVERに接続し、ブラウザで192.168.2.1:3000にアクセスし表示できるか確認します。
+PCかスマートフォンでMY-RP-SERVERに接続し、ブラウザで192.168.2.1:3000にアクセスし表示できるか確認します。
 
 12. `$ sudo vim /etc/rc.local`で `exit 0`の直前の行に下記の記述を追加する
 
