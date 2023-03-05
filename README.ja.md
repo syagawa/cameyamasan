@@ -190,7 +190,8 @@ $ python3 -m http.server 3000
 
 PCかスマートフォンでMY-RP-SERVERに接続し、ブラウザで192.168.2.1:3000にアクセスし表示できるか確認します。
 
-12. `$ sudo vim /etc/rc.local`で `exit 0`の直前の行に下記の記述を追加する
+12. /etc/rc.localのexit 0`の直前の行に下記の記述を追加する
+`$ sudo vim /etc/rc.local`
 
 ```
 iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE

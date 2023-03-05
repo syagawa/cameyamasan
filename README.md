@@ -189,7 +189,7 @@ $ python3 -m http.server 3000
 Connect MY-RP-SERVER from PC or Smartphone.
 Open 192.168.2.1:3000 in Browser.
 
-12. add below to /etc/rc.local at before exit 0
+12. Add below to /etc/rc.local at before exit 0
 `$ sudo vim /etc/rc.local`
 
 ```
