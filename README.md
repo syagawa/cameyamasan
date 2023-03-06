@@ -231,14 +231,12 @@ Check Wi-Fi router's ssid and password.
 `$ vim ./py/variables.py.`
 
 
-
-
-
 ## 4. Usage
 1. Set HAT(OLED Screen and buttons HAT) to Raspberry Pi.
 2. Start Raspberry Pi by connect USB Power.
-3. `$ python3 py/app.py` in Raspberry Pi's this repository home.
-4. Start Timer Camera X by connect USB Power.
+3. Connect Raspberry Pi with SSH.
+4. `$ python3 py/app.py` in Raspberry Pi's this repository home.
+5. Start Timer Camera X by connect USB Power.
 
 
 ### Start app at Raspberry Pi boots

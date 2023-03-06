@@ -233,6 +233,7 @@ Wi-Fi ルーターのssid と passwordを確認
 
 1. Raspberry PiにHAT(OLED Screen and buttons HAT)を装着
 2. Raspberry PiにUSB電源を接続して起動
+3. Raspberry PiにSSHで接続
 3. Raspberry Piでこのレポジトリのホームへ行き `$ python3 py/app.py`を実行
 4. Timer Camera XにUSB電源を接続して起動
 
