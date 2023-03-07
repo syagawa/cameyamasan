@@ -268,11 +268,11 @@ $ systemctl disable camerawithpy.service
 
 ### 撮影開始
 
-1. Timer Camera XとRassberry Piを起動
-2. Rassberry Piの OLEDスクリーンに "app start!"と表示されアプリがスタート
-3. Rassberry PiがTimer Camera Xに接続し、Timer Camera XのWi-Fiサーバーがスタート
-4. 撮影が開始される
-5. HATのボタンの上下を押して OLED スクリーンに `stopshoot ?` を表示させ`key1`を押すと撮影が終了する
+1. Timer Camera XとRassberry Piを起動させる
+    * Rassberry Piの OLEDスクリーンに "app start!"と表示されアプリがスタート
+    * Rassberry PiがTimer Camera Xに接続し、Timer Camera XのWi-Fiサーバーがスタート
+    * 撮影が開始される
+2. HATのボタンの上下を押して OLED スクリーンに `stopshoot ?` を表示させ`key1`を押すと撮影が終了する
 
 
 ### 撮影回数や間隔の変更
