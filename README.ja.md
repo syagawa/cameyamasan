@@ -185,6 +185,7 @@ $ sudo systemctl start dnsmasq
 
 11. Wi-Fi アクセスポイントの確認
 ```
+# 確認用Webサーバーを起動
 $ python3 -m http.server 3000
 ```
 
