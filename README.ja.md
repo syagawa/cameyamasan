@@ -208,9 +208,8 @@ service hostapd restart
 
 13. インターネットへの接続を確認
 
-```
+```bash
 $ ping google.com
-
 # 何も返ってこないようなら
 $ sudo dhclient wlan0
 ```
