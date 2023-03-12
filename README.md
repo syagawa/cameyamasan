@@ -56,7 +56,7 @@ $ sudo apt update
 $ sudo apt upgrade
 $ sudo apt install git vim wget unzip
 ```
-3. Start Raspberry Pi and git clone this repository in Raspberry Pi's `home`.
+3. Start Raspberry Pi and git clone this repository in Raspberry Pi's `/home/pi`.
 ```bash
 $ cd ~
 $ git clone <this repository url>

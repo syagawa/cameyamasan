@@ -55,9 +55,9 @@ PC(Windows, Mac, Linux)でTimer Camera X用のソフトウェアをコンパイ�
 ```bash
 $ sudo apt update
 $ sudo apt upgrade
-$ sudo apt install git vim
+$ sudo apt install git vim wget unzip
 ```
-3. Raspberry Pi の`home`にこのリポジトリを`$ git clone`します。
+3. Raspberry Pi の`/home/pi`にこのリポジトリを`$ git clone`します。
 ```bash
 $ cd ~
 $ git clone <this repository url>
