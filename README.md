@@ -58,9 +58,9 @@ $ sudo apt install git vim wget unzip
 ```
 3. Start Raspberry Pi and git clone this repository in Raspberry Pi's `/home/pi`.
 ```bash
-$ cd ~
+$ cd /home/pi
 $ git clone <this repository url>
-$ cd ~/<this repository dir name>
+$ cd /home/pi/<this repository dir name>
 ```
 4. `$ cp py/variables_sample.py py/variables.py`
 5. Install python3, pip, ffmpeg and wget.
@@ -184,7 +184,7 @@ $ sudo systemctl start dnsmasq
 
 11. Check Wi-Fi Access Point
 ```
-# Start server for confirmation 
+# Start server for confirmation
 $ python3 -m http.server 3000
 ```
 Connect MY-RP-SERVER from PC or Smartphone.

@@ -59,9 +59,9 @@ $ sudo apt install git vim wget unzip
 ```
 3. Raspberry Pi の`/home/pi`にこのリポジトリを`$ git clone`します。
 ```bash
-$ cd ~
+$ cd /home/pi
 $ git clone <this repository url>
-$ cd ~/<this repository dir name>
+$ cd /home/pi/<this repository dir name>
 ```
 4. `$ cp py/variables_sample.py py/variables.py`
 5. Python3とpipとffmpegをインストール
