@@ -62,7 +62,7 @@ $ cd /home/pi
 $ git clone <this repository url>
 $ cd /home/pi/<this repository dir name>
 ```
-4. `$ cp py/variables_sample.py py/variables.py`
+4. `$ cp ./py/variables_sample.py ./py/variables.py`
 5. Install python3, pip, ffmpeg and wget.
     ```bash
     $ sudo apt install -y python3 python3-pip ffmpeg wget
