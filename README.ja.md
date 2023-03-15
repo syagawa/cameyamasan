@@ -88,6 +88,7 @@ Bの方が設定は簡単ですが、屋外で使用する際にはAにする必
      * http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/
      * Raspberry Pi Zero の場合 http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
     ```bash
+    $ cd /home/pi
     $ wget http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
     $ tar -xvzf 8188eu-5.4.83-1379.tar.gz
     $ chmod +x ./install.sh

@@ -81,12 +81,13 @@ B is easier, but A is recommended for outdoor use.
 
 ### A. How to use Raspberry Pi as a Wi-Fi access point (Case of RTL8188EUS USB dongle)
 
-1. Start Raspberry Pi and Log in by SSH
+1. Start Raspberry Pi and Login by SSH
 2. Install RTL8188EUS dongle driver 
     * http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/
     * Example of raspberry pi zero w http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
 
     ```bash
+    $ cd /home/pi
     $ wget http://downloads.fars-robotics.net/wifi-drivers/8188eu-drivers/8188eu-5.4.83-1379.tar.gz
     $ tar -xvzf 8188eu-5.4.83-1379.tar.gz
     $ chmod +x ./install.sh
