@@ -100,8 +100,7 @@ B is easier, but A is recommended for outdoor use.
 ```bash
 $ sudo apt update
 $ sudo apt upgrade -y
-$ sudo apt install hostapd
-$ sudo apt install dnsmasq
+$ sudo apt install hostapd dnsmasq
 ```
 
 5. Edit /etc/dhcpcd.conf

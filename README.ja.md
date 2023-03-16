@@ -100,8 +100,7 @@ Bの方が設定は簡単ですが、屋外で使用する際にはAにする必
 ```bash
 $ sudo apt update
 $ sudo apt upgrade -y
-$ sudo apt install hostapd
-$ sudo apt install dnsmasq
+$ sudo apt install hostapd dnsmasq
 ```
 
 5. /etc/dhcpcd.conf の編集
