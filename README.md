@@ -107,6 +107,8 @@ $ sudo apt install hostapd dnsmasq
 
 `$ sudo vim /etc/dhcpcd.conf`
 
+add below
+
 ```
 interface wlan1
  static ip_address=192.168.2.1/24
