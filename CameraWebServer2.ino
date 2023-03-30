@@ -22,7 +22,6 @@
 #include "camera_pins.h"
 // #include "led.h"
 //#include "bmm8563.h"
-#include "constants.h"
 
 
 #include <BLEDevice.h>
