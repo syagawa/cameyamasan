@@ -39,6 +39,8 @@
 #include <Arduino_JSON.h>
 #include "EEPROM.h"
 
+#include "constants.h"
+
 JSONVar receivedObj;
 
 bool startedCameraServer = false;
