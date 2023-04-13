@@ -39,6 +39,8 @@
 #include <Arduino_JSON.h>
 #include "EEPROM.h"
 
+#include "constants.h"
+
 JSONVar receivedObj;
 
 bool startedCameraServer = false;
@@ -150,13 +152,11 @@ void clearRom() {
 
 void startCameraServerWithWifi(char* ssid, char* ps) {
   Serial.println("in startCameraSeverWithWifi0");
-  // if(ssid == NULL){
-  //   var_ssid = (char*)SSID;
-  // }else{
-  //   var_ssid = ssid;
-  // }
-  var_ssid = ssid;
-
+  if(ssid == NULL){
+    var_ssid = (char*)SSID;
+  }else{
+    var_ssid = ssid;
+  }
   Serial.println("in startCameraSeverWithWifi1");
 
   if(ps == NULL){
@@ -199,38 +199,38 @@ void startCameraServerWithWifi(char* ssid, char* ps) {
 
 }
 
-// void startServerIfExistsData(){
+void startServerIfExistsData(){
 
 
-//   if (!EEPROM.begin(rom_size)){
-//     Serial.println("Failed to initialise EEPROM");
-//     Serial.println("Restarting...");
-//     delay(1000);
-//     ESP.restart();
-//   }
+  if (!EEPROM.begin(rom_size)){
+    Serial.println("Failed to initialise EEPROM");
+    Serial.println("Restarting...");
+    delay(1000);
+    ESP.restart();
+  }
 
-//   String ssid = readDataFromRom(address_ssid, length_for_rom);
-//   String ps = readDataFromRom(address_ps, length_for_rom);
+  String ssid = readDataFromRom(address_ssid, length_for_rom);
+  String ps = readDataFromRom(address_ps, length_for_rom);
 
-//   Serial.println(ssid);
-//   Serial.println(ps);
-//   Serial.println("readed?");
+  Serial.println(ssid);
+  Serial.println(ps);
+  Serial.println("readed?");
 
-//   if(ssid.length() > 0 && ps.length() > 0){
-//     int len_s = ssid.length() + 1; 
-//     char char_array_s[len_s];
-//     ssid.toCharArray(char_array_s, len_s);
+  if(ssid.length() > 0 && ps.length() > 0){
+    int len_s = ssid.length() + 1; 
+    char char_array_s[len_s];
+    ssid.toCharArray(char_array_s, len_s);
 
-//     int len_p = ps.length() + 1; 
-//     char char_array_p[len_p];
-//     ps.toCharArray(char_array_p, len_p);
+    int len_p = ps.length() + 1; 
+    char char_array_p[len_p];
+    ps.toCharArray(char_array_p, len_p);
 
-//     startCameraServerWithWifi(char_array_s, char_array_p);
-//   }else{
-//     clearRom();
-//   }
+    startCameraServerWithWifi(char_array_s, char_array_p);
+  }else{
+    clearRom();
+  }
 
-// }
+}
 
 
 
