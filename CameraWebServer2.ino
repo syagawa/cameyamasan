@@ -3,12 +3,6 @@
 #include "esp_camera.h"
 #include <WiFi.h>
 
-//
-// WARNING!!! PSRAM IC required for UXGA resolution and high JPEG quality
-//            Ensure ESP32 Wrover Module or other board with PSRAM is selected
-//            Partial images will be transmitted if image exceeds buffer size
-//
-
 // Select camera model
 //#define CAMERA_MODEL_WROVER_KIT // Has PSRAM
 //#define CAMERA_MODEL_ESP_EYE // Has PSRAM
@@ -20,26 +14,18 @@
 //#define CAMERA_MODEL_TTGO_T_JOURNAL // No PSRAM
 
 #include "camera_pins.h"
-// #include "led.h"
-//#include "bmm8563.h"
-
 
 #include <BLEDevice.h>
 #include <BLEServer.h>
 #include <BLEUtils.h>
 #include <BLE2902.h>
 
-// #include <WiFiMulti.h>
-
 #define SERVICE_UUID           "00001141-0000-1000-8000-00805f9b34fb" // UART service UUID
 #define CHARACTERISTIC_UUID_RX "00001142-0000-1000-8000-00805f9b34fb"
 #define CHARACTERISTIC_UUID_TX "00001143-0000-1000-8000-00805f9b34fb"
 
-
 #include <Arduino_JSON.h>
 #include "EEPROM.h"
-
-#include "constants.h"
 
 JSONVar receivedObj;
 
@@ -152,18 +138,22 @@ void clearRom() {
 
 void startCameraServerWithWifi(char* ssid, char* ps) {
   Serial.println("in startCameraSeverWithWifi0");
-  if(ssid == NULL){
-    var_ssid = (char*)SSID;
-  }else{
-    var_ssid = ssid;
-  }
+  // if(ssid == NULL){
+  //   var_ssid = (char*)SSID;
+  // }else{
+    // var_ssid = ssid;
+  // }
+
+  // if(ps == NULL){
+  //   var_ps = (char*)PASSWORD;
+  // }else{
+  //   var_ps = ps;
+  // }
+
+  var_ssid = ssid;
+  var_ps = ps;
   Serial.println("in startCameraSeverWithWifi1");
 
-  if(ps == NULL){
-    var_ps = (char*)PASSWORD;
-  }else{
-    var_ps = ps;
-  }
   Serial.println("in startCameraSeverWithWifi2");
   Serial.println(var_ssid);
   Serial.println(var_ps);
