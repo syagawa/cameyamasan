@@ -47,6 +47,11 @@ PC(Windows, Mac, Linux)でTimer Camera X用のソフトウェアをコンパイ�
 5. Timer Camera X とPCをUSBケーブルで接続
 6. Timer Camera X にコンパイル
 
+※ File > preferencesのAdditional boards manager URLsに下記を追加し保存して再起動。
+ https://m5stack.oss-cn-shenzhen.aliyuncs.com/resource/arduino/package_m5stack_index.json
+
+下記よりM5Stack-Timer-CAM が選べるようになるはず
+Tools -> Development Board: -> Board Manager...
 
 ## 2. Raspberry Piの設定
 
