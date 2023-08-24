@@ -21,7 +21,7 @@ Use M5Stack Timer Camera X and Raspberry Pi Wi-Fi model. Use Raspberry Pi with p
     * Power
         Mobile battery ( e.g. Anker PowerCore Fusion 5000 https://www.ankerjapan.com/products/a1621 )
         or USB power
-    * micro SD card
+    * micro SD card 16GB or more
 
 * PC - for compiling to Timer Camera X (Windows, Mac or Linux)
     * Arduino IDE
