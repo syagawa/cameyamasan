@@ -22,7 +22,7 @@ M5Stack Timer Camera X とWi-FiモデルのRaspberry Piを使用します。操�
     * 電源
         モバイルバッテリ ( 例: Anker PowerCore Fusion 5000 https://www.ankerjapan.com/products/a1621 )
         またはUSB電源
-    * micro SDカード
+    * micro SDカード 16GB以上
 
 * PC - Timer Camera Xへのコンパイル に使用(Windows, Mac, Linux)
     * Arduino IDE
